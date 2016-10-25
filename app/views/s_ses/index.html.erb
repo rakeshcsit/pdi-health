@@ -13,7 +13,7 @@
   <tbody>
     <% @sses.each do |ss| %>
       <tr>
-        <td><%= ss.university %></td>
+        <td><%= ss.university.university %></td>
         <td><%= ss.ss %></td>
         <td><%= ss.ss_email %></td>
         <td><%= link_to 'Show', ss %></td>

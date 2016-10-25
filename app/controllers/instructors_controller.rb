@@ -1,5 +1,6 @@
 class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
+  before_action :set_universities, only: [:new, :edit]
 
   # GET /instructors
   # GET /instructors.json
@@ -67,6 +68,10 @@ class InstructorsController < ApplicationController
   end
 
   private
+    def set_universities
+      @universities = University.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_instructor
       @instructor = Instructor.find(params[:id])
