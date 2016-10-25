@@ -1,0 +1,61 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  instructor_id: 
+  lesson_plan_id: 
+  big_flag: false
+  video_url: MyText
+  fame: false
+  fame_notes: MyText
+  objs: false
+  action_flag: false
+  vocal_enc_num: 1
+  discuss_num: 1
+  mov_aw_noi_num: 1
+  mean_quest_num: 1
+  directed_quest_num: 1
+  tangent_num: 1
+  tangent_notes: MyText
+  fifteen_noeng: false
+  anti_jargon_num: 1
+  anti_jargon_notes: MyText
+  nervous: false
+  engage_num: 1
+  engage_notes: MyText
+  percent_lp: MyString
+  percent_hp_lp: 1
+  overall_num: 1
+  overall_factors: MyText
+  audio_qual_num: 1
+  code_is_no_big: false
+  notes: MyText
+
+two:
+  instructor_id: 
+  lesson_plan_id: 
+  big_flag: false
+  video_url: MyText
+  fame: false
+  fame_notes: MyText
+  objs: false
+  action_flag: false
+  vocal_enc_num: 1
+  discuss_num: 1
+  mov_aw_noi_num: 1
+  mean_quest_num: 1
+  directed_quest_num: 1
+  tangent_num: 1
+  tangent_notes: MyText
+  fifteen_noeng: false
+  anti_jargon_num: 1
+  anti_jargon_notes: MyText
+  nervous: false
+  engage_num: 1
+  engage_notes: MyText
+  percent_lp: MyString
+  percent_hp_lp: 1
+  overall_num: 1
+  overall_factors: MyText
+  audio_qual_num: 1
+  code_is_no_big: false
+  notes: MyText

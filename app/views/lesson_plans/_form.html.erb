@@ -1,0 +1,25 @@
+<%= form_for(@lesson_plan) do |f| %>
+  <% if @lesson_plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lesson_plan.errors.count, "error") %> prohibited this lesson_plan from being saved:</h2>
+
+      <ul>
+      <% @lesson_plan.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lp %><br>
+    <%= f.text_field :lp %>
+  </div>
+  <div class="field">
+    <%= f.label :lp_link %><br>
+    <%= f.text_area :lp_link %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

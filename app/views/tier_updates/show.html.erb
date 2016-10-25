@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Instructor:</strong>
+  <%= @tier_update.instructor %>
+</p>
+
+<p>
+  <strong>Old tier:</strong>
+  <%= @tier_update.old_tier %>
+</p>
+
+<p>
+  <strong>New tier:</strong>
+  <%= @tier_update.new_tier %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @tier_update.notes %>
+</p>
+
+<%= link_to 'Edit', edit_tier_update_path(@tier_update) %> |
+<%= link_to 'Back', tier_updates_path %>

@@ -11,53 +11,119 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803041943) do
+ActiveRecord::Schema.define(version: 20161024152702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cat_toys", force: true do |t|
+  create_table "analysts", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "toyable_id"
-    t.string   "toyable_type"
-  end
-
-  add_index "cat_toys", ["toyable_id", "toyable_type"], name: "index_cat_toys_on_toyable_id_and_toyable_type", using: :btree
-
-  create_table "lion_tamers", force: true do |t|
-    t.string   "name"
-    t.integer  "experience"
-    t.boolean  "living"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "lion_tamers_lions", id: false, force: true do |t|
-    t.integer "lion_tamer_id", null: false
-    t.integer "lion_id",       null: false
+  create_table "audits", force: true do |t|
+    t.integer  "instructor_id"
+    t.integer  "lesson_plan_id"
+    t.boolean  "big_flag",           default: false
+    t.text     "video_url"
+    t.boolean  "fame",               default: false
+    t.text     "fame_notes"
+    t.boolean  "objs",               default: false
+    t.boolean  "action_flag",        default: false
+    t.integer  "vocal_enc_num"
+    t.integer  "discuss_num"
+    t.integer  "mov_aw_noi_num"
+    t.integer  "mean_quest_num"
+    t.integer  "directed_quest_num"
+    t.integer  "tangent_num"
+    t.text     "tangent_notes"
+    t.boolean  "fifteen_noeng",      default: false
+    t.integer  "anti_jargon_num"
+    t.text     "anti_jargon_notes"
+    t.boolean  "nervous",            default: false
+    t.integer  "engage_num"
+    t.text     "engage_notes"
+    t.string   "percent_lp"
+    t.integer  "percent_hp_lp"
+    t.integer  "overall_num"
+    t.text     "overall_factors"
+    t.integer  "audio_qual_num"
+    t.boolean  "code_is_no_big",     default: false
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "audit_date"
   end
 
-  add_index "lion_tamers_lions", ["lion_id", "lion_tamer_id"], name: "index_lion_tamers_lions_on_lion_id_and_lion_tamer_id", using: :btree
-  add_index "lion_tamers_lions", ["lion_tamer_id", "lion_id"], name: "index_lion_tamers_lions_on_lion_tamer_id_and_lion_id", using: :btree
+  add_index "audits", ["instructor_id"], name: "index_audits_on_instructor_id", using: :btree
+  add_index "audits", ["lesson_plan_id"], name: "index_audits_on_lesson_plan_id", using: :btree
 
-  create_table "lions", force: true do |t|
-    t.date     "birthdate"
-    t.string   "name"
-    t.text     "about"
-    t.integer  "weight"
-    t.integer  "health"
-    t.text     "health_notes"
+  create_table "instructors", force: true do |t|
+    t.integer  "university_id"
+    t.string   "instructor"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "class_code"
+    t.date     "hired_date"
+    t.date     "start_date"
+    t.date     "dry_run_date"
+    t.boolean  "pre_quiz_taken", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tier_id"
+  end
+
+  add_index "instructors", ["university_id"], name: "index_instructors_on_university_id", using: :btree
+
+  create_table "lesson_plans", force: true do |t|
+    t.decimal  "lp"
+    t.text     "lp_link"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "panthers", force: true do |t|
-    t.string   "name"
-    t.integer  "claw_length"
+  create_table "rds", force: true do |t|
+    t.string   "rd"
+    t.string   "rd_email"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "sses", force: true do |t|
+    t.integer  "university_id"
+    t.string   "ss"
+    t.string   "ss_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sses", ["university_id"], name: "index_sses_on_university_id", using: :btree
+
+  create_table "tier_updates", force: true do |t|
+    t.integer  "instructor_id"
+    t.integer  "old_tier"
+    t.integer  "new_tier"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tier_updates", ["instructor_id"], name: "index_tier_updates_on_instructor_id", using: :btree
+
+  create_table "tiers", force: true do |t|
+    t.integer  "tier"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "universities", force: true do |t|
+    t.string   "university"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "rd_id"
   end
 
 end

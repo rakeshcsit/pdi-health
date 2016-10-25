@@ -1,3 +1,49 @@
+never do saturday classes (not always 1.3,2.3) never do 1.1
+---------
+
+write your notes as if they're going directly to the candidate
+
+times asked class a question on a whole
+
+lesson plan page with instructors that do really good job
+
+hall of fame
+
+rails generate scaffold Blah user:references medication:boolean food:boolean beverages:boolean appointments:boolean inrs:boolean wellness:boolean inactivity:boolean exercise:boolean weight:boolean compression:boolean menstruation:boolean --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+rails generate scaffold Tier tier:integer notes:text --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+rails generate scaffold University university:string --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+rails generate scaffold Analyst name:string email:string --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+rails generate scaffold Rd rd:string rd_email:string --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+rails generate scaffold SS university:references ss:string ss_email:string --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+rails generate scaffold Instructor university:references instructor:string email:string phone:string class_code:string hired_date:date start_date:date dry_run_date:date pre_quiz_taken:boolean --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+rails generate scaffold LessonPlan lp:decimal lp_link:text  --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+rails generate scaffold Audit instructor:references lesson_plan:references big_flag:boolean video_url:text fame:boolean fame_notes:text objs:boolean action_flag:boolean vocal_enc_num:integer discuss_num:integer mov_aw_noi_num:integer mean_quest_num:integer directed_quest_num:integer tangent_num:integer tangent_notes:text fifteen_noeng:boolean anti_jargon_num:integer anti_jargon_notes:text nervous:boolean engage_num:integer engage_notes:text percent_lp:string percent_hp_lp:integer overall_num:integer overall_factors:text audio_qual_num:integer code_is_no_big:boolean notes:text --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+
+hall_of_fame
+
+appeared nervous lots of uhms and uhs
+
+code_is_no big screen
+
+FLAG button where something is truly wrong
+
+clarity knowledge -> does it make sense to change it to 1-5 to match student sentiment
+
+
+MAD Man
+movement
+awareness
+noise
+
 # Many to Many Multi Select and Polymorphic Select in Rails 4
 
 * The Many to Many Multi Select is in ```lion_tamers/_form.html.erb``` and can be viewed from ```localhost:3000/lion_tamers/new```, but you need to seed your DB first - or create a few lions first, then create your lion tamer.
@@ -10,10 +56,10 @@
 
 # ZooMS RAILS (Zoo Management System)
 * This is an assignment
-* Screencasts here: 
+* Screencasts here:
 	1. Going over models, schema, routes, lions, leading into lion_tamers
 		http://screencast.com/t/Bk5Fqi60
-	2. 
+	2.
 
 ## Step 0 - SETUP
 
@@ -76,12 +122,12 @@
 #### SEED
 
 * throw stuff into your seed file and then run
-* `rake db:seed` to populate our tables. 
+* `rake db:seed` to populate our tables.
 
 * OR
 	* open up your rails console by doing: `rails c`
 		* and do `Lion.create({...})`
-			* the ... has the columns and values 
+			* the ... has the columns and values
 		* and do `LionTamer.create({...})`
 		* etc ...
 
@@ -104,7 +150,7 @@
 
 ## STEP 5 - CONTROLLERS
 
-* make your controllers 
+* make your controllers
 
 * bonus: do the controllers for panthers and cat_toys
 
@@ -117,7 +163,7 @@
 * make sure the forms let you edit every column
 * make sure you use partials for the forms
 
-* on the lion_tamers form 
+* on the lion_tamers form
 	* let the user select the lions that the lion_tamer works with
 
 ```
@@ -198,7 +244,7 @@ $(document).on('page:load', ready);
 * now your multi selects will look sweeeeet as long as you have the select2 class on them.
 
 ## Bonus - hard
-* Make the form for cat_toys is made so that you can choose whether a lion or panther owns the particular cat_toy. You'll have to do some research and playing around to figure this out. There are many different ways to make this happen. 
+* Make the form for cat_toys is made so that you can choose whether a lion or panther owns the particular cat_toy. You'll have to do some research and playing around to figure this out. There are many different ways to make this happen.
 
 * show the cat toys that a lion owns on the show page
 * show the cat toys that a panther owns on the show page

@@ -1,0 +1,41 @@
+<h1>Listing instructors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>University</th>
+      <th>Instructor</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Class code</th>
+      <th>Hired date</th>
+      <th>Start date</th>
+      <th>Dry run date</th>
+      <th>Pre quiz taken</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instructors.each do |instructor| %>
+      <tr>
+        <td><%= instructor.university %></td>
+        <td><%= instructor.instructor %></td>
+        <td><%= instructor.email %></td>
+        <td><%= instructor.phone %></td>
+        <td><%= instructor.class_code %></td>
+        <td><%= instructor.hired_date %></td>
+        <td><%= instructor.start_date %></td>
+        <td><%= instructor.dry_run_date %></td>
+        <td><%= instructor.pre_quiz_taken %></td>
+        <td><%= link_to 'Show', instructor %></td>
+        <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
+        <td><%= link_to 'Destroy', instructor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Instructor', new_instructor_path %>

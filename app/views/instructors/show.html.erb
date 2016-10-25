@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>University:</strong>
+  <%=  %>
+  <%= link_to @instructor.university.university, university_path(@instructor.university) %>
+</p>
+
+<p>
+  <strong>Instructor:</strong>
+  <%= @instructor.instructor %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @instructor.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @instructor.phone %>
+</p>
+
+<p>
+  <strong>Class code:</strong>
+  <%= @instructor.class_code %>
+</p>
+
+<p>
+  <strong>Hired date:</strong>
+  <%= @instructor.hired_date %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @instructor.start_date %>
+</p>
+
+<p>
+  <strong>Dry run date:</strong>
+  <%= @instructor.dry_run_date %>
+</p>
+
+<p>
+  <strong>Pre quiz taken:</strong>
+  <%= @instructor.pre_quiz_taken %>
+</p>
+
+<% @instructor.audits.each do |a| %>
+  <%= a.inspect %>
+<% end %>
+
+<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
+<%= link_to 'Back', instructors_path %>

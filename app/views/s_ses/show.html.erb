@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>University:</strong>
+  <%= @ss.university %>
+</p>
+
+<p>
+  <strong>Ss:</strong>
+  <%= @ss.ss %>
+</p>
+
+<p>
+  <strong>Ss email:</strong>
+  <%= @ss.ss_email %>
+</p>
+
+<%= link_to 'Edit', edit_ss_path(@ss) %> |
+<%= link_to 'Back', sses_path %>

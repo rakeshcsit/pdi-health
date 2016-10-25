@@ -1,4 +1,27 @@
 Rails.application.routes.draw do
+
+  resources :tier_updates
+
+  root to: 'audits#index'
+
+  resources :audits
+
+  resources :lesson_plans
+
+  resources :instructors
+
+  resources :sses
+
+  resources :rds
+
+  resources :analysts
+
+  resources :universities
+
+  resources :tiers
+
+  resources :posts
+
   resources :cat_toys
 
   resources :panthers

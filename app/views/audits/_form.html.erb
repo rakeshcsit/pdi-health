@@ -1,0 +1,161 @@
+<h2>Write your notes as if you are talking to this instructor</h2>
+<h4>Except for the hall of fame</h4>
+
+<%= form_for(@audit) do |f| %>
+  <% if @audit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@audit.errors.count, "error") %> prohibited this audit from being saved:</h2>
+
+      <ul>
+      <% @audit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :audit_date %><br>
+    <%= f.date_select :audit_date %>
+  </div>
+
+  <div class="field">
+    <%= f.label :instructor_id %><br>
+    <%= f.select :instructor_id, @instructors.collect{|d| [ "#{d.instructor}", d.id ]}, {}, { required: 'true', autofocus: 'true', class: 'select2' } %>
+  </div>
+  <div class="field">
+    <%= f.label :lesson_plan_id %><br>
+    <%= f.select :lesson_plan_id, @lesson_plans.collect{|d| [ "#{d.lp}", d.id ]}, {}, { required: 'true', class: 'select2' } %>
+  </div>
+  <div class="field">
+    <%= f.label :big_flag, "Is there a cause for major concern? [FLAG]" %><br>
+    <%= f.label :big_flag, "Yes", :value => "true"  %>
+    <%= f.radio_button :big_flag, true %>
+    <%= f.label :big_flag, "No", :value => "false" %>
+    <%= f.radio_button :big_flag, false, :checked => true %>
+  </div>
+  <div class="field">
+    <%= f.label :video_url %><br>
+    <%= f.text_area :video_url, cols: "120", rows: "2" %>
+  </div>
+  <div class="field">
+    <%= f.label :fame, "Did this instructor do something to warrant the hall of fame?" %><br>
+    <%= f.label :fame, "Yes", :value => "true"  %>
+    <%= f.radio_button :fame, true %>
+    <%= f.label :fame, "No", :value => "false" %>
+    <%= f.radio_button :fame, false, :checked => true %>
+  </div>
+  <div class="field">
+    <%= f.label :fame_notes, "What time ranges did the hall of fame moment(s) occur? Describe the hall of fame moments." %><br>
+    <%= f.text_area :fame_notes, cols: "120", rows: "20" %>
+  </div>
+  <div class="field">
+    <%= f.label :objs, "Did the instructor convey the class' objectives?" %><br>
+    <%= f.label :objs, "Yes", :value => "true"  %>
+    <%= f.radio_button :objs, true %>
+    <%= f.label :objs, "No", :value => "false" %>
+    <%= f.radio_button :objs, false, :checked => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :action_flag, "Do you think the instructor might not have walked around and scanned screens/helped students during exercise time?" %><br>
+    <%= f.label :action_flag, "Yes", :value => "true"  %>
+    <%= f.radio_button :action_flag, true %>
+    <%= f.label :action_flag, "No", :value => "false" %>
+    <%= f.radio_button :action_flag, false, :checked => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :vocal_enc_num, "Number of times the instructor offered vocal encouragement for the class or an individual student." %><br>
+    <%= f.number_field :vocal_enc_num %>
+  </div>
+  <div class="field">
+    <%= f.label :discuss_num, "Number of times the instructor got students to explain something to each other (doesn't count if it's part of the lesson plan)." %><br>
+    <%= f.number_field :discuss_num %>
+  </div>
+  <div class="field">
+    <%= f.label :mov_aw_noi_num, "Number of times the instructor created movement, used noise or put students into the code, say/do interesting things to get students to remember/understand the code/concepts." %><br>
+    <%= f.number_field :mov_aw_noi_num %>
+  </div>
+  <div class="field">
+    <%= f.label :mean_quest_num, "Number of meaningful questions asked?" %><br>
+    <%= f.number_field :mean_quest_num %>
+  </div>
+  <div class="field">
+    <%= f.label :directed_quest_num, "Number of questions directed at student(s). Ex: 'Eric or Louise, what does lines 1-3 do?'" %><br>
+    <%= f.number_field :directed_quest_num %>
+  </div>
+  <div class="field">
+    <%= f.label :tangent_num, "Number of times the instructor got lost in tangents?" %><br>
+    <%= f.number_field :tangent_num %>
+  </div>
+  <div class="field">
+    <%= f.label :tangent_notes, "What time ranges did the tangents occur? And What were they?" %><br>
+    <%= f.text_area :tangent_notes, cols: "120", rows: "20" %>
+  </div>
+  <div class="field">
+    <%= f.label :fifteen_noeng, "Was there a time that the instructor spoke for more than 15 minutes straight without engaging the students? (what does engagement mean? https://docs.google.com/document/d/1PG5M6fCGBi0-DXvKgoyHH_ZQ43tSjDKYVkTMpmazBL4/edit#)" %><br>
+    <%= f.label :fifteen_noeng, "Yes", :value => "true"  %>
+    <%= f.radio_button :fifteen_noeng, true %>
+    <%= f.label :fifteen_noeng, "No", :value => "false" %>
+    <%= f.radio_button :fifteen_noeng, false, :checked => true %>
+  </div>
+  <div class="field">
+    <%= f.label :anti_jargon_num, "On a scale of 1-10 (10 being the clearest), how well did the instructor do at teaching with simple language and the avoidance of complicated jargon?" %><br>
+    <%= f.number_field :anti_jargon_num %>
+  </div>
+  <div class="field">
+    <%= f.label :anti_jargon_notes, "Notes regarding Simplicity/Jargon" %><br>
+    <%= f.text_area :anti_jargon_notes, cols: "120", rows: "20" %>
+  </div>
+  <div class="field">
+    <%= f.label :nervous, "Did the instructor seem nervous?" %><br>
+    <%= f.label :nervous, "Yes", :value => "true"  %>
+    <%= f.radio_button :nervous, true %>
+    <%= f.label :nervous, "No", :value => "false" %>
+    <%= f.radio_button :nervous, false, :checked => true %>
+  </div>
+  <div class="field">
+    <%= f.label :engage_num, "On a scale of 1-10, how engaging was the instructor (MAD MAN techniques)?" %><br>
+    <%= f.number_field :engage_num %>
+  </div>
+  <div class="field">
+    <%= f.label :engage_notes %><br>
+    <%= f.text_area :engage_notes, cols: "120", rows: "20" %>
+  </div>
+  <div class="field">
+    <%= f.label :percent_lp, "What percentage of the lesson plan did the instructor complete?" %><br>
+    <%= f.select :percent_lp, ["< 40%", "40% to 60%", "60% to 80%", "80% to 100%", "100%"], {}, { required: 'true', class: 'select2' } %>
+  </div>
+  <div class="field">
+    <%= f.label :percent_hp_lp, "What percentage of the 'high priority' items did the instructor complete? See TimeTracker of the lesson plan for 'high priority' definition." %><br>
+    <%= f.select :percent_hp_lp, ["< 40%", "40% to 60%", "60% to 80%", "80% to 100%", "100%"], {}, { required: 'true', class: 'select2' } %>
+  </div>
+  <div class="field">
+    <%= f.label :overall_num, "On a scale of 1-10 how would you rate this instructor's lesson overall?" %><br>
+    <%= f.number_field :overall_num %>
+  </div>
+  <div class="field">
+    <%= f.label :overall_factors, "What factor or factors influenced your overall rating of this lesson?" %><br>
+    <%= f.text_area :overall_factors, cols: "120", rows: "20" %>
+  </div>
+  <div class="field">
+    <%= f.label :audio_qual_num, "How is the audio quality of this video? 1 is bad. 5 is crystal." %><br>
+    <%= f.select :audio_qual_num, [1, 2, 3, 4, 5], {}, { required: 'true', class: 'select2' } %>
+
+  </div>
+  <div class="field">
+    <%= f.label :code_is_no_big, "Did the instructor put code on the big screen?" %><br>
+    <%= f.label :code_is_no_big, "Yes", :value => "true"  %>
+    <%= f.radio_button :code_is_no_big, true %>
+    <%= f.label :code_is_no_big, "No", :value => "false" %>
+    <%= f.radio_button :code_is_no_big, false, :checked => true %>
+  </div>
+  <div class="field">
+    <%= f.label :notes, "Notes. Offer specific examples in class that highlight points mentioned. (Ex: Instructor offered a great analogy in class to help explain a concept OR Students were really struggling with a concept, so instructor quickly pivoted to address)" %><br>
+    <%= f.text_area :notes, cols: "120", rows: "20" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

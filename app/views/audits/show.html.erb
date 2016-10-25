@@ -1,0 +1,149 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Audit Date:</strong>
+  <%= @audit.audit_date %>
+</p>
+
+<p>
+  <strong>Instructor:</strong>
+  <%= link_to @audit.instructor.instructor, instructor_path(@audit.instructor) %>
+</p>
+
+<p>
+  <strong>Lesson plan:</strong>
+  <%= link_to @audit.lesson_plan.lp, lesson_plan_path(@audit.lesson_plan) %>
+</p>
+
+<p>
+  <strong>Big flag:</strong>
+  <%= @audit.big_flag %>
+</p>
+
+<p>
+  <strong>Video url:</strong>
+  <%= @audit.video_url %>
+</p>
+
+<p>
+  <strong>Fame:</strong>
+  <%= @audit.fame %>
+</p>
+
+<p>
+  <strong>Fame notes:</strong>
+  <%= @audit.fame_notes %>
+</p>
+
+<p>
+  <strong>Objs:</strong>
+  <%= @audit.objs %>
+</p>
+
+<p>
+  <strong>Action flag:</strong>
+  <%= @audit.action_flag %>
+</p>
+
+<p>
+  <strong>Vocal enc num:</strong>
+  <%= @audit.vocal_enc_num %>
+</p>
+
+<p>
+  <strong>Discuss num:</strong>
+  <%= @audit.discuss_num %>
+</p>
+
+<p>
+  <strong>Mov aw noi num:</strong>
+  <%= @audit.mov_aw_noi_num %>
+</p>
+
+<p>
+  <strong>Mean quest num:</strong>
+  <%= @audit.mean_quest_num %>
+</p>
+
+<p>
+  <strong>Directed quest num:</strong>
+  <%= @audit.directed_quest_num %>
+</p>
+
+<p>
+  <strong>Tangent num:</strong>
+  <%= @audit.tangent_num %>
+</p>
+
+<p>
+  <strong>Tangent notes:</strong>
+  <%= @audit.tangent_notes %>
+</p>
+
+<p>
+  <strong>Fifteen noeng:</strong>
+  <%= @audit.fifteen_noeng %>
+</p>
+
+<p>
+  <strong>Anti jargon num:</strong>
+  <%= @audit.anti_jargon_num %>
+</p>
+
+<p>
+  <strong>Anti jargon notes:</strong>
+  <%= @audit.anti_jargon_notes %>
+</p>
+
+<p>
+  <strong>Nervous:</strong>
+  <%= @audit.nervous %>
+</p>
+
+<p>
+  <strong>Engage num:</strong>
+  <%= @audit.engage_num %>
+</p>
+
+<p>
+  <strong>Engage notes:</strong>
+  <%= @audit.engage_notes %>
+</p>
+
+<p>
+  <strong>Percent lp:</strong>
+  <%= @audit.percent_lp %>
+</p>
+
+<p>
+  <strong>Percent hp lp:</strong>
+  <%= @audit.percent_hp_lp %>
+</p>
+
+<p>
+  <strong>Overall num:</strong>
+  <%= @audit.overall_num %>
+</p>
+
+<p>
+  <strong>Overall factors:</strong>
+  <%= @audit.overall_factors %>
+</p>
+
+<p>
+  <strong>Audio qual num:</strong>
+  <%= @audit.audio_qual_num %>
+</p>
+
+<p>
+  <strong>Code is no big:</strong>
+  <%= @audit.code_is_no_big %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @audit.notes %>
+</p>
+
+<%= link_to 'Edit', edit_audit_path(@audit) %> |
+<%= link_to 'Back', audits_path %>
