@@ -19,8 +19,8 @@
   <tbody>
     <% @instructors.each do |instructor| %>
       <tr>
-        <td><%= instructor.university %></td>
-        <td><%= instructor.instructor %></td>
+        <td><%= link_to instructor.university.university, instructor.university %></td>
+        <td><%= link_to instructor.instructor, instructor %></td>
         <td><%= instructor.email %></td>
         <td><%= instructor.phone %></td>
         <td><%= instructor.class_code %></td>
@@ -30,7 +30,6 @@
         <td><%= instructor.pre_quiz_taken %></td>
         <td><%= link_to 'Show', instructor %></td>
         <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
-        <td><%= link_to 'Destroy', instructor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
