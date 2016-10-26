@@ -3,20 +3,30 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Audit Date:</strong>
-  <%= @audit.audit_date %>
-</p>
-
-<p>
-  <strong>Instructor:</strong>
-  <%= link_to @audit.instructor.instructor, instructor_path(@audit.instructor) %>
-</p>
-
-<p>
-  <strong>Lesson plan:</strong>
-  <%= link_to @audit.lesson_plan.lp, lesson_plan_path(@audit.lesson_plan) %>
-</p>
+<table>
+  <thead>
+    <th>
+      Audit Date
+    </th>
+    <th>
+      Instructor
+    </th>
+    <th>
+      Lesson Plan
+    </th>
+  </thead>
+  <tr>
+    <td>
+        <%= @audit.audit_date %>
+    </td>
+    <td>
+      <%= link_to @audit.instructor.instructor, instructor_path(@audit.instructor) %>
+    </td>
+    <td>
+        <%= link_to @audit.lesson_plan.lp, lesson_plan_path(@audit.lesson_plan) %>
+    </td>
+  </tr>
+</table>
 
 <p>
   <strong>Big flag:</strong>
