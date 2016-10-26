@@ -1,7 +1,7 @@
 class AuditsController < ApplicationController
   before_action :set_audit, only: [:show, :edit, :update, :destroy]
-  before_action :set_instructors, only: [:new, :edit]
-  before_action :set_lps, only: [:new, :edit]
+  before_action :set_instructors, only: [:new, :edit, :update]
+  before_action :set_lps, only: [:new, :edit, :update]
 
   # GET /audits
   # GET /audits.json

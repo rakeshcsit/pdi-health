@@ -1,12 +1,3 @@
-<%= link_to "Lesson Plans", lesson_plans_path %>
-<%= link_to "Tiers", tiers_path %>
-<%= link_to "Tier Updates", tier_updates_path %>
-<%= link_to "Instructors", instructors_path %>
-<%= link_to "Student Success Managers", student_success_managers_path %>
-<%= link_to "Regional Directors", rds_path %>
-<%= link_to "Analysts", analysts_path %>
-<%= link_to "Universities", universities_path %>
-
 <h1>Listing audits</h1>
 
 <br>
@@ -19,6 +10,9 @@
 <table class="table">
   <thead>
     <tr>
+      <th>
+        Date of Audit
+      </th>
       <th> Instructor </th>
       <th>Lesson plan</th>
       <th>Big flag</th>
@@ -44,24 +38,25 @@
   <tbody>
     <% @audits.each do |audit| %>
       <tr>
+        <td> <%= audit.audit_date %> </td>
         <td><%= link_to audit.instructor.instructor, audit.instructor %></td>
         <td><%= link_to audit.lesson_plan.lp, audit.lesson_plan %></td>
-        <td><%= audit.big_flag %></td>
-        <td><%= audit.objs %></td>
-        <td><%= audit.action_flag %></td>
-        <td><%= audit.vocal_enc_num %></td>
-        <td><%= audit.discuss_num %></td>
-        <td><%= audit.mov_aw_noi_num %></td>
-        <td><%= audit.mean_quest_num %></td>
-        <td><%= audit.directed_quest_num %></td>
-        <td><%= audit.tangent_num %></td>
-        <td><%= audit.fifteen_noeng %></td>
-        <td><%= audit.anti_jargon_num %></td>
-        <td><%= audit.nervous %></td>
-        <td><%= audit.engage_num %></td>
-        <td><%= audit.percent_lp %></td>
-        <td><%= audit.percent_hp_lp %></td>
-        <td><%= audit.overall_num %></td>
+        <td class="<%= eqh("big_flag", audit.big_flag) %>"><%= audit.big_flag %></td>
+        <td class="<%= eqh("objs", audit.objs) %>"><%= audit.objs %></td>
+        <td class="<%= eqh("action_flag", audit.action_flag) %>"><%= audit.action_flag %></td>
+        <td class="<%= alh("vocal_enc_num", audit.vocal_enc_num) %>"><%= audit.vocal_enc_num %></td>
+        <td class="<%= alh("discuss_num", audit.discuss_num) %>"><%= audit.discuss_num %></td>
+        <td class="<%= alh("mov_aw_noi_num", audit.mov_aw_noi_num) %>"><%= audit.mov_aw_noi_num %></td>
+        <td class="<%= alh("mean_quest_num", audit.mean_quest_num) %>"><%= audit.mean_quest_num %></td>
+        <td class="<%= alh("directed_quest_num", audit.directed_quest_num) %>"><%= audit.directed_quest_num %></td>
+        <td class="<%= eqh("tangent_num", audit.tangent_num) %>"><%= audit.tangent_num %></td>
+        <td class="<%= eqh("fifteen_noeng", audit.fifteen_noeng) %>"><%= audit.fifteen_noeng %></td>
+        <td class="<%= alh("anti_jargon_num", audit.anti_jargon_num) %>"><%= audit.anti_jargon_num %></td>
+        <td class="<%= eqh("nervous", audit.nervous) %>"><%= audit.nervous %></td>
+        <td class="<%= alh("engage_num", audit.engage_num) %>"><%= audit.engage_num %></td>
+        <td class="<%= lph(audit.percent_lp) %>"><%= audit.percent_lp %></td>
+        <td class="<%= eqh("percent_hp_lp", audit.percent_hp_lp) %>"><%= audit.percent_hp_lp %></td>
+        <td class="<%= alh("overall_num", audit.overall_num) %>"><%= audit.overall_num %></td>
         <td>
           <%= link_to "recording", audit.video_url %>
           <%= link_to 'Show', audit %>
@@ -78,6 +73,9 @@
 <table class="table">
   <thead>
     <tr>
+      <th>
+        Date of Audit
+      </th>
       <th>Instructor</th>
       <th>Lesson plan</th>
       <th>Fame</th>
@@ -90,11 +88,12 @@
   <tbody>
     <% @audits.each do |audit| %>
       <tr>
+        <td> <%= audit.audit_date %> </td>
         <td><%= link_to audit.instructor.instructor, audit.instructor %></td>
         <td><%= link_to audit.lesson_plan.lp, audit.lesson_plan %></td>
-        <td><%= audit.fame %></td>
-        <td><%= audit.audio_qual_num %></td>
-        <td><%= audit.code_is_no_big %></td>
+        <td class="<%= audit.fame ? "fame" : "" %>"><%= audit.fame %></td>
+        <td class="<%= alh("audio_qual_num", audit.audio_qual_num) %>"><%= audit.audio_qual_num %></td>
+        <td class="<%= eqh("code_is_no_big", audit.code_is_no_big) %>"><%= audit.code_is_no_big %></td>
         <td>
           <%= link_to "recording", audit.video_url %>
           <%= link_to 'Show', audit %>

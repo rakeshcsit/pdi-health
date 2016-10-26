@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161025225530) do
+ActiveRecord::Schema.define(version: 20161026150730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20161025225530) do
     t.integer  "engage_num"
     t.text     "engage_notes"
     t.string   "percent_lp"
-    t.integer  "percent_hp_lp"
+    t.string   "percent_hp_lp"
     t.integer  "overall_num"
     t.text     "overall_factors"
     t.integer  "audio_qual_num"

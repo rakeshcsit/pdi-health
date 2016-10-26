@@ -16,8 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -34,7 +33,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
 
-  gem 'quiet_assets' 
+  gem 'quiet_assets'
   # Quiet Assets turns off the Rails asset pipeline log. This means that it suppresses messages in your development log such as:
   # Started GET "/assets/application.js" for 127.0.0.1 at 2015-01-28 13:35:34 +0300
   # Served asset /application.js - 304 Not Modified (8ms)
@@ -61,4 +60,3 @@ gem 'passenger'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

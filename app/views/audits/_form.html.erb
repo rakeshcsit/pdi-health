@@ -21,7 +21,7 @@
 
   <div class="field">
     <%= f.label :instructor_id %><br>
-    <%= f.select :instructor_id, @instructors.collect{|d| [ "#{d.instructor}", d.id ]}, {}, { required: 'true', autofocus: 'true', class: 'select2' } %>
+    <%= f.select :instructor_id, @instructors.collect{|d| [ "#{d.instructor}", d.id ]}, {}, { required: 'true', class: 'select2' } %>
   </div>
   <div class="field">
     <%= f.label :lesson_plan_id %><br>
@@ -32,7 +32,7 @@
     <%= f.label :big_flag, "Yes", :value => "true"  %>
     <%= f.radio_button :big_flag, true %>
     <%= f.label :big_flag, "No", :value => "false" %>
-    <%= f.radio_button :big_flag, false, :checked => true %>
+    <%= f.radio_button :big_flag, false %>
   </div>
   <div class="field">
     <%= f.label :video_url %><br>
@@ -43,7 +43,7 @@
     <%= f.label :fame, "Yes", :value => "true"  %>
     <%= f.radio_button :fame, true %>
     <%= f.label :fame, "No", :value => "false" %>
-    <%= f.radio_button :fame, false, :checked => true %>
+    <%= f.radio_button :fame, false %>
   </div>
   <div class="field">
     <%= f.label :fame_notes, "What time ranges did the hall of fame moment(s) occur? Describe the hall of fame moments." %><br>
@@ -54,15 +54,15 @@
     <%= f.label :objs, "Yes", :value => "true"  %>
     <%= f.radio_button :objs, true %>
     <%= f.label :objs, "No", :value => "false" %>
-    <%= f.radio_button :objs, false, :checked => true %>
+    <%= f.radio_button :objs, false %>
   </div>
 
   <div class="field">
-    <%= f.label :action_flag, "The instructor might not have walked around and scanned screens/helped students during exercise time. You mark this yes when you see the instructor standing in front of the computer during activities." %><br>
+    <%= f.label :action_flag, "You mark this yes when you see the instructor standing in front of the computer during activities. Or you mark this yes when you have doubts that the instructor was walking around during activities." %><br>
     <%= f.label :action_flag, "Yes", :value => "true"  %>
     <%= f.radio_button :action_flag, true %>
     <%= f.label :action_flag, "No", :value => "false" %>
-    <%= f.radio_button :action_flag, false, :checked => true %>
+    <%= f.radio_button :action_flag, false %>
   </div>
 
   <div class="field">
@@ -98,7 +98,7 @@
     <%= f.label :fifteen_noeng, "Yes", :value => "true"  %>
     <%= f.radio_button :fifteen_noeng, true %>
     <%= f.label :fifteen_noeng, "No", :value => "false" %>
-    <%= f.radio_button :fifteen_noeng, false, :checked => true %>
+    <%= f.radio_button :fifteen_noeng, false %>
   </div>
   <div class="field">
     <%= f.label :anti_jargon_num, "On a scale of 1-10 (10 being the clearest), how well did the instructor do at teaching with simple language and the avoidance of complicated jargon?" %><br>
@@ -113,7 +113,7 @@
     <%= f.label :nervous, "Yes", :value => "true"  %>
     <%= f.radio_button :nervous, true %>
     <%= f.label :nervous, "No", :value => "false" %>
-    <%= f.radio_button :nervous, false, :checked => true %>
+    <%= f.radio_button :nervous, false %>
   </div>
   <div class="field">
     <%= f.label :engage_num, "On a scale of 1-10, how engaging was the instructor (MAD MAN techniques)?" %><br>
@@ -145,11 +145,11 @@
 
   </div>
   <div class="field">
-    <%= f.label :code_is_no_big, "Was the instructor's code was on the samll screen?" %><br>
+    <%= f.label :code_is_no_big, "Mark this yes if the code in the video was not present. Or mark this yes if the code in the video was on the small screen." %><br>
     <%= f.label :code_is_no_big, "Yes", :value => "true"  %>
     <%= f.radio_button :code_is_no_big, true %>
     <%= f.label :code_is_no_big, "No", :value => "false" %>
-    <%= f.radio_button :code_is_no_big, false, :checked => true %>
+    <%= f.radio_button :code_is_no_big, false %>
   </div>
   <div class="field">
     <%= f.label :notes, "Notes. Offer specific examples in class that highlight points mentioned. (Ex: Instructor offered a great analogy in class to help explain a concept OR Students were really struggling with a concept, so instructor quickly pivoted to address)" %><br>

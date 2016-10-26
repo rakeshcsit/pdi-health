@@ -1,10 +1,11 @@
+show priority of instructors to audit based on tiers on the instructor page
+
 1. put in tiers for instructors_url
-2. fix ss controller
 3. fix audit show page
 4. fix instructors show page
-5. fix audit main page to make it shorter
 6. tier updates need to be visible when editing an instructor
-7. compare audits
+7. compare audits - report
+- really good for tier 1 instructors
 
 never do saturday classes (not always 1.3,2.3) never do 1.1
 ---------
