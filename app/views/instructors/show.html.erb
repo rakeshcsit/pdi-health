@@ -1,8 +1,19 @@
+<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
+<%= link_to 'Back', instructors_path %>
+
+<br><br>
+
 <p id="notice"><%= notice %></p>
+
+<% if @instructor.tier_id %>
+  <p>
+    <strong>Tier:</strong>
+    <%= link_to @instructor.tier_id, tier_path(@instructor.tier_id) %>
+  </p>
+<% end %>
 
 <p>
   <strong>University:</strong>
-  <%=  %>
   <%= link_to @instructor.university.university, university_path(@instructor.university) %>
 </p>
 
@@ -127,13 +138,7 @@
           <%= link_to 'Show', audit %>
           <%= link_to 'Edit', edit_audit_path(audit) %>
         </td>
-        <!-- <td>< link_to 'Destroy', audit, method: :delete, data: { confirm: 'Are you sure?' } ></td> -->
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br><br>
-
-<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
-<%= link_to 'Back', instructors_path %>

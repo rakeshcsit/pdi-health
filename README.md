@@ -1,3 +1,11 @@
+1. put in tiers for instructors_url
+2. fix ss controller
+3. fix audit show page
+4. fix instructors show page
+5. fix audit main page to make it shorter
+6. tier updates need to be visible when editing an instructor
+7. compare audits
+
 never do saturday classes (not always 1.3,2.3) never do 1.1
 ---------
 
@@ -19,7 +27,7 @@ rails generate scaffold Analyst name:string email:string --no-stylesheets --no-m
 
 rails generate scaffold Rd rd:string rd_email:string --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
 
-rails generate scaffold SS university:references ss:string ss_email:string --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+rails generate scaffold StudentSuccessManager university:references ss:string ss_email:string --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
 
 rails generate scaffold Instructor university:references instructor:string email:string phone:string class_code:string hired_date:date start_date:date dry_run_date:date pre_quiz_taken:boolean --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
 

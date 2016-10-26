@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :student_success_managers
+
   resources :tier_updates
 
   root to: 'audits#index'
@@ -10,8 +12,6 @@ Rails.application.routes.draw do
 
   resources :instructors
 
-  resources :sses
-
   resources :rds
 
   resources :analysts
@@ -20,15 +20,15 @@ Rails.application.routes.draw do
 
   resources :tiers
 
-  resources :posts
-
-  resources :cat_toys
-
-  resources :panthers
-
-  resources :lion_tamers
-
-  resources :lions
+  # resources :posts
+  #
+  # resources :cat_toys
+  #
+  # resources :panthers
+  #
+  # resources :lion_tamers
+  #
+  # resources :lions
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

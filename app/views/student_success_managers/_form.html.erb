@@ -1,10 +1,10 @@
-<%= form_for(@ss) do |f| %>
-  <% if @ss.errors.any? %>
+<%= form_for(@student_success_manager) do |f| %>
+  <% if @student_success_manager.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@ss.errors.count, "error") %> prohibited this ss from being saved:</h2>
+      <h2><%= pluralize(@student_success_manager.errors.count, "error") %> prohibited this student_success_manager from being saved:</h2>
 
       <ul>
-      <% @ss.errors.full_messages.each do |message| %>
+      <% @student_success_manager.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

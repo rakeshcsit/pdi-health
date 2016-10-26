@@ -21,7 +21,7 @@ class SSesControllerTest < ActionController::TestCase
       post :create, ss: { ss: @ss.ss, ss_email: @ss.ss_email, university_id: @ss.university_id }
     end
 
-    assert_redirected_to ss_path(assigns(:ss))
+    assert_redirected_to student_success_manager_path(assigns(:ss))
   end
 
   test "should show ss" do
@@ -36,7 +36,7 @@ class SSesControllerTest < ActionController::TestCase
 
   test "should update ss" do
     patch :update, id: @ss, ss: { ss: @ss.ss, ss_email: @ss.ss_email, university_id: @ss.university_id }
-    assert_redirected_to ss_path(assigns(:ss))
+    assert_redirected_to student_success_manager_path(assigns(:ss))
   end
 
   test "should destroy ss" do

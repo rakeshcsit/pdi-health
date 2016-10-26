@@ -1,3 +1,6 @@
+<%= link_to 'Edit', edit_audit_path(@audit) %> |
+<%= link_to 'Back', audits_path %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -144,6 +147,3 @@
   <strong>Notes:</strong>
   <%= @audit.notes %>
 </p>
-
-<%= link_to 'Edit', edit_audit_path(@audit) %> |
-<%= link_to 'Back', audits_path %>

@@ -1,0 +1,21 @@
+<%= link_to 'Edit', edit_student_success_manager_path(@student_success_manager) %> |
+<%= link_to 'Back', student_success_managers_path %>
+
+<br><br>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>University:</strong>
+  <%= @student_success_manager.university %>
+</p>
+
+<p>
+  <strong>Ss:</strong>
+  <%= @student_success_manager.ss %>
+</p>
+
+<p>
+  <strong>Ss email:</strong>
+  <%= @student_success_manager.ss_email %>
+</p>

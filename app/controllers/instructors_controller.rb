@@ -1,6 +1,7 @@
 class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
   before_action :set_universities, only: [:new, :edit]
+  before_action :set_tiers, only: [:new, :edit]
 
   # GET /instructors
   # GET /instructors.json
@@ -68,6 +69,10 @@ class InstructorsController < ApplicationController
   end
 
   private
+    def set_tiers
+      @tiers = Tier.all
+    end
+
     def set_universities
       @universities = University.all
     end
