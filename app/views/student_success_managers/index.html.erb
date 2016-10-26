@@ -17,7 +17,7 @@
   <tbody>
     <% @student_success_managers.each do |student_success_manager| %>
       <tr>
-        <td><%= student_success_manager.university %></td>
+        <td><%= link_to student_success_manager.university.university,  student_success_manager.university %></td>
         <td><%= student_success_manager.ss %></td>
         <td><%= student_success_manager.ss_email %></td>
         <td><%= link_to 'Show', student_success_manager %></td>

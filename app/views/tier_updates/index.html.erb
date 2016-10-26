@@ -16,7 +16,7 @@
   <tbody>
     <% @tier_updates.each do |tier_update| %>
       <tr>
-        <td><%= tier_update.instructor %></td>
+        <td><%= link_to tier_update.instructor.instructor, tier_update.instructor %></td>
         <td><%= tier_update.old_tier %></td>
         <td><%= tier_update.new_tier %></td>
         <td><%= tier_update.notes %></td>
