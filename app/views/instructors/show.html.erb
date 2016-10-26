@@ -56,89 +56,12 @@
   <strong>Pre quiz taken:</strong>
   <%= @instructor.pre_quiz_taken %>
 </p>
+
+
 <h2>Main Stats</h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Lesson plan</th>
-      <th>Big flag</th>
-      <th>Objs</th>
-      <th>Action flag</th>
-      <th>Vocal enc num</th>
-      <th>Discuss num</th>
-      <th>Mov aw noi num</th>
-      <th>Mean quest num</th>
-      <th>Directed quest num</th>
-      <th>Tangent num</th>
-      <th>Fifteen noeng</th>
-      <th>Anti jargon num</th>
-      <th>Nervous</th>
-      <th>Engage num</th>
-      <th>Percent lp</th>
-      <th>Percent hp lp</th>
-      <th>Overall num</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @instructor.audits.each do |audit| %>
-      <tr>
-        <td><%= link_to audit.lesson_plan.lp, audit.lesson_plan %></td>
-        <td><%= audit.big_flag %></td>
-        <td><%= audit.objs %></td>
-        <td><%= audit.action_flag %></td>
-        <td><%= audit.vocal_enc_num %></td>
-        <td><%= audit.discuss_num %></td>
-        <td><%= audit.mov_aw_noi_num %></td>
-        <td><%= audit.mean_quest_num %></td>
-        <td><%= audit.directed_quest_num %></td>
-        <td><%= audit.tangent_num %></td>
-        <td><%= audit.fifteen_noeng %></td>
-        <td><%= audit.anti_jargon_num %></td>
-        <td><%= audit.nervous %></td>
-        <td><%= audit.engage_num %></td>
-        <td><%= audit.percent_lp %></td>
-        <td><%= audit.percent_hp_lp %></td>
-        <td><%= audit.overall_num %></td>
-        <td>
-          <%= link_to "recording", audit.video_url %>
-          <%= link_to 'Show', audit %>
-          <%= link_to 'Edit', edit_audit_path(audit) %>
-        </td>
-        <!-- <td>< link_to 'Destroy', audit, method: :delete, data: { confirm: 'Are you sure?' } ></td> -->
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'audits/audits_main', audits: @instructor.audits %>
 
 <h2>Secondary Stats</h2>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Lesson plan</th>
-      <th>Fame</th>
-      <th>Audio qual num</th>
-      <th>Code is no big</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @instructor.audits.each do |audit| %>
-      <tr>
-        <td><%= link_to audit.lesson_plan.lp, audit.lesson_plan %></td>
-        <td><%= audit.fame %></td>
-        <td><%= audit.audio_qual_num %></td>
-        <td><%= audit.code_is_no_big %></td>
-        <td>
-          <%= link_to "recording", audit.video_url %>
-          <%= link_to 'Show', audit %>
-          <%= link_to 'Edit', edit_audit_path(audit) %>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'audits/audits_secondary', audits: @instructor.audits %>

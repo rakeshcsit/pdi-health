@@ -7,6 +7,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Tier</th>
       <th>University</th>
       <th>Instructor</th>
       <th>Email</th>
@@ -23,6 +24,7 @@
   <tbody>
     <% @instructors.each do |instructor| %>
       <tr>
+        <td><%= link_to instructor.tier_id, instructor.tier %></td>
         <td><%= link_to instructor.university.university, instructor.university %></td>
         <td><%= link_to instructor.instructor, instructor %></td>
         <td><%= instructor.email %></td>
