@@ -1,4 +1,4 @@
-<h1>Listing rds</h1>
+<h1>Listing Regional Directors</h1>
 
 <%= link_to 'New Rd', new_rd_path %>
 <br>
@@ -8,16 +8,15 @@
     <tr>
       <th>Rd</th>
       <th>Rd email</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @rds.each do |rd| %>
       <tr>
-        <td><%= rd.rd %></td>
+        <td><%= link_to rd.rd, rd %></td>
         <td><%= rd.rd_email %></td>
-        <td><%= link_to 'Show', rd %></td>
         <td><%= link_to 'Edit', edit_rd_path(rd) %></td>
       </tr>
     <% end %>

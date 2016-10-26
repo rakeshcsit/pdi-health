@@ -9,16 +9,15 @@
     <tr>
       <th>Lp</th>
       <th>Lp link</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @lesson_plans.each do |lesson_plan| %>
       <tr>
-        <td><%= lesson_plan.lp %></td>
+        <td><%= link_to lesson_plan.lp, lesson_plan %></td>
         <td><%= lesson_plan.lp_link %></td>
-        <td><%= link_to 'Show', lesson_plan %></td>
         <td><%= link_to 'Edit', edit_lesson_plan_path(lesson_plan) %></td>
       </tr>
     <% end %>

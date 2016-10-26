@@ -1,4 +1,4 @@
-<h1>Listing student_success_managers</h1>
+<h1>Listing Student Success Managers</h1>
 
 <%= link_to 'New Student success manager', new_student_success_manager_path %>
 
@@ -10,7 +10,7 @@
       <th>University</th>
       <th>Ss</th>
       <th>Ss email</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,9 +18,8 @@
     <% @student_success_managers.each do |student_success_manager| %>
       <tr>
         <td><%= link_to student_success_manager.university.university,  student_success_manager.university %></td>
-        <td><%= student_success_manager.ss %></td>
+        <td><%= link_to student_success_manager.ss, student_success_manager %></td>
         <td><%= student_success_manager.ss_email %></td>
-        <td><%= link_to 'Show', student_success_manager %></td>
         <td><%= link_to 'Edit', edit_student_success_manager_path(student_success_manager) %></td>
       </tr>
     <% end %>
