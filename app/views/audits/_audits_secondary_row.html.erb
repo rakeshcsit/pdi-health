@@ -1,0 +1,22 @@
+<tr>
+  <% if report %>
+    <td>
+      Your Metrics:
+    </td>
+  <% else %>
+    <td>
+      <%= link_to "recording", audit.video_url %>
+      <%= link_to 'Show', audit %>
+      <%= link_to 'Edit', edit_audit_path(audit) %>
+    </td>
+  <% end %>
+
+  <% unless report %>
+    <td> <%= audit.audit_date %> </td>
+    <td><%= link_to audit.instructor.instructor, audit.instructor %></td>
+    <td><%= link_to audit.lesson_plan.lp, audit.lesson_plan %></td>
+    <td class="<%= audit.fame ? "fame" : "" %>"><%= audit.fame %></td>
+  <% end %>
+  <td class="<%= alh("audio_qual_num", audit.audio_qual_num) %>"><%= audit.audio_qual_num %></td>
+  <td class="<%= eqh("code_is_no_big", audit.code_is_no_big) %>"><%= audit.code_is_no_big %></td>
+</tr>

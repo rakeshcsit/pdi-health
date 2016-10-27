@@ -6,12 +6,38 @@ class AuditsController < ApplicationController
   # GET /audits
   # GET /audits.json
   def index
-    @audits = Audit.all
+    @audits = Audit.order("created_at DESC")
   end
 
   # GET /audits/1
   # GET /audits/1.json
   def show
+    u = @audit.instructor.university
+    @s = u.student_success_manager
+    @r = u.rd
+
+    a = Audit.new
+    retAt = a.retAt
+    retEx = a.retEx
+
+    @vocal_enc_num = retAt["vocal_enc_num"]
+    @discuss_num = retAt["discuss_num"]
+    @mov_aw_noi_num = retAt["mov_aw_noi_num"]
+    @mean_quest_num = retAt["mean_quest_num"]
+    @directed_quest_num = retAt["directed_quest_num"]
+    @anti_jargon_num = retAt["anti_jargon_num"]
+    @engage_num = retAt["engage_num"]
+    @overall_num = retAt["overall_num"]
+    @audio_qual_num = retAt["audio_qual_num"]
+    @big_flag = retEx["big_flag"]
+    @objs = retEx["objs"]
+    @action_flag = retEx["action_flag"]
+    @tangent_num = retEx["tangent_num"]
+    @fifteen_noeng = retEx["fifteen_noeng"]
+    @nervous = retEx["nervous"]
+    @percent_hp_lp = retEx["percent_hp_lp"]
+    @percent_lp = "80% to 100%"
+    @code_is_no_big = retEx["code_is_no_big"]
   end
 
   # GET /audits/new

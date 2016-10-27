@@ -26,6 +26,14 @@ class Audit < ActiveRecord::Base
     "code_is_no_big" => true
   }
 
+  def retAt
+    @@atLeastCheck
+  end
+
+  def retEx
+    @@exact
+  end
+
   def exact_check(key, val)
     if @@exact[key] == val
       return true

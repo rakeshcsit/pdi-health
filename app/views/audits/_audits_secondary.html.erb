@@ -1,33 +1,9 @@
 <table class="table">
-  <thead>
-    <tr>
-      <th>
-        Date of Audit
-      </th>
-      <th>Instructor</th>
-      <th>Lesson plan</th>
-      <th>Fame</th>
-      <th>Audio qual num</th>
-      <th>Code is no big</th>
-      <th></th>
-    </tr>
-  </thead>
+  <%= render '/audits/audits_secondary_header', report: false %>
 
   <tbody>
     <% audits.each do |audit| %>
-      <tr>
-        <td> <%= audit.audit_date %> </td>
-        <td><%= link_to audit.instructor.instructor, audit.instructor %></td>
-        <td><%= link_to audit.lesson_plan.lp, audit.lesson_plan %></td>
-        <td class="<%= audit.fame ? "fame" : "" %>"><%= audit.fame %></td>
-        <td class="<%= alh("audio_qual_num", audit.audio_qual_num) %>"><%= audit.audio_qual_num %></td>
-        <td class="<%= eqh("code_is_no_big", audit.code_is_no_big) %>"><%= audit.code_is_no_big %></td>
-        <td>
-          <%= link_to "recording", audit.video_url %>
-          <%= link_to 'Show', audit %>
-          <%= link_to 'Edit', edit_audit_path(audit) %>
-        </td>
-      </tr>
+      <%= render '/audits/audits_secondary_row', audit: audit, report: false %>
     <% end %>
   </tbody>
 </table>

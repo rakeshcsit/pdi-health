@@ -1,0 +1,36 @@
+<tr>
+  <td>
+    <% if report %>
+      Your Metrics:
+    <% else %>
+      <%= link_to "recording", audit.video_url %>
+      <%= link_to 'Show', audit %>
+      <%= link_to 'Edit', edit_audit_path(audit) %>
+    <% end %>
+  </td>
+
+  <% unless report %>
+    <td> <%= audit.audit_date %> </td>
+    <td><%= link_to audit.instructor.instructor, audit.instructor %></td>
+    <td><%= link_to audit.lesson_plan.lp, audit.lesson_plan %></td>
+  <% end %>
+
+  <td class="<%= eqh("big_flag", audit.big_flag) %>"><%= audit.big_flag %></td>
+  <td class="<%= eqh("objs", audit.objs) %>"><%= audit.objs %></td>
+  <td class="<%= eqh("action_flag", audit.action_flag) %>"><%= audit.action_flag %></td>
+  <td class="<%= alh("vocal_enc_num", audit.vocal_enc_num) %>"><%= audit.vocal_enc_num %></td>
+  <td class="<%= alh("discuss_num", audit.discuss_num) %>"><%= audit.discuss_num %></td>
+  <td class="<%= alh("mov_aw_noi_num", audit.mov_aw_noi_num) %>"><%= audit.mov_aw_noi_num %></td>
+  <td class="<%= alh("mean_quest_num", audit.mean_quest_num) %>"><%= audit.mean_quest_num %></td>
+  <td class="<%= alh("directed_quest_num", audit.directed_quest_num) %>"><%= audit.directed_quest_num %></td>
+  <td class="<%= eqh("tangent_num", audit.tangent_num) %>"><%= audit.tangent_num %></td>
+  <td class="<%= eqh("fifteen_noeng", audit.fifteen_noeng) %>"><%= audit.fifteen_noeng %></td>
+  <td class="<%= alh("anti_jargon_num", audit.anti_jargon_num) %>"><%= audit.anti_jargon_num %></td>
+  <td class="<%= eqh("nervous", audit.nervous) %>"><%= audit.nervous %></td>
+  <td class="<%= alh("engage_num", audit.engage_num) %>"><%= audit.engage_num %></td>
+  <td class="<%= lph(audit.percent_lp) %>"><%= audit.percent_lp %></td>
+  <td class="<%= eqh("percent_hp_lp", audit.percent_hp_lp) %>"><%= audit.percent_hp_lp %></td>
+  <td class="<%= alh("overall_num", audit.overall_num) %>"><%= audit.overall_num %></td>
+
+  <!-- <td>< link_to 'Destroy', audit, method: :delete, data: { confirm: 'Are you sure?' } ></td> -->
+</tr>

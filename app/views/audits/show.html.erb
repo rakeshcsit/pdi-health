@@ -3,104 +3,80 @@
 
 <p id="notice"><%= notice %></p>
 
+<br>
+
+<h2>Send email to these emails from feedback@trilogyed.com</h2>
+<%= @audit.instructor.email %><%= @s.ss_email %>, <%= @r.rd_email %>
+
+<h2>Email Greeting</h2>
+<p>Hi <%= @audit.instructor.instructor %>, <%= @s.ss %>, <%= @r.rd %>
+
+<p>
+  We analyzed your class recording and wrote down your metrics.
+</p>
+
+<br><br><br>
+
 <table>
-  <thead>
-    <th>
-      Audit Date
-    </th>
-    <th>
-      Instructor
-    </th>
-    <th>
-      Lesson Plan
-    </th>
-  </thead>
-  <tr>
-    <td>
-        <%= @audit.audit_date %>
-    </td>
-    <td>
-      <%= link_to @audit.instructor.instructor, instructor_path(@audit.instructor) %>
-    </td>
-    <td>
-        <%= link_to @audit.lesson_plan.lp, lesson_plan_path(@audit.lesson_plan) %>
-    </td>
-  </tr>
+  <%= render '/audits/audits_main_header', audit: @audit, report: true %>
+
+  <tbody>
+    <%= render '/audits/audits_main_row', audit: @audit, report: true %>
+    <tr>
+      <td> Target Metrics: </td>
+      <td class="optimal"> <%= @big_flag %> </td>
+      <td class="optimal"> <%= @objs %> </td>
+      <td class="optimal"> <%= @action_flag %> </td>
+      <td class="optimal"> <%= @vocal_enc_num %> </td>
+      <td class="optimal"> <%= @discuss_num %> </td>
+      <td class="optimal"> <%= @mov_aw_noi_num %> </td>
+      <td class="optimal"> <%= @mean_quest_num %> </td>
+      <td class="optimal"> <%= @directed_quest_num %> </td>
+      <td class="optimal"> <%= @tangent_num %> </td>
+      <td class="optimal"> <%= @fifteen_noeng %> </td>
+      <td class="optimal"> <%= @anti_jargon_num %> </td>
+      <td class="optimal"> <%= @nervous %> </td>
+      <td class="optimal"> <%= @engage_num %> </td>
+      <td class="optimal"> <%= @percent_lp %> </td>
+      <td class="optimal"> <%= @percent_hp_lp %> </td>
+      <td class="optimal"> <%= @overall_num %> </td>
+    </tr>
+  </tbody>
 </table>
 
-<p>
-  <strong>Big flag:</strong>
-  <%= @audit.big_flag %>
-</p>
+<br><br><br>
 
-<p>
-  <strong>Video url:</strong>
-  <%= @audit.video_url %>
-</p>
+<table>
+  <%= render '/audits/audits_secondary_header', audit: @audit, report: true %>
 
-<p>
-  <strong>Fame:</strong>
-  <%= @audit.fame %>
-</p>
+  <tbody>
+    <%= render '/audits/audits_secondary_row', audit: @audit, report: true %>
+    <tr>
+      <td>
+        Target Metrics:
+      </td>
+      <td class="optimal"><%= @audio_qual_num %> </td>
+      <td class="optimal"><%= @code_is_no_big %> </td>
+    </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Fame notes:</strong>
+
+<br><br><br>
+
+<% if @audit.fame %>
+  <h2>Congratulations on making the hall of fame!</h2>
+
+  <p>
+    These are the notes we wrote up about what you did that will make you famous among our instructional community:
+  </p>
+
   <%= @audit.fame_notes %>
-</p>
-
-<p>
-  <strong>Objs:</strong>
-  <%= @audit.objs %>
-</p>
-
-<p>
-  <strong>Action flag:</strong>
-  <%= @audit.action_flag %>
-</p>
-
-<p>
-  <strong>Vocal enc num:</strong>
-  <%= @audit.vocal_enc_num %>
-</p>
-
-<p>
-  <strong>Discuss num:</strong>
-  <%= @audit.discuss_num %>
-</p>
-
-<p>
-  <strong>Mov aw noi num:</strong>
-  <%= @audit.mov_aw_noi_num %>
-</p>
-
-<p>
-  <strong>Mean quest num:</strong>
-  <%= @audit.mean_quest_num %>
-</p>
-
-<p>
-  <strong>Directed quest num:</strong>
-  <%= @audit.directed_quest_num %>
-</p>
-
-<p>
-  <strong>Tangent num:</strong>
-  <%= @audit.tangent_num %>
-</p>
+<% end %>
 
 <p>
   <strong>Tangent notes:</strong>
   <%= @audit.tangent_notes %>
-</p>
-
-<p>
-  <strong>Fifteen noeng:</strong>
-  <%= @audit.fifteen_noeng %>
-</p>
-
-<p>
-  <strong>Anti jargon num:</strong>
-  <%= @audit.anti_jargon_num %>
 </p>
 
 <p>
@@ -109,48 +85,13 @@
 </p>
 
 <p>
-  <strong>Nervous:</strong>
-  <%= @audit.nervous %>
-</p>
-
-<p>
-  <strong>Engage num:</strong>
-  <%= @audit.engage_num %>
-</p>
-
-<p>
   <strong>Engage notes:</strong>
   <%= @audit.engage_notes %>
 </p>
 
 <p>
-  <strong>Percent lp:</strong>
-  <%= @audit.percent_lp %>
-</p>
-
-<p>
-  <strong>Percent hp lp:</strong>
-  <%= @audit.percent_hp_lp %>
-</p>
-
-<p>
-  <strong>Overall num:</strong>
-  <%= @audit.overall_num %>
-</p>
-
-<p>
   <strong>Overall factors:</strong>
   <%= @audit.overall_factors %>
-</p>
-
-<p>
-  <strong>Audio qual num:</strong>
-  <%= @audit.audio_qual_num %>
-</p>
-
-<p>
-  <strong>Code is no big:</strong>
-  <%= @audit.code_is_no_big %>
 </p>
 
 <p>

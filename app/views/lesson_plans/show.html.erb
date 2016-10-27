@@ -5,12 +5,14 @@
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Lp:</strong>
-  <%= @lesson_plan.lp %>
-</p>
+<h1>Listing audits for <%= link_to @lesson_plan.lp, @lesson_plan.lp_link, target: "_blank" %></h1>
 
-<p>
-  <strong>Lp link:</strong>
-  <%= @lesson_plan.lp_link %>
-</p>
+<br>
+
+<h2>Main Stats</h2>
+
+<%= render '/audits/audits_main', audits: @lesson_plan.audits %>
+
+<h2>Secondary Stats</h2>
+
+<%= render '/audits/audits_secondary', audits: @lesson_plan.audits %>
