@@ -94,9 +94,6 @@
   </tbody>
 </table>
 
-
-<br><br><br>
-
 <% if @audit.fame %>
   <h2>Congratulations on making the hall of fame!</h2>
 
@@ -107,28 +104,124 @@
   <%= @audit.fame_notes %>
 <% end %>
 
+<% unless eqh("big_flag", @audit.big_flag, true) %>
+  a
+  <hr>
+<% end %>
+
+<% unless eqh("objs", @audit.objs, true) %>
+  b
+  <hr>
+<% end %>
+
+<% unless eqh("action_flag", @audit.action_flag, true) %>
+  v
+  <hr>
+<% end %>
+
+<% unless alh("vocal_enc_num", @audit.vocal_enc_num, true) %>
+  d
+  <hr>
+<% end %>
+
+<% unless alh("discuss_num", @audit.discuss_num, true) %>
+  e
+  <hr>
+<% end %>
+
+<% unless alh("mov_aw_noi_num", @audit.mov_aw_noi_num, true) %>
+  df
+  <hr>
+<% end %>
+
+<% unless alh("mean_quest_num", @audit.mean_quest_num, true) %>
+  df
+  <hr>
+<% end %>
+
+<% unless alh("directed_quest_num", @audit.directed_quest_num, true) %>
+  dfff
+  <hr>
+<% end %>
+
+<% unless eqh("tangent_num", @audit.tangent_num, true) %>
+  adsf
+
+  <p>
+    <strong>Tangent notes:</strong>
+    <%= @audit.tangent_notes %>
+  </p>
+
+  <hr>
+<% end %>
+
+<% unless eqh("fifteen_noeng", @audit.fifteen_noeng, true) %>
+  grewg
+
+  <hr>
+
+<% end %>
+
+<% unless alh("anti_jargon_num", @audit.anti_jargon_num, true) %>
+  <p>Your <strong>clarity score</strong> of <%= @audit.anti_jargon_num %> was below our target of <%= @anti_jargon_num %>.</p>
+
+  <p>There are two keys to clarity
+
+  <ol>
+    <li>TRY YOUR VERY BEST to not use terminology that the students have not heard before. And if you absolutely have to then make sure you say the plain english definition of the terminology before mentioning the word.</li>
+    <li>Repeat concepts. This shouldm't be you repeating something 15 times. Instead it could be you saying something, then later asking someone a question about it. Then repeating yourself again later on, and then finally asking someone different about it.</li>
+  </ol>
+<% end %>
 
 <p>
-  <strong>Tangent notes:</strong>
-  <%= @audit.tangent_notes %>
-</p>
-
-<p>
-  <strong>Anti jargon notes:</strong>
+  <strong>About your Clarity:</strong>
   <%= @audit.anti_jargon_notes %>
 </p>
+
+<hr>
+
+<% unless eqh("nervous", @audit.nervous, true) %>
+  adsfewf
+  <hr>
+<% end %>
+
+<% unless alh("engage_num", @audit.engage_num, true) %>
+  avsraw
+  <hr>
+<% end %>
 
 <p>
   <strong>Engage notes:</strong>
   <%= @audit.engage_notes %>
 </p>
 
+<hr>
+
+<% unless lph(@audit.percent_lp, true) %>
+  avsraw<%= @audit.percent_lp %>
+  <hr>
+<% end %>
+
+<% unless eqh("percent_hp_lp", @audit.percent_hp_lp, true) %>
+  avsraw<%= @audit.percent_hp_lp %>
+  <hr>
+<% end %>
+
+<% unless alh("overall_num", @audit.overall_num, true) %>
+  avsraw<%= @audit.overall_num %>
+  <hr>
+<% end %>
+
 <p>
   <strong>Overall factors:</strong>
   <%= @audit.overall_factors %>
 </p>
 
+<hr>
+
 <p>
   <strong>Notes:</strong>
   <%= @audit.notes %>
 </p>
+
+<hr>
