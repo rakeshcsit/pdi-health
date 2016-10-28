@@ -131,8 +131,11 @@
 <% unless alh("vocal_enc_num", @audit.vocal_enc_num, true) %>
   <h2>Vocal Encouragement</h2>
 
-  d
-  <hr>
+  <p><span class="notOptimal padFive">You gave vocal encouragement to the students <%= @audit.vocal_enc_num %></span> times, which is lower than our <span class="optimal padFive">target of <%= @vocal_enc_num %>.</span></p>
+
+  <p>Your students see you as a leader.</p>
+
+  <p>Giving them morale boosts will spike their engagement and motivation.</p>
 <% end %>
 
 <% unless alh("discuss_num", @audit.discuss_num, true) %>
@@ -176,7 +179,9 @@
 <% end %>
 
 <% unless alh("anti_jargon_num", @audit.anti_jargon_num, true) %>
-  <p><span class="notOptimal padFive">Your <strong>clarity score</strong> of <%= @audit.anti_jargon_num %></span> was below our target of <%= @anti_jargon_num %>.</p>
+  <h2>Your Clarity</h2>
+
+  <p><span class="notOptimal padFive">Your <strong>clarity score</strong> of <%= @audit.anti_jargon_num %></span> was below our <span class="optimal padFive">target of <%= @anti_jargon_num %>.</span></p>
 
   <p>There are two keys to clarity
 
