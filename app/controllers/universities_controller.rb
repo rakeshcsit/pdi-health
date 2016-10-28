@@ -10,6 +10,9 @@ class UniversitiesController < ApplicationController
   # GET /universities/1
   # GET /universities/1.json
   def show
+    instructor_ids = @university.instructors.pluck(:id)
+    @audits = Audit.where(instructor_id: instructor_ids)
+
   end
 
   # GET /universities/new

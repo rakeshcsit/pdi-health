@@ -1,9 +1,18 @@
+<br><br>
+
 <%= link_to 'Edit', edit_university_path(@university) %> |
 <%= link_to 'Back', universities_path %>
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>University:</strong>
-  <%= @university.university %>
-</p>
+<h1>Listing Audits for <%= @university.university %></h1>
+
+<br>
+
+<h2>Main Stats</h2>
+
+<%= render '/audits/audits_main', audits: @audits %>
+
+<h2>Secondary Stats</h2>
+
+<%= render '/audits/audits_secondary', audits: @audits %>
