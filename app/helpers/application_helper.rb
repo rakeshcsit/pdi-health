@@ -1,29 +1,29 @@
 module ApplicationHelper
 
-  def eqh key, val
+  def eqh key, val, bool
     a = Audit.new
     if a.exact_check(key, val)
-      "optimal"
+      bool ? true : "optimal"
     else
-      "notOptimal"
+      bool ? false : "notOptimal"
     end
   end
 
-  def alh key, val
+  def alh key, val, bool
     a = Audit.new
     if a.at_least_check(key, val)
-      "optimal"
+      bool ? true : "optimal"
     else
-      "notOptimal"
+      bool ? false : "notOptimal"
     end
   end
 
-  def lph p
+  def lph p, bool
     a = Audit.new
     if a.for_percent_lp(p)
-      "optimal"
+      bool ? true : "optimal"
     else
-      "notOptimal"
+      bool ? false : "notOptimal"
     end
   end
 
