@@ -3,7 +3,7 @@
 
   <tbody>
     <% audits.each do |audit| %>
-      <%= render '/audits/audits_secondary_row', audit: audit, report: false %>
+      <%= render '/audits/audits_secondary_row', audit: audit, report: false, partOne: true, partTwo: true %>
     <% end %>
   </tbody>
 </table>

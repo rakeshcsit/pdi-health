@@ -1,3 +1,4 @@
+<br><br>
 <%= link_to 'Edit', edit_audit_path(@audit) %> |
 <%= link_to 'Back', audits_path %>
 
@@ -9,38 +10,49 @@
 
 <%= @audit.instructor.email %><%= @s.ss_email %>, <%= @r.rd_email %>
 
-<h2>Email Greeting</h2>
+<h2>Email:</h2>
 <p>Hi <%= @audit.instructor.instructor %>, <%= @s.ss %>, <%= @r.rd %></p>
 
-<p>We analyzed your class recording and noted down your metrics and compared them to our target metrics.</p>
+<p><%= @audit.instructor.instructor %>, we analyzed your class recording and noted down your metrics and compared them to our target metrics.</p>
 
 <p>Additionally, we provided notes on why we gave you those particular scores, and provided you information that could help you improve.</p>
 
 <br><br><br>
 
 <table>
-  <%= render '/audits/audits_main_header', audit: @audit, report: true %>
+  <%= render '/audits/audits_main_header', audit: @audit, report: true, partOne: true, partTwo: false %>
 
   <tbody>
-    <%= render '/audits/audits_main_row', audit: @audit, report: true %>
+    <%= render '/audits/audits_main_row', audit: @audit, report: true, partOne: true, partTwo: false %>
     <tr>
-      <td> Target Metrics: </td>
+      <td class="target"> Target Metrics: </td>
       <td class="optimal"> <%= @big_flag %> </td>
       <td class="optimal"> <%= @objs %> </td>
       <td class="optimal"> <%= @action_flag %> </td>
-      <td class="optimal"> <%= @vocal_enc_num %> </td>
-      <td class="optimal"> <%= @discuss_num %> </td>
-      <td class="optimal"> <%= @mov_aw_noi_num %> </td>
-      <td class="optimal"> <%= @mean_quest_num %> </td>
-      <td class="optimal"> <%= @directed_quest_num %> </td>
-      <td class="optimal"> <%= @tangent_num %> </td>
+      <td class="optimal"> a >= <%= @vocal_enc_num %> </td>
+      <td class="optimal"> b >= <%= @discuss_num %> </td>
+      <td class="optimal"> c >= <%= @mov_aw_noi_num %> </td>
+      <td class="optimal"> d >= <%= @mean_quest_num %> </td>
+      <td class="optimal"> e >= <%= @directed_quest_num %> </td>
+    </tr>
+  </tbody>
+</table>
+<br><br>
+<table>
+  <%= render '/audits/audits_main_header', audit: @audit, report: true, partOne: false, partTwo: true %>
+
+  <tbody>
+    <%= render '/audits/audits_main_row', audit: @audit, report: true, partOne: false, partTwo: true %>
+    <tr>
+      <td class="target"> Target Metrics: </td>
+      <td class="optimal"> f == <%= @tangent_num %> </td>
       <td class="optimal"> <%= @fifteen_noeng %> </td>
-      <td class="optimal"> <%= @anti_jargon_num %> </td>
+      <td class="optimal"> g >= <%= @anti_jargon_num %> </td>
       <td class="optimal"> <%= @nervous %> </td>
-      <td class="optimal"> <%= @engage_num %> </td>
-      <td class="optimal"> <%= @percent_lp %> </td>
+      <td class="optimal"> h >= <%= @engage_num %> </td>
+      <td class="optimal"> i >= <%= @percent_lp %> </td>
       <td class="optimal"> <%= @percent_hp_lp %> </td>
-      <td class="optimal"> <%= @overall_num %> </td>
+      <td class="optimal"> j >= <%= @overall_num %> </td>
     </tr>
   </tbody>
 </table>
@@ -53,7 +65,7 @@
   <tbody>
     <%= render '/audits/audits_secondary_row', audit: @audit, report: true %>
     <tr>
-      <td>
+      <td class="target">
         Target Metrics:
       </td>
       <td class="optimal"><%= @audio_qual_num %> </td>
@@ -68,7 +80,7 @@
 <% if @audit.fame %>
   <h2>Congratulations on making the hall of fame!</h2>
 
-  <p>
+  <p class="fame">
     These are the notes we wrote up about what you did that will make you famous among our instructional community:
   </p>
 

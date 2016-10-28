@@ -8,22 +8,26 @@
       <th> Instructor </th>
       <th>Lesson plan</th>
     <% end %>
+    <% if partOne %>
+      <th>Big flag?</th>
+      <th>established objectives</th>
+      <th>Instructor did not walk around during exercises.</th>
+      <th># of times encouraged</th>
+      <th># of discussions created</th>
+      <th># of Movement Noise Unique tactics used</th>
+      <th># of meaningful questions asked</th>
+      <th># of directed questions asked</th>
+    <% end %>
 
-    <th>Big flag?</th>
-    <th>established objectives</th>
-    <th>Instructor did not walk around during exercises.</th>
-    <th># of times encouraged</th>
-    <th># of discussions created</th>
-    <th># of Movement Noise Unique tactics used</th>
-    <th># of meaningful questions asked</th>
-    <th># of directed questions asked</th>
-    <th># of times went on a tangent</th>
-    <th>Went 15 min w/o engaging?</th>
-    <th>Clarity score</th>
-    <th>Nervous?</th>
-    <th>Engagement score</th>
-    <th>% lp completed?</th>
-    <th>% high priority lp completed?</th>
-    <th>Overall score</th>
+    <% if partTwo %>
+      <th># of times went on a tangent</th>
+      <th>Went 15 min w/o engaging?</th>
+      <th>Clarity score</th>
+      <th>Nervous?</th>
+      <th>Engagement score</th>
+      <th>% lp completed?</th>
+      <th>% high priority lp completed?</th>
+      <th>Overall score</th>
+    <% end %>
   </tr>
 </thead>
