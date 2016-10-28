@@ -1,8 +1,7 @@
 show priority of instructors to audit based on tiers on the instructor page
 
 1. put in tiers for instructors_url
-3. put in baseline vs how they did on audit show page
-put in automatic notes based on numbers
+2. put in automatic notes based on numbers
 6. tier updates need to be visible when editing an instructor
 7. compare audits - report
 - really good for tier 1 instructors
