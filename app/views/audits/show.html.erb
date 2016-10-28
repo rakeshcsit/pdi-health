@@ -13,7 +13,6 @@
       </th>
       <th> Instructor </th>
       <th>University</th>
-      <th>Lesson plan</th>
     </tr>
   </thead>
   <tbody>
@@ -21,7 +20,6 @@
       <td> <%= @audit.audit_date %> </td>
       <td><%= link_to @audit.instructor.instructor, @audit.instructor %></td>
       <td> <%= link_to @audit.instructor.university.university, @audit.instructor.university %> </td>
-      <td><%= link_to @audit.lesson_plan.lp, @audit.lesson_plan %></td>
     </tr>
   </tbody>
 </table>
@@ -38,6 +36,11 @@
 <p>Additionally, we provided notes on why we gave you those particular scores, and provided you information that could help you improve.</p>
 
 <p>We will be conducting audits on your teaching in the future and our hope is for you to take this feedback and improve.</p>
+
+<p><strong>Lesson Plan taught:</strong> <%= link_to @audit.lesson_plan.lp, @audit.lesson_plan %></p>
+<p><strong>Recording of Lesson:</strong> <%= link_to "recording", @audit.video_url %>
+</p>
+
 
 <br><br><br>
 
