@@ -96,8 +96,6 @@
   </tbody>
 </table>
 
-<hr>
-
 <% if @audit.fame %>
   <h2>Congratulations on making the hall of fame!</h2>
 
@@ -105,7 +103,7 @@
     These are the notes we wrote up about what you did that will make you famous among our instructional community:
   </p>
 
-  <%= @audit.fame_notes %>
+  <%= simple_format(@audit.fame_notes) %>
 <% end %>
 
 <% unless eqh("objs", @audit.objs, true) %>
@@ -125,13 +123,12 @@
 
   <p>During exercises, ask if students are done, if they are then get them to help students that are not complete.</p>
 
-  <hr>
 <% end %>
 
 <% unless alh("vocal_enc_num", @audit.vocal_enc_num, true) %>
   <h2>Vocal Encouragement</h2>
 
-  <p><span class="notOptimal padFive">You gave vocal encouragement to the students <%= @audit.vocal_enc_num %></span> times, which is lower than our <span class="optimal padFive">target of <%= @vocal_enc_num %>.</span></p>
+  <p><span class="notOptimal padFive">You gave vocal encouragement to the students <%= pluralize(@audit.vocal_enc_num, "time") %></span>, which is lower than our <span class="optimal padFive">target of <%= @vocal_enc_num %>.</span></p>
 
   <p>Your students see you as a leader.</p>
 
@@ -139,27 +136,112 @@
 <% end %>
 
 <% unless alh("discuss_num", @audit.discuss_num, true) %>
-  e
-  <hr>
+  <h2>Creating Discussions</h2>
+
+  <p><span class="notOptimal padFive">You created <%= pluralize(@audit.discuss_num, "discussion") %></span>, which is lower than our <span class="optimal padFive">target of <%= @discuss_num %>.</span></p>
+
+  <p>When students listen to you - they're not thinking.</p>
+
+  <p>By creating discussions, you force students to think about what you just went over.</p>
+
+  <p>During a discussion, you walk around and hear what students are saying. You keep a log of questions, misconceptions and after the discussion, you answer the questions and kill the misconceptions for everyone to hear.</p>
+
+  <p> Here are examples of discussions </p>
+
+  <ul>
+    <li>"3 minutes, Example to your partners lines 1-12 on the projector"</li>
+    <li>"3 minutes, Explain to your partners why the code on the projector is wrong."</li>
+    <li>"5 minutes, Explain to your partners how you would tackle what I did without a database."</li>
+  </ul>
+
+  <p>
+    <%= link_to "Video of discussion classroom footage backed by explanations", "https://www.youtube.com/watch?v=70K2_IVh28o&index=4&list=PLQHSrcR-RsBSvHNrPI8zIibewvURhpzRf" %> |
+
+    <%= link_to "MAD MAN Engagement Tactics Document", "https://docs.google.com/document/d/1PG5M6fCGBi0-DXvKgoyHH_ZQ43tSjDKYVkTMpmazBL4/edit" %>
+  </p>
+
 <% end %>
 
 <% unless alh("mov_aw_noi_num", @audit.mov_aw_noi_num, true) %>
-  df
-  <hr>
+  <h2>Movement Noise Unique Tactics</h2>
+
+  <p><span class="notOptimal padFive">You used Movement Noise and Unique Tactics <%= pluralize(@audit.mov_aw_noi_num, "time") %></span>, which is lower than our <span class="optimal padFive">target of <%= @mov_aw_noi_num %>.</span></p>
+
+  <p>Here are some examples of movement:</p>
+
+  <ul>
+    <li>"Put both hands up if you think this will output to true."</li>
+    <li>"Make an x across your chest if you think the div will be green."</li>
+    <li>"Make a circle with your hands if you think this will yield an error."</li>
+  </ul>
+
+  <p>Examples of noise:</p>
+
+  <ul>
+    <li>"If you think this will output to true, stomp your feet."</li>
+    <li>"If you think this will break, clap your hands."</li>
+  </ul>
+
+  <p>Examples of unique tactics:</p>
+
+  <ul>
+    <li>Instead of something boring like foo or hello world, ask: "Jennifer what did you do over the weekend"
+      <br>
+
+    Then you would update the example code to be var events = ["Jen watched all of breaking bad over the weekend"]
+
+    <br>
+
+    You would then ask another student the same question and add to that array.
+    </li>
+  </ul>
+
+  <p>
+    <%= link_to "Video about movement", "https://www.youtube.com/watch?v=Yp3zTHKA6Do&index=2&list=PLQHSrcR-RsBSvHNrPI8zIibewvURhpzRf" %> | <%= link_to "Video about awareness", "https://www.youtube.com/watch?v=b38ZiQf4_aU&index=6&list=PLQHSrcR-RsBSvHNrPI8zIibewvURhpzRf" %> | <%= link_to "MAD MAN Engagement Tactics Document", "https://docs.google.com/document/d/1PG5M6fCGBi0-DXvKgoyHH_ZQ43tSjDKYVkTMpmazBL4/edit" %>
+  </p>
+
 <% end %>
 
 <% unless alh("mean_quest_num", @audit.mean_quest_num, true) %>
-  df
-  <hr>
+  <h2>Meaningful Questions Asked</h2>
+
+  <p>
+    <span class="notOptimal padFive">You asked <%= @audit.mean_quest_num %> meaningful <%= "question".pluralize(@audit.mean_quest_num) %></span>, which is lower than our <span class="optimal padFive">target of <%= @mean_quest_num %>.</span>
+  </p>
+
+  <p>Meaningful questions are around the understanding of the code.</p>
+
+  <p>
+    For example, if the code is about for loops, then a meaningless question is: "Eric, What's a variable?" A meaningful question would be: "Dana or Jeff, what happens if I change i to 1?" Or, "What happens if I change i++ to i--?"
+  </p>
 <% end %>
 
 <% unless alh("directed_quest_num", @audit.directed_quest_num, true) %>
-  dfff
-  <hr>
+  <h2># of Directed Questions</h2>
+
+  <p>
+    <span class="notOptimal padFive">You asked <%= @audit.directed_quest_num %> directed <%= "question".pluralize(@audit.directed_quest_num) %></span>, which is lower than our <span class="optimal padFive">target of <%= @directed_quest_num %>.</span>
+  </p>
+
+  <p>Asking questions open ended invites <strong>only strong students to answer.</strong></p>
+
+  <p>
+    Direct your questions like this:
+  </p>
+
+  <ul>
+    <li>Allison, what does lines 1-3 do?</li>
+    <li>Fred or Peter, what's the purpose of this for loop in lines 1-6?</li>
+    <li>Anyone in the second row, why is the code on the board wrong?</li>
+  </ul>
 <% end %>
 
 <% unless eqh("tangent_num", @audit.tangent_num, true) %>
-  adsf
+  <h2>Tangents</h2>
+
+  <p>
+    <span class="notOptimal padFive">You went on <%= pluralize(@audit.tangent_num, "tangent") %></span>, which is more than our <span class="optimal padFive">target of <%= @tangent_num %> tangents.</span>
+  </p>
 
   <% if @audit.tangent_notes %>
     <p>
@@ -168,13 +250,12 @@
     </p>
   <% end %>
 
-  <hr>
 <% end %>
 
 <% unless eqh("fifteen_noeng", @audit.fifteen_noeng, true) %>
-  grewg
+  <h2>Every 15 minutes, engage them</h2>
 
-  <hr>
+  <p> We noticed that you talked around 15 minutes or more without engaging anyone. Our target is to engage AT LEAST every 15 minutes.</p>
 
 <% end %>
 
@@ -187,65 +268,70 @@
 
   <ol>
     <li>TRY YOUR VERY BEST to not use terminology that the students have not heard before. And if you absolutely have to then make sure you say the plain english definition of the terminology before mentioning the word.</li>
-    <li>Repeat concepts. This shouldm't be you repeating something 15 times. Instead it could be you saying something, then later asking someone a question about it. Then repeating yourself again later on, and then finally asking someone different about it.</li>
+
+    <li>Repeat concepts. This shouldn't be you repeating something 15 times. Instead it could be you saying something, then later asking someone a question about it. Then repeating yourself again later on, and then finally asking someone different about it.</li>
   </ol>
 <% end %>
 
 <% if @audit.anti_jargon_notes %>
   <p>
     <strong>About your Clarity:</strong>
-    <%= @audit.anti_jargon_notes %>
+    <%= simple_format(@audit.anti_jargon_notes) %>
   </p>
-
-  <hr>
 <% end %>
 
 <% unless eqh("nervous", @audit.nervous, true) %>
-  adsfewf
-  <hr>
+  <h2>Nerves</h2>
+  <p>It seemed like you were nervous. Our advice to you is to prepare heavily and imagine yourself teaching the material, using engagement techniques </p>
 <% end %>
 
 <% unless alh("engage_num", @audit.engage_num, true) %>
-  avsraw
-  <hr>
+  <h2>Engagement Score</h2>
+
+  <p><span class="notOptimal padFive">Your <strong>engagement score</strong> of <%= @audit.engage_num %></span> was below our <span class="optimal padFive">target of <%= @engage_num %>.</span></p>
+
+  We advise you to refer to our engagement resources:
+
+  <p>
+    <%= link_to "Engagement Video Playlist", "https://www.youtube.com/playlist?list=PLQHSrcR-RsBSvHNrPI8zIibewvURhpzRf" %> |
+
+    <%= link_to "MAD MAN Engagement Tactics Document", "https://docs.google.com/document/d/1PG5M6fCGBi0-DXvKgoyHH_ZQ43tSjDKYVkTMpmazBL4/edit" %>
+  </p>
 <% end %>
 
 <% if @audit.engage_notes %>
   <p>
     <strong>Engage notes:</strong>
-    <%= @audit.engage_notes %>
+    <%= simple_format(@audit.engage_notes) %>
   </p>
-
-  <hr>
-<% end %>
-
-<% unless lph(@audit.percent_lp, true) %>
-  avsraw<%= @audit.percent_lp %>
-  <hr>
 <% end %>
 
 <% unless eqh("percent_hp_lp", @audit.percent_hp_lp, true) %>
-  We saw that you completed <%= @audit.percent_hp_lp %> of the high priority/critical items in the lesson plan. This is below the target of
-  <hr>
+  <h2>% of High Priority/Critical Parts of Lesson Plan Completion</h2>
+
+  <p>We saw that <span class="notOptimal padFive">you completed <%= @audit.percent_hp_lp %></span> of the high priority/critical items in the lesson plan. This is below the <span class="optimal padFive">target of <%= @percent_hp_lp %></span>.</p>
+
+  <p>We advise you to work with your TA(s). They can have the time tracker open during the lesson and help you keep track.</p>
 <% end %>
 
+<h2>Overall</h2>
+
 <% unless alh("overall_num", @audit.overall_num, true) %>
-  avsraw<%= @audit.overall_num %>
-  <hr>
+  <p>You got an <span class="notOptimal padFive">overall score of <%= @audit.overall_num %></span>. Our <span class="optimal padFive">target overall score is: <%= @overall_num %>.</span></p>
+
+  <p>These are factors that led to that:</p>
 <% end %>
 
 <% if @audit.overall_factors %>
   <p>
     <strong>Overall factors:</strong>
-    <%= @audit.overall_factors %>
+    <%= simple_format(@audit.overall_factors) %>
   </p>
-
-  <hr>
 <% end %>
 
 <% if @audit.notes %>
   <p>
     <strong>Notes:</strong>
-    <%= @audit.notes %>
+    <%= simple_format(@audit.notes) %>
   </p>
 <% end %>
