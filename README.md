@@ -7,6 +7,8 @@ show priority of instructors to audit based on tiers on the instructor page
 7. compare audits - report
 - really good for tier 1 instructors
 
+8. bulk reporting
+
 list of dates and audits per date
 
 never do saturday classes (not always 1.3,2.3) never do 1.1
