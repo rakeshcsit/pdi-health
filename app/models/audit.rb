@@ -23,7 +23,7 @@ class Audit < ActiveRecord::Base
     "fifteen_noeng" => false,
     "nervous" => false,
     "percent_hp_lp" => "100%",
-    "code_is_no_big" => true
+    "code_is_no_big" => false
   }
 
   def retAt
