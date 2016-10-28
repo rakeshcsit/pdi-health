@@ -1,5 +1,7 @@
 show priority of instructors to audit based on tiers on the instructor page
 
+make sure audit params match audit form params
+
 1. put in tiers for instructors_url
 2. put in automatic notes based on numbers
 3. put in audit dates next to instructors

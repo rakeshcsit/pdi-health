@@ -37,6 +37,8 @@
 
 <p>Additionally, we provided notes on why we gave you those particular scores, and provided you information that could help you improve.</p>
 
+<p>We will be conducting audits on your teaching in the future and our hope is for you to take this feedback and improve.</p>
+
 <br><br><br>
 
 <table>
@@ -94,6 +96,8 @@
   </tbody>
 </table>
 
+<hr>
+
 <% if @audit.fame %>
   <h2>Congratulations on making the hall of fame!</h2>
 
@@ -104,22 +108,29 @@
   <%= @audit.fame_notes %>
 <% end %>
 
-<% unless eqh("big_flag", @audit.big_flag, true) %>
-  a
-  <hr>
-<% end %>
-
 <% unless eqh("objs", @audit.objs, true) %>
-  b
-  <hr>
+  <h2>Objectives</h2>
+
+  <p> We saw that you <span class="notOptimal padFive">did not establish objectives</span> for the students at the beginning of the lesson. This is important because the students need to know what success means for the day.</p>
+
+  <p>All you have to do is slack them out to the students from the lesson plan and have unique students read each one, and after each student reads an objective, you make a brief comment.</p>
 <% end %>
 
 <% unless eqh("action_flag", @audit.action_flag, true) %>
-  v
+  <h2>Action During Exercises</h2>
+
+  <p>We believe <span class="notOptimal padFive">you did not walk around during exercises</span>.</p>
+
+  <p>Walking around during exercises is very very very important. During exercises, you must look at as many screens as possible. If many students are struggling. Pause and give additional instruction. Make announcements during exercises based on what you're seeing on student screens.</p>
+
+  <p>During exercises, ask if students are done, if they are then get them to help students that are not complete.</p>
+
   <hr>
 <% end %>
 
 <% unless alh("vocal_enc_num", @audit.vocal_enc_num, true) %>
+  <h2>Vocal Encouragement</h2>
+
   d
   <hr>
 <% end %>
@@ -147,10 +158,12 @@
 <% unless eqh("tangent_num", @audit.tangent_num, true) %>
   adsf
 
-  <p>
-    <strong>Tangent notes:</strong>
-    <%= @audit.tangent_notes %>
-  </p>
+  <% if @audit.tangent_notes %>
+    <p>
+      <strong>Tangent notes:</strong>
+      <%= @audit.tangent_notes %>
+    </p>
+  <% end %>
 
   <hr>
 <% end %>
@@ -163,7 +176,7 @@
 <% end %>
 
 <% unless alh("anti_jargon_num", @audit.anti_jargon_num, true) %>
-  <p>Your <strong>clarity score</strong> of <%= @audit.anti_jargon_num %> was below our target of <%= @anti_jargon_num %>.</p>
+  <p><span class="notOptimal padFive">Your <strong>clarity score</strong> of <%= @audit.anti_jargon_num %></span> was below our target of <%= @anti_jargon_num %>.</p>
 
   <p>There are two keys to clarity
 
@@ -173,12 +186,14 @@
   </ol>
 <% end %>
 
-<p>
-  <strong>About your Clarity:</strong>
-  <%= @audit.anti_jargon_notes %>
-</p>
+<% if @audit.anti_jargon_notes %>
+  <p>
+    <strong>About your Clarity:</strong>
+    <%= @audit.anti_jargon_notes %>
+  </p>
 
-<hr>
+  <hr>
+<% end %>
 
 <% unless eqh("nervous", @audit.nervous, true) %>
   adsfewf
@@ -190,12 +205,14 @@
   <hr>
 <% end %>
 
-<p>
-  <strong>Engage notes:</strong>
-  <%= @audit.engage_notes %>
-</p>
+<% if @audit.engage_notes %>
+  <p>
+    <strong>Engage notes:</strong>
+    <%= @audit.engage_notes %>
+  </p>
 
-<hr>
+  <hr>
+<% end %>
 
 <% unless lph(@audit.percent_lp, true) %>
   avsraw<%= @audit.percent_lp %>
@@ -203,7 +220,7 @@
 <% end %>
 
 <% unless eqh("percent_hp_lp", @audit.percent_hp_lp, true) %>
-  avsraw<%= @audit.percent_hp_lp %>
+  We saw that you completed <%= @audit.percent_hp_lp %> of the high priority/critical items in the lesson plan. This is below the target of
   <hr>
 <% end %>
 
@@ -212,16 +229,18 @@
   <hr>
 <% end %>
 
-<p>
-  <strong>Overall factors:</strong>
-  <%= @audit.overall_factors %>
-</p>
+<% if @audit.overall_factors %>
+  <p>
+    <strong>Overall factors:</strong>
+    <%= @audit.overall_factors %>
+  </p>
 
-<hr>
+  <hr>
+<% end %>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @audit.notes %>
-</p>
-
-<hr>
+<% if @audit.notes %>
+  <p>
+    <strong>Notes:</strong>
+    <%= @audit.notes %>
+  </p>
+<% end %>
