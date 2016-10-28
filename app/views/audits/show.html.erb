@@ -5,6 +5,26 @@
 <p id="notice"><%= notice %></p>
 
 <br>
+<table>
+  <thead>
+    <tr>
+      <th>
+        Date of Audit
+      </th>
+      <th> Instructor </th>
+      <th>University</th>
+      <th>Lesson plan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td> <%= @audit.audit_date %> </td>
+      <td><%= link_to @audit.instructor.instructor, @audit.instructor %></td>
+      <td> <%= link_to @audit.instructor.university.university, @audit.instructor.university %> </td>
+      <td><%= link_to @audit.lesson_plan.lp, @audit.lesson_plan %></td>
+    </tr>
+  </tbody>
+</table>
 
 <h2>Send email to these emails from feedback@trilogyed.com</h2>
 
@@ -29,11 +49,11 @@
       <td class="optimal"> <%= @big_flag %> </td>
       <td class="optimal"> <%= @objs %> </td>
       <td class="optimal"> <%= @action_flag %> </td>
-      <td class="optimal"> a >= <%= @vocal_enc_num %> </td>
-      <td class="optimal"> b >= <%= @discuss_num %> </td>
-      <td class="optimal"> c >= <%= @mov_aw_noi_num %> </td>
-      <td class="optimal"> d >= <%= @mean_quest_num %> </td>
-      <td class="optimal"> e >= <%= @directed_quest_num %> </td>
+      <td class="optimal"> >= <%= @vocal_enc_num %> </td>
+      <td class="optimal"> >= <%= @discuss_num %> </td>
+      <td class="optimal"> >= <%= @mov_aw_noi_num %> </td>
+      <td class="optimal"> >= <%= @mean_quest_num %> </td>
+      <td class="optimal"> >= <%= @directed_quest_num %> </td>
     </tr>
   </tbody>
 </table>
@@ -45,14 +65,14 @@
     <%= render '/audits/audits_main_row', audit: @audit, report: true, partOne: false, partTwo: true %>
     <tr>
       <td class="target"> Target Metrics: </td>
-      <td class="optimal"> f == <%= @tangent_num %> </td>
+      <td class="optimal"> == <%= @tangent_num %> </td>
       <td class="optimal"> <%= @fifteen_noeng %> </td>
-      <td class="optimal"> g >= <%= @anti_jargon_num %> </td>
+      <td class="optimal"> >= <%= @anti_jargon_num %> </td>
       <td class="optimal"> <%= @nervous %> </td>
-      <td class="optimal"> h >= <%= @engage_num %> </td>
-      <td class="optimal"> i >= <%= @percent_lp %> </td>
+      <td class="optimal"> >= <%= @engage_num %> </td>
+      <td class="optimal"> >= <%= @percent_lp %> </td>
       <td class="optimal"> <%= @percent_hp_lp %> </td>
-      <td class="optimal"> j >= <%= @overall_num %> </td>
+      <td class="optimal"> >= <%= @overall_num %> </td>
     </tr>
   </tbody>
 </table>
@@ -86,6 +106,7 @@
 
   <%= @audit.fame_notes %>
 <% end %>
+
 
 <p>
   <strong>Tangent notes:</strong>
