@@ -1,6 +1,14 @@
+
+
 show priority of instructors to audit based on tiers on the instructor page
 
 make sure audit params match audit form params
+
+move the overall and engagement to the top
+
+encourage compliments -> maybe have a section on compliments and have that at the very top
+
+1. on form for audit -> show lp link text but cut out https://github.com/coding-boot-camp/FullStack-Lesson-Plans/tree/master/02-lesson-plans/
 
 1. put in tiers for instructors_url
 3. put in audit dates next to instructors

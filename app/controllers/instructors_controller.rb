@@ -2,6 +2,8 @@ class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
   before_action :set_universities, only: [:new, :edit]
   before_action :set_tiers, only: [:new, :edit]
+  before_filter :authenticate_user!
+  before_action :check_if_admin, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /instructors
   # GET /instructors.json

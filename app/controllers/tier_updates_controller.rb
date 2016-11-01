@@ -1,5 +1,7 @@
 class TierUpdatesController < ApplicationController
   before_action :set_tier_update, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :check_if_admin, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /tier_updates
   # GET /tier_updates.json

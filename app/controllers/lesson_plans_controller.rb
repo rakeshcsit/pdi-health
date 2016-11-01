@@ -1,5 +1,7 @@
 class LessonPlansController < ApplicationController
   before_action :set_lesson_plan, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :check_if_admin, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /lesson_plans
   # GET /lesson_plans.json

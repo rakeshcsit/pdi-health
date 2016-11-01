@@ -1,5 +1,7 @@
 class StudentSuccessManagersController < ApplicationController
   before_action :set_student_success_manager, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
+  before_action :check_if_admin, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /student_success_managers
   # GET /student_success_managers.json

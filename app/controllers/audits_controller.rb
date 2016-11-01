@@ -2,6 +2,8 @@ class AuditsController < ApplicationController
   before_action :set_audit, only: [:show, :edit, :update, :destroy]
   before_action :set_instructors, only: [:new, :edit, :update]
   before_action :set_lps, only: [:new, :edit, :update]
+  before_filter :authenticate_user!
+  before_action :check_if_admin, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /audits
   # GET /audits.json
