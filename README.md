@@ -1,5 +1,3 @@
-
-
 show priority of instructors to audit based on tiers on the instructor page
 
 make sure audit params match audit form params
@@ -7,6 +5,8 @@ make sure audit params match audit form params
 move the overall and engagement to the top
 
 encourage compliments -> maybe have a section on compliments and have that at the very top
+
+make it so I can update users role - for some reason it doesn't let me set the integer as the role
 
 1. on form for audit -> show lp link text but cut out https://github.com/coding-boot-camp/FullStack-Lesson-Plans/tree/master/02-lesson-plans/
 

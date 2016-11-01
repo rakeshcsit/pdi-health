@@ -8,7 +8,7 @@ class InstructorsController < ApplicationController
   # GET /instructors
   # GET /instructors.json
   def index
-    @instructors = Instructor.all
+    @instructors = Instructor.includes(:audits)
   end
 
   # GET /instructors/1

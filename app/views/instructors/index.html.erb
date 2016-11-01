@@ -10,6 +10,7 @@
       <th>Tier</th>
       <th>University</th>
       <th>Instructor</th>
+      <th>Audits</th>
       <th>Email</th>
       <th>Phone</th>
       <th>Class code</th>
@@ -17,7 +18,6 @@
       <th>Start date</th>
       <th>Dry run date</th>
       <th>Pre quiz taken</th>
-      <th></th>
     </tr>
   </thead>
 
@@ -26,7 +26,14 @@
       <tr>
         <td><%= link_to instructor.tier_id, instructor.tier %></td>
         <td><%= link_to instructor.university.university, instructor.university %></td>
-        <td><%= link_to instructor.instructor, instructor %></td>
+        <td><%= link_to instructor.instructor, instructor %> (<%= link_to 'Edit', edit_instructor_path(instructor) %>)</td>
+        <td>
+
+          <% instructor.audits.each do |a| %>
+            <%= link_to a.audit_date, a %>
+          <% end %>
+
+        </td>
         <td><%= instructor.email %></td>
         <td><%= instructor.phone %></td>
         <td><%= instructor.class_code %></td>
@@ -34,7 +41,6 @@
         <td><%= instructor.start_date %></td>
         <td><%= instructor.dry_run_date %></td>
         <td><%= instructor.pre_quiz_taken %></td>
-        <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
       </tr>
     <% end %>
   </tbody>
