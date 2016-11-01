@@ -11,7 +11,7 @@
 
   <% unless report %>
     <td> <%= audit.audit_date %> </td>
-    <td><%= link_to audit.instructor.instructor, audit.instructor %> (<%= link_to "tier #{audit.instructor.tier.tier}", audit.instructor.tier %>)</td>
+    <td><%= link_to audit.instructor.instructor, audit.instructor %> <br> (<%= link_to "tier #{audit.instructor.tier.tier}", audit.instructor.tier %>)</td>
     <td><%= link_to audit.instructor.university.university, audit.instructor.university %></td>
     <td><%= link_to audit.lesson_plan.lp, audit.lesson_plan %></td>
   <% end %>
