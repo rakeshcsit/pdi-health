@@ -10,7 +10,15 @@ Rails.application.routes.draw do
 
   resources :tier_updates
 
-  root to: 'audits#index'
+  authenticated :user do
+    root :to => 'audits#index'
+  end
+  
+  devise_scope :user do
+    unauthenticated do
+      root to: 'devise/sessions#new', as: 'unauthenticated_root'
+    end
+  end
 
   resources :audits
 

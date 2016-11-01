@@ -7,15 +7,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    binding.pry
-
-    unless audit_params.code == 'trilogy_rocks_man473'
-      redirect_to root_path
-    end
-
-    super
-  end
+  # def create
+  #   super
+  # end
 
   # DELETE /resource/sign_out
   # def destroy
