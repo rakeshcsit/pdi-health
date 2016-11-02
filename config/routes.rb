@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'compare-audits', to: 'compare_audits#compare_choose', :as => :compare_audits
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'

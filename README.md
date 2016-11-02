@@ -1,3 +1,7 @@
+Dan: on audit show - change the labels and values to not be double negatives
+
+create api keys and documentation for the api
+
 remove big flag from audit show and throw it at the top of the report
 
 create filtering so you can take out certain parts of the audit on the show page to email out to someone.
