@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   authenticated :user do
     root :to => 'audits#index'
   end
-  
+
   devise_scope :user do
     unauthenticated do
       root to: 'devise/sessions#new', as: 'unauthenticated_root'
