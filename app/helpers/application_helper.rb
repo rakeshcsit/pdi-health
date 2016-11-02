@@ -1,7 +1,8 @@
 module ApplicationHelper
 
   def awesome_choice a
-    a.give_comp
+    choice = a.give_comp
+    choice.capitalize
   end
 
   def format_lp_link l

@@ -1,3 +1,7 @@
+remove big flag from audit show and throw it at the top of the report
+
+create filtering so you can take out certain parts of the audit on the show page to email out to someone.
+
 PUT IN A FLAG to not show it to the instructor
   flag instructors that should not receive feedback - email will still go out but won't include the instructor's name
 

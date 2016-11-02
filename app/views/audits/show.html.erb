@@ -126,7 +126,7 @@
 <% else %>
   <h2>Overall</h2>
 
-  <p class="optimal">You met our target score for the lesson! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">You met our target score for the lesson! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% if @audit.overall_factors %>
@@ -158,7 +158,7 @@
 <% else %>
   <h2>Engagement Score</h2>
 
-  <p class="optimal">Engagement is important to creating an interactive lively classroom and you met our target! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">Engagement is important to creating an interactive lively classroom and you met our target! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% if @audit.engage_notes %>
@@ -183,7 +183,7 @@
 <% else %>
   <h2>Your Clarity</h2>
 
-  <p class="optimal">Clarity is one of the most important parts of teaching, and you met our target! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">Clarity is one of the most important parts of teaching, and you met our target! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% if @audit.anti_jargon_notes %>
@@ -202,7 +202,7 @@
 <% else %>
   <h2>Objectives</h2>
 
-  <p class="optimal">You established objectives! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">You established objectives! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% unless eqh("action_flag", @audit.action_flag, true) %>
@@ -226,7 +226,7 @@
 <% else %>
   <h2>Vocal Encouragement</h2>
 
-  <p class="optimal">You met our target for vocal encouragement! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">You met our target for vocal encouragement! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% unless alh("discuss_num", @audit.discuss_num, true) %>
@@ -256,7 +256,7 @@
 <% else %>
   <h2>Creating Discussions</h2>
 
-  <p class="optimal">You met our target for creating discussions! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">You met our target for creating discussions! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% unless alh("mov_aw_noi_num", @audit.mov_aw_noi_num, true) %>
@@ -299,7 +299,7 @@
 <% else %>
   <h2>Movement Noise Unique Tactics</h2>
 
-  <p class="optimal">You met our target! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">You met our target! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% unless alh("mean_quest_num", @audit.mean_quest_num, true) %>
@@ -317,7 +317,7 @@
 <% else %>
   <h2>Meaningful Questions Asked</h2>
 
-  <p class="optimal">You met our target! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">You met our target! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% unless alh("directed_quest_num", @audit.directed_quest_num, true) %>
@@ -341,7 +341,7 @@
 <% else %>
   <h2># of Directed Questions</h2>
 
-  <p class="optimal">You met our target! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">You met our target! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% unless eqh("tangent_num", @audit.tangent_num, true) %>
@@ -360,7 +360,7 @@
 <% else %>
   <h2>Tangents</h2>
 
-  <p class="optimal">You went on ZERO tangents! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">You went on ZERO tangents! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% unless eqh("fifteen_noeng", @audit.fifteen_noeng, true) %>
@@ -370,7 +370,7 @@
 <% else %>
   <h2>Every 15 minutes, engage them</h2>
 
-  <p class="optimal">You did it! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">You did it! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
 
 <% unless eqh("nervous", @audit.nervous, true) %>
@@ -387,5 +387,5 @@
 <% else %>
   <h2>% of High Priority/Critical Parts of Lesson Plan Completion</h2>
 
-  <p class="optimal">You hit the TARGET! <strong><%= awesome_choice(@audit) %></strong>.</p>
+  <p class="optimal">You hit the TARGET! <strong><%= awesome_choice(@audit) %></strong>!</p>
 <% end %>
