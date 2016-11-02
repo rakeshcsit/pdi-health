@@ -8,14 +8,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # POST /resource
-  def create
-
+  def create    
     unless params["user"]["code"] == ENV["CODE_TO_SIGN_UP"]
       respond_to do |format|
         format.html { return redirect_to new_user_registration_path, notice: 'The code you entered was wrong. Please contact Pavan.' }
       end
     end
-    
+
     super
   end
 
