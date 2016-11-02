@@ -3,6 +3,8 @@ class Audit < ActiveRecord::Base
   belongs_to :lesson_plan
   # @@ is a class level method where you can access variables throughout the class
 
+  @@comps = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "astounding", "glorious", "sweet", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful"]
+
   @@atLeastCheck = {
     "vocal_enc_num" => 5,
     "discuss_num" => 4,
@@ -25,6 +27,16 @@ class Audit < ActiveRecord::Base
     "percent_hp_lp" => "100%",
     "code_is_no_big" => false
   }
+
+  def update_comps d
+    @@comps.delete(d)
+  end
+
+  def give_comp
+    c = @@comps.sample
+    update_comps c
+    c
+  end
 
   def retAt
     @@atLeastCheck

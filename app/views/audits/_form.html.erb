@@ -1,4 +1,6 @@
 <h2>Write your notes as if you are talking to this instructor</h2>
+<h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
+<h3>Use enters to seperate your notes</h3>
 <h4>Except for the hall of fame</h4>
 
 <%= form_for(@audit) do |f| %>
@@ -46,7 +48,7 @@
     <%= f.radio_button :fame, false %>
   </div>
 
-  <h2>Write your notes as if you are talking to this instructor</h2>
+  <h2>For Fame Notes you should talk about the instructor like this: "Tom did an unreal job interacting with students in an asynchronous way and then again in a synchronous way."</h2>
 
   <div class="field">
     <%= f.label :fame_notes, "What time ranges did the hall of fame moment(s) occur? Describe the hall of fame moments." %><br>
@@ -94,6 +96,8 @@
   </div>
 
   <h2>Write your notes as if you are talking to this instructor</h2>
+  <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
+  <h3>Use enters to seperate your notes</h3>
 
   <div class="field">
     <%= f.label :tangent_notes, "What time ranges did the tangents occur? And What were they?" %><br>
@@ -112,6 +116,8 @@
   </div>
 
   <h2>Write your notes as if you are talking to this instructor</h2>
+  <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
+  <h3>Use enters to seperate your notes</h3>
 
   <div class="field">
     <%= f.label :anti_jargon_notes, "Notes regarding Simplicity/Jargon" %><br>
@@ -128,6 +134,11 @@
     <%= f.label :engage_num, "On a scale of 1-10, how engaging was the instructor (MAD MAN techniques)?" %><br>
     <%= f.number_field :engage_num %>
   </div>
+
+  <h2>Write your notes as if you are talking to this instructor</h2>
+  <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
+  <h3>Use enters to seperate your notes</h3>
+
   <div class="field">
     <%= f.label :engage_notes %><br>
     <%= f.text_area :engage_notes, cols: "120", rows: "20" %>
@@ -144,9 +155,14 @@
     <%= f.label :overall_num, "On a scale of 1-10 how would you rate this instructor's lesson overall?" %><br>
     <%= f.number_field :overall_num %>
   </div>
+
+  <h2>Write your notes as if you are talking to this instructor</h2>
+  <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
+  <h3>Use enters to seperate your notes</h3>
+
   <div class="field">
     <%= f.label :overall_factors, "What factor or factors influenced your overall rating of this lesson?" %><br>
-    <%= f.text_area :overall_factors, cols: "120", rows: "20" %>
+    <%= f.text_area :overall_factors, cols: "120", rows: "20", placeholder: "First make sure to include 3 positive things about the instructor... 1. 2. 3. separated by enters." %>
   </div>
   <div class="field">
     <%= f.label :audio_qual_num, "How is the audio quality of this video? 1 is bad. 5 is crystal." %><br>
@@ -160,6 +176,11 @@
     <%= f.label :code_is_no_big, "No", :value => "false" %>
     <%= f.radio_button :code_is_no_big, false %>
   </div>
+
+  <h2>Write your notes as if you are talking to this instructor</h2>
+  <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
+  <h3>Use enters to seperate your notes</h3>
+
   <div class="field">
     <%= f.label :notes, "Notes. Offer specific examples in class that highlight points mentioned. (Ex: Instructor offered a great analogy in class to help explain a concept OR Students were really struggling with a concept, so instructor quickly pivoted to address)" %><br>
     <%= f.text_area :notes, cols: "120", rows: "20" %>

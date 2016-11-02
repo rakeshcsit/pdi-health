@@ -43,6 +43,8 @@
 
 <p>We will be conducting audits on your teaching in the future and our hope is for you to take this feedback and improve.</p>
 
+<p class="fame"><strong>We understand this is not all encompassing and that we only audited a fraction of your total teaching. One or Two lessons don't represent the entirety of your teaching. Part of our process is to constantly coach instructors to superbness.</strong></p>
+
 <p><strong>Lesson Plan taught:</strong> <%= link_to @audit.lesson_plan.lp, @audit.lesson_plan.lp_link %></p>
 <p><strong>Recording of Lesson:</strong> <%= link_to "recording", @audit.video_url %>
 </p>
@@ -115,12 +117,92 @@
   <%= simple_format(@audit.fame_notes) %>
 <% end %>
 
+<% unless alh("overall_num", @audit.overall_num, true) %>
+  <h2>Overall</h2>
+
+  <p>You got an <span class="notOptimal padFive">overall score of <%= @audit.overall_num %></span>. Our <span class="optimal padFive">target overall score is: <%= @overall_num %>.</span></p>
+
+  <p>These are factors that led to that:</p>
+<% else %>
+  <h2>Overall</h2>
+
+  <p class="optimal">You met our target score for the lesson! <strong><%= awesome_choice(@audit) %></strong>.</p>
+<% end %>
+
+<% if @audit.overall_factors %>
+  <p>
+    <strong>Overall factors:</strong>
+    <%= simple_format(@audit.overall_factors) %>
+  </p>
+<% end %>
+
+<% if @audit.notes %>
+  <p>
+    <strong>Notes:</strong>
+    <%= simple_format(@audit.notes) %>
+  </p>
+<% end %>
+
+<% unless alh("engage_num", @audit.engage_num, true) %>
+  <h2>Engagement Score</h2>
+
+  <p><span class="notOptimal padFive">Your <strong>engagement score</strong> of <%= @audit.engage_num %></span> was below our <span class="optimal padFive">target of <%= @engage_num %>.</span></p>
+
+  We advise you to refer to our engagement resources:
+
+  <p>
+    <%= link_to "Engagement Video Playlist", "https://www.youtube.com/playlist?list=PLQHSrcR-RsBSvHNrPI8zIibewvURhpzRf" %> |
+
+    <%= link_to "MAD MAN Engagement Tactics Document", "https://docs.google.com/document/d/1PG5M6fCGBi0-DXvKgoyHH_ZQ43tSjDKYVkTMpmazBL4/edit" %>
+  </p>
+<% else %>
+  <h2>Engagement Score</h2>
+
+  <p class="optimal">Engagement is important to creating an interactive lively classroom and you met our target! <strong><%= awesome_choice(@audit) %></strong>.</p>
+<% end %>
+
+<% if @audit.engage_notes %>
+  <p>
+    <strong>Engage notes:</strong>
+    <%= simple_format(@audit.engage_notes) %>
+  </p>
+<% end %>
+
+<% unless alh("anti_jargon_num", @audit.anti_jargon_num, true) %>
+  <h2>Your Clarity</h2>
+
+  <p><span class="notOptimal padFive">Your <strong>clarity score</strong> of <%= @audit.anti_jargon_num %></span> was below our <span class="optimal padFive">target of <%= @anti_jargon_num %>.</span></p>
+
+  <p>There are two keys to clarity
+
+  <ol>
+    <li>TRY YOUR VERY BEST to not use terminology that the students have not heard before. And if you absolutely have to then make sure you say the plain english definition of the terminology before mentioning the word.</li>
+
+    <li>Repeat concepts. This shouldn't be you repeating something 15 times. Instead it could be you saying something, then later asking someone a question about it. Then repeating yourself again later on, and then finally asking someone different about it.</li>
+  </ol>
+<% else %>
+  <h2>Your Clarity</h2>
+
+  <p class="optimal">Clarity is one of the most important parts of teaching, and you met our target! <strong><%= awesome_choice(@audit) %></strong>.</p>
+<% end %>
+
+<% if @audit.anti_jargon_notes %>
+  <p>
+    <strong>About your Clarity:</strong>
+    <%= simple_format(@audit.anti_jargon_notes) %>
+  </p>
+<% end %>
+
 <% unless eqh("objs", @audit.objs, true) %>
   <h2>Objectives</h2>
 
   <p> We saw that you <span class="notOptimal padFive">did not establish objectives</span> for the students at the beginning of the lesson. This is important because the students need to know what success means for the day.</p>
 
   <p>All you have to do is slack them out to the students from the lesson plan and have unique students read each one, and after each student reads an objective, you make a brief comment.</p>
+<% else %>
+  <h2>Objectives</h2>
+
+  <p class="optimal">You established objectives! <strong><%= awesome_choice(@audit) %></strong>.</p>
 <% end %>
 
 <% unless eqh("action_flag", @audit.action_flag, true) %>
@@ -131,7 +213,6 @@
   <p>Walking around during exercises is very very very important. During exercises, you must look at as many screens as possible. If many students are struggling. Pause and give additional instruction. Make announcements during exercises based on what you're seeing on student screens.</p>
 
   <p>During exercises, ask if students are done, if they are then get them to help students that are not complete.</p>
-
 <% end %>
 
 <% unless alh("vocal_enc_num", @audit.vocal_enc_num, true) %>
@@ -142,6 +223,10 @@
   <p>Your students see you as a leader.</p>
 
   <p>Giving them morale boosts will spike their engagement and motivation.</p>
+<% else %>
+  <h2>Vocal Encouragement</h2>
+
+  <p class="optimal">You met our target for vocal encouragement! <strong><%= awesome_choice(@audit) %></strong>.</p>
 <% end %>
 
 <% unless alh("discuss_num", @audit.discuss_num, true) %>
@@ -168,7 +253,10 @@
 
     <%= link_to "MAD MAN Engagement Tactics Document", "https://docs.google.com/document/d/1PG5M6fCGBi0-DXvKgoyHH_ZQ43tSjDKYVkTMpmazBL4/edit" %>
   </p>
+<% else %>
+  <h2>Creating Discussions</h2>
 
+  <p class="optimal">You met our target for creating discussions! <strong><%= awesome_choice(@audit) %></strong>.</p>
 <% end %>
 
 <% unless alh("mov_aw_noi_num", @audit.mov_aw_noi_num, true) %>
@@ -208,7 +296,10 @@
   <p>
     <%= link_to "Video about movement", "https://www.youtube.com/watch?v=Yp3zTHKA6Do&index=2&list=PLQHSrcR-RsBSvHNrPI8zIibewvURhpzRf" %> | <%= link_to "Video about awareness", "https://www.youtube.com/watch?v=b38ZiQf4_aU&index=6&list=PLQHSrcR-RsBSvHNrPI8zIibewvURhpzRf" %> | <%= link_to "MAD MAN Engagement Tactics Document", "https://docs.google.com/document/d/1PG5M6fCGBi0-DXvKgoyHH_ZQ43tSjDKYVkTMpmazBL4/edit" %>
   </p>
+<% else %>
+  <h2>Movement Noise Unique Tactics</h2>
 
+  <p class="optimal">You met our target! <strong><%= awesome_choice(@audit) %></strong>.</p>
 <% end %>
 
 <% unless alh("mean_quest_num", @audit.mean_quest_num, true) %>
@@ -223,6 +314,10 @@
   <p>
     For example, if the code is about for loops, then a meaningless question is: "Eric, What's a variable?" A meaningful question would be: "Dana or Jeff, what happens if I change i to 1?" Or, "What happens if I change i++ to i--?"
   </p>
+<% else %>
+  <h2>Meaningful Questions Asked</h2>
+
+  <p class="optimal">You met our target! <strong><%= awesome_choice(@audit) %></strong>.</p>
 <% end %>
 
 <% unless alh("directed_quest_num", @audit.directed_quest_num, true) %>
@@ -243,6 +338,10 @@
     <li>Fred or Peter, what's the purpose of this for loop in lines 1-6?</li>
     <li>Anyone in the second row, why is the code on the board wrong?</li>
   </ul>
+<% else %>
+  <h2># of Directed Questions</h2>
+
+  <p class="optimal">You met our target! <strong><%= awesome_choice(@audit) %></strong>.</p>
 <% end %>
 
 <% unless eqh("tangent_num", @audit.tangent_num, true) %>
@@ -258,61 +357,25 @@
       <%= @audit.tangent_notes %>
     </p>
   <% end %>
+<% else %>
+  <h2>Tangents</h2>
 
+  <p class="optimal">You went on ZERO tangents! <strong><%= awesome_choice(@audit) %></strong>.</p>
 <% end %>
 
 <% unless eqh("fifteen_noeng", @audit.fifteen_noeng, true) %>
   <h2>Every 15 minutes, engage them</h2>
 
   <p> We noticed that you talked around 15 minutes or more without engaging anyone. Our target is to engage AT LEAST every 15 minutes.</p>
+<% else %>
+  <h2>Every 15 minutes, engage them</h2>
 
-<% end %>
-
-<% unless alh("anti_jargon_num", @audit.anti_jargon_num, true) %>
-  <h2>Your Clarity</h2>
-
-  <p><span class="notOptimal padFive">Your <strong>clarity score</strong> of <%= @audit.anti_jargon_num %></span> was below our <span class="optimal padFive">target of <%= @anti_jargon_num %>.</span></p>
-
-  <p>There are two keys to clarity
-
-  <ol>
-    <li>TRY YOUR VERY BEST to not use terminology that the students have not heard before. And if you absolutely have to then make sure you say the plain english definition of the terminology before mentioning the word.</li>
-
-    <li>Repeat concepts. This shouldn't be you repeating something 15 times. Instead it could be you saying something, then later asking someone a question about it. Then repeating yourself again later on, and then finally asking someone different about it.</li>
-  </ol>
-<% end %>
-
-<% if @audit.anti_jargon_notes %>
-  <p>
-    <strong>About your Clarity:</strong>
-    <%= simple_format(@audit.anti_jargon_notes) %>
-  </p>
+  <p class="optimal">You did it! <strong><%= awesome_choice(@audit) %></strong>.</p>
 <% end %>
 
 <% unless eqh("nervous", @audit.nervous, true) %>
   <h2>Nerves</h2>
   <p>It seemed like you were nervous. Our advice to you is to prepare heavily and imagine yourself teaching the material, using engagement techniques </p>
-<% end %>
-
-<% unless alh("engage_num", @audit.engage_num, true) %>
-  <h2>Engagement Score</h2>
-
-  <p><span class="notOptimal padFive">Your <strong>engagement score</strong> of <%= @audit.engage_num %></span> was below our <span class="optimal padFive">target of <%= @engage_num %>.</span></p>
-
-  We advise you to refer to our engagement resources:
-
-  <p>
-    <%= link_to "Engagement Video Playlist", "https://www.youtube.com/playlist?list=PLQHSrcR-RsBSvHNrPI8zIibewvURhpzRf" %> |
-
-    <%= link_to "MAD MAN Engagement Tactics Document", "https://docs.google.com/document/d/1PG5M6fCGBi0-DXvKgoyHH_ZQ43tSjDKYVkTMpmazBL4/edit" %>
-  </p>
-<% end %>
-
-<% if @audit.engage_notes %>
-  <p>
-    <strong>Engage notes:</strong>
-    <%= simple_format(@audit.engage_notes) %>
-  </p>
 <% end %>
 
 <% unless eqh("percent_hp_lp", @audit.percent_hp_lp, true) %>
@@ -321,26 +384,8 @@
   <p>We saw that <span class="notOptimal padFive">you completed <%= @audit.percent_hp_lp %></span> of the high priority/critical items in the lesson plan. This is below the <span class="optimal padFive">target of <%= @percent_hp_lp %></span>.</p>
 
   <p>We advise you to work with your TA(s). They can have the time tracker open during the lesson and help you keep track.</p>
-<% end %>
+<% else %>
+  <h2>% of High Priority/Critical Parts of Lesson Plan Completion</h2>
 
-<h2>Overall</h2>
-
-<% unless alh("overall_num", @audit.overall_num, true) %>
-  <p>You got an <span class="notOptimal padFive">overall score of <%= @audit.overall_num %></span>. Our <span class="optimal padFive">target overall score is: <%= @overall_num %>.</span></p>
-
-  <p>These are factors that led to that:</p>
-<% end %>
-
-<% if @audit.overall_factors %>
-  <p>
-    <strong>Overall factors:</strong>
-    <%= simple_format(@audit.overall_factors) %>
-  </p>
-<% end %>
-
-<% if @audit.notes %>
-  <p>
-    <strong>Notes:</strong>
-    <%= simple_format(@audit.notes) %>
-  </p>
+  <p class="optimal">You hit the TARGET! <strong><%= awesome_choice(@audit) %></strong>.</p>
 <% end %>
