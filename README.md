@@ -1,3 +1,16 @@
+ADD THIS IN h2 maybe:
+We understand this is not all encompassing - we only audited this one class...
+
+but based off what we've seen here maybe we can get better.
+
+--
+
+PUT IN A FLAG to not show it to the instructor
+
+remind on the form to be encouraging ABE - always be encouraging lol
+
+show nation average
+
 show priority of instructors to audit based on tiers on the instructor page
 
 make sure audit params match audit form params
@@ -6,9 +19,11 @@ move the overall and engagement to the top
 
 encourage compliments -> maybe have a section on compliments and have that at the very top
 
-make it so I can update users role - for some reason it doesn't let me set the integer as the role
+encouragement flag - instructor that needs lots of positive encouragement
 
-1. on form for audit -> show lp link text but cut out https://github.com/coding-boot-camp/FullStack-Lesson-Plans/tree/master/02-lesson-plans/
+flag instructors that should not receive feedback - email will still go out but won't include the instructor's name
+
+- a note on the emails will be put there -
 
 1. put in tiers for instructors_url
 3. put in audit dates next to instructors

@@ -9,6 +9,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    # should get this out of the codebase and into the environment variables
     unless params["user"]["code"] == 'trilogy_rocks_man473'
       respond_to do |format|
         format.html { return redirect_to new_user_registration_path, notice: 'The code you entered was wrong. Please contact Pavan.' }

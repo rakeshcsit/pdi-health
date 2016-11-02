@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def format_lp_link l
+    l.gsub('https://github.com/coding-boot-camp/FullStack-Lesson-Plans/tree/master/02-lesson-plans/', '')
+  end
+
   def eqh key, val, bool
     a = Audit.new
     if a.exact_check(key, val)
