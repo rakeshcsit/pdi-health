@@ -1,3 +1,11 @@
+Have the TAs in the system and send them
+
+class codes should be its own page - instructors can have multiple class codes (teaching two classes at the sametime)
+
+Panopto problems (own records)
+
+Pavan+Dong: page where it shows where the videos are for for each instructor
+
 Dan: on audit show - change the labels and values to not be double negatives
 
 create api keys and documentation for the api

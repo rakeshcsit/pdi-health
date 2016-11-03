@@ -5,6 +5,8 @@ class Audit < ActiveRecord::Base
 
   @@comps = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "astounding", "glorious", "sweet", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling"]
 
+  @@compsReset = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "astounding", "glorious", "sweet", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling"]
+
   @@atLeastCheck = {
     "vocal_enc_num" => 5,
     "discuss_num" => 4,
@@ -33,8 +35,13 @@ class Audit < ActiveRecord::Base
   end
 
   def give_comp
+    if @@comps.length == 0
+      @@comps = @@compsReset.clone
+    end
+
     c = @@comps.sample
     update_comps c
+
     c
   end
 
