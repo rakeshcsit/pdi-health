@@ -3,9 +3,9 @@ class Audit < ActiveRecord::Base
   belongs_to :lesson_plan
   # @@ is a class level method where you can access variables throughout the class
 
-  @@comps = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "astounding", "glorious", "sweet", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling"]
+  @@comps = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "glorious", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling", "outstanding", "first-class", "exceptional", "spledid", "exquisite", "fabulous", "A1", "wonderful", "splendid", "admirable", "fantastic", "majestic"]
 
-  @@compsReset = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "astounding", "glorious", "sweet", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling"]
+  @@compsReset = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "glorious", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling", "outstanding", "first-class", "exceptional", "spledid", "exquisite", "fabulous", "A1", "wonderful", "splendid", "admirable", "fantastic", "majestic"]
 
   @@atLeastCheck = {
     "vocal_enc_num" => 5,
