@@ -3,8 +3,9 @@
     <% if report %>
       Your Metrics:
     <% else %>
+      <%= link_to 'VIEW AUDIT', audit %>
+      <br>
       <%= link_to "recording", audit.video_url %>
-      <%= link_to 'Show', audit %>
       <%= link_to 'Edit', edit_audit_path(audit) %>
     <% end %>
   </td>
