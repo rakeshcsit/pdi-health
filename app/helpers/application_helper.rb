@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def first_name s
+    s.split(" ").first
+  end
+
   # not sure why we need the else clause here - but prod breaks if it's not
   def awesome_choice a
     choice = a.give_comp

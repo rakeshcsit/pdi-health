@@ -35,13 +35,11 @@
 <%= @audit.instructor.email %>, <%= @s.ss_email %>, <%= @r.rd_email %>
 
 <h2>Email:</h2>
-<p>Hi <%= @audit.instructor.instructor %>, <%= @s.ss %>, <%= @r.rd %></p>
+<p>Hi <%= first_name @audit.instructor.instructor %>!</p>
 
-<p><%= @audit.instructor.instructor %>, we analyzed your class recording and noted down your metrics and compared them to our target metrics of excellent instruction.</p>
+<p><%= first_name @audit.instructor.instructor %>, we analyzed your class recording and noted down your metrics and compared them to our target metrics of excellent instruction.</p>
 
 <p>Additionally, we provided notes on why we gave you those particular scores, and provided you information that could help you improve.</p>
-
-<p>We will be conducting audits on your teaching in the future and our hope is for you to take this feedback and improve.</p>
 
 <p class="fame"><strong>We understand this is not all encompassing and that we only audited a fraction of your total teaching. One or Two lessons don't represent the entirety of your teaching. Part of our process is to constantly coach instructors to superbness.</strong></p>
 
