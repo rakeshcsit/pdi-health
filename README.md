@@ -1,3 +1,27 @@
+way to see if the email was sent or not on the audit
+and on the main page
+
+------
+Sean’s his co-instructor
+
+[10:58]  
+we need to put those relationships into the app (edited)
+
+[10:59]  
+so if we see that an instructor is weak but the co is strong
+
+[10:59]  
+we can get the strong to help
+---
+
+target # dashboard
+
+positive word dashboard
+
+audio quality text and panopto text
+
+move positive information to the top
+
 Have the TAs in the system and send them
 
 class codes should be its own page - instructors can have multiple class codes (teaching two classes at the sametime)
@@ -55,5 +79,7 @@ rails generate scaffold StudentSuccessManager university:references ss:string ss
 rails generate scaffold Instructor university:references instructor:string email:string phone:string class_code:string hired_date:date start_date:date dry_run_date:date pre_quiz_taken:boolean --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
 
 rails generate scaffold LessonPlan lp:decimal lp_link:text  --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+rails generate scaffold Post title:string author:string body:text  --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
 
 rails generate scaffold Audit instructor:references lesson_plan:references big_flag:boolean video_url:text fame:boolean fame_notes:text objs:boolean action_flag:boolean vocal_enc_num:integer discuss_num:integer mov_aw_noi_num:integer mean_quest_num:integer directed_quest_num:integer tangent_num:integer tangent_notes:text fifteen_noeng:boolean anti_jargon_num:integer anti_jargon_notes:text nervous:boolean engage_num:integer engage_notes:text percent_lp:string percent_hp_lp:integer overall_num:integer overall_factors:text audio_qual_num:integer code_is_no_big:boolean notes:text --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
