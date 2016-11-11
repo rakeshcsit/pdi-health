@@ -1,6 +1,22 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.float {
+  float: left;
+  margin-right: 3px;
+}
+
+.clear {
+  clear: both;
+}
+
+.box {
+    border: 2px solid black;
+    margin: 2px;
+    padding: 2px;
+}
+
 .field {
   margin-top: 30px;
   margin-bottom: 30px;

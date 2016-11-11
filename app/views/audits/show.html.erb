@@ -54,7 +54,11 @@
   <%= render '/audits/audits_main_header', audit: @audit, report: true, partOne: true, partTwo: false %>
 
   <tbody>
-    <%= render '/audits/audits_main_row', audit: @audit, report: true, partOne: true, partTwo: false %>
+    <% if @previous_audit %>
+          <%= render '/audits/audits_main_row', audit: @previous_audit, report: true, partOne: true, partTwo: false, lp: true, previous: true %>
+    <% end %>
+
+    <%= render '/audits/audits_main_row', audit: @audit, report: true, partOne: true, partTwo: false, previous: false %>
     <tr>
       <td class="target"> Target Metrics: </td>
       <td class="optimal"> <%= @big_flag %> </td>
@@ -68,12 +72,18 @@
     </tr>
   </tbody>
 </table>
+
 <br><br>
+
 <table>
   <%= render '/audits/audits_main_header', audit: @audit, report: true, partOne: false, partTwo: true %>
 
   <tbody>
-    <%= render '/audits/audits_main_row', audit: @audit, report: true, partOne: false, partTwo: true %>
+    <% if @previous_audit %>
+          <%= render '/audits/audits_main_row', audit: @previous_audit, report: true, partOne: false, partTwo: true, lp: true, previous: true %>
+    <% end %>
+
+    <%= render '/audits/audits_main_row', audit: @audit, report: true, partOne: false, partTwo: true, lp: true, previous: false %>
     <tr>
       <td class="target"> Target Metrics: </td>
       <td class="optimal"> == <%= @tangent_num %> </td>
@@ -93,8 +103,12 @@
 <table>
   <%= render '/audits/audits_secondary_header', audit: @audit, report: true %>
 
+  <% if @previous_audit %>
+        <%= render '/audits/audits_secondary_row', audit: @previous_audit, report: true, lp: true, previous: true %>
+  <% end %>
+
   <tbody>
-    <%= render '/audits/audits_secondary_row', audit: @audit, report: true %>
+    <%= render '/audits/audits_secondary_row', audit: @audit, report: true, lp: true, previous: false %>
     <tr>
       <td class="target">
         Target Metrics:
@@ -241,7 +255,7 @@
   <p> Here are examples of discussions </p>
 
   <ul>
-    <li>"3 minutes, Example to your partners lines 1-12 on the projector"</li>
+    <li>"3 minutes, Explain to your partners lines 1-12 on the projector"</li>
     <li>"3 minutes, Explain to your partners why the code on the projector is wrong."</li>
     <li>"5 minutes, Explain to your partners how you would tackle what I did without a database."</li>
   </ul>
@@ -265,6 +279,7 @@
   <p>Here are some examples of movement:</p>
 
   <ul>
+    <li>"Raise your hand if you think the function will output 3... Put your hands down. Now raise your hand if you think the function will output something other than 3."</li>
     <li>"Put both hands up if you think this will output to true."</li>
     <li>"Make an x across your chest if you think the div will be green."</li>
     <li>"Make a circle with your hands if you think this will yield an error."</li>
@@ -310,7 +325,7 @@
   <p>Meaningful questions are around the understanding of the code.</p>
 
   <p>
-    For example, if the code is about for loops, then a meaningless question is: "Eric, What's a variable?" A meaningful question would be: "Dana or Jeff, what happens if I change i to 1?" Or, "What happens if I change i++ to i--?"
+    For example, if the code is about for loops, then a meaningless question is: "Eric, What's a variable?" A meaningful question would be: "Dana or Jeff, what happens if I set i to 1?" Or, Peter and Melissa "What happens if I change i++ to i--?"
   </p>
 <% else %>
   <h2>Meaningful Questions Asked</h2>

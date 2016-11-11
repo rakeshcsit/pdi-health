@@ -1,7 +1,7 @@
 <tr>
   <% if report %>
     <td>
-      Your Metrics:
+      Your <%= link_to audit.lesson_plan.lp, audit.lesson_plan.lp_link %> Metrics <%= previous ? "(PREVIOUS AUDIT)" : "(CURRENT AUDIT)" %>:
     </td>
   <% else %>
     <td>

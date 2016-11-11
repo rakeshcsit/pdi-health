@@ -1,5 +1,10 @@
-way to see if the email was sent or not on the audit
-and on the main page
+audit needs validation
+
+validation on unique email for instructors, ss, rd
+
+tier updates is broken in production
+
+instructor form needs a part about ->
 
 ------
 Sean’s his co-instructor

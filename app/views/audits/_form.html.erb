@@ -1,7 +1,8 @@
 <h2>Write your notes as if you are talking to this instructor</h2>
+<h4>Except for the hall of fame</h4>
 <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
 <h3>Use enters to seperate your notes</h3>
-<h4>Except for the hall of fame</h4>
+<h3>Don't use I, use we</h3>
 
 <%= form_for(@audit) do |f| %>
   <% if @audit.errors.any? %>
@@ -15,6 +16,14 @@
       </ul>
     </div>
   <% end %>
+
+  <div class="field">
+    <%= f.label :sent_email, "Did you send this audit via email through feedback@trilogyed.com" %><br>
+    <%= f.label :sent_email, "Yes", :value => "true"  %>
+    <%= f.radio_button :sent_email, true %>
+    <%= f.label :sent_email, "No", :value => "false" %>
+    <%= f.radio_button :sent_email, false %>
+  </div>
 
   <div class="field">
     <%= f.label :audit_date %><br>
@@ -40,6 +49,8 @@
     <%= f.label :video_url %><br>
     <%= f.text_area :video_url, cols: "120", rows: "2" %>
   </div>
+
+
   <div class="field">
     <%= f.label :fame, "Did this instructor do something to warrant the hall of fame?" %><br>
     <%= f.label :fame, "Yes", :value => "true"  %>
@@ -98,6 +109,7 @@
   <h2>Write your notes as if you are talking to this instructor</h2>
   <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
   <h3>Use enters to seperate your notes</h3>
+  <h3>Don't use I, use we</h3>
 
   <div class="field">
     <%= f.label :tangent_notes, "What time ranges did the tangents occur? And What were they?" %><br>
@@ -118,6 +130,7 @@
   <h2>Write your notes as if you are talking to this instructor</h2>
   <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
   <h3>Use enters to seperate your notes</h3>
+  <h3>Don't use I, use we</h3>
 
   <div class="field">
     <%= f.label :anti_jargon_notes, "Notes regarding Simplicity/Jargon" %><br>
@@ -138,6 +151,7 @@
   <h2>Write your notes as if you are talking to this instructor</h2>
   <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
   <h3>Use enters to seperate your notes</h3>
+  <h3>Don't use I, use we</h3>
 
   <div class="field">
     <%= f.label :engage_notes %><br>
@@ -159,6 +173,7 @@
   <h2>Write your notes as if you are talking to this instructor</h2>
   <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
   <h3>Use enters to seperate your notes</h3>
+  <h3>Don't use I, use we</h3>
 
   <div class="field">
     <%= f.label :overall_factors, "What factor or factors influenced your overall rating of this lesson?" %><br>
@@ -180,6 +195,7 @@
   <h2>Write your notes as if you are talking to this instructor</h2>
   <h3 class="optimal">Remember ABE - Always Be Encouraging</h3>
   <h3>Use enters to seperate your notes</h3>
+  <h3>Don't use I, use we</h3>
 
   <div class="field">
     <%= f.label :notes, "Notes. Offer specific examples in class that highlight points mentioned. (Ex: Instructor offered a great analogy in class to help explain a concept OR Students were really struggling with a concept, so instructor quickly pivoted to address)" %><br>

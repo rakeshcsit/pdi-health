@@ -1,7 +1,7 @@
 class AuditsController < ApplicationController
   before_action :set_audit, only: [:show, :edit, :update, :destroy]
-  before_action :set_instructors, only: [:new, :edit, :update]
-  before_action :set_lps, only: [:new, :edit, :update]
+  before_action :set_instructors, only: [:new, :edit, :create, :update]
+  before_action :set_lps, only: [:new, :edit, :create, :update]
   before_filter :authenticate_user!
   before_action :check_if_admin, only: [:new, :edit, :create, :update, :destroy]
 
@@ -40,6 +40,9 @@ class AuditsController < ApplicationController
     @percent_hp_lp = retEx["percent_hp_lp"]
     @percent_lp = "80% to 100%"
     @code_is_no_big = retEx["code_is_no_big"]
+
+    @previous_audit = Audit.where(["instructor_id = ? and id != ?", @audit.instructor_id, @audit.id]).order('audit_date DESC').limit(1).first
+
   end
 
   # GET /audits/new
@@ -107,6 +110,6 @@ class AuditsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def audit_params
-      params.require(:audit).permit(:instructor_id, :lesson_plan_id, :big_flag, :action_flag, :video_url, :fame, :fame_notes, :objs, :vocal_enc_num, :discuss_num, :mov_aw_noi_num, :mean_quest_num, :directed_quest_num, :tangent_num, :tangent_notes, :fifteen_noeng, :anti_jargon_num, :anti_jargon_notes, :nervous, :engage_num, :engage_notes, :percent_lp, :percent_hp_lp, :overall_num, :overall_factors, :audio_qual_num, :code_is_no_big, :notes, :audit_date)
+      params.require(:audit).permit(:instructor_id, :lesson_plan_id, :big_flag, :action_flag, :video_url, :fame, :fame_notes, :objs, :vocal_enc_num, :discuss_num, :mov_aw_noi_num, :mean_quest_num, :directed_quest_num, :tangent_num, :tangent_notes, :fifteen_noeng, :anti_jargon_num, :anti_jargon_notes, :nervous, :engage_num, :engage_notes, :percent_lp, :percent_hp_lp, :overall_num, :overall_factors, :audio_qual_num, :code_is_no_big, :notes, :audit_date, :sent_email)
     end
 end

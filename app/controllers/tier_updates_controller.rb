@@ -1,7 +1,7 @@
 class TierUpdatesController < ApplicationController
   before_action :set_tier_update, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
-  before_action :check_if_admin, only: [:new, :edit, :create, :update, :destroy]
+  before_action :check_if_admin, only: [:edit, :update, :destroy]
 
   # GET /tier_updates
   # GET /tier_updates.json
@@ -21,22 +21,6 @@ class TierUpdatesController < ApplicationController
 
   # GET /tier_updates/1/edit
   def edit
-  end
-
-  # POST /tier_updates
-  # POST /tier_updates.json
-  def create
-    @tier_update = TierUpdate.new(tier_update_params)
-
-    respond_to do |format|
-      if @tier_update.save
-        format.html { redirect_to @tier_update, notice: 'Tier update was successfully created.' }
-        format.json { render :show, status: :created, location: @tier_update }
-      else
-        format.html { render :new }
-        format.json { render json: @tier_update.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /tier_updates/1

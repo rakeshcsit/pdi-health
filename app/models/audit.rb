@@ -1,6 +1,9 @@
 class Audit < ActiveRecord::Base
   belongs_to :instructor
   belongs_to :lesson_plan
+
+  validates :instructor_id, :lesson_plan_id, :video_url, :vocal_enc_num, :discuss_num, :mov_aw_noi_num, :mean_quest_num, :directed_quest_num, :tangent_num, :anti_jargon_num, :engage_num, :percent_lp, :percent_hp_lp, :overall_num, :audit_date, :presence => true
+
   # @@ is a class level method where you can access variables throughout the class
 
   @@comps = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "glorious", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling", "outstanding", "first-class", "exceptional", "exquisite", "fabulous", "A1", "wonderful", "splendid", "admirable", "fantastic", "majestic"]

@@ -1,12 +1,16 @@
 <tr>
   <td>
     <% if report %>
-      Your Metrics:
+
+      Your <%= link_to audit.lesson_plan.lp, audit.lesson_plan.lp_link %> Metrics <%= previous ? "(PREVIOUS AUDIT)" : "(CURRENT AUDIT)" %>:
+
     <% else %>
+      <hr>
+      <div class="box"><%= audit.sent_email ? "EMAIL SENT" : "EMAIL NOT SENT" %></div>
       <%= link_to 'VIEW AUDIT', audit %>
-      <br>
       <%= link_to "recording", audit.video_url %>
       <%= link_to 'Edit', edit_audit_path(audit) %>
+      <hr>
     <% end %>
   </td>
 

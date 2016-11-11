@@ -3,4 +3,6 @@ class Instructor < ActiveRecord::Base
   has_many :tier_updates
   has_many :audits
   belongs_to :tier
+
+  validates :email, uniqueness: true
 end

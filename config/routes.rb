@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :student_success_managers
 
-  resources :tier_updates
+  resources :tier_updates, :except => [:new, :create]
 
   authenticated :user do
     root :to => 'audits#index'
