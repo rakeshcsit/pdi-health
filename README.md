@@ -1,10 +1,69 @@
-audit needs validation
+put in rules
+for who becomes tier 1
 
-validation on unique email for instructors, ss, rd
+for when to ping rds and ss on slack
 
-tier updates is broken in production
+sample plan we have for uncc
+      Action Items:
+      1. Communicate Student Thoughts to Terra
+      2. Go over Pavan's Analysis with Terra
+      3. Encourage her to really create a connection with students + encourage students to really ask a question. Let her know that she can break from script a bit to loosen it up.
+      4. Encourage Tutoring with Greg
+      5. Have Terra / Kevin attend each other's classes once.  
+      6. Academic Team to Watch Feedback on Terra's class closely
+      7. Get second screen for Terra
+      8. Show output of code as he goes well (screen management)
+      9. Steven to boost feedback
 
-instructor form needs a part about ->
+how to prep for class?
+  - take from killer instructor list
+
+do you have a second screen
+- top instructors use a second monitor or a second laptop so they can
+
+- "do the activity and make sure the other person got it"
+
+clarity:
+      ---->
+        when answering questions on what would x and y do if you do z if you're wrong -> do this -> let's try to
+
+        -> make a joke about it ->
+-----
+desktop real estate could have been better
+-----
+
+instructor form needs a part about why the tier is getting updated
+
+------
+
+so for the instructors that get below a 6, you don't want me to send it to the instructor but to the RD, SSD, you, Jed and Ahmed?
+
+Pavan Katepalli	[10:21 AM]  
+ah
+
+Pavan Katepalli	[10:40 AM]  
+yeah message the RD, SSD, me, Ahmed
+
+[10:40]  
+link to the audit
+
+[10:40]  
+and let them know why it was a flag
+
+[10:41]  
+if it’s a 5
+
+[10:41]  
+send it out
+
+[10:41]  
+if it’s below that
+
+[10:41]  
+wait for a response from RD/SS on a plan for them to come in
+
+[10:41]  
+and then you shoot it out
 
 ------
 Sean’s his co-instructor
@@ -52,12 +111,10 @@ show nation average for the lesson plan if we have it and overall
 
 show priority of instructors to audit based on tiers on the instructor page
 
-make sure audit params match audit form params
-
 encouragement flag - instructor that needs lots of positive encouragement
 
 1. put in tiers for instructors_url
-3. put in audit dates next to instructors
+3. put in audit dates next to instructors - onto a seperate page - because instructors is crowded
 6. tier updates need to be visible when editing an instructor
 7. compare audits - report
 - really good for tier 1 instructors
