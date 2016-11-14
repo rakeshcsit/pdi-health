@@ -4,7 +4,10 @@
 
 <p id="notice"><%= notice %></p>
 
+This audit -> 
+
 <br>
+
 <table>
   <thead>
     <tr>
@@ -32,7 +35,7 @@
 
 <h2>Send email to these emails from feedback@trilogyed.com</h2>
 
-<%= @audit.instructor.email %>, <%= @s.ss_email %>, <%= @r.rd_email %>
+<p><%= @audit.instructor.email %>, <%= @s.ss_email %>, <%= @r.rd_email %>, feedback@trilogyed.com</p>
 
 <h2>Email:</h2>
 <p>Hi <%= first_name @audit.instructor.instructor %>!</p>
