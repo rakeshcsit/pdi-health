@@ -6,7 +6,7 @@
 
     <% else %>
       <hr>
-      <div class="box"><%= audit.sent_email ? "EMAIL SENT" : "EMAIL NOT SENT" %></div>
+      <div class="box <%= audit.sent_email ? "optimal" : "notOptimal" %>"><%= audit.sent_email ? "EMAIL SENT" : "EMAIL NOT SENT" %></div>
       <%= link_to 'VIEW AUDIT', audit %>
       <%= link_to "recording", audit.video_url %>
       <%= link_to 'Edit', edit_audit_path(audit) %>

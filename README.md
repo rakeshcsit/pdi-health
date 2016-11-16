@@ -1,8 +1,6 @@
 put in rules
 for who becomes tier 1
 
-for when to ping rds and ss on slack
-
 sample plan we have for uncc
       Action Items:
       1. Communicate Student Thoughts to Terra
@@ -32,9 +30,6 @@ clarity:
 desktop real estate could have been better
 -----
 
-instructor form needs a part about why the tier is getting updated
-
-------
 
 so for the instructors that get below a 6, you don't want me to send it to the instructor but to the RD, SSD, you, Jed and Ahmed?
 

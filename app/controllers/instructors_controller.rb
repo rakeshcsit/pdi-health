@@ -45,10 +45,13 @@ class InstructorsController < ApplicationController
   # PATCH/PUT /instructors/1.json
   def update
     respond_to do |format|
+
       previous_tier = @instructor.tier_id
+
       if @instructor.update(instructor_params)
+
         unless previous_tier == @instructor.tier_id
-          TierUpdate.create({instructor_id: @instructor.id, old_tier: previous_tier, new_tier: @instructor.tier_id})
+          TierUpdate.create({instructor_id: @instructor.id, old_tier: previous_tier, new_tier: @instructor.tier_id, notes: params['instructor']['tier_update_notes']})
         end
 
         format.html { redirect_to @instructor, notice: 'Instructor was successfully updated.' }

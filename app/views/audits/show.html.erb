@@ -4,7 +4,7 @@
 
 <p id="notice"><%= notice %></p>
 
-This audit -> 
+
 
 <br>
 
@@ -16,16 +16,26 @@ This audit ->
       </th>
       <th> Instructor </th>
       <th>University</th>
+      <th> Lesson Plan</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td> <%= @audit.audit_date %> </td>
-      <td><%= link_to @audit.instructor.instructor, @audit.instructor %></td>
-      <td> <%= link_to @audit.instructor.university.university, @audit.instructor.university %> </td>
+      <td><%= link_to "#{@audit.instructor.instructor} (click to compare)", @audit.instructor %></td>
+      <td> <%= link_to "#{@audit.instructor.university.university} (click to compare)", @audit.instructor.university %> </td>
+      <td> <%= link_to "#{@audit.lesson_plan.lp} (click to compare)", @audit.lesson_plan %> </td>
     </tr>
   </tbody>
 </table>
+
+<div class="steps">
+  <h2>Hello Analyst, your next steps are</h2>
+
+  <%= @message_one ? @message_one.html_safe : "" %>
+
+  <%= @message_two ? @message_two.html_safe : "" %>
+</div>
 
 <h2>Email Subject:</h2>
 

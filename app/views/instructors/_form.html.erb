@@ -16,6 +16,13 @@
     <%= f.select :tier_id, @tiers.collect{|t| [ "#{t.tier}", t.id ]}, {}, { required: 'true', autofocus: 'true', class: 'select2' } %>
   </div>
 
+  <% if @instructor.persisted? %>
+    <div class="field">
+      <label for="instructor_tier_update_notes">Instructor</label><br>
+      <textarea cols="120" rows="20" id="instructor_tier_update_notes" name="instructor[tier_update_notes]">If you are updating the tier for this instructor - please fill this out! Explain why this instructor's tier changed</textarea>
+    </div>
+  <% end %>
+
   <div class="field">
     <%= f.label :university_id %><br>
     <%= f.select :university_id, @universities.collect{|u| [ "#{u.university}", u.id ]}, {}, { required: 'true', autofocus: 'true', class: 'select2' } %>

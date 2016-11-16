@@ -43,6 +43,134 @@ class AuditsController < ApplicationController
 
     @previous_audit = Audit.where(["instructor_id = ? and id != ?", @audit.instructor_id, @audit.id]).order('audit_date DESC').limit(1).first
 
+    # automate rules logic
+    if @previous_audit
+      if (@audit.overall_num <= @previous_audit.overall_num) and (@audit.overall_num < 6)
+        @message_one = "
+        <div class='notOptimal box'>
+
+          <h2>Automated Red Flag</h2>
+
+          <div>
+            This instructor's overall score did not improve from the previous audit and is below a 6 for the overall score. This is a HUGE red flag that the instructor is not taking our feedback seriously. Or that the feedback isn't being given to the instructor in a serious manner.
+          </div>
+        </div>"
+
+        @slack_addition = "<p>The instructor is not improving based on the comparison from the previous audit. #{@s.ss} how can we emphasize to #{@audit.instructor.instructor} that the numbers in this audit need to be improved? What do you suggest needs to happen? We can advise you if you'd like.</p>"
+      end
+    end
+
+    absolute_url = request.base_url + request.original_fullpath
+    send_slack_to = "
+    <h3>Step One:</h3>
+    <div class='indent'>
+      <p><strong>Send a slack to:</strong></p>
+
+      <table class='table-plain indent'>
+        <thead>
+          <th>Student Success Manager</th>
+          <th>Regional Director</th>
+          <th>Chief Learning Officer</th>
+          <th>Academic Analyst</th>
+          <th>Director of Engagement</th>
+          <th>VP of Academic Experience</th>
+        <thead>
+        <tbody>
+          <tr>
+            <td>#{@s.ss}</td>
+            <td>#{@r.rd}</td>
+            <td>Pavan Katepalli</td>
+            <td>Dong Son</td>
+            <td>Jed Woodarek</td>
+            <td>Ahmed Haque</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>"
+
+    copy_analysis =
+    "<div class='indent'>
+      <p>Copy the analysis below and send an email out with the specified recipients and subject located below.</p>
+    </div>"
+
+
+    if ((@audit.overall_num > 9) or (@audit.fame))
+      @message_two = send_slack_to + "
+
+      <h3>Step Two:</h3>
+
+      <div class='indent'>
+        <p><strong>The slack will read like this:</strong></p>
+
+        <div class='indent'>
+          <p>Hey #{@s.ss}, #{@audit.instructor.instructor} did INCREDIBLE! Here's the audit we did: #{absolute_url}.</p>
+
+          <p>If you need the code to sign up to our analytics dashboard, it's: #{ENV["CODE_TO_SIGN_UP"]}</p>
+        </div>
+      </div>
+      "
+    elsif  ((6 <= @audit.overall_num) and  (@audit.overall_num <= 8))
+      @message_two = "
+      <h3>Step One:</h3>
+
+      #{copy_analysis}
+      "
+    elsif @audit.overall_num == 5
+      @message_two = send_slack_to + "
+
+      <div class='indent'>
+        <p><strong>The Slack will read like this:</strong></p>
+
+        <div class='indent'>
+          <p>Hey #{@s.ss} can you talk to #{@audit.instructor.instructor} as soon as possible regarding this audit: #{absolute_url}?</p>
+
+          <p>#{@audit.instructor.instructor} scored a #{@audit.overall_num}/10, which is in our warning zone. To get out of the warning zone, #{@audit.instructor.instructor} has to score a 6 or above on the next audit. The key is for #{@audit.instructor.instructor} to increase the numbers that are red in the audit.</p>
+
+          #{@slack_addition}
+
+          <p>We'll conduct another audit by #{@audit.audit_date + 14} and really want the score to be better next time.</p>
+
+          <p>If you need the code to sign up to our analytics dashboard, it's: #{ENV["CODE_TO_SIGN_UP"]}</p>
+        </div>
+
+      </div>
+
+      <h3>Step Two:</h3>
+
+      <div class='indent'>
+        <p>Wait for a confirmation from #{@s.ss} on slack.</p>
+      </div>
+
+      <h3>Step Three:</h3>
+
+      #{copy_analysis}"
+    elsif @audit.overall_num < 5
+      @message_two = send_slack_to + "
+
+        <div class='indent'>
+          <p>Hey #{@s.ss} can you go to #{@audit.instructor.instructor}'s class as soon as possible regarding this audit: #{absolute_url}?</p>
+
+          <p>We'd like you to give #{@audit.instructor.instructor} the feedback from the audit in person. While watching #{@audit.instructor.instructor} during the first half of class, you could take note of the things that could improve in relation to the audit metrics and during break ask #{@audit.instructor.instructor} to do those things during the second half.</p>
+
+          <p>#{@audit.instructor.instructor} scored a #{@audit.overall_num}/10, which is in our DANGER zone. To get out of the DANGER zone, #{@audit.instructor.instructor} has to either score a 5 to be in the warning zone, or score 6 or greater on the next audit. The key is for #{@audit.instructor.instructor} to increase the numbers that are red in the audit.</p>
+
+          #{@slack_addition}
+
+          <p>We'll conduct another audit by #{@audit.audit_date + 14} and really want the score to be better next time.</p>
+
+          <p>If you need the code to sign up to our analytics dashboard, it's: #{ENV["CODE_TO_SIGN_UP"]}</p>
+        </div>
+
+      <h3>Step Two:</h3>
+
+      <div class='indent'>
+        <p>Wait for a confirmation from #{@s.ss} on slack.</p>
+      </div>
+
+      <h3>Step Three:</h3>
+
+      #{copy_analysis}"
+    end
   end
 
   # GET /audits/new

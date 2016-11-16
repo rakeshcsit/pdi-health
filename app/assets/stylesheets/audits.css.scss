@@ -52,3 +52,25 @@ td {
 .target {
   font-weight: bold;
 }
+
+.steps {
+  border: solid 5px black;
+  padding: 10px;
+}
+
+.table-plain {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table-plain th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-plain tr:hover{background-color:#f5f5f5}
+
+.indent {
+  margin-left: 25px;
+}
