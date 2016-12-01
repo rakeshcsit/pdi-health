@@ -1,66 +1,88 @@
-<%= form_for(@instructor) do |f| %>
-  <% if @instructor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@instructor.errors.count, "error") %> prohibited this instructor from being saved:</h2>
+<div class="float">
+  <%= form_for(@instructor) do |f| %>
+    <% if @instructor.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@instructor.errors.count, "error") %> prohibited this instructor from being saved:</h2>
 
-      <ul>
-      <% @instructor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% @instructor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :tier_id %><br>
-    <%= f.select :tier_id, @tiers.collect{|t| [ "#{t.tier}", t.id ]}, {}, { required: 'true', autofocus: 'true', class: 'select2' } %>
-  </div>
-
-  <% if @instructor.persisted? %>
     <div class="field">
-      <label for="instructor_tier_update_notes">Instructor</label><br>
-      <textarea cols="120" rows="20" id="instructor_tier_update_notes" name="instructor[tier_update_notes]">If you are updating the tier for this instructor - please fill this out! Explain why this instructor's tier changed</textarea>
+      <%= f.label :active, "Should this instructor get audits right now?" %><br>
+      <%= f.label :active, "Yes", :value => "true"  %>
+      <%= f.radio_button :active, true %>
+      <%= f.label :active, "No", :value => "false" %>
+      <%= f.radio_button :active, false %>
+    </div>
+
+    <div class="field">
+      <%= f.label :tier_id %><br>
+      <%= f.select :tier_id, @tiers.collect{|t| [ "#{t.tier}", t.id ]}, {}, { required: 'true', autofocus: 'true', class: 'select2' } %>
+    </div>
+
+    <% if @instructor.persisted? %>
+      <div class="field">
+        <label for="instructor_tier_update_notes">Tier Update Notes</label><br>
+        <textarea cols="120" rows="20" id="instructor_tier_update_notes" name="instructor[tier_update_notes]" placeholder="If you are updating the tier for this instructor - please fill this out! Explain why this instructor's tier changed"></textarea>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :university_id %><br>
+      <%= f.select :university_id, @universities.collect{|u| [ "#{u.university}", u.id ]}, {}, { required: 'true', autofocus: 'true', class: 'select2' } %>
+    </div>
+    <div class="field">
+      <%= f.label :instructor %><br>
+      <%= f.text_field :instructor %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :phone %><br>
+      <%= f.text_field :phone %>
+    </div>
+    <div class="field">
+      <%= f.label :class_code %><br>
+      <%= f.text_field :class_code %>
+    </div>
+    <div class="field">
+      <%= f.label :hired_date %><br>
+      <%= f.date_select :hired_date %>
+    </div>
+    <div class="field">
+      <%= f.label :start_date %><br>
+      <%= f.date_select :start_date %>
+    </div>
+    <div class="field">
+      <%= f.label :dry_run_date %><br>
+      <%= f.date_select :dry_run_date %>
+    </div>
+    <div class="field">
+
+      <%= f.label :pre_quiz_taken, "Did this instructor finish their pre work quiz" %><br>
+
+      <%= f.label :pre_quiz_taken, "Yes", :value => "true"  %>
+
+      <%= f.radio_button :pre_quiz_taken, true %>
+
+      <%= f.label :pre_quiz_taken, "No", :value => "false" %>
+
+      <%= f.radio_button :pre_quiz_taken, false %>
+
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :university_id %><br>
-    <%= f.select :university_id, @universities.collect{|u| [ "#{u.university}", u.id ]}, {}, { required: 'true', autofocus: 'true', class: 'select2' } %>
-  </div>
-  <div class="field">
-    <%= f.label :instructor %><br>
-    <%= f.text_field :instructor %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :class_code %><br>
-    <%= f.text_field :class_code %>
-  </div>
-  <div class="field">
-    <%= f.label :hired_date %><br>
-    <%= f.date_select :hired_date %>
-  </div>
-  <div class="field">
-    <%= f.label :start_date %><br>
-    <%= f.date_select :start_date %>
-  </div>
-  <div class="field">
-    <%= f.label :dry_run_date %><br>
-    <%= f.date_select :dry_run_date %>
-  </div>
-  <div class="field">
-    <%= f.label :pre_quiz_taken %><br>
-    <%= f.check_box :pre_quiz_taken %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+<div class="float">
+  <%= render 'rules_for_tiering' %>
+</div>

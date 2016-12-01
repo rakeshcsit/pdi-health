@@ -5,6 +5,11 @@
 
 <p id="notice"><%= notice %></p>
 
+<p>
+  <strong>Does this instructor actively get audits?</strong>
+  <%= @instructor.active ? "yes" : "no" %>
+</p>
+
 <% if @instructor.tier_id %>
   <p>
     <strong>Tier:</strong>
