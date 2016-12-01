@@ -1,5 +1,58 @@
+target for analysts is 12 audits per week (3 per day)
+
+uncheck instructors that are inactive - that we should not audit based on any number of reasons --> track this
+-> so add active for instructors in migration and go through all the instructors and set them to true in the migration
+
+
+automatically update an instructor's tier based on overall score of instructor.
+
+
+instructors login to leopard to see all their audits, student metrics, interviews that students have went through
+ratings that students gave - etc.
+
+
+we should fields for the students to grade TAs
+
+- let both SSMs and Rds update instructor information for their universities
+
+- put pre quiz into leopard -> put the date
+
+- you can see which instructors/tas that have not completed the quiz prior to the dry run
+
+- bring in student data here and show the student data with the instructor data
+
+which instructor do we audit next?
+
+- instructor that is tier 1 and are due an audit because (it's 2 weeks from their last audit date) OR (they have no audits)
+- instructors that are tier 2 that are new
+- instructors that are tier 1 that have not improved from their previous audit
+- lowest performing tier 3 instructors
+
+ahmed -> capturing hw rates
+show hw grade distribution
+show hw feedback rate
+
+
+allow to mark instructor - not active to not come up in above query
+
+
+panopto video link is not labeled
+  -> show screenshot of what it should be
+
+
+
+add this text: before you do the audit - check if the audio works throughout the video! And make sure the video doesn't cut off in the middle
+
 put in rules
 for who becomes tier 1
+on the instructor page and the tier updates page
+
+
+average the latest audit per instructor per university and rank who has the best metrics in each university
+
+average the latest audit per instructor per region and rank who has the best metrics in each region
+
+
 
 sample plan we have for uncc
       Action Items:
@@ -29,36 +82,6 @@ clarity:
 -----
 desktop real estate could have been better
 -----
-
-
-so for the instructors that get below a 6, you don't want me to send it to the instructor but to the RD, SSD, you, Jed and Ahmed?
-
-Pavan Katepalli	[10:21 AM]  
-ah
-
-Pavan Katepalli	[10:40 AM]  
-yeah message the RD, SSD, me, Ahmed
-
-[10:40]  
-link to the audit
-
-[10:40]  
-and let them know why it was a flag
-
-[10:41]  
-if it’s a 5
-
-[10:41]  
-send it out
-
-[10:41]  
-if it’s below that
-
-[10:41]  
-wait for a response from RD/SS on a plan for them to come in
-
-[10:41]  
-and then you shoot it out
 
 ------
 Sean’s his co-instructor
