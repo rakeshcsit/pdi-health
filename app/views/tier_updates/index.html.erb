@@ -8,6 +8,7 @@
       <th>Old tier</th>
       <th>New tier</th>
       <th>Notes</th>
+      <th>Date Created</th>
       <th></th>
       <th></th>
     </tr>
@@ -20,6 +21,7 @@
         <td><%= tier_update.old_tier %></td>
         <td><%= tier_update.new_tier %></td>
         <td><%= tier_update.notes %></td>
+        <td><%= tier_update.created_at %></td>
         <td><%= link_to 'Show', tier_update %></td>
         <td><%= link_to 'Edit', edit_tier_update_path(tier_update) %></td>
       </tr>

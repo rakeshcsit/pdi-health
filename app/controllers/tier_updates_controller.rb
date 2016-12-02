@@ -6,7 +6,7 @@ class TierUpdatesController < ApplicationController
   # GET /tier_updates
   # GET /tier_updates.json
   def index
-    @tier_updates = TierUpdate.all
+    @tier_updates = TierUpdate.order(created_at: :desc)
   end
 
   # GET /tier_updates/1
