@@ -70,17 +70,20 @@ class AuditsController < ApplicationController
         <thead>
           <th>Student Success Manager</th>
           <th>Regional Director</th>
-          <th>Chief Learning Officer</th>
           <th>Academic Analyst</th>
+          <th>EVP of Operations</th>
+          <th>Chief Learning Officer</th>
           <th>Director of Engagement</th>
           <th>VP of Academic Experience</th>
+
         <thead>
         <tbody>
           <tr>
             <td>#{@s.ss}</td>
             <td>#{@r.rd}</td>
-            <td>Pavan Katepalli</td>
             <td>Dong Son</td>
+            <td>Greg Calverase</td>
+            <td>Pavan Katepalli</td>
             <td>Jed Woodarek</td>
             <td>Ahmed Haque</td>
           </tr>
@@ -189,6 +192,9 @@ class AuditsController < ApplicationController
 
     respond_to do |format|
       if @audit.save
+
+        update_tier(@audit)
+
         format.html { redirect_to @audit, notice: 'Audit was successfully created.' }
         format.json { render :show, status: :created, location: @audit }
       else
@@ -202,7 +208,11 @@ class AuditsController < ApplicationController
   # PATCH/PUT /audits/1.json
   def update
     respond_to do |format|
+
       if @audit.update(audit_params)
+
+        update_tier(@audit)
+
         format.html { redirect_to @audit, notice: 'Audit was successfully updated.' }
         format.json { render :show, status: :ok, location: @audit }
       else
@@ -234,6 +244,31 @@ class AuditsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_audit
       @audit = Audit.find(params[:id])
+    end
+
+    # if john's tier is 1 and current audit score is 5 then nothing happens
+    # if john's tier is 3 and current audit score is 6 then nothing happens
+    # if john's tier is 1 and current audit score is 6 then tier gets updated to 3 and TierUpdate gets made
+    # if john's tier is 3 and current audit score is 5 then tier gets updated to 1 and TierUpdate gets made
+    def update_tier a
+      ins = a.instructor
+      ptId = ins.tier_id
+
+      if a.overall_num < 6
+        t = Tier.where({:tier => 1}).first
+        str = "scored less than 6 on audit"
+      else
+        # find tier 3
+        t = Tier.where({:tier => 3}).first
+        str = "scored 6 or above on audit"
+      end
+
+      # if tier 1's id does not equal to instructor's previous tier id then update instructor's tier to 1 and create a TierUpdate
+      # if tier 3's id does not equal to instructor's previous tier id then update instructor's tier to 3 and create a TierUpdate
+      if t.id != ptId
+        ins.update({:tier_id => t.id})
+        TierUpdate.create({:instructor_id => a.instructor.id, :old_tier => ptId, :new_tier => t.id, :notes => str})
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
