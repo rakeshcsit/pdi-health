@@ -1,33 +1,36 @@
-<%= form_for(@tier_update) do |f| %>
-  <% if @tier_update.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tier_update.errors.count, "error") %> prohibited this tier_update from being saved:</h2>
+<div class="float">
+  <%= form_for(@tier_update) do |f| %>
+    <% if @tier_update.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@tier_update.errors.count, "error") %> prohibited this tier_update from being saved:</h2>
 
-      <ul>
-      <% @tier_update.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @tier_update.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <p><%= @tier_update.instructor.instructor %>'s Tier changed in the following way:</p>
+
+    <div class="field">
+      <%= f.label :old_tier %><br>
+      <%= f.number_field :old_tier %>
+    </div>
+    <div class="field">
+      <%= f.label :new_tier %><br>
+      <%= f.number_field :new_tier %>
+    </div>
+    <div class="field">
+      <%= f.label :notes %><br>
+      <%= f.text_area :notes %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :instructor_id %><br>
-    <%= f.text_field :instructor_id %>
-  </div>
-  <div class="field">
-    <%= f.label :old_tier %><br>
-    <%= f.number_field :old_tier %>
-  </div>
-  <div class="field">
-    <%= f.label :new_tier %><br>
-    <%= f.number_field :new_tier %>
-  </div>
-  <div class="field">
-    <%= f.label :notes %><br>
-    <%= f.text_area :notes %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
+<div class="float">
+  <%= render '/instructors/rules_for_tiering' %>
+</div>
