@@ -9,9 +9,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
 <ul id="nav">
   <li id="logo">Video Analytics Dashboard</li>
   <% if user_signed_in? %>
@@ -31,6 +28,9 @@
     <li><%= link_to "Get Started", new_user_registration_path %></li>
   <% end %>
 </ul>
+
+<%= content_tag(:p, notice, class: 'notice-show') if notice %>
+<%= content_tag(:p, alert,  class: 'alert-show' ) if alert  %>
 
 <%= yield %>
 
