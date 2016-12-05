@@ -1,3 +1,26 @@
+raw format column headings =>
+  Class Code GOOD
+  Which week are you providing feedback on? GOOD
+  What is your full name? GOOD
+  How was class this week? GOOD
+  How would you rate the pace of class this week? GOOD
+  Do you feel that you have enough Academic Support? GOOD
+  How much new learning did you achieve this week? GOOD
+  How well do you feel you have mastered the concepts covered in class this week? GOOD
+  How engaging was your instructor in his/her instruction? GOOD
+  How clear was your instructor in his/her instruction? GOOD
+  How knowledgeable did your instructor seem in the subject area? GOOD
+  How Many hours did you spend outside of class last week on homework, code review, etc? GOOD
+  What did you spend most of that time on? GOOD
+  Any additional comments about the pace of the class? GOOD
+  Any additional comments about the Academic Support? GOOD
+  Any additional comments about your instructor? GOOD
+  Any additional notes? GOOD
+
+  rails generate scaffold StudentFeedback class_code:string week:integer student_name:string how_class_week:integer pace:integer acad_supp:integer new_learn:integer mastery:integer inst_engag:integer inst_clarity:integer inst_know:integer hours_outside:string spend_time_on:text pace_notes:text support_notes:text inst_notes:text add_notes:text  --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+
+---------------------
 sign up to mailgun or something else
 ---------------------
 add this text: before you do the audit - check if the audio works throughout the video! And make sure the video doesn't cut off in the middle

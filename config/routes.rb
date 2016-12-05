@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :student_feedbacks
+
   get 'compare-audits', to: 'compare_audits#compare_choose', :as => :compare_audits
 
   devise_for :users, controllers: {

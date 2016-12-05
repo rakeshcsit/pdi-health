@@ -1,0 +1,85 @@
+<%= form_for(@student_feedback) do |f| %>
+  <% if @student_feedback.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@student_feedback.errors.count, "error") %> prohibited this student_feedback from being saved:</h2>
+
+      <ul>
+      <% @student_feedback.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :class_code %><br>
+    <%= f.text_field :class_code %>
+  </div>
+  <div class="field">
+    <%= f.label :week %><br>
+    <%= f.number_field :week %>
+  </div>
+  <div class="field">
+    <%= f.label :student_name %><br>
+    <%= f.text_field :student_name %>
+  </div>
+  <div class="field">
+    <%= f.label :how_class_week %><br>
+    <%= f.number_field :how_class_week %>
+  </div>
+  <div class="field">
+    <%= f.label :pace %><br>
+    <%= f.number_field :pace %>
+  </div>
+  <div class="field">
+    <%= f.label :acad_supp %><br>
+    <%= f.number_field :acad_supp %>
+  </div>
+  <div class="field">
+    <%= f.label :new_learn %><br>
+    <%= f.number_field :new_learn %>
+  </div>
+  <div class="field">
+    <%= f.label :mastery %><br>
+    <%= f.number_field :mastery %>
+  </div>
+  <div class="field">
+    <%= f.label :inst_engag %><br>
+    <%= f.number_field :inst_engag %>
+  </div>
+  <div class="field">
+    <%= f.label :inst_clarity %><br>
+    <%= f.number_field :inst_clarity %>
+  </div>
+  <div class="field">
+    <%= f.label :inst_know %><br>
+    <%= f.number_field :inst_know %>
+  </div>
+  <div class="field">
+    <%= f.label :hours_outside %><br>
+    <%= f.text_field :hours_outside %>
+  </div>
+  <div class="field">
+    <%= f.label :spend_time_on %><br>
+    <%= f.text_area :spend_time_on %>
+  </div>
+  <div class="field">
+    <%= f.label :pace_notes %><br>
+    <%= f.text_area :pace_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :support_notes %><br>
+    <%= f.text_area :support_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :inst_notes %><br>
+    <%= f.text_area :inst_notes %>
+  </div>
+  <div class="field">
+    <%= f.label :add_notes %><br>
+    <%= f.text_area :add_notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

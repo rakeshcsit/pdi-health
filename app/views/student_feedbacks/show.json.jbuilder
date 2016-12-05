@@ -1,0 +1,1 @@
+json.extract! @student_feedback, :id, :class_code, :week, :student_name, :how_class_week, :pace, :acad_supp, :new_learn, :mastery, :inst_engag, :inst_clarity, :inst_know, :hours_outside, :spend_time_on, :pace_notes, :support_notes, :inst_notes, :add_notes, :created_at, :updated_at

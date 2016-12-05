@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  class_code: MyString
+  week: 1
+  student_name: MyString
+  how_class_week: 1
+  pace: 1
+  acad_supp: 1
+  new_learn: 1
+  mastery: 1
+  inst_engag: 1
+  inst_clarity: 1
+  inst_know: 1
+  hours_outside: MyString
+  spend_time_on: MyText
+  pace_notes: MyText
+  support_notes: MyText
+  inst_notes: MyText
+  add_notes: MyText
+
+two:
+  class_code: MyString
+  week: 1
+  student_name: MyString
+  how_class_week: 1
+  pace: 1
+  acad_supp: 1
+  new_learn: 1
+  mastery: 1
+  inst_engag: 1
+  inst_clarity: 1
+  inst_know: 1
+  hours_outside: MyString
+  spend_time_on: MyText
+  pace_notes: MyText
+  support_notes: MyText
+  inst_notes: MyText
+  add_notes: MyText

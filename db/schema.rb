@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161107204847) do
+ActiveRecord::Schema.define(version: 20161205172334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20161107204847) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "tier_id"
+    t.boolean  "active",         default: true
   end
 
   add_index "instructors", ["university_id"], name: "index_instructors_on_university_id", using: :btree
@@ -109,6 +110,28 @@ ActiveRecord::Schema.define(version: 20161107204847) do
   end
 
   add_index "sses", ["university_id"], name: "index_sses_on_university_id", using: :btree
+
+  create_table "student_feedbacks", force: true do |t|
+    t.string   "class_code"
+    t.integer  "week"
+    t.string   "student_name"
+    t.integer  "how_class_week"
+    t.integer  "pace"
+    t.integer  "acad_supp"
+    t.integer  "new_learn"
+    t.integer  "mastery"
+    t.integer  "inst_engag"
+    t.integer  "inst_clarity"
+    t.integer  "inst_know"
+    t.string   "hours_outside"
+    t.text     "spend_time_on"
+    t.text     "pace_notes"
+    t.text     "support_notes"
+    t.text     "inst_notes"
+    t.text     "add_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "student_success_managers", force: true do |t|
     t.integer  "university_id"
