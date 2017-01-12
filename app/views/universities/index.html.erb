@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th>University</th>
+      <th>Regional Director</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +15,9 @@
     <% @universities.each do |university| %>
       <tr>
         <td><%= link_to university.university, university %></td>
+        <td><%= link_to university.rd.rd, university.rd %></td>
         <td><%= link_to 'Edit', edit_university_path(university) %></td>
       </tr>
-    <% end %>``
+    <% end %>
   </tbody>
-</table>``
+</table>

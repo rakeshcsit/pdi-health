@@ -12,7 +12,7 @@
   <thead>
     <tr>
       <th>
-        Date of Audit
+        Date of Analysis
       </th>
       <th> Instructor </th>
       <th>University</th>
@@ -51,10 +51,10 @@
 <p>Hi <%= first_name @audit.instructor.instructor %>!</p>
 
 <p><%= first_name @audit.instructor.instructor %>, we analyzed your class recording and noted down your metrics and compared them to our target metrics of excellent instruction.</p>
-
+  
 <p>Additionally, we provided notes on why we gave you those particular scores, and provided you information that could help you improve.</p>
 
-<p class="fame"><strong>We understand this is not all encompassing and that we only audited a fraction of your total teaching. One or Two lessons don't represent the entirety of your teaching. Part of our process is to constantly coach instructors to superbness.</strong></p>
+<p class="fame"><strong>We understand this is not all encompassing and that we only analyzed a fraction of your total teaching. One or Two lessons don't represent the entirety of your teaching. Part of our process is to constantly coach instructors to superbness.</strong></p>
 
 <p><strong>Lesson Plan taught:</strong> <%= link_to @audit.lesson_plan.lp, @audit.lesson_plan.lp_link %></p>
 <p><strong>Recording of Lesson:</strong> <%= link_to "recording", @audit.video_url %>

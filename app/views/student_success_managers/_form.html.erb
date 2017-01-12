@@ -13,14 +13,14 @@
 
   <div class="field">
     <%= f.label :university_id %><br>
-    <%= f.text_field :university_id %>
+    <%= f.select :university_id, @universities.collect{|u| [ "#{u.university}", u.id ]}, {}, { required: 'true', autofocus: 'true', class: 'select2' } %>
   </div>
   <div class="field">
-    <%= f.label :ss %><br>
+    <%= f.label :ss, "Full Name of Student Success Manager" %><br>
     <%= f.text_field :ss %>
   </div>
   <div class="field">
-    <%= f.label :ss_email %><br>
+    <%= f.label :ss_email, "Trilogy Email of Student Success Manager" %><br>
     <%= f.text_field :ss_email %>
   </div>
   <div class="actions">

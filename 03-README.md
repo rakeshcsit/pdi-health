@@ -1,3 +1,15 @@
+make student success 
+  university form a drop down
+
+add rd selection for each university in there
+  and show the rd for each university on mass view
+
+add on audit email 
+- this email took 4 hours to construct, please read it :)
+- if you have questions, please email us back.
+
+
+
 email reccomend instructor in a market to help another instructor - get coffee - here's their audit
 
 email recommend TAs to help instructor increase question asking

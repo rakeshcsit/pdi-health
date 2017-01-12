@@ -1,5 +1,6 @@
 class UniversitiesController < ApplicationController
   before_action :set_university, only: [:show, :edit, :update, :destroy]
+  before_action :set_rds, only: [:new, :edit, :update, :create, :destroy]
   before_filter :authenticate_user!
   before_action :check_if_admin, only: [:new, :edit, :create, :update, :destroy]
 
@@ -70,6 +71,11 @@ class UniversitiesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_university
       @university = University.find(params[:id])
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
+    def set_rds
+      @rds = Rd.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

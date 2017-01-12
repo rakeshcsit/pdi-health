@@ -6,9 +6,10 @@ class Audit < ActiveRecord::Base
 
   # @@ is a class level method where you can access variables throughout the class
 
-  @@comps = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "glorious", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling", "outstanding", "first-class", "exceptional", "exquisite", "fabulous", "A1", "wonderful", "splendid", "admirable", "fantastic", "majestic"]
+  @@comps = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "glorious", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling", "outstanding", "first-class", "exceptional", "exquisite", "fabulous", "A1", "wonderful", "splendid", "admirable", "fantastic", "majestic", "amazing", "super star"]
 
-  @@compsReset = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "glorious", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling", "outstanding", "first-class", "exceptional", "exquisite", "fabulous", "A1", "wonderful", "splendid", "admirable", "fantastic", "majestic"]
+  # make a pure clone of comps instead of not being DRY
+  @@compsReset = ["awesome", "magnificent", "sweet", "incredible", "marvelous", "boss", "excellent", "top-notch", "astounding", "cool", "legendary", "rad", "spectacular", "super", "superb", "terrific", "wicked", "great", "aces", "perfect", "tremendous", "glorious", "stunning", "phenomenal", "valiant", "brilliant", "astonishing", "impressive", "remarkable", "divine", "powerful", "compelling", "outstanding", "first-class", "exceptional", "exquisite", "fabulous", "A1", "wonderful", "splendid", "admirable", "fantastic", "majestic", "amazing", "super star"]
 
   @@atLeastCheck = {
     "vocal_enc_num" => 5,

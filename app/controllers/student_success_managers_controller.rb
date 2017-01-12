@@ -1,5 +1,6 @@
 class StudentSuccessManagersController < ApplicationController
   before_action :set_student_success_manager, only: [:show, :edit, :update, :destroy]
+  before_action :set_universities, only: [:new, :edit, :create]
   before_filter :authenticate_user!
   before_action :check_if_admin, only: [:new, :edit, :create, :update, :destroy]
 
@@ -67,6 +68,10 @@ class StudentSuccessManagersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_student_success_manager
       @student_success_manager = StudentSuccessManager.find(params[:id])
+    end
+
+    def set_universities
+      @universities = University.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

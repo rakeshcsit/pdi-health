@@ -1,6 +1,7 @@
 class StudentFeedbacksController < ApplicationController
   before_action :set_student_feedback, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:new, :edit, :update, :destroy]
+  before_filter :auth_api_check!, only: [:create]
   before_action :check_if_admin, only: [:new, :edit, :create, :update, :destroy]
 
   # GET /student_feedbacks
@@ -66,6 +67,11 @@ class StudentFeedbacksController < ApplicationController
   private
     def set_student_feedback
       @student_feedback = StudentFeedback.find(params[:id])
+    end
+
+    def auth_api_check
+      if dsjfklsd == ENV["STUDENT_FEEDBACK_API_KEY"]
+      end
     end
 
     def student_feedback_params
