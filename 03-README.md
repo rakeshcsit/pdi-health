@@ -1,8 +1,6 @@
-make student success 
-  university form a drop down
+add senior ssms to relationships that will also be cc'd on analysis emails - let them know ahead of time - this is brett and alex (need to figure out which universities they're senior for)
 
-add rd selection for each university in there
-  and show the rd for each university on mass view
+
 
 add on audit email 
 - this email took 4 hours to construct, please read it :)

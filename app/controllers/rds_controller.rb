@@ -30,7 +30,7 @@ class RdsController < ApplicationController
 
     respond_to do |format|
       if @rd.save
-        format.html { redirect_to @rd, notice: 'Rd was successfully created.' }
+        format.html { redirect_to universities_path, notice: 'Rd was successfully created.' }
         format.json { render :show, status: :created, location: @rd }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class RdsController < ApplicationController
   def update
     respond_to do |format|
       if @rd.update(rd_params)
-        format.html { redirect_to @rd, notice: 'Rd was successfully updated.' }
+        format.html { redirect_to universities_path, notice: 'Rd was successfully updated.' }
         format.json { render :show, status: :ok, location: @rd }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class RdsController < ApplicationController
   def destroy
     @rd.destroy
     respond_to do |format|
-      format.html { redirect_to rds_url, notice: 'Rd was successfully destroyed.' }
+      format.html { redirect_to universities_path, notice: 'Rd was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

@@ -31,7 +31,7 @@ class StudentSuccessManagersController < ApplicationController
 
     respond_to do |format|
       if @student_success_manager.save
-        format.html { redirect_to @student_success_manager, notice: 'Student success manager was successfully created.' }
+        format.html { redirect_to universities_path, notice: 'Student success manager was successfully created.' }
         format.json { render :show, status: :created, location: @student_success_manager }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class StudentSuccessManagersController < ApplicationController
   def update
     respond_to do |format|
       if @student_success_manager.update(student_success_manager_params)
-        format.html { redirect_to @student_success_manager, notice: 'Student success manager was successfully updated.' }
+        format.html { redirect_to universities_path, notice: 'Student success manager was successfully updated.' }
         format.json { render :show, status: :ok, location: @student_success_manager }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class StudentSuccessManagersController < ApplicationController
   def destroy
     @student_success_manager.destroy
     respond_to do |format|
-      format.html { redirect_to student_success_managers_url, notice: 'Student success manager was successfully destroyed.' }
+      format.html { redirect_to universities_path, notice: 'Student success manager was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
