@@ -13,6 +13,7 @@
       <th>Regional Director</th>
       <th>Student Success Manager</th>
       <th>Active Instructors</th>
+      <th>All upcoming class start dates</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -33,6 +34,15 @@
           <% university.instructors.each do |i| %>
             <% if i.active %>
               <%= i.instructor %>,&nbsp;
+            <% end %>
+          <% end %>
+        </td>
+        <td>
+          <% university.instructors.each do |i| %>
+            <% if i.active %>
+              <% unless i.start_date.past? %>
+                <%= i.start_date %>,&nbsp;
+              <% end %>
             <% end %>
           <% end %>
         </td>
