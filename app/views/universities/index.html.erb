@@ -23,7 +23,12 @@
       <tr>
         <td><%= link_to university.university, university %> (<%= link_to 'Edit', edit_university_path(university) %>)</td>
         <td><%= link_to university.rd.rd, university.rd %> | <%= university.rd.rd_email %> | (<%= link_to 'Edit', edit_rd_path(university.rd) %>)</td>
-        <td><%= link_to university.student_success_manager.ss, university.student_success_manager %> | <%= university.student_success_manager.ss_email %> | (<%= link_to 'Edit', edit_student_success_manager_path(university.student_success_manager) %>)</td>
+        
+        <% if university.student_success_manager %>
+          <td><%= link_to university.student_success_manager.ss, university.student_success_manager %> | <%= university.student_success_manager.ss_email %> | (<%= link_to 'Edit', edit_student_success_manager_path(university.student_success_manager) %>)</td>
+        <% else %>
+          <td></td>
+        <% end %>
         <td>
           <% university.instructors.each do |i| %>
             <% if i.active %>
