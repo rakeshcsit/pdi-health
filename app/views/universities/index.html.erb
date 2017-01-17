@@ -38,12 +38,18 @@
           <% end %>
         </td>
         <td>
+          <% count = 0 %>
           <% university.instructors.each do |i| %>
             <% if i.active %>
               <% unless i.start_date.past? %>
+                <% count = count + 1 %>
                 <%= i.start_date %>,&nbsp;
               <% end %>
             <% end %>
+          <% end %>
+
+          <% if count = 0 %>
+            <p>There are zero class starts coming up for this school. If this is wrong, please update the <%= link_to "instructors' start dates", instructors_path %></p>
           <% end %>
         </td>
       </tr>
