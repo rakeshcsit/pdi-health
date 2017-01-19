@@ -9,64 +9,12 @@ class InstructorsController < ApplicationController
   # GET /instructors.json
   def index
 
-    # this gets me a list of instructors that are tier 1 and their latest audit overall score ordered from the worst performing to the highest performing
-    # NOTE TO SELF I will need to do a where ins.active = true; to get rid of jeff pinkston, david wittaker
-      # select a.instructor_id, max(a.overall_num)
-      # from audits a
-      # left join instructors ins
-      # on ins.id = a.instructor_id
-      # left join tiers t
-      # on t.id = ins.tier_id
-      # where t.tier = 1
-      # group by a.instructor_id
-      # order by max(a.overall_num) ASC;
-      #
-      # select AVG(overall_num)
-      # from audits;
+    # prioritize tier 2 before tier 1 and then tier 3
+      # - tier 2 has no order - in the future order by experience of instructors in market and SS
+    # but only focus on tier 1s that haven’t been given an analysis for more than 14 days
+    # and only focus on tier 3s that haven’t been given an analysis for more than 30 days
 
-    # - instructor that is tier 1 and are due an audit because (it's 2 weeks from their last audit date) OR (they have no audits)
-      # select (current_date - a.audit_date) as range
-      # from audits a
-      # left join instructors i
-      # on a.instructor_id = i.id
-      # left join tiers t
-      # on i.tier_id = t.id
-      # where t.tier = 1
-      # AND (current_date - a.audit_date) >= 14;
-
-    # - instructors that are tier 1 that have not improved from their previous audit
-      # select *
-      # from audits a
-      # left join instructors ins
-      # on a.instructor_id = ins.id
-      # left join tiers t
-      # on ins.tier_id = t.id
-      # where t.tier = 1
-      # order by a.overall_num;
-
-    # finds all the instructors that are tier 1
-    # select *
-    # from instructors ins
-    # left join tiers t
-    # on ins.tier_id = t.id
-    # where t.tier = 1;
-
-    # - instructors that are tier 2 that are new
-    # select *
-    # from instructors ins
-    # left join tiers t
-    # on ins.tier_id = t.id
-    # where t.tier = 2;
-
-    # - lowest performing to highest performing tier 3 instructors
-    # select *
-    # from audits a
-    # left join instructors ins
-    # on a.instructor_id = ins.id
-    # left join tiers t
-    # on ins.tier_id = t.id
-    # where t.tier = 3
-    # order by a.overall_num;
+    @instructors_prioritized = Instructor.prioritization
 
     @instructors = Instructor.includes(:audits)
 

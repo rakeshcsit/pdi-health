@@ -1,6 +1,67 @@
 https://trello.com/b/SMm1Mv9y/interview-weekly-v2
 
 
+
+      # this gets us the latest audit for an instructor
+
+      select MAX(audit_date) 
+      from audits
+      where instructor_id = 14;
+
+    # this gets me a list of instructors that are tier 1 and their latest audit overall score ordered from the worst performing to the highest performing
+
+      # select a.instructor_id, max(a.overall_num)
+      # from audits a
+      # left join instructors ins
+      # on ins.id = a.instructor_id
+      # left join tiers t
+      # on t.id = ins.tier_id
+      # where t.tier = 1 and ins.active = true
+      # group by a.instructor_id
+      # order by max(a.overall_num) ASC;
+      
+      # select AVG(overall_num)
+      # from audits;
+
+
+    # - instructors that are tier 1 that have not improved from their previous audit
+      # select *
+      # from audits a
+      # left join instructors ins
+      # on a.instructor_id = ins.id
+      # left join tiers t
+      # on ins.tier_id = t.id
+      # where t.tier = 1
+      # order by a.overall_num;
+
+    # - lowest performing to highest performing tier 3 instructors
+    # select *
+    # from audits a
+    # left join instructors ins
+    # on a.instructor_id = ins.id
+    # left join tiers t
+    # on ins.tier_id = t.id
+    # where t.tier = 3
+    # order by a.overall_num;
+
+
+----------------------------------------------------------------------------
+
+instructor data table should have filtering for active, nonactive, date ranges for last analysis, university filtering (multi select), class code multi select
+
+
+----------------------------------------------------------------------------
+
+how to prepare for class slide from ppt deck
+  https://docs.google.com/presentation/d/19nevY2M02QHAf78sUrIbEWjVBCTFN4egGqwyTkTUewA/edit#slide=id.g1b8b93be81_0_24
+
+goal of each class 
+
+combo metric videos
+  https://www.dropbox.com/sh/7lwa2eck2yx8p8w/AAD7zZjbb1YD6ohde4esMYDwa?dl=0
+
+
+----------------------------------------------------------------------------
 https://docs.google.com/spreadsheets/d/1QG8qBT20S-jzn0hIkVQVpngEL__42KU1faRZ34buuoM/edit#gid=96164355
 ----------------------------------------------------------------------------
 https://docs.google.com/spreadsheets/d/1QG8qBT20S-jzn0hIkVQVpngEL__42KU1faRZ34buuoM/edit#gid=1660573333
