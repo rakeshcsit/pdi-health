@@ -14,9 +14,9 @@ class InstructorsController < ApplicationController
     # but only focus on tier 1s that haven’t been given an analysis for more than 14 days
     # and only focus on tier 3s that haven’t been given an analysis for more than 30 days
 
-    @instructors_prioritized = Instructor.prioritization
+    @instructors = Instructor.find(Instructor.prioritization.rows)
 
-    @instructors = Instructor.includes(:audits)
+    #@instructors = Instructor.includes(:audits)
 
   end
 
