@@ -10,6 +10,10 @@ class InstructorsController < ApplicationController
   def index
   end
 
+  def all
+    @instructors = Instructor.all
+  end
+
   # GET /instructors/1
   # GET /instructors/1.json
   def show

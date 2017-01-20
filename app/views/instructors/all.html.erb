@@ -1,0 +1,49 @@
+<ul id="nav">
+  <li><%= link_to 'New Instructor', new_instructor_path %></li>
+  <li><%= link_to 'Prioritized Instructor List', instructors_path %></li>
+  <li><%= link_to 'All Instructors', all_instructors_path %></li>
+</ul>
+
+<h1>Listing ALL instructors</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th> Active </th>
+      <th>Tier</th>
+      <th>University</th>
+      <th>Instructor</th>
+      <th>Audits</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Class code</th>
+      <th>Hired date</th>
+      <th>Start date</th>
+      <th>Pre quiz taken</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @instructors.each do |instructor| %>
+      <tr>
+        <td><%= instructor.active ? "yes" : "no" %> </td>
+        <td><%= link_to instructor.tier_id, instructor.tier %></td>
+        <td><%= link_to instructor.university.university, instructor.university %></td>
+        <td><%= link_to instructor.instructor, instructor %> (<%= link_to 'Edit', edit_instructor_path(instructor) %>)</td>
+        <td>
+
+          <% instructor.audits.each do |a| %>
+            <%= link_to a.audit_date, a %>
+          <% end %>
+
+        </td>
+        <td><%= instructor.email %></td>
+        <td><%= instructor.phone %></td>
+        <td><%= instructor.class_code %></td>
+        <td><%= instructor.hired_date %></td>
+        <td><%= instructor.start_date %></td>
+        <td><%= instructor.pre_quiz_taken %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

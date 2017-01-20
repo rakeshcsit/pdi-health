@@ -1,6 +1,10 @@
-<h1>Listing instructors</h1>
+<ul id="nav">
+  <li><%= link_to 'New Instructor', new_instructor_path %></li>
+  <li><%= link_to 'Prioritized Instructor List', instructors_path %></li>
+  <li><%= link_to 'All Instructors', all_instructors_path %></li>
+</ul>
 
-<%= link_to 'New Instructor', new_instructor_path %>
+<h1>Prioritized Instructor List</h1>
 
 <br><br>
 
@@ -11,8 +15,6 @@
 <p>We will only focus on tier 1s that haven’t been given an analysis for more than 14 days.</p>
 
 <p>We will only focus on tier 3s that haven’t been given an analysis for more than 30 days.</p>
-
-<%= @instructor_ids.inspect %>
 
 <table class="table">
   <thead>
@@ -54,6 +56,7 @@
         <td><%= instructor.pre_quiz_taken %></td>
       </tr>
     <% end %>
+
     <% Instructor.prioritization_one.each do |id| %>
       <% instructor = Instructor.find(id['id'].to_i) %>
       <tr>
@@ -76,6 +79,7 @@
         <td><%= instructor.pre_quiz_taken %></td>
       </tr>
     <% end %>
+
     <% Instructor.prioritization_three.each do |id| %>
       <% instructor = Instructor.find(id['id'].to_i) %>
       <tr>
