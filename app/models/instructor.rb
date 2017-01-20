@@ -6,6 +6,10 @@ class Instructor < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
+  # prioritize tier 2 before tier 1 and then tier 3
+    # - tier 2 has no order - in the future order by experience of instructors in market and SS
+  # but only focus on tier 1s that haven’t been given an analysis for more than 14 days
+  # and only focus on tier 3s that haven’t been given an analysis for more than 30 days
   def self.prioritization
 
   	connection.select_all %Q(
@@ -53,5 +57,21 @@ class Instructor < ActiveRecord::Base
 	  	tier_three_ordered
   	)
 
+  end
+
+  def self.instructors_prioritized
+  	instructors_prioritized = Instructor.prioritization.rows.flatten
+  	
+  	# I can't do where id in (list or instructor ids here) because otherwise sql resorts the list
+
+  	#*"," turns an array into a string
+  	manipulated_ins_prioritized = "{" + instructors_prioritized*"," + "}"
+
+  	query = "SELECT i.*
+  	FROM   instructors i
+  	JOIN   unnest('" + manipulated_ins_prioritized + "'::int[]) WITH ORDINALITY t(id, ord) USING (id)
+  	ORDER  BY t.ord;"
+
+  	connection.select_all(query)
   end
 end

@@ -8,16 +8,7 @@ class InstructorsController < ApplicationController
   # GET /instructors
   # GET /instructors.json
   def index
-
-    # prioritize tier 2 before tier 1 and then tier 3
-      # - tier 2 has no order - in the future order by experience of instructors in market and SS
-    # but only focus on tier 1s that haven’t been given an analysis for more than 14 days
-    # and only focus on tier 3s that haven’t been given an analysis for more than 30 days
-
-    @instructors = Instructor.find(Instructor.prioritization.rows)
-
-    #@instructors = Instructor.includes(:audits)
-
+    @instructor_ids = Instructor.prioritization
   end
 
   # GET /instructors/1

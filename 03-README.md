@@ -1,3 +1,37 @@
+The best teachers I've ever seen in my life had a few things in common:
+1. Knew the topic well or very well so that they could answer difficult questions.
+2. Were enthusiastic about their topic and about their students.
+3. Were encouraging to a fault!  Always being positive and willing to go the extra mile for any student.
+4. Encouraged questions without any judgement.
+5. Related the material being taught to things outside the sphere that the student could relate to and then compare and contrast the example(s) to the topic at hand.
+6. Could cut through the extraneous details and get to the really important core of the topic while not dismissing the extraneous but pushing it aside until the student was ready to learn more of the fine details.
+7. Would make learning fun and stimulating.
+8. Could remember how it felt to learn the topic for the first time and could therefore predict the tough spots and anticipate where students might stumble.
+9. Would create an atmosphere where the students were encouraged to ask more questions and create discussions.
+10. Would compliment the students for any and all signs of progress and therefore create an atmosphere of constant success and positivity.
+
+
+
+
+
+
+
+
+
+
+add to analysis how to prepare for class from dry run deck:
+  Making teams for projects
+  1. a team that can spend time on a google hangout or in person with each other outside of class 
+
+  2. everyone has respect for each other's background/skill/ideas
+
+  3. similar skill levels
+
+----------------------------------------------------------------------
+
+add to analysis:
+  - we can't capture the questions you ask during 
+
 add senior ssms to relationships that will also be cc'd on analysis emails - let them know ahead of time - this is brett and alex (need to figure out which universities they're senior for)
 
 

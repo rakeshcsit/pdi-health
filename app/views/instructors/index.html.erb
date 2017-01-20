@@ -4,7 +4,13 @@
 
 <br><br>
 
-<%= @instructors_prioritized.inspect %>
+<p>We prioritize tier 2 before tier 1 and then tier 3.</p>
+
+<p>For tier 2 instructors there is no order. In the future we will order by experience of instructors and student success in market.</p>
+
+<p>We will only focus on tier 1s that haven’t been given an analysis for more than 14 days.</p>
+
+<p>We will only focus on tier 3s that haven’t been given an analysis for more than 30 days.</p>
 
 <table class="table">
   <thead>
@@ -24,7 +30,8 @@
   </thead>
 
   <tbody>
-    <% @instructors.each do |instructor| %>
+    <% @instructor_ids.each do |id| %>
+      <% instructor = Instructor.find(id['id'].to_i) %>
       <tr>
         <td><%= instructor.active ? "yes" : "no" %> </td>
         <td><%= link_to instructor.tier_id, instructor.tier %></td>
