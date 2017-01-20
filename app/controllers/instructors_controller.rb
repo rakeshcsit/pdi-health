@@ -8,7 +8,6 @@ class InstructorsController < ApplicationController
   # GET /instructors
   # GET /instructors.json
   def index
-    @instructor_ids = Instructor.prioritization
   end
 
   # GET /instructors/1

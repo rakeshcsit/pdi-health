@@ -32,7 +32,51 @@
   </thead>
 
   <tbody>
-    <% @instructor_ids.each do |id| %>
+    <% Instructor.prioritization_two.each do |id| %>
+      <% instructor = Instructor.find(id['id'].to_i) %>
+      <tr>
+        <td><%= instructor.active ? "yes" : "no" %> </td>
+        <td><%= link_to instructor.tier_id, instructor.tier %></td>
+        <td><%= link_to instructor.university.university, instructor.university %></td>
+        <td><%= link_to instructor.instructor, instructor %> (<%= link_to 'Edit', edit_instructor_path(instructor) %>)</td>
+        <td>
+
+          <% instructor.audits.each do |a| %>
+            <%= link_to a.audit_date, a %>
+          <% end %>
+
+        </td>
+        <td><%= instructor.email %></td>
+        <td><%= instructor.phone %></td>
+        <td><%= instructor.class_code %></td>
+        <td><%= instructor.hired_date %></td>
+        <td><%= instructor.start_date %></td>
+        <td><%= instructor.pre_quiz_taken %></td>
+      </tr>
+    <% end %>
+    <% Instructor.prioritization_one.each do |id| %>
+      <% instructor = Instructor.find(id['id'].to_i) %>
+      <tr>
+        <td><%= instructor.active ? "yes" : "no" %> </td>
+        <td><%= link_to instructor.tier_id, instructor.tier %></td>
+        <td><%= link_to instructor.university.university, instructor.university %></td>
+        <td><%= link_to instructor.instructor, instructor %> (<%= link_to 'Edit', edit_instructor_path(instructor) %>)</td>
+        <td>
+
+          <% instructor.audits.each do |a| %>
+            <%= link_to a.audit_date, a %>
+          <% end %>
+
+        </td>
+        <td><%= instructor.email %></td>
+        <td><%= instructor.phone %></td>
+        <td><%= instructor.class_code %></td>
+        <td><%= instructor.hired_date %></td>
+        <td><%= instructor.start_date %></td>
+        <td><%= instructor.pre_quiz_taken %></td>
+      </tr>
+    <% end %>
+    <% Instructor.prioritization_three.each do |id| %>
       <% instructor = Instructor.find(id['id'].to_i) %>
       <tr>
         <td><%= instructor.active ? "yes" : "no" %> </td>
