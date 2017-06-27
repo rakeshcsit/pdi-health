@@ -1,3 +1,16 @@
+week 20 we stop, skip review days, days where they split classes, project days
+skip activities part when instructor isnt at the computer
+
+4 is the max # of analyses so we have to spread them apart 
+
+
+
+That makes sense Kevin. There's no need to hit every mad man bell, but asking questions are the important factor. When we prepare for lessons, we recommend to 1. look over the homework solution 2.run through all of the activities and demos 3.and then lastly run through the lesson plan and ppt (if you plan to use it - it's optional) steps 1 and 2 are much more important than 3. The lesson plans are very long (sometimes 20 pages) and the ppts are sometimes nearly 50-75 slides so skimming so if you're short on time - do 1 and 2 and skim through 3. But we know how much of a pain Moment.js is to deal with. You must be glad to be over with it :)
+
+
+
+
+
 The best teachers I've ever seen in my life had a few things in common:
 1. Knew the topic well or very well so that they could answer difficult questions.
 2. Were enthusiastic about their topic and about their students.

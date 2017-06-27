@@ -1,6 +1,9 @@
 https://trello.com/b/SMm1Mv9y/interview-weekly-v2
 
 
+not sure option for dates as default and lesson plan
+
+
 
       # this gets us the latest audit for an instructor
 
