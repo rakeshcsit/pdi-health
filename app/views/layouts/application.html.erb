@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Video Analytics Dashboard</title>
+  <title>Self INR</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <ul id="nav">
-  <li id="logo">Video Analytics Dashboard</li>
+  <li id="logo">Self INR</li>
   <% if user_signed_in? %>
     <li><%= link_to "Analyses", audits_path %></li>
     <li><%= link_to "Lesson Plans", lesson_plans_path %></li>

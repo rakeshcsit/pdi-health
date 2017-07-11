@@ -1,28 +1,81 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+patients can login 
+	log inr
+	see their past
+	see how they can be compliant
+
+	see chart of past inrs
+
+field reps can login
+
+admin can login
+	add users in and administrate them
+
+
+
+user_logins
+	tracks when people login
+patient screen
+
+	first_name, last_name, email, last_contacted_date, date_of_initial_contact, qualified, communication_preferred, date_of_initial_call_to_doctor, date_of_script_being_approved, date_of_shipped_device, date_of_field_rep_assigned, field_rep, training_date, first_reported_inr, doctor, # of reports submitted towards compliance this month
+
+	address, phone number, care taker information 
+
+	date of being ready to be trained
+
+	date + time of training
+
+patients
+
+patient_documents
+	type, patient_id, link
+
+doctors
+
+field_reps
+	
+field_reps_patients
+	field_rep_id, patient_id
+
+patient_communications
+	patient_id, date, note, type, training (default false)
+
+email_sents
+	type, user_id
+
+inrs
+	patient_id, inr, date
+
+test_strip_requests
+	patient_id, date
+
+
+add to the to do list:
+--------------------
+report on how long from patient info put in 
+	to training 
+	to first inr reported
+
+
+stuff on white board
+--------------------
+
+TRUE:
+	Patient testing:
+	week 1: mon
+	week 2: tue
+	week 3: tue  (has to be on tue)
+
+	Mark said this is ok:
+	
+	patient does test mon but reports monday's test on tuesday and is still compliant
+
+PROJECT GUIDELINES:
+	$100/hr (50 - 150 hrs)
+
+	does not include costs of IVR, send grid costs, ssl costs, hosting costs, cloud66 costs, SEO
+
+	$35/referral after 1 month of testing
+
+

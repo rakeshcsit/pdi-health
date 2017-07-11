@@ -85,30 +85,12 @@ ActiveRecord::Schema.define(version: 20170117024411) do
     t.datetime "updated_at"
   end
 
-  create_table "posts", force: true do |t|
-    t.string   "title"
-    t.string   "author"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "rds", force: true do |t|
     t.string   "rd"
     t.string   "rd_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "sses", force: true do |t|
-    t.integer  "university_id"
-    t.string   "ss"
-    t.string   "ss_email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "sses", ["university_id"], name: "index_sses_on_university_id", using: :btree
 
   create_table "student_feedbacks", force: true do |t|
     t.string   "class_code"
