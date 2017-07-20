@@ -1,8 +1,18 @@
+finished:
+	need to revert this to old commit (BUT BACK UP README FIRST!!!!) and re run without commas
 
+	Patient scaffold:
+	
+	rails generate scaffold Patient user:references first_name last_name email qualified communication_preferred
+
+	Doctor scaffold:
+	rails generate scaffold Doctor user:references full_name, email, phone_number, fax_number, address, state, zipcode, mon, tue, wed, thu, fri, sat, sun
+------------------------------
+users need time zones - everyone needs one (I can assume admin is EST)
 
 patients can login 
 	log inr
-	see their past
+	see their past inrs
 	see how they can be compliant
 
 	see chart of past inrs
@@ -11,8 +21,6 @@ field reps can login
 
 admin can login
 	add users in and administrate them
-
-
 
 user_logins
 	tracks when people login
@@ -25,6 +33,11 @@ patient screen
 	date of being ready to be trained
 
 	date + time of training
+
+	Doctor scaffold:
+	rails generate scaffold Doctor user:references first_name, last_name, email, last_contacted_date, date_of_initial_contact, qualified, communication_preferred, date_of_initial_call_to_doctor, date_of_script_being_approved, date_of_shipped_device, date_of_field_rep_assigned, field_rep, training_date, first_reported_inr
+
+	medication:boolean food:boolean beverages:boolean appointments:boolean inrs:boolean wellness:boolean inactivity:boolean exercise:boolean weight:boolean compression:boolean menstruation:boolean --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
 
 patients
 
