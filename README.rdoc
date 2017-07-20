@@ -12,16 +12,6 @@ rails generate scaffold Patient user:references first_name:string middle_initial
 rails generate scaffold Doctor user:references full_name:string email:string phone_number:string fax_number:string address:string state:string zipcode:string hours:text
 ```
 
-* decided to use this type of relations
-
-```
-has_many :received_reputation_changes, class_name: 'DiscussReputationChange', foreign_key: 'receiver_id', inverse_of: :receiver
-has_many :committed_reputation_changes, class_name: 'DiscussReputationChange', foreign_key: 'committer_id', inverse_of: :committer
-
-has_many :received_notifications, class_name: 'Notification', foreign_key: 'receiver_id', inverse_of: :receiver
-has_many :committed_notifications, class_name: 'Notification', foreign_key: 'committer_id', inverse_of: :committ
-```
-
 * added patient_notes to architecture on whiteboard
 
 * updated the user class with roles and the new default role
@@ -39,6 +29,18 @@ my reasoning for this is that a patient could get a new doctor, and in that case
       t.index [:patient_id, :doctor_id]
       t.boolean :active , :default => true, :null => false
     end
+```
+
+* for a moment I was thinking we don't need two different models for a staff member and a field rep, because I could use the role to differentiate the two entities, however a field rep has many patients while a staff member does not
+
+the thing is it's weird to just have a model for this one reason so I'm going to leverage some relationship kung fu like this (but not like this)
+
+```
+has_many :received_reputation_changes, class_name: 'DiscussReputationChange', foreign_key: 'receiver_id', inverse_of: :receiver
+has_many :committed_reputation_changes, class_name: 'DiscussReputationChange', foreign_key: 'committer_id', inverse_of: :committer
+
+has_many :received_notifications, class_name: 'Notification', foreign_key: 'receiver_id', inverse_of: :receiver
+has_many :committed_notifications, class_name: 'Notification', foreign_key: 'committer_id', inverse_of: :committ
 ```
 
 ------------------------------
