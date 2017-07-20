@@ -1,22 +1,45 @@
-finished:
+# finished:
 
-1-19-17
+## 1-19-17
 
-Patient scaffold:
+* scaffolded patient and doctor
+
+```
+# Patient scaffold:
 rails generate scaffold Patient user:references first_name:string middle_initial:string last_name:string email:string qualified:boolean communication_preferred:string insurance_verification:boolean prescription_acquired:boolean phone_number:string address:string state:string zipcode:string
 
-Doctor scaffold:
+# Doctor scaffold:
 rails generate scaffold Doctor user:references full_name:string email:string phone_number:string fax_number:string address:string state:string zipcode:string hours:text
+```
 
+* decided to use this type of relations
 
-decided to use this type of relations
-
+```
 has_many :received_reputation_changes, class_name: 'DiscussReputationChange', foreign_key: 'receiver_id', inverse_of: :receiver
 has_many :committed_reputation_changes, class_name: 'DiscussReputationChange', foreign_key: 'committer_id', inverse_of: :committer
 
 has_many :received_notifications, class_name: 'Notification', foreign_key: 'receiver_id', inverse_of: :receiver
 has_many :committed_notifications, class_name: 'Notification', foreign_key: 'committer_id', inverse_of: :committ
+```
 
+* added patient_notes to architecture on whiteboard
+
+* updated the user class with roles and the new default role
+
+* created joining table between doctors and patients, and added an active column
+
+my reasoning for this is that a patient could get a new doctor, and in that case, we need to maintain the patient's previous doctor and new doctor. Also, we need a way for the previous doctor to not have access to the patient's data anymore
+
+```
+    rails g migration CreateJoinTableDoctorsPatients doctors patients
+
+    # mapping table
+    create_join_table :doctors, :patients do |t|
+      t.index [:doctor_id, :patient_id]
+      t.index [:patient_id, :doctor_id]
+      t.boolean :active , :default => true, :null => false
+    end
+```
 
 ------------------------------
 users need time zones - everyone needs one (I can assume admin is EST)
