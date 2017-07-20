@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   after_initialize :set_default_role, :if => :new_record?
 
-  enum role: [:user, :admin]
+  enum role: [:patient, :doctor, :field_rep, :staff, :admin]
 
   def set_default_role
-    self.role ||= :user
+    self.role ||= :patient
   end
 
 end
