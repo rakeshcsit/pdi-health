@@ -43,6 +43,19 @@ has_many :received_notifications, class_name: 'Notification', foreign_key: 'rece
 has_many :committed_notifications, class_name: 'Notification', foreign_key: 'committer_id', inverse_of: :committ
 ```
 
+* I made it so when you create a doctor, you also select the patients (but only select patients that don't already have an active doctor)
+	* almost done with this 
+
+* brain storm 
+	* I need a way to make doctors not active for certain patients and active for others. It doesn't make sense to do this anywhere but the doctor edit form
+		* this could be a bunch of checkboxes that comes up only on the edit form for a doctor that shows the patients that the doctor has access to 
+			* checks mean active, no check means not active
+			* no need to make another joining table, I can use the joining table that was made and use the active column to determine the value of the checkboxes
+
+* next steps:
+	* finish: set_patients in doctors_controller
+	* finish implementing above brain storm so you can turn off access to patients on a doctor's edit form
+
 ------------------------------
 users need time zones - everyone needs one (I can assume admin is EST)
 
