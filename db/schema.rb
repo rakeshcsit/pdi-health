@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117024411) do
+ActiveRecord::Schema.define(version: 20170720082100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,22 @@ ActiveRecord::Schema.define(version: 20170117024411) do
   add_index "audits", ["instructor_id"], name: "index_audits_on_instructor_id", using: :btree
   add_index "audits", ["lesson_plan_id"], name: "index_audits_on_lesson_plan_id", using: :btree
 
+  create_table "doctors", force: true do |t|
+    t.integer  "user_id"
+    t.string   "full_name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.string   "fax_number"
+    t.string   "address"
+    t.string   "state"
+    t.string   "zipcode"
+    t.text     "hours"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "doctors", ["user_id"], name: "index_doctors_on_user_id", using: :btree
+
   create_table "instructors", force: true do |t|
     t.integer  "university_id"
     t.string   "instructor"
@@ -84,6 +100,26 @@ ActiveRecord::Schema.define(version: 20170117024411) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "patients", force: true do |t|
+    t.integer  "user_id"
+    t.string   "first_name"
+    t.string   "middle_initial"
+    t.string   "last_name"
+    t.string   "email"
+    t.boolean  "qualified"
+    t.string   "communication_preferred"
+    t.boolean  "insurance_verification"
+    t.boolean  "prescription_acquired"
+    t.string   "phone_number"
+    t.string   "address"
+    t.string   "state"
+    t.string   "zipcode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree
 
   create_table "rds", force: true do |t|
     t.string   "rd"

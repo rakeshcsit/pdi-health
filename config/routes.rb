@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :doctors
+
+  resources :patients
+
   resources :student_feedbacks
 
   get 'compare-audits', to: 'compare_audits#compare_choose', :as => :compare_audits

@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  first_name: MyString
+  middle_initial: MyString
+  last_name: MyString
+  email: MyString
+  qualified: false
+  communication_preferred: MyString
+  insurance_verification: false
+  prescription_acquired: false
+  phone_number: MyString
+  address: MyString
+  state: MyString
+  zipcode: MyString
+
+two:
+  user_id: 
+  first_name: MyString
+  middle_initial: MyString
+  last_name: MyString
+  email: MyString
+  qualified: false
+  communication_preferred: MyString
+  insurance_verification: false
+  prescription_acquired: false
+  phone_number: MyString
+  address: MyString
+  state: MyString
+  zipcode: MyString
