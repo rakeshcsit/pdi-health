@@ -1,17 +1,13 @@
 finished:
-	need to revert this to old commit (BUT BACK UP README FIRST!!!!) and re run without commas
 
-	rails generate scaffold Analyst name:string email:string --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+1-19-17
 
-	rails generate scaffold Rd rd:string rd_email:string --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+Patient scaffold:
+rails generate scaffold Patient user:references first_name:string middle_initial:string last_name:string email:string qualified:boolean communication_preferred:string insurance_verification:boolean prescription_acquired:boolean phone_number:string address:string state:string zipcode:string
 
-	rails generate scaffold Blah user:references medication:boolean food:boolean beverages:boolean appointments:boolean inrs:boolean wellness:boolean inactivity:boolean exercise:boolean weight:boolean compression:boolean menstruation:boolean --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+Doctor scaffold:
+rails generate scaffold Doctor user:references full_name:string email:string phone_number:string fax_number:string address:string state:string zipcode:string hours:text
 
-	Patient scaffold:
-	rails generate scaffold Patient user:references first_name:string middle_initial:string last_name:string email:string qualified:boolean communication_preferred:string insurance_verification:boolean prescription_acquired:boolean phone_number:string address:string state:string zipcode:string
-
-	Doctor scaffold:
-	rails generate scaffold Doctor user:references full_name:string email:string phone_number:string fax_number:string address:string state:string zipcode:string hours:text
 ------------------------------
 users need time zones - everyone needs one (I can assume admin is EST)
 
