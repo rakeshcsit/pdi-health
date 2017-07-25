@@ -24,12 +24,19 @@ class PatientsController < ApplicationController
       u = User.new({:email => @patient.email, :password => pass, :password => pass, :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 0, :current_sign_in_at => nil, :last_sign_in_at => nil, :current_sign_in_ip => nil, :last_sign_in_ip => nil, :created_at => nil, :updated_at => nil, :role => 0})
 
       if u.save
+
+        @patient.user_id = u.id
+
         if @patient.save
-          format.html { redirect_to patients_path }
-          format.json { render :show, status: :created, location: @patient }
+          respond_to do |format|
+            format.html { redirect_to patients_path }
+            format.json { render :show, status: :created, location: @patient }
+          end
         else
-          format.html { render :new }
-          format.json { render json: @patient.errors, status: :unprocessable_entity }
+          respond_to do |format|
+            format.html { render :new }
+            format.json { render json: @patient.errors, status: :unprocessable_entity }
+          end
         end
       else
         # ending up here
@@ -45,7 +52,6 @@ class PatientsController < ApplicationController
 
   def destroy
     @patient.destroy
-    respond_with(@patient)
   end
 
   private
