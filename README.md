@@ -44,6 +44,8 @@
 
 	* to do
 		* I feel weird about the brainstorm
+			* I also have to make sure the update works with the checkboxes
+
 			* on update will I erase all the patients assigned to a doctor because I took them out of the multi select?
 				*  I could have different dropdowns for new doctors and for editing doctors 
 					* this way I can maintain the old sql query for the new doctors and create a new one like described below:
@@ -60,6 +62,8 @@
 		* doctor delete should delete 
 			* but it should not delete if the doctor is working with an active patient
 				* it should notify the user trying to do so
+
+		* doctor and patient should be able to login and update their previous credentials
 
 ## 1-24-17
 

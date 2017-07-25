@@ -41,22 +41,40 @@
 
     <br>
     <br>
+    <hr>
+
+    <div class="form-group">
+      <strong><%= f.label :patient_ids, "Assign new patients to this doctor:", class: 'control-label' %></strong>
+
+      <p>Note: You can't assign patients that have been already once assigned to this doctor. Please moderate above.</p>
+
+      <p>Note: You can't assign patients that are already assigned to another doctor, unless you go to that doctor's page and mark those patients inactive.</p>
+
+      <% new_patients = @doctor.edit_patient_options %>
+
+      <% if new_patients.empty? %>
+        <p>No patients available to assign to this doctor</p>
+      <% else %>
+        <br>
+        <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
+        <%= f.select :patient_ids, new_patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => [] }, { :multiple => true, :class => 'select2' } %>
+      <% end %>
+    </div>
+  <% else %>
+
+    <div class="form-group">
+      <strong><%= f.label :patient_ids, "Assign new patients to this doctor:", class: 'control-label' %></strong>
+
+      <p>Note: You can't assign patients that are already assigned to another doctor, unless you go to that doctor's page and mark those patients inactive.</p>
+
+      <br>
+      <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
+      <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => [] }, { :multiple => true, :class => 'select2' } %>
+    </div>
   <% end %>
-
-  <hr>
-
-  <div class="form-group">
-    <strong><%= f.label :patient_ids, "Assign new patients to this doctor:", class: 'control-label' %></strong>
-
-    <p>Note: You can't assign patients that are already assigned to another doctor, unless you go to that doctor's page and mark those patients inactive.</p>
-
-    <br>
-    <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
-    <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => [] }, { :multiple => true, :class => 'select2' } %>
-  </div>
   
   <hr>
-  
+
   <div class="field">
     <%= f.label :full_name %><br>
     <%= f.text_field :full_name %>

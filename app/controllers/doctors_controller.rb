@@ -85,6 +85,12 @@ class DoctorsController < ApplicationController
       @patients = Patient.find_by_sql(patient_sql)
     end
 
+    def set_patients_again
+      patient_sql = "SELECT *
+      FROM patients
+      WHERE id NOT IN (SELECT patient_id FROM manegizations)"
+    end
+
     def set_doctor
       @doctor = Doctor.find(params[:id])
     end
