@@ -2,6 +2,16 @@
 
 <%= render 'layouts/pass' %>
 
+<p><strong>Patients Doctor is Managing</strong></p>
+
+<% unless @doctor.manegizations.empty? %>
+  <ul>
+    <% @doctor.manegizations.map do |maneg| %>
+      <li><%= link_to "(#{maneg.patient.id}) #{maneg.patient.first_name} #{maneg.patient.last_name}", maneg.patient %> - actively being managed? <%= maneg.active ? "yes" : "no" %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <p>
   <strong>Full name:</strong>
   <%= @doctor.full_name %>

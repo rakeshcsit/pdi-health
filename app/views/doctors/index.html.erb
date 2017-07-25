@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Full name</th>
       <th>Email</th>
       <th>Phone number</th>
@@ -20,6 +21,7 @@
   <tbody>
     <% @doctors.each do |doctor| %>
       <tr>
+        <td><%= doctor.id %></td>
         <td><%= doctor.full_name %></td>
         <td><%= doctor.email %></td>
         <td><%= doctor.phone_number %></td>

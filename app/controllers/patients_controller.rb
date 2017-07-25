@@ -39,18 +39,29 @@ class PatientsController < ApplicationController
         end
       else
         # ending up here
-        binding.pry
+        #binding.pry
       end
     ###
   end
 
   def update
-    @patient.update(patient_params)
-    respond_with(@patient)
+    respond_to do |format|
+      if @patient.update(patient_params)
+        format.html { redirect_to @patient, notice: 'Patient was updated.' }
+        format.json { render :show, status: :ok, location: @patient }
+      else
+        format.html { render :edit }
+        format.json { render json: @patient.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
     @patient.destroy
+    respond_to do |format|
+      format.html { redirect_to patients_url, notice: 'Patient was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private

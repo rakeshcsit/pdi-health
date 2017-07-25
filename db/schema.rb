@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170724111600) do
+ActiveRecord::Schema.define(version: 20170725110554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -73,19 +73,9 @@ ActiveRecord::Schema.define(version: 20170724111600) do
     t.text     "hours"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "gen_pass"
   end
 
   add_index "doctors", ["user_id"], name: "index_doctors_on_user_id", using: :btree
-
-  create_table "doctors_patients", id: false, force: true do |t|
-    t.integer "doctor_id",                 null: false
-    t.integer "patient_id",                null: false
-    t.boolean "active",     default: true, null: false
-  end
-
-  add_index "doctors_patients", ["doctor_id", "patient_id"], name: "index_doctors_patients_on_doctor_id_and_patient_id", using: :btree
-  add_index "doctors_patients", ["patient_id", "doctor_id"], name: "index_doctors_patients_on_patient_id_and_doctor_id", using: :btree
 
   create_table "instructors", force: true do |t|
     t.integer  "university_id"
@@ -111,6 +101,14 @@ ActiveRecord::Schema.define(version: 20170724111600) do
     t.datetime "updated_at"
   end
 
+  create_table "manegizations", force: true do |t|
+    t.integer  "patient_id"
+    t.integer  "doctor_id"
+    t.boolean  "active",     default: true, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "patients", force: true do |t|
     t.integer  "user_id"
     t.string   "first_name"
@@ -127,7 +125,6 @@ ActiveRecord::Schema.define(version: 20170724111600) do
     t.string   "zipcode"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "gen_pass"
   end
 
   add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree

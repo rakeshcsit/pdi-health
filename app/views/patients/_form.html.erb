@@ -30,7 +30,7 @@
   
   <div class="field">
     <%= f.label :communication_preferred %><br>
-    <%= f.select :communication_preferred, options_for_select(contact_options), {:include_blank => 'choose an option'}, {:class => "select2"} %>
+    <%= f.select :communication_preferred, options_for_select(contact_options, @patient.communication_preferred), {:include_blank => 'choose an option'}, {:class => "select2"} %>
   </div>
 
   <div class="field">
@@ -55,7 +55,7 @@
   </div>
   <div class="field">
     <%= f.label :state %><br>
-    <%= f.select :state, options_for_select(us_states), {:include_blank => 'choose a state'}, {:class => "select2"} %>
+    <%= f.select :state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @patient.state), {:include_blank => 'choose a state'}, {:class => "select2"} %>
   </div>
   <div class="field">
     <%= f.label :zipcode %><br>

@@ -6,7 +6,61 @@
 
 	* when patient is saved, the user is saved and the patient takes on that user's id
 
+	* patients controller is solid with auto user creation 
+
+	* I added 123456 at the end of each password to avoid the situation where the password is under 6 characters
+
+	* made it so the doctor and patient controllers use html/json responses instead of all html
+
+	* did the auto create user record before creating the doctor
+
+	* took an abnormal amount of time to get the states to populate properly in the edit form :(
+
+	* put password directions on site for staff/field rep. I used a layout for this.
+
+	* patient, doctor edit/update works fine
+
+	* made this model: rails g model manegization patient_id:integer doctor_id:integer active:boolean
 	
+	* got rid of the joining table by doing this:
+
+	drop_table :doctors_patients
+
+	* then updated the active record associations in the doctor, patient and mangeization models
+
+	* then updated the sql query in the doctors_controller because there is no longer a doctors_patients joining table
+
+	* changed up the architecture with has many through instead of has and belongs to many
+		* show patients that doctor is managing or managed in the past
+		* show doctors that patient has or had
+
+	* fixed query in doctors controller because it was letting you assign patients to a doctor that already have an active doctor! I basically deleted one word -> NOT
+
+	* did this:
+		* I need a way to make doctors not active for certain patients and active for others. It doesn't make sense to do this anywhere but the doctor edit form
+			* this could be a bunch of checkboxes that comes up only on the edit form for a doctor that shows the patients that the doctor has access to 
+				* checks mean active, no check means not active
+				* no need to make another joining table, I can use the joining table that was made and use the active column to determine the value of the checkboxes
+
+	* to do
+		* I feel weird about the brainstorm
+			* on update will I erase all the patients assigned to a doctor because I took them out of the multi select?
+				*  I could have different dropdowns for new doctors and for editing doctors 
+					* this way I can maintain the old sql query for the new doctors and create a new one like described below:
+
+			* on edit, an inactive patient will show up in the dropdown. Is this ok? ']
+				* If not, I could get all the patients that the doctor has never dealt with. That should fix it
+
+		* time zone for doctor, patient
+
+		* patient delete should redirect to patients and delete the user account	
+			* but it should not delete if the patient is working with a doctor
+				* it should notify the user trying to do so
+
+		* doctor delete should delete 
+			* but it should not delete if the doctor is working with an active patient
+				* it should notify the user trying to do so
+
 ## 1-24-17
 
 	* I think I finished set_patients in doctors_controller
@@ -24,13 +78,6 @@
 	* added validation to the doctor model
 
 	* auto create user when doctor or patient is created
-
-	* to do
-		* put password directions on site for staff/field rep
-		* need to do the brain storm part below
-		* need to auto create the user record before creating the doctor
-		* time zone for doctor, patient
-		* make it so the controllers use html/json responses instead of all html
 
 ## 1-19-17
 
