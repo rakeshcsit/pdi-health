@@ -42,10 +42,25 @@
 				* checks mean active, no check means not active
 				* no need to make another joining table, I can use the joining table that was made and use the active column to determine the value of the checkboxes
 
-	* to do
+	* fixed this issue:
 		* the drop down is there and it's populating but it's definitely not working.
 
 		I made a new doctor and the doctor shouldn't be able to assign a patient that is active for another doctor - but we can do it.
+
+	* to do
+		* I'm allowed to update a checkbox of an inactive patient that is active somewhere else
+			* I should not be able to do that!
+
+			http://localhost:3000/doctors/2/edit
+				Clark is checked
+
+			http://localhost:3000/doctors/1/edit
+				Clark is not checked, but I should not be able to do this until Clark is unchecked on http://localhost:3000/doctors/2/edit
+
+				I should link the user to http://localhost:3000/doctors/2/edit and tell them uncheck it there first
+				
+		* need to make sure checkboxes submit properly 
+		* need to make sure things don't get erased by an update
 
 		* I feel weird about the brainstorm
 			* I also have to make sure the update works with the checkboxes

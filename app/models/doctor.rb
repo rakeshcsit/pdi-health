@@ -10,7 +10,10 @@ class Doctor < ActiveRecord::Base
 	def edit_patient_options
 		sql = "SELECT * 
 		FROM patients 
-		WHERE id NOT IN (SELECT patient_id FROM manegizations WHERE doctor_id = #{self.id})"
+		WHERE 
+		id NOT IN (SELECT patient_id FROM manegizations WHERE doctor_id = #{self.id})
+		AND 
+		id NOT IN (SELECT patient_id FROM manegizations WHERE active = true)"
 
 		Patient.find_by_sql(sql)   
 	end
