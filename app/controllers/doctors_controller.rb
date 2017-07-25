@@ -1,5 +1,6 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
+  before_action :set_patients, only: [:new, :edit, :create, :update, :destroy]
 
   respond_to :html
 
@@ -22,8 +23,16 @@ class DoctorsController < ApplicationController
 
   def create
     @doctor = Doctor.new(doctor_params)
-    @doctor.save
-    respond_with(@doctor)
+
+    pass = @doctor.email.split("@")[0].downcase
+
+    u = User.new({:email => @doctor.email, :password => pass, :password => pass, :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 0, :current_sign_in_at => nil, :last_sign_in_at => nil, :current_sign_in_ip => nil, :last_sign_in_ip => nil, :created_at => nil, :updated_at => nil, :role => 0})
+
+    if u.save
+      if @doctor.save
+        respond_with(@doctor)
+      end
+    end
   end
 
   def update
@@ -38,18 +47,27 @@ class DoctorsController < ApplicationController
 
   private
     def set_patients
-      # get all the patients that don't have doctors assigned to them
-      # so find all patients that are not in the doctors_patients table and find all the patients in the doctors_patients table that are set to false
-      @patients = Patient
-      .joins('LEFT JOIN doctors_patients dp ON dp.patient_id = patients.id')
-      .where(dp.active != true)
+      # this is an example of a patient that I don't want to sign to a doctor
+        #   doctor_id patient_id active
 
-      # Topic.where( 'forum_id not in (?)', (@forums.empty? ? '' : @forums.map(&:id)) ).all
+        #   1          1          false
+        #   2          1          false
+        #   3          1          true
 
-      # Article.where.not(id: ['Rails 3', 'Rails 5'])
+      # need to find all patients available for an active doctor
+        # find all the patients that have never been assigned a doctor
+          # UNION
+        # find all the patients that have inactive doctors and at the same time no active doctors
 
-      # @discuss_topics = DiscussTopic.joins("LEFT JOIN discuss_categories dc 
-      # ON dc.id = discuss_topics.discuss_category_id").where("dc.bugs = false AND dc.feature_requests = false").order('id desc').select("discuss_topics.*")
+        patient_sql = "SELECT *
+        FROM patients
+        WHERE id NOT IN (SELECT patient_id FROM doctors_patients)
+        UNION
+        (SELECT * 
+        FROM patients
+        WHERE id NOT IN (SELECT patient_id FROM doctors_patients WHERE active = false AND
+        patient_id NOT IN (SELECT patient_id FROM doctors_patients WHERE active = true)))"
+      @patients = Patient.find_by_sql(patient_sql)
     end
 
     def set_doctor

@@ -1,8 +1,6 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
-
   def index
     @patients = Patient.all
     respond_with(@patients)
@@ -22,8 +20,25 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(patient_params)
-    @patient.save
-    respond_with(@patient)
+    
+    ###
+      pass = @patient.email.split("@")[0].downcase
+
+      u = User.new({:email => @patient.email, :password => pass, :password => pass, :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 0, :current_sign_in_at => nil, :last_sign_in_at => nil, :current_sign_in_ip => nil, :last_sign_in_ip => nil, :created_at => nil, :updated_at => nil, :role => 0})
+
+      if u.save
+        if @patient.save
+          format.html { redirect_to patients_path }
+          format.json { render :show, status: :created, location: @patient }
+        else
+          format.html { render :new }
+          format.json { render json: @patient.errors, status: :unprocessable_entity }
+        end
+      else
+        # ending up here
+        binding.pry
+      end
+    ###
   end
 
   def update

@@ -14,6 +14,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# so I can use unions
+gem 'active_record_union', '~> 1.1'
+
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 # Use jquery as the JavaScript library

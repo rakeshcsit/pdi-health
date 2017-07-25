@@ -1,60 +1,89 @@
 # finished:
 
+## 1-25-17
+
+
+
+## 1-24-17
+
+	* I think I finished set_patients in doctors_controller
+
+	I installed a union gem but didn't use it. I did some sql, returned ids and then used the ids to do an active record subquery
+
+	to get the union to work I had to make sure the columns were both the same between the two queries
+
+	* got select2 to work on two dropdowns in doctor form
+
+	* used a state helper for state
+
+	* got rid of the user field 
+
+	* added validation to the doctor model
+
+	* auto create user when doctor or patient is created
+
+	* to do
+		* put password directions on site for staff/field rep
+		* need to do the brain storm part below
+		* need to auto create the user record before creating the doctor
+		* time zone for doctor, patient
+		* make it so the controllers use html/json responses instead of all html
+
 ## 1-19-17
 
-* scaffolded patient and doctor
+	* scaffolded patient and doctor
 
-```
-# Patient scaffold:
-rails generate scaffold Patient user:references first_name:string middle_initial:string last_name:string email:string qualified:boolean communication_preferred:string insurance_verification:boolean prescription_acquired:boolean phone_number:string address:string state:string zipcode:string
+	```
+	# Patient scaffold:
+	rails generate scaffold Patient user:references first_name:string middle_initial:string last_name:string email:string qualified:boolean communication_preferred:string insurance_verification:boolean prescription_acquired:boolean phone_number:string address:string state:string zipcode:string
 
-# Doctor scaffold:
-rails generate scaffold Doctor user:references full_name:string email:string phone_number:string fax_number:string address:string state:string zipcode:string hours:text
-```
+	# Doctor scaffold:
+	rails generate scaffold Doctor user:references full_name:string email:string phone_number:string fax_number:string address:string state:string zipcode:string hours:text
+	```
 
-* added patient_notes to architecture on whiteboard
+	* added patient_notes to architecture on whiteboard
 
-* updated the user class with roles and the new default role
+	* updated the user class with roles and the new default role
 
-* created joining table between doctors and patients, and added an active column
+	* created joining table between doctors and patients, and added an active column
 
-my reasoning for this is that a patient could get a new doctor, and in that case, we need to maintain the patient's previous doctor and new doctor. Also, we need a way for the previous doctor to not have access to the patient's data anymore
+	my reasoning for this is that a patient could get a new doctor, and in that case, we need to maintain the patient's previous doctor and new doctor. Also, we need a way for the previous doctor to not have access to the patient's data anymore
 
-```
-    rails g migration CreateJoinTableDoctorsPatients doctors patients
+	```
+	    rails g migration CreateJoinTableDoctorsPatients doctors patients
 
-    # mapping table
-    create_join_table :doctors, :patients do |t|
-      t.index [:doctor_id, :patient_id]
-      t.index [:patient_id, :doctor_id]
-      t.boolean :active , :default => true, :null => false
-    end
-```
+	    # mapping table
+	    create_join_table :doctors, :patients do |t|
+	      t.index [:doctor_id, :patient_id]
+	      t.index [:patient_id, :doctor_id]
+	      t.boolean :active , :default => true, :null => false
+	    end
+	```
 
-* for a moment I was thinking we don't need two different models for a staff member and a field rep, because I could use the role to differentiate the two entities, however a field rep has many patients while a staff member does not
+	* for a moment I was thinking we don't need two different models for a staff member and a field rep, because I could use the role to differentiate the two entities, however a field rep has many patients while a staff member does not
 
-the thing is it's weird to just have a model for this one reason so I'm going to leverage some relationship kung fu like this (but not like this)
+	the thing is it's weird to just have a model for this one reason so I'm going to leverage some relationship kung fu like this (but not like this)
 
-```
-has_many :received_reputation_changes, class_name: 'DiscussReputationChange', foreign_key: 'receiver_id', inverse_of: :receiver
-has_many :committed_reputation_changes, class_name: 'DiscussReputationChange', foreign_key: 'committer_id', inverse_of: :committer
+	```
+	has_many :received_reputation_changes, class_name: 'DiscussReputationChange', foreign_key: 'receiver_id', inverse_of: :receiver
+	has_many :committed_reputation_changes, class_name: 'DiscussReputationChange', foreign_key: 'committer_id', inverse_of: :committer
 
-has_many :received_notifications, class_name: 'Notification', foreign_key: 'receiver_id', inverse_of: :receiver
-has_many :committed_notifications, class_name: 'Notification', foreign_key: 'committer_id', inverse_of: :committ
-```
+	has_many :received_notifications, class_name: 'Notification', foreign_key: 'receiver_id', inverse_of: :receiver
+	has_many :committed_notifications, class_name: 'Notification', foreign_key: 'committer_id', inverse_of: :committ
+	```
 
-* I made it so when you create a doctor, you also select the patients (but only select patients that don't already have an active doctor)
-	* almost done with this 
+	* I made it so when you create a doctor, you also select the patients (but only select patients that don't already have an active doctor)
+		* almost done with this 
 
-* brain storm 
-	* I need a way to make doctors not active for certain patients and active for others. It doesn't make sense to do this anywhere but the doctor edit form
-		* this could be a bunch of checkboxes that comes up only on the edit form for a doctor that shows the patients that the doctor has access to 
-			* checks mean active, no check means not active
-			* no need to make another joining table, I can use the joining table that was made and use the active column to determine the value of the checkboxes
+	* brain storm 
+		* I need a way to make doctors not active for certain patients and active for others. It doesn't make sense to do this anywhere but the doctor edit form
+			* this could be a bunch of checkboxes that comes up only on the edit form for a doctor that shows the patients that the doctor has access to 
+				* checks mean active, no check means not active
+				* no need to make another joining table, I can use the joining table that was made and use the active column to determine the value of the checkboxes
 
-* next steps:
-	* finish: set_patients in doctors_controller
-	* finish implementing above brain storm so you can turn off access to patients on a doctor's edit form
+	* next steps:
+		* finish: set_patients in doctors_controller
+		* finish implementing above brain storm so you can turn off access to patients on a doctor's edit form
 
 ------------------------------
 users need time zones - everyone needs one (I can assume admin is EST)

@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
   </div>
@@ -31,13 +27,15 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
+  
+  <div class="field">
+    <%= f.label :communication_preferred %><br>
+    <%= select_tag :communication_preferred, options_for_select(contact_options), {:include_blank => 'choose an option', :class => "select2"} %>
+  </div>
+
   <div class="field">
     <%= f.label :qualified %><br>
     <%= f.check_box :qualified %>
-  </div>
-  <div class="field">
-    <%= f.label :communication_preferred %><br>
-    <%= f.text_field :communication_preferred %>
   </div>
   <div class="field">
     <%= f.label :insurance_verification %><br>
@@ -53,11 +51,11 @@
   </div>
   <div class="field">
     <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <%= f.text_area :address %>
   </div>
   <div class="field">
     <%= f.label :state %><br>
-    <%= f.text_field :state %>
+    <%= select_tag :state, options_for_select(us_states), {:include_blank => 'choose a state', :class => "select2"} %>
   </div>
   <div class="field">
     <%= f.label :zipcode %><br>
