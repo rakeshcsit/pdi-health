@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
 
   enum role: [:patient, :doctor, :field_rep, :staff, :admin]
 
+  has_one :patient, dependent: :destroy
+  has_one :doctor, dependent: :destroy
+
   def set_default_role
     self.role ||= :patient
   end
