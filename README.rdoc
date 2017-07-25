@@ -2,8 +2,11 @@
 
 ## 1-25-17
 
+	* fixed form elements in doctor and patient 
 
+	* when patient is saved, the user is saved and the patient takes on that user's id
 
+	
 ## 1-24-17
 
 	* I think I finished set_patients in doctors_controller
