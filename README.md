@@ -43,6 +43,10 @@
 				* no need to make another joining table, I can use the joining table that was made and use the active column to determine the value of the checkboxes
 
 	* to do
+		* the drop down is there and it's populating but it's definitely not working.
+
+		I made a new doctor and the doctor shouldn't be able to assign a patient that is active for another doctor - but we can do it.
+
 		* I feel weird about the brainstorm
 			* I also have to make sure the update works with the checkboxes
 
