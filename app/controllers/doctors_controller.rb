@@ -6,7 +6,6 @@ class DoctorsController < ApplicationController
 
   def index
     @doctors = Doctor.all
-    respond_with(@doctors)
   end
 
   def show

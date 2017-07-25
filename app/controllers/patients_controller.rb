@@ -3,16 +3,13 @@ class PatientsController < ApplicationController
 
   def index
     @patients = Patient.all
-    respond_with(@patients)
   end
 
   def show
-    respond_with(@patient)
   end
 
   def new
     @patient = Patient.new
-    respond_with(@patient)
   end
 
   def edit
