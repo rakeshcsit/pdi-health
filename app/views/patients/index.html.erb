@@ -1,9 +1,10 @@
 <h1>Listing patients</h1>
 
+<%= render 'layouts/pass' %>
+
 <table>
   <thead>
     <tr>
-      <th>User</th>
       <th>First name</th>
       <th>Middle initial</th>
       <th>Last name</th>
@@ -23,7 +24,6 @@
   <tbody>
     <% @patients.each do |patient| %>
       <tr>
-        <td><%= patient.user %></td>
         <td><%= patient.first_name %></td>
         <td><%= patient.middle_initial %></td>
         <td><%= patient.last_name %></td>
