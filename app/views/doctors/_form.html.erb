@@ -50,6 +50,8 @@
 
       <p>Note: You can't assign patients that are already assigned to another doctor, unless you go to that doctor's page and mark those patients inactive.</p>
 
+      <p>Note: If you don't know which doctor a patient is assigned to, you can go to the <% link_to "patient's page", patients_path %> and it will show you there.</p>
+
       <% new_patients = @doctor.edit_patient_options %>
 
       <% if new_patients.empty? %>
