@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725110554) do
+ActiveRecord::Schema.define(version: 20170803125051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,7 +104,6 @@ ActiveRecord::Schema.define(version: 20170725110554) do
   create_table "manegizations", force: true do |t|
     t.integer  "patient_id"
     t.integer  "doctor_id"
-    t.boolean  "active",     default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -135,6 +134,27 @@ ActiveRecord::Schema.define(version: 20170725110554) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "reps", force: true do |t|
+    t.integer  "user_id"
+    t.string   "full_name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reps", ["user_id"], name: "index_reps_on_user_id", using: :btree
+
+  create_table "staffs", force: true do |t|
+    t.integer  "user_id"
+    t.string   "full_name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "staffs", ["user_id"], name: "index_staffs_on_user_id", using: :btree
 
   create_table "student_feedbacks", force: true do |t|
     t.string   "class_code"

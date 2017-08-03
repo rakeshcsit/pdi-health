@@ -21,7 +21,7 @@ class DoctorsController < ApplicationController
 
     pass = @doctor.email.split("@")[0].downcase + "123456"
 
-    u = User.new({:email => @doctor.email, :password => pass, :password => pass, :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 0, :current_sign_in_at => nil, :last_sign_in_at => nil, :current_sign_in_ip => nil, :last_sign_in_ip => nil, :created_at => nil, :updated_at => nil, :role => 0})
+    u = User.new({:email => @doctor.email, :password => pass, :password => pass, :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 0, :current_sign_in_at => nil, :last_sign_in_at => nil, :current_sign_in_ip => nil, :last_sign_in_ip => nil, :created_at => nil, :updated_at => nil, :role => 1})
 
     if u.save
       @doctor.user_id = u.id
@@ -62,33 +62,7 @@ class DoctorsController < ApplicationController
 
   private
     def set_patients
-      # this is an example of a patient that I don't want to sign to a doctor
-        #   doctor_id patient_id active
-
-        #   1          1          false
-        #   2          1          false
-        #   3          1          true
-
-      # need to find all patients available for an active doctor
-        # find all the patients that have never been assigned a doctor
-          # UNION
-        # find all the patients that have inactive doctors and at the same time no active doctors
-
-        patient_sql = "SELECT *
-        FROM patients
-        WHERE id NOT IN (SELECT patient_id FROM manegizations)
-        UNION
-        (SELECT * 
-        FROM patients
-        WHERE id IN (SELECT patient_id FROM manegizations WHERE active = false AND
-        patient_id NOT IN (SELECT patient_id FROM manegizations WHERE active = true)))"
-      @patients = Patient.find_by_sql(patient_sql)
-    end
-
-    def set_patients_again
-      patient_sql = "SELECT *
-      FROM patients
-      WHERE id NOT IN (SELECT patient_id FROM manegizations)"
+      @patients = Patient.all
     end
 
     def set_doctor

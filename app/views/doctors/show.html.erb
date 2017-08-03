@@ -7,7 +7,7 @@
 <% unless @doctor.manegizations.empty? %>
   <ul>
     <% @doctor.manegizations.map do |maneg| %>
-      <li><%= link_to "(#{maneg.patient.id}) #{maneg.patient.first_name} #{maneg.patient.last_name}", maneg.patient %> - actively being managed? <%= maneg.active ? "yes" : "no" %></li>
+      <li><%= link_to "(#{maneg.patient.id}) #{maneg.patient.first_name} #{maneg.patient.last_name}", maneg.patient %></li>
     <% end %>
   </ul>
 <% end %>

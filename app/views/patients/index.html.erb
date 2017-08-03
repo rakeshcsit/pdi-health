@@ -45,7 +45,7 @@
           <% else %>
             <ul>
               <% patient.manegizations.map do |maneg| %>
-                <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %> - actively with this doctor? <%= maneg.active ? "yes" : "no" %></li>
+                <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %></li>
               <% end %>
             </ul>
           <% end %>

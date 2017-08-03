@@ -1,6 +1,22 @@
 # finished:
 
-## 1-25-17
+## 8-3-17
+
+rails generate scaffold Staff user:references full_name:string email:string
+
+rails generate scaffold Rep user:references full_name:string email:string phone_number:string
+
+modified controller structure for reps and staffs
+
+put in active record assocations to users
+
+when create a rep, staff member, it creates the users with it
+
+updated navigation
+
+remodeled has many through association to not have the active boolean (too complex)
+
+## 7-25-17
 
 	* fixed form elements in doctor and patient 
 
@@ -84,7 +100,7 @@
 
 		* doctor and patient should be able to login and update their previous credentials
 
-## 1-24-17
+## 7-24-17
 
 	* I think I finished set_patients in doctors_controller
 
@@ -102,7 +118,7 @@
 
 	* auto create user when doctor or patient is created
 
-## 1-19-17
+## 7-19-17
 
 	* scaffolded patient and doctor
 

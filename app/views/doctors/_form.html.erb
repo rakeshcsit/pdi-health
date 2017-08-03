@@ -13,67 +13,14 @@
 
   <hr>
 
-  <% if !@doctor.new_record? %>
-    <br>
-    <br>
-    <p><strong>Patients this Doctor is Managing or has Managed:</strong></p>
-    
-    <table>
-      <thead>
-        <th>Patient</th>
-        <th>Currently Managing</th>
-      </thead>
-      <tbody>
-        <% @doctor.manegizations.each do |maneg| %>
-          <% patient = maneg.patient %>
-          <tr>
-            <td>
-              <label for="doctor_patient_ids_<%= patient.id %>"><%= "(#{patient.id}) #{patient.first_name} #{patient.last_name}" %></label> - <%= link_to "go to patient's page", patient %>
-            </td> 
-            
-            <td>
-            <input <%= maneg.active ? "checked" : "" %> id="doctor_patient_ids_<%= patient.id %>" name="doctor[patient_ids][]" type="checkbox" value="<%= patient.id %>">
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
+  <div class="form-group">
+    <strong><%= f.label :patient_ids, "Assign Patients to this Doctor:", class: 'control-label' %></strong>
 
-    <br>
-    <br>
-    <hr>
+    <br><br>
 
-    <div class="form-group">
-      <strong><%= f.label :patient_ids, "Assign new patients to this doctor:", class: 'control-label' %></strong>
-
-      <p>Note: You can't assign patients that have been already once assigned to this doctor. Please moderate above.</p>
-
-      <p>Note: You can't assign patients that are already assigned to another doctor, unless you go to that doctor's page and mark those patients inactive.</p>
-
-      <p>Note: If you don't know which doctor a patient is assigned to, you can go to the <% link_to "patient's page", patients_path %> and it will show you there.</p>
-
-      <% new_patients = @doctor.edit_patient_options %>
-
-      <% if new_patients.empty? %>
-        <p>No patients available to assign to this doctor</p>
-      <% else %>
-        <br>
-        <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
-        <%= f.select :patient_ids, new_patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => [] }, { :multiple => true, :class => 'select2' } %>
-      <% end %>
-    </div>
-  <% else %>
-
-    <div class="form-group">
-      <strong><%= f.label :patient_ids, "Assign new patients to this doctor:", class: 'control-label' %></strong>
-
-      <p>Note: You can't assign patients that are already assigned to another doctor, unless you go to that doctor's page and mark those patients inactive.</p>
-
-      <br>
-      <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
-      <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => [] }, { :multiple => true, :class => 'select2' } %>
-    </div>
-  <% end %>
+    <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
+    <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => @doctor.manegizations.pluck(:patient_id) }, { :multiple => true, :class => 'select2' } %>
+  </div>
   
   <hr>
 
