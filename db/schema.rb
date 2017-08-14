@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170803125051) do
+ActiveRecord::Schema.define(version: 20170814090109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,17 @@ ActiveRecord::Schema.define(version: 20170803125051) do
   end
 
   add_index "doctors", ["user_id"], name: "index_doctors_on_user_id", using: :btree
+
+  create_table "inrs", force: true do |t|
+    t.integer  "user_id"
+    t.decimal  "value"
+    t.text     "note"
+    t.date     "wdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "inrs", ["user_id"], name: "index_inrs_on_user_id", using: :btree
 
   create_table "instructors", force: true do |t|
     t.integer  "university_id"

@@ -12,11 +12,18 @@
 <ul id="nav">
   <li id="logo">Self INR</li>
   <% if user_signed_in? %>
-    <li><%= link_to "Patients", patients_path %></li>
-    <li><%= link_to "Doctors", doctors_path %></li>
-    <li><%= link_to "Staff", staffs_path %></li>
-    <li><%= link_to "Field Reps", reps_path %></li>
-    <li><%= link_to "Users", users_path %></li>
+    <% if current_user.role == "patient" %>
+      sdfkljsdlkf
+    <% elsif current_user.role == "doctor" %>   
+      sdkfjklsdflkds
+    <% else %>  
+      <li><%= link_to "Patients", patients_path %></li>
+      <li><%= link_to "Doctors", doctors_path %></li>
+      <li><%= link_to "Staff", staffs_path %></li>
+      <li><%= link_to "Field Reps", reps_path %></li>
+      <li><%= link_to "Users", users_path %></li>
+    <% end %>
+
     <li><%= link_to "Sign Out", destroy_user_session_path, :method=>'delete' %></li>
   <% else %>
     <li><%= link_to "Sign In", new_user_session_path %></li>
