@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :inrs
+
   resources :reps
 
   resources :staffs

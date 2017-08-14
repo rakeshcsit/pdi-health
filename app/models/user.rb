@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_one :doctor, dependent: :destroy
   has_one :rep, dependent: :destroy
   has_one :staff, dependent: :destroy
+
+  has_many :inrs, dependent: :destroy
   
   def set_default_role
     self.role ||= :patient

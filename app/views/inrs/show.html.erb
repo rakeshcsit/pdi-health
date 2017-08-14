@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>References:</strong>
+  <%= @inr.references %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @inr.value %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @inr.note %>
+</p>
+
+<p>
+  <strong>Wdate:</strong>
+  <%= @inr.wdate %>
+</p>
+
+<%= link_to 'Edit', edit_inr_path(@inr) %> |
+<%= link_to 'Back', inrs_path %>

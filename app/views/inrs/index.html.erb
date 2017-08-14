@@ -1,0 +1,31 @@
+<h1>Listing inrs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>References</th>
+      <th>Value</th>
+      <th>Note</th>
+      <th>Wdate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @inrs.each do |inr| %>
+      <tr>
+        <td><%= inr.references %></td>
+        <td><%= inr.value %></td>
+        <td><%= inr.note %></td>
+        <td><%= inr.wdate %></td>
+        <td><%= link_to 'Show', inr %></td>
+        <td><%= link_to 'Edit', edit_inr_path(inr) %></td>
+        <td><%= link_to 'Destroy', inr, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Inr', new_inr_path %>
