@@ -1,14 +1,13 @@
 <h1>Listing patients</h1>
 
+<%= link_to 'Add New Patient', new_patient_path %>
+
 <%= render 'layouts/pass' %>
 
 <table class="table">
   <thead>
     <tr>
-      <th>ID</th>
-      <th>First name</th>
-      <th>Middle initial</th>
-      <th>Last name</th>
+      <th>ID + Name</th>
       <th>Email</th>
       <th>Qualified</th>
       <th>Communication preferred</th>
@@ -19,17 +18,14 @@
       <th>State</th>
       <th>Zipcode</th>
       <th>Doctors</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @patients.each do |patient| %>
       <tr>
-        <td><%= patient.id %></td>
-        <td><%= patient.first_name %></td>
-        <td><%= patient.middle_initial %></td>
-        <td><%= patient.last_name %></td>
+        <td><%= link_to "#{patient.id} #{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %></td>
         <td><%= patient.email %></td>
         <td><%= patient.qualified %></td>
         <td><%= patient.communication_preferred %></td>
@@ -50,14 +46,9 @@
             </ul>
           <% end %>
         </td>
-        <td><%= link_to 'Show', patient %></td>
-        <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
-        <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_patient_path(patient) %> <%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Patient', new_patient_path %>
