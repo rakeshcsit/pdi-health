@@ -1,4 +1,20 @@
+# to do
+
+http://localhost:3000/inrs
+
+dates appear on right side not left side
+
 # finished:
+
+## 8-14-17
+
+added inrs feature in
+
+added custom validation for inr input 
+
+added in data tables
+
+customized navigation based upon patient, doctor, etc
 
 ## 8-3-17
 
