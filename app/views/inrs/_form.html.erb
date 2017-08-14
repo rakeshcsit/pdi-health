@@ -12,19 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :references %><br>
-    <%= f.text_field :references %>
-  </div>
-  <div class="field">
-    <%= f.label :value %><br>
+    <%= f.label :value, "INR Value" %><br>
     <%= f.text_field :value %>
   </div>
   <div class="field">
-    <%= f.label :note %><br>
+    <%= f.label :note, "optional note" %><br>
     <%= f.text_area :note %>
   </div>
   <div class="field">
-    <%= f.label :wdate %><br>
+    <%= f.label :wdate, "Date of INR Taken" %><br>
     <%= f.date_select :wdate %>
   </div>
   <div class="actions">

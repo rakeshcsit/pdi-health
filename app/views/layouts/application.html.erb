@@ -13,7 +13,7 @@
   <li id="logo">Self INR</li>
   <% if user_signed_in? %>
     <% if current_user.role == "patient" %>
-      sdfkljsdlkf
+      <li><%= link_to "Log INR", inrs_path %></li>
     <% elsif current_user.role == "doctor" %>   
       sdkfjklsdflkds
     <% else %>  
