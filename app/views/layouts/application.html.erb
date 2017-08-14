@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
   <link rel="stylesheet" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" media="screen" title="no title" charset="utf-8">
   <%= csrf_meta_tags %>
 </head>
@@ -13,7 +14,7 @@
   <li id="logo">Self INR</li>
   <% if user_signed_in? %>
     <% if current_user.role == "patient" %>
-      <li><%= link_to "Log INR", inrs_path %></li>
+      <li><%= link_to "Report Your INR", inrs_path %></li>
     <% elsif current_user.role == "doctor" %>   
       sdkfjklsdflkds
     <% else %>  

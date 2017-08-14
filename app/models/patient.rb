@@ -5,4 +5,9 @@ class Patient < ActiveRecord::Base
 	has_many :manegizations
 
 	validates :first_name, :last_name, :email, :communication_preferred, :phone_number, :address, :state, :zipcode, presence: true
+
+	# return number of inrs for this month
+	def inrs_this_month
+		true
+	end
 end

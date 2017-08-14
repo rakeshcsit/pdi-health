@@ -4,6 +4,14 @@ http://localhost:3000/inrs
 
 dates appear on right side not left side
 
+request test strips
+
+use letter opener
+
+time zones and make sure everything is per user
+
+roles
+
 # finished:
 
 ## 8-14-17

@@ -34,6 +34,9 @@ gem 'spring',        group: :development
 
 gem "select2-rails"
 
+gem 'groupdate', '~> 3.2'
+gem 'chartkick', '~> 1.4', '>= 1.4.1'
+
 group :development do
   # better errors
   gem 'better_errors'
