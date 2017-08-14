@@ -2,7 +2,7 @@
 
 <%= render 'layouts/pass' %>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>ID</th>
@@ -22,8 +22,8 @@
   <tbody>
     <% @doctors.each do |doctor| %>
       <tr>
-        <td><%= doctor.id %></td>
-        <td><%= doctor.full_name %></td>
+        <td><%= link_to doctor.id, doctor %></td>
+        <td><%= link_to doctor.full_name, doctor %></td>
         <td><%= doctor.email %></td>
         <td><%= doctor.phone_number %></td>
         <td><%= doctor.fax_number %></td>
@@ -42,9 +42,10 @@
             </ul>
           <% end %>
         </td>
-        <td><%= link_to 'Show', doctor %></td>
-        <td><%= link_to 'Edit', edit_doctor_path(doctor) %></td>
-        <td><%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Edit', edit_doctor_path(doctor) %>
+          <%= link_to 'Destroy', doctor, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
