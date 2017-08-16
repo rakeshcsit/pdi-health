@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get "/doctor-dashboard", to: "static#doctor_dashboard"
+
   resources :inrs
 
   resources :reps

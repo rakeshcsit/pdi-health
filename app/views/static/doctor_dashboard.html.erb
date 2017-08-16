@@ -1,0 +1,28 @@
+<h1>Your Patients</h1>
+
+<% @patients.each do |patient| %>
+	<h2>Your Patient: <%= "#{patient.first_name} #{patient.middle_initial} #{patient.last_name}" %></h2>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th><%= patient.first_name %>'s INR</th>
+				<th>Date of INR</th>
+				<th>Note</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% patient.user.inrs.each do |inr| %>
+				<tr>
+					<td><%= inr.value %></td>
+					<td><%= inr.wdate %></td>
+					<td><%= inr.note %></td>
+				</tr>
+			<% end %>	
+		</tbody>
+		
+	</table>
+
+	<hr>
+	<br>
+<% end %>
