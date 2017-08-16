@@ -21,7 +21,7 @@ class RepsController < ApplicationController
     ###
       pass = @rep.email.split("@")[0].downcase + "123456"
 
-      u = User.new({:email => @rep.email, :password => pass, :password => pass, :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 0, :current_sign_in_at => nil, :last_sign_in_at => nil, :current_sign_in_ip => nil, :last_sign_in_ip => nil, :created_at => nil, :updated_at => nil, :role => 2})
+      u = User.new({:email => @rep.email, :password => pass, :password => pass, :reset_password_token => nil, :reset_password_sent_at => nil, :remember_created_at => nil, :sign_in_count => 0, :current_sign_in_at => nil, :last_sign_in_at => nil, :current_sign_in_ip => nil, :last_sign_in_ip => nil, :created_at => nil, :updated_at => nil, :role => 2, :time_zone => params["user"]["time_zone"]})
 
       if u.save
         @rep.user_id = u.id
