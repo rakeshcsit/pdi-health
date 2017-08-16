@@ -27,6 +27,11 @@
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
+
+  <div class="field">
+    <%= f.label :time_zone %></span><br>
+    <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true }, {:class => 'select2'}) %>
+  </div>
   
   <div class="field">
     <%= f.label :communication_preferred %><br>
@@ -37,6 +42,7 @@
     <%= f.label :qualified %><br>
     <%= f.check_box :qualified %>
   </div>
+
   <div class="field">
     <%= f.label :insurance_verification %><br>
     <%= f.check_box :insurance_verification %>

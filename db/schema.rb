@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20170816191215) do
     t.string   "zipcode"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "time_zone"
   end
 
   add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree

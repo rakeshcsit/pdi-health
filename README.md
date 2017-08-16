@@ -1,6 +1,7 @@
 # to do
 
 http://localhost:3000/inrs
+/doctor-dashboard
 
 dates appear on right side not left side
 
@@ -13,6 +14,10 @@ time zones and make sure everything is per user
 roles
 
 # finished:
+
+## 8-16-17
+
+
 
 ## 8-14-17
 
