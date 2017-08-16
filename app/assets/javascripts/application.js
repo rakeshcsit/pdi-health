@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require select2
 //= require chartkick
+//= require time_zones
 //= require_tree .

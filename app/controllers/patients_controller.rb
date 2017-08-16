@@ -17,7 +17,7 @@ class PatientsController < ApplicationController
 
   def create
     @patient = Patient.new(patient_params)
-    
+
     ###
       pass = @patient.email.split("@")[0].downcase + "123456"
 
