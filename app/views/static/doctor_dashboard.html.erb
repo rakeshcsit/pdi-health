@@ -1,28 +1,34 @@
-<h1>Your Patients</h1>
+<h1 class="center">Your Patients' Latest INRs</h1>
 
-<% @patients.each do |patient| %>
-	<h2>Your Patient: <%= "#{patient.first_name} #{patient.middle_initial} #{patient.last_name}" %></h2>
+<p class="center">
+	Click on the patient to see a full report of all of their reports.
+</p>
 
-	<table class="table">
-		<thead>
+<table class="table">
+	<thead>
+		<tr>
+			<th>Patient</th>
+			<th>INR Reported</th>
+			<th>Date</th>
+			<th>Note</th>
+			<th>Full Report</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @patients.each do |patient| %>
+			<% last_inr = patient.user.inrs.last %>
+			
 			<tr>
-				<th><%= patient.first_name %>'s INR</th>
-				<th>Date of INR</th>
-				<th>Note</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% patient.user.inrs.each do |inr| %>
-				<tr>
-					<td><%= inr.value %></td>
-					<td><%= inr.wdate %></td>
-					<td><%= inr.note %></td>
-				</tr>
-			<% end %>	
-		</tbody>
-		
-	</table>
+				<td><%= link_to "#{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %></td>
+				<td><%= last_inr.value %></td>
+				<td><%= last_inr.wdate %></td>
+				<td><%= last_inr.note %></td>
+				<td><%= link_to "Full Report", patient %></td>
+			</tr>	
+		<% end %>
+	</tbody>
 
-	<hr>
-	<br>
-<% end %>
+</table>
+
+<hr>
+<br>
