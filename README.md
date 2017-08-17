@@ -23,6 +23,8 @@ plus time zones are editable from everywhere
 
 made it so updating the patient/doctor/staff/rep updates the user (but it doesn't update the password of that user -> I gave a flash message to remind the admin of that)
 
+redirects happen appropriately based on the role of the user
+
 ## 8-14-17
 
 added inrs feature in
