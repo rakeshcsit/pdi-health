@@ -4,7 +4,7 @@ class InrsController < ApplicationController
   respond_to :html
 
   def index
-    @inrs = Inr.all#current_user.inrs
+    @inrs = current_user.inrs
     
     inrs_this_month = current_user.inrs.where('wdate BETWEEN ? AND ?', Time.now.beginning_of_month, DateTime.now.end_of_month)
 
