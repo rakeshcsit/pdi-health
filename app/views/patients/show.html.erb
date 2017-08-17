@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<h1 class="center"><%= @patient_full_name %>'s Page</h1>
+
 <%= render 'layouts/pass' %>
 
 <div class="container">
-  <div class="row">
+  <div class="row margin-bottom-50">
     <div class="col-12">
       <%= link_to 'Edit This Patient', edit_patient_path(@patient) %> |
       <%= link_to 'Back to Patients', patients_path %>  
@@ -11,7 +13,8 @@
   </div>
   
   <div class="row">
-    <div class="col-6">
+    <div class="col-4">
+        <h2>Patient Information</h2>
         <p><strong>Doctors this patient is seeing</strong></p>
 
         <% unless @patient.manegizations.empty? %>
@@ -78,7 +81,13 @@
         </p>
     </div>
     
-    <div class="col-6">
+    <div class="col-4">
+      <h2>INRs</h2>
+      <%= render '/inrs/inrs', inrs: @inrs, data_tables: false, edit: false %>
+    </div>
+    
+    <div class="col-4">
+      <h2>INR Chart</h2>
       <%= line_chart @chart_data_hash, discrete: true, width: "600px", height: "375px", xtitle: "Dates", ytitle: "INRs" %>
     </div>
   </div>
