@@ -1,10 +1,5 @@
 # to do
 
-dates appear on right side not left side
-	http://localhost:3000/inrs
-	/doctor-dashboard
-
-
 request test strips
 
 use letter opener for email
@@ -12,6 +7,10 @@ use letter opener for email
 make sure authenticated before using the site
 
 make sure roles are enforced for everything and the logic is centralized and for views
+
+upon login let user update their password and credentials like email
+
+show notes that patient has on patients page (date and who made it that links to the note)
 
 # finished:
 
@@ -24,6 +23,10 @@ plus time zones are editable from everywhere
 made it so updating the patient/doctor/staff/rep updates the user (but it doesn't update the password of that user -> I gave a flash message to remind the admin of that)
 
 redirects happen appropriately based on the role of the user
+
+rails generate scaffold Note patient:references interaction_type:string training_meeting:boolean note:text wdate:date --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+patient notes added in a polymorphic way. If the admin makes notes, then this is bad. I'll tell Mark to not do this.
 
 ## 8-14-17
 
