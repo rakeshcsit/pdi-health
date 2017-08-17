@@ -7,24 +7,19 @@
 <% unless @patient.manegizations.empty? %>
   <ul>
     <% @patient.manegizations.map do |maneg| %>
-      <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %> - actively with this doctor? <%= maneg.active ? "yes" : "no" %></li>
+      <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %></li>
     <% end %>
   </ul>
 <% end %>
 
 <p>
-  <strong>First name:</strong>
-  <%= @patient.first_name %>
+  <strong>Full Name:</strong>
+  <%= @patient.first_name %> <%= @patient.middle_initial %> <%= @patient.last_name %>
 </p>
 
 <p>
-  <strong>Middle initial:</strong>
-  <%= @patient.middle_initial %>
-</p>
-
-<p>
-  <strong>Last name:</strong>
-  <%= @patient.last_name %>
+  <strong>Timezone:</strong>
+  <%= @patient.user.time_zone %>
 </p>
 
 <p>

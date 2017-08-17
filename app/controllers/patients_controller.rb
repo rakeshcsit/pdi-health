@@ -13,6 +13,7 @@ class PatientsController < ApplicationController
   end
 
   def edit
+    @timezone = @patient.user.time_zone
   end
 
   def create
@@ -45,9 +46,13 @@ class PatientsController < ApplicationController
   end
 
   def update
+    user = @patient.user
+
+    user.update({:email => @patient.email, :time_zone => params["user"]["time_zone"]})
+
     respond_to do |format|
       if @patient.update(patient_params)
-        format.html { redirect_to @patient, notice: 'Patient was updated.' }
+        format.html { redirect_to @patient, notice: 'Patient was updated. Password remains the same.' }
         format.json { render :show, status: :ok, location: @patient }
       else
         format.html { render :edit }

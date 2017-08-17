@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>ID + Name</th>
+      <th>Timezone</th>
       <th>Email</th>
       <th>Qualified</th>
       <th>Communication preferred</th>
@@ -26,6 +27,7 @@
     <% @patients.each do |patient| %>
       <tr>
         <td><%= link_to "#{patient.id} #{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %></td>
+        <td><%= patient.user.time_zone %></td>
         <td><%= patient.email %></td>
         <td><%= patient.qualified %></td>
         <td><%= patient.communication_preferred %></td>

@@ -1,33 +1,31 @@
 <h1>Listing Field Reps</h1>
 
+<%= link_to 'Add New Rep', new_rep_path %>
+
 <%= render 'layouts/pass' %>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>ID</th>
+      <th>Timezone</th>
       <th>Full name</th>
       <th>Email</th>
       <th>Phone number</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
   <tbody>
     <% @reps.each do |rep| %>
       <tr>
-        <td><%= rep.id %></td>
-        <td><%= rep.full_name %></td>
+        <td><%= link_to rep.id, rep %></td>
+        <td><%= rep.user.time_zone %></td>
+        <td><%= link_to rep.full_name, rep %></td>
         <td><%= rep.email %></td>
         <td><%= rep.phone_number %></td>
-        <td><%= link_to 'Show', rep %></td>
-        <td><%= link_to 'Edit', edit_rep_path(rep) %></td>
-        <td><%= link_to 'Destroy', rep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_rep_path(rep) %> <%= link_to 'Destroy', rep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Rep', new_rep_path %>

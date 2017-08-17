@@ -8,6 +8,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th>Timezone</th>
       <th>Full name</th>
       <th>Email</th>
       <th>Phone number</th>
@@ -25,6 +26,7 @@
     <% @doctors.each do |doctor| %>
       <tr>
         <td><%= link_to doctor.id, doctor %></td>
+        <td><%= doctor.user.time_zone %></td>
         <td><%= link_to doctor.full_name, doctor %></td>
         <td><%= doctor.email %></td>
         <td><%= doctor.phone_number %></td>

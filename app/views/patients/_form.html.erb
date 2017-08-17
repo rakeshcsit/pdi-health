@@ -30,7 +30,7 @@
 
   <div class="field">
     <%= f.label :time_zone %></span><br>
-    <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true }, {:class => 'select2 time_zone_select'}) %>
+    <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true, default: @timezone}, {:class => 'select2 time_zone_select'}) %>
   </div>
   
   <div class="field">
