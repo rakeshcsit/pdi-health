@@ -1,37 +1,18 @@
-<h1>Listing inrs</h1>
+<h1 class="center">Listing inrs</h1>
 
-<%= link_to 'Report an INR', new_inr_path %>
+<div class="container">
 
-<br><br>
+<p><%= link_to 'Report an INR', new_inr_path, {:class => "btn btn-primary"} %>&nbsp;&nbsp;&nbsp;&nbsp;<%= @message %></p>
 
-<%= @message %>
+  <div class="row">
+    <div class="col-6">
+      <br><br><br><br>
+      <%= render 'inrs', inrs: @inrs, data_tables: true, edit: true %>
+    </div>
 
-<br><br>
+    <div class="col-6">
+      <%= line_chart @chart_data, discrete: true, width: "800px", height: "500px", xtitle: "Dates", ytitle: "INRs" %>    
+    </div>
+  </div>
 
-<%= line_chart @chart_data, discrete: true, width: "800px", height: "500px", xtitle: "Dates", ytitle: "INRs" %>
-
-<br><br>
-
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>INR</th>
-      <th>Date of INR</th>
-      <th>Note</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @inrs.each do |inr| %>
-      <tr>
-        <td><%= link_to inr.value, inr %> (<%= link_to 'Edit', edit_inr_path(inr) %>)</td>
-        <td><%= inr.note %></td>
-        <td><%= inr.wdate %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+</div>

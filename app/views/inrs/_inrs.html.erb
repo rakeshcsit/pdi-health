@@ -1,0 +1,24 @@
+<table class="<%= data_tables ? 'table' : '' %>">
+  <thead>
+    <tr>
+      <th>INR</th>
+      <th>Date of INR</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% inrs.each do |inr| %>
+      <tr>
+        <td>
+          <%= link_to inr.value, inr %> 
+          <% if edit %> 
+            (<%= link_to 'Edit', edit_inr_path(inr) %>) 
+          <% end %>
+        </td>
+        <td><%= inr.wdate %></td>
+        <td><%= inr.note %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
