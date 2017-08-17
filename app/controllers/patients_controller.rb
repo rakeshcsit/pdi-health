@@ -5,15 +5,17 @@ class PatientsController < ApplicationController
     @patients = Patient.all
   end
 
-  def show    
+  def show   
+    @patient_full_name = "#{@patient.first_name} #{@patient.middle_initial} #{@patient.last_name}"
+     
     #create chart
-    @inrs = @patient.user.inrs
-      inr_list = @inrs.pluck(:value)
-      inr_date_list = @inrs.pluck(:wdate)
+      @inrs = @patient.user.inrs
+        inr_list = @inrs.pluck(:value)
+        inr_date_list = @inrs.pluck(:wdate)
 
-      chart_data = inr_date_list.each_with_index.map { |n, i| [n, inr_list[i]] }
+        chart_data = inr_date_list.each_with_index.map { |n, i| [n, inr_list[i]] }
 
-      @chart_data_hash = Hash[*chart_data.flatten]
+        @chart_data_hash = Hash[*chart_data.flatten]
   end
 
   def new
