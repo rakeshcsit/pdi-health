@@ -17,13 +17,12 @@ class InrsController < ApplicationController
     end
 
     # for chart
+      inr_list = @inrs.pluck(:value)
+      inr_date_list = @inrs.pluck(:wdate)
 
-    inr_list = @inrs.pluck(:value)
-    inr_date_list = @inrs.pluck(:wdate)
+      chart_data = inr_date_list.each_with_index.map { |n, i| [n, inr_list[i]] }
 
-    chart_data = inr_date_list.each_with_index.map { |n, i| [n, inr_list[i]] }
-
-    @chart_data = Hash[*chart_data.flatten]
+      @chart_data = Hash[*chart_data.flatten]
 
     respond_with(@inrs)
   end
