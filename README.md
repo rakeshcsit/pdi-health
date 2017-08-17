@@ -11,7 +11,7 @@ use letter opener for email
 
 make sure authenticated before using the site
 
-make sure roles are enforced for everything and the logic is centralized
+make sure roles are enforced for everything and the logic is centralized and for views
 
 # finished:
 
