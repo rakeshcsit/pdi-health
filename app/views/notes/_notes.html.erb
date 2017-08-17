@@ -1,0 +1,35 @@
+<table class="<%= data_tables ? 'table' : '' %>">
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Date In Regards to Note</th>
+      <th>Patient</th>
+      <th>Interaction type</th>
+      <th>Training meeting</th>
+      <th>Note</th>
+      
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% notes.each do |note| %>
+      <tr>    
+        <% if ["Rep", "Staff"].include? note.noteable.class.name %>
+          <td><%= link_to note.noteable.full_name, note.noteable %> (<%= note.noteable.class.name %>)</td>
+        <% else %>
+          <td></td>
+        <% end %>
+
+        <td><%= note.wdate %></td>
+        <td><%= link_to "(#{note.patient.id}) #{note.patient.first_name} #{note.patient.middle_initial} #{note.patient.last_name}", note %></td>
+        <td><%= note.interaction_type %></td>
+        <td><%= note.training_meeting %></td>
+        <td><%= link_to note.note, note %></td>
+        <% if edit %> 
+          <td><%= link_to 'Edit', edit_note_path(note) %> | <%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

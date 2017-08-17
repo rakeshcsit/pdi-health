@@ -1,0 +1,36 @@
+<%= form_for(@note) do |f| %>
+  <% if @note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@note.errors.count, "error") %> prohibited this note from being saved:</h2>
+
+      <ul>
+      <% @note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.select :patient_id, options_for_select(@patients, @note.patient_id), {:include_blank => 'choose a patient'}, {:class => "select2"} %>
+
+  <div class="field">
+    <%= f.label :interaction_type %><br>
+    <%= f.select :interaction_type, options_for_select(interaction_types, @note.interaction_type), {:include_blank => 'choose an option'}, {:class => "select2"} %>
+  </div>
+
+  <div class="field">
+    <%= f.label :training_meeting, "Is this note in regards to patient training?" %><br>
+    <%= f.check_box :training_meeting %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br>
+    <%= f.text_area :note %>
+  </div>
+  <div class="field">
+    <%= f.label :wdate, "Date in regards to the note" %><br>
+    <%= f.date_select :wdate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

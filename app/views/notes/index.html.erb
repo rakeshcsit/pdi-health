@@ -1,0 +1,9 @@
+<h1 class="center">Listing Patient Notes</h1>
+
+<div class="container">
+  <%= link_to 'Create New Patient Note', new_note_path %>
+  
+  <br><br>
+
+  <%= render 'notes', notes: @notes, data_tables: true, edit: true %>
+</div>

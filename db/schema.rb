@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170816191215) do
+ActiveRecord::Schema.define(version: 20170817074125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,21 @@ ActiveRecord::Schema.define(version: 20170816191215) do
     t.datetime "updated_at"
   end
 
+  create_table "notes", force: true do |t|
+    t.integer  "patient_id"
+    t.string   "interaction_type"
+    t.boolean  "training_meeting"
+    t.text     "note"
+    t.date     "wdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "noteable_id"
+    t.string   "noteable_type"
+  end
+
+  add_index "notes", ["noteable_id", "noteable_type"], name: "index_notes_on_noteable_id_and_noteable_type", using: :btree
+  add_index "notes", ["patient_id"], name: "index_notes_on_patient_id", using: :btree
+
   create_table "patients", force: true do |t|
     t.integer  "user_id"
     t.string   "first_name"
@@ -135,7 +150,6 @@ ActiveRecord::Schema.define(version: 20170816191215) do
     t.string   "zipcode"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "time_zone"
   end
 
   add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree

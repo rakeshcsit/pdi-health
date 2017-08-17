@@ -1,0 +1,39 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <%= link_to 'Edit this Note', edit_note_path(@note) %> |
+  <%= link_to 'Back to Patient Notes', notes_path %>
+
+  <br><br>
+
+  <p>
+    <strong>Patient ID:</strong>
+
+    <%= link_to @note.patient.id, @note.patient %>
+  </p>
+
+  <p>
+    <strong>Patient:</strong>
+    <%= link_to "#{@note.patient.first_name} #{@note.patient.middle_initial} #{@note.patient.last_name}", @note.patient %>
+  </p>
+
+  <p>
+    <strong>Interaction type:</strong>
+    <%= @note.interaction_type %>
+  </p>
+
+  <p>
+    <strong>Is this note in regards to patient training?</strong>
+    <%= @note.training_meeting ? "Yes" : "No" %>
+  </p>
+
+  <p>
+    <strong>Note:</strong>
+    <%= @note.note %>
+  </p>
+
+  <p>
+    <strong>Date in regards to the note:</strong>
+    <%= @note.wdate %>
+  </p>
+</div>

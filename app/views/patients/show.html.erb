@@ -11,10 +11,18 @@
       <%= link_to 'Back to Patients', patients_path %>  
     </div>
   </div>
+
+  <div class="row">
+    <h2><%= @patient_full_name %>'s Notes</h2>
+
+    <%= render '/notes/notes', notes: @patient.notes, data_tables: true, edit: false %>
+  </div>
+
+  <br><br>
   
   <div class="row">
     <div class="col-4">
-        <h2>Patient Information</h2>
+        <h2><%= @patient_full_name %>'s Information</h2>
         <p><strong>Doctors this patient is seeing</strong></p>
 
         <% unless @patient.manegizations.empty? %>
@@ -82,12 +90,12 @@
     </div>
     
     <div class="col-4">
-      <h2>INRs</h2>
+      <h2><%= @patient_full_name %>'s INRs</h2>
       <%= render '/inrs/inrs', inrs: @inrs, data_tables: false, edit: false %>
     </div>
     
     <div class="col-4">
-      <h2>INR Chart</h2>
+      <h2><%= @patient_full_name %>'s INR Chart</h2>
       <%= line_chart @chart_data_hash, discrete: true, width: "600px", height: "375px", xtitle: "Dates", ytitle: "INRs" %>
     </div>
   </div>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 
+  interaction_type: MyString
+  training_meeting: false
+  note: MyText
+  wdate: 2017-08-17
+
+two:
+  patient_id: 
+  interaction_type: MyString
+  training_meeting: false
+  note: MyText
+  wdate: 2017-08-17
