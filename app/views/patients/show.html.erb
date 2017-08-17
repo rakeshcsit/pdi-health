@@ -2,70 +2,84 @@
 
 <%= render 'layouts/pass' %>
 
-<p><strong>Doctors this patient is seeing</strong></p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <%= link_to 'Edit This Patient', edit_patient_path(@patient) %> |
+      <%= link_to 'Back to Patients', patients_path %>  
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-6">
+        <p><strong>Doctors this patient is seeing</strong></p>
 
-<% unless @patient.manegizations.empty? %>
-  <ul>
-    <% @patient.manegizations.map do |maneg| %>
-      <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %></li>
-    <% end %>
-  </ul>
-<% end %>
+        <% unless @patient.manegizations.empty? %>
+          <ul>
+            <% @patient.manegizations.map do |maneg| %>
+              <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %></li>
+            <% end %>
+          </ul>
+        <% end %>
 
-<p>
-  <strong>Full Name:</strong>
-  <%= @patient.first_name %> <%= @patient.middle_initial %> <%= @patient.last_name %>
-</p>
+        <p>
+          <strong>Full Name:</strong>
+          <%= @patient.first_name %> <%= @patient.middle_initial %> <%= @patient.last_name %>
+        </p>
 
-<p>
-  <strong>Timezone:</strong>
-  <%= @patient.user.time_zone %>
-</p>
+        <p>
+          <strong>Timezone:</strong>
+          <%= @patient.user.time_zone %>
+        </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @patient.email %>
-</p>
+        <p>
+          <strong>Email:</strong>
+          <%= @patient.email %>
+        </p>
 
-<p>
-  <strong>Qualified:</strong>
-  <%= @patient.qualified %>
-</p>
+        <p>
+          <strong>Qualified:</strong>
+          <%= @patient.qualified %>
+        </p>
 
-<p>
-  <strong>Communication preferred:</strong>
-  <%= @patient.communication_preferred %>
-</p>
+        <p>
+          <strong>Communication preferred:</strong>
+          <%= @patient.communication_preferred %>
+        </p>
 
-<p>
-  <strong>Insurance verification:</strong>
-  <%= @patient.insurance_verification %>
-</p>
+        <p>
+          <strong>Insurance verification:</strong>
+          <%= @patient.insurance_verification %>
+        </p>
 
-<p>
-  <strong>Prescription acquired:</strong>
-  <%= @patient.prescription_acquired %>
-</p>
+        <p>
+          <strong>Prescription acquired:</strong>
+          <%= @patient.prescription_acquired %>
+        </p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @patient.phone_number %>
-</p>
+        <p>
+          <strong>Phone number:</strong>
+          <%= @patient.phone_number %>
+        </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @patient.address %>
-</p>
+        <p>
+          <strong>Address:</strong>
+          <%= @patient.address %>
+        </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @patient.state %>
-</p>
+        <p>
+          <strong>State:</strong>
+          <%= @patient.state %>
+        </p>
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @patient.zipcode %>
-</p>
-
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+        <p>
+          <strong>Zipcode:</strong>
+          <%= @patient.zipcode %>
+        </p>
+    </div>
+    
+    <div class="col-6">
+      <%= line_chart @chart_data_hash, discrete: true, width: "600px", height: "375px", xtitle: "Dates", ytitle: "INRs" %>
+    </div>
+  </div>
+</div>
