@@ -19,10 +19,18 @@
 			<% last_inr = patient.user.inrs.last %>
 			
 			<tr>
+
 				<td><%= link_to "#{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %></td>
-				<td><%= last_inr.value %></td>
-				<td><%= last_inr.wdate %></td>
-				<td><%= last_inr.note %></td>
+				<% if last_inr %>
+					<td><%= last_inr.value %></td>
+					<td><%= last_inr.wdate %></td>
+					<td><%= last_inr.note %></td>
+				<% else %>
+					<td></td>
+					<td></td>
+					<td></td>
+				<% end %>
+
 				<td><%= link_to "Full Report", patient %></td>
 			</tr>	
 		<% end %>
