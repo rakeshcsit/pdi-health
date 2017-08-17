@@ -1,23 +1,27 @@
 # to do
 
-http://localhost:3000/inrs
-/doctor-dashboard
-
 dates appear on right side not left side
+	http://localhost:3000/inrs
+	/doctor-dashboard
+
 
 request test strips
 
-use letter opener
+use letter opener for email
 
-time zones and make sure everything is per user
+make sure authenticated before using the site
 
-roles
+make sure roles are enforced for everything and the logic is centralized
 
 # finished:
 
 ## 8-16-17
 
+time zones added into each user
 
+plus time zones are editable from everywhere
+
+made it so updating the patient/doctor/staff/rep updates the user (but it doesn't update the password of that user -> I gave a flash message to remind the admin of that)
 
 ## 8-14-17
 
