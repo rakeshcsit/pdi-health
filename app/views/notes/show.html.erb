@@ -6,6 +6,17 @@
 
   <br><br>
 
+  <!-- duplicate code from /notes/_notes.html.erb -->
+
+  <p>
+    <strong>Author of Note:</strong>
+    <% if ["Rep", "Staff"].include? @note.noteable.class.name %>
+      <td><%= link_to @note.noteable.full_name, @note.noteable %> (<%= @note.noteable.class.name %>)</td>
+    <% else # assume it's a user (admin) %> 
+      <td><%= @note.noteable.email %></td>
+    <% end %>
+  </p>
+  
   <p>
     <strong>Patient ID:</strong>
 
