@@ -21,6 +21,7 @@
         <th>State</th>
         <th>Zipcode</th>
         <th>Doctors</th>
+        <th>Notes (last 3)</th>
         <th></th>
       </tr>
     </thead>
@@ -48,6 +49,15 @@
                   <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %></li>
                 <% end %>
               </ul>
+            <% end %>
+          </td>
+          <td>
+            <% patient.notes.order(id: :desc).limit(3).each do |n| %>
+              <%= link_to n.wdate, n %> made by <%= who_made_note_give_link n.noteable %> <br><br>
+            <% end %>
+
+            <% if patient.notes.empty? %>
+              No Notes Entered
             <% end %>
           </td>
           <td><%= link_to 'Edit', edit_patient_path(patient) %> <%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>

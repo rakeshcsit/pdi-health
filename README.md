@@ -10,13 +10,15 @@ make sure roles are enforced for everything and the logic is centralized and for
 
 upon login let user update their password and credentials like email
 
-show notes that patient has on patients page (date and who made it that links to the note)
+test making notes with staff and rep and see if patients page breaks
 
 # finished:
 
 ## 9-5-17
 
 make it so you can update doctors on patient form
+
+show notes that patient has on patients page (date and who made it that links to the note)
 
 
 ## 8-16-17
