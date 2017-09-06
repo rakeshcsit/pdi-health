@@ -22,7 +22,7 @@
         <% end %>
 
         <td><%= note.wdate %></td>
-        <td><%= link_to "(#{note.patient.id}) #{note.patient.first_name} #{note.patient.middle_initial} #{note.patient.last_name}", note %></td>
+        <td><%= link_to "(#{note.patient.id}) #{note.patient.first_name} #{note.patient.middle_initial} #{note.patient.last_name}", note.patient %></td>
         <td><%= note.interaction_type %></td>
         <td><%= note.training_meeting %></td>
         <td><%= link_to note.note, note %></td>
