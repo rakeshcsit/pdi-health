@@ -1,4 +1,4 @@
-<h1 class="center">Listing patients</h1>
+<h1 class="center">Prospective Patient Dashboard</h1>
 
 <div class="container">
   <%= link_to 'Add New Patient', new_patient_path %>
@@ -9,20 +9,20 @@
   <table class="table">
     <thead>
       <tr>
-        <th>ID + Name</th>
-        <th>Timezone</th>
-        <th>Email</th>
+        <th>ID + Name + Email</th>
+        <th>Last Contacted</th>
+        <th>Date of Initial Contact</th>
+        <th>First Reported INR</th>
         <th>Qualified</th>
         <th>Communication preferred</th>
         <th>Insurance verification</th>
         <th>Prescription acquired</th>
         <th>Phone number</th>
-        <th>Address</th>
-        <th>State</th>
-        <th>Zipcode</th>
-        <th>Doctors</th>
-        <th>Rep(s)</th>
-        <th>Notes (last 3)</th>
+        <th>State | Timezone</th>
+        <th>Address | Zipcode</th>
+        
+        <th>Field Rep(s) Assigned</th>
+        <th>Doctor(s)</th>
         <th></th>
       </tr>
     </thead>
@@ -30,17 +30,53 @@
     <tbody>
       <% @patients.each do |patient| %>
         <tr>
-          <td><%= link_to "#{patient.id} #{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %></td>
-          <td><%= patient.user.time_zone %></td>
-          <td><%= patient.email %></td>
+          <td><%= link_to "#{patient.id} #{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %> | <%= patient.email %></td>
+          <td>
+            <% patient.notes.order(wdate: :desc).limit(3).each do |n| %>
+              by <%= who_made_note_give_link n.noteable %> on <%= link_to n.wdate, n %> <br><br>
+            <% end %>
+
+            <% if patient.notes.empty? %>
+              No Contacts Made (notes not logged)
+            <% end %>
+          </td>
+          <td>
+            <% patient.notes.order(wdate: :desc).limit(1).each do |n| %>
+              made by <%= who_made_note_give_link n.noteable %> on <%= link_to n.wdate, n %> <br><br>
+            <% end %>
+
+            <% if patient.notes.empty? %>
+              Initial Contact Never Made (note not logged)
+            <% end %>
+          </td>
+          <td>
+            <% inr = patient.user.inrs.first %>
+            <% if inr %>
+              <%= inr.value %> on <%= inr.wdate %>
+            <% else %>
+              INR Never Reported
+            <% end %> 
+          </td>
           <td><%= patient.qualified %></td>
           <td><%= patient.communication_preferred %></td>
           <td><%= patient.insurance_verification %></td>
           <td><%= patient.prescription_acquired %></td>
           <td><%= patient.phone_number %></td>
-          <td><%= patient.address %></td>
-          <td><%= patient.state %></td>
-          <td><%= patient.zipcode %></td>
+          <td><%= patient.state %> | <%= patient.user.time_zone %></td>
+          <td><%= patient.address %> | <%= patient.zipcode %></td>
+
+          <td>
+            <ul>
+              <% patient.reps.map do |r| %>
+                <li><%= link_to r.full_name, r %></li>
+              <% end %>
+
+              <% if patient.reps.empty? %>
+                Field Rep not assigned to this patient
+              <% end %>
+            </ul>
+          </td>
+
           <td>
             <% if patient.manegizations.empty? %>
               No doctor assigned to this patient
@@ -52,22 +88,7 @@
               </ul>
             <% end %>
           </td>
-          <td>
-            <ul>
-              <% patient.reps.map do |r| %>
-                <li><%= link_to r.full_name, r %></li>
-              <% end %>
-            </ul>
-          </td>
-          <td>
-            <% patient.notes.order(id: :desc).limit(3).each do |n| %>
-              <%= link_to n.wdate, n %> made by <%= who_made_note_give_link n.noteable %> <br><br>
-            <% end %>
 
-            <% if patient.notes.empty? %>
-              No Notes Entered
-            <% end %>
-          </td>
           <td><%= link_to 'Edit', edit_patient_path(patient) %> <%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
