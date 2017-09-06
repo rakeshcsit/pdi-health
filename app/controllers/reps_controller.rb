@@ -1,5 +1,6 @@
 class RepsController < ApplicationController
   before_action :set_rep, only: [:show, :edit, :update, :destroy]
+  before_action :set_patients, only: [:new, :edit, :update, :destroy]
 
   def index
     @reps = Rep.all
@@ -70,11 +71,15 @@ class RepsController < ApplicationController
   end
 
   private
+    def set_patients
+      @patients = Patient.all
+    end
+    
     def set_rep
       @rep = Rep.find(params[:id])
     end
 
     def rep_params
-      params.require(:rep).permit(:user_id, :full_name, :email, :phone_number)
+      params.require(:rep).permit(:user_id, :full_name, :email, :phone_number, :patient_ids => [])
     end
 end

@@ -24,6 +24,17 @@
   <div class="row">
     <div class="col-4">
         <h2><%= @patient_full_name %>'s Information</h2>
+
+        <p>Patient is managed by following Field Rep(s):</p>
+
+        <ul>
+          <% @patient.reps.map do |r| %>
+            <li><%= link_to r.full_name, r %></li>
+          <% end %>
+        </ul>
+
+        <br><br>
+        
         <p><strong>Doctors this patient is seeing</strong></p>
 
         <% unless @patient.manegizations.empty? %>

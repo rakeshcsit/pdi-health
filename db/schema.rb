@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170817074125) do
+ActiveRecord::Schema.define(version: 20170906122913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -153,6 +153,14 @@ ActiveRecord::Schema.define(version: 20170817074125) do
   end
 
   add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree
+
+  create_table "patients_reps", id: false, force: true do |t|
+    t.integer "rep_id",     null: false
+    t.integer "patient_id", null: false
+  end
+
+  add_index "patients_reps", ["patient_id", "rep_id"], name: "index_patients_reps_on_patient_id_and_rep_id", using: :btree
+  add_index "patients_reps", ["rep_id", "patient_id"], name: "index_patients_reps_on_rep_id_and_patient_id", using: :btree
 
   create_table "rds", force: true do |t|
     t.string   "rd"

@@ -12,9 +12,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :patient_ids, "Which patients does this Rep manage?" %><br>
+
+    <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => @rep.patients.pluck(:id) }, { :multiple => true, :class => 'select2' } %>
+  </div>
+
+  <div class="field">
     <%= f.label :full_name %><br>
     <%= f.text_field :full_name %>
   </div>
+
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>

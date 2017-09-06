@@ -12,6 +12,7 @@
       <th>Full name</th>
       <th>Email</th>
       <th>Phone number</th>
+      <th>Patients Managing</th>
       <th></th>
     </tr>
   </thead>
@@ -24,6 +25,13 @@
         <td><%= link_to rep.full_name, rep %></td>
         <td><%= rep.email %></td>
         <td><%= rep.phone_number %></td>
+        <td>
+          <ul>
+            <% rep.patients.map do |p| %>
+              <li><%= link_to "(#{p.id}) #{p.first_name} #{p.last_name}", p %></li>
+            <% end %>
+          </ul>
+        </td>
         <td><%= link_to 'Edit', edit_rep_path(rep) %> <%= link_to 'Destroy', rep, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

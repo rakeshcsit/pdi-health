@@ -5,6 +5,10 @@
   <%= @staff.full_name %>
 </p>
 
+<h2>Notes by <%= @staff.full_name %></h2>
+
+<%= render '/notes/notes', notes: @staff.notes, data_tables: true, edit: false %>
+
 <p>
   <strong>Timezone:</strong>
   <%= @staff.user.time_zone %>

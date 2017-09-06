@@ -1,14 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>User:</strong>
-  <%= @rep.user %>
-</p>
+<%= link_to 'Edit Rep', edit_rep_path(@rep) %> |
+<%= link_to 'Back to Reps', reps_path %>
+
+<br><br>
+
 
 <p>
   <strong>Full name:</strong>
   <%= @rep.full_name %>
 </p>
+
+<h2>Notes by <%= @rep.full_name %></h2>
+
+<%= render '/notes/notes', notes: @rep.notes, data_tables: true, edit: false %>
+
+<br><br>
+
+<p><strong>Rep Manages These Patients:</strong></p>
+
+<ul>
+  <% @rep.patients.map do |p| %>
+    <li><%= link_to "(#{p.id}) #{p.first_name} #{p.last_name}", p %></li>
+  <% end %>
+</ul>
 
 <p>
   <strong>Timezone:</strong>
@@ -25,5 +40,5 @@
   <%= @rep.phone_number %>
 </p>
 
-<%= link_to 'Edit', edit_rep_path(@rep) %> |
-<%= link_to 'Back', reps_path %>
+
+

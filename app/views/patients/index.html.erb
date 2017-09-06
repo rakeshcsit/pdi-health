@@ -21,6 +21,7 @@
         <th>State</th>
         <th>Zipcode</th>
         <th>Doctors</th>
+        <th>Rep(s)</th>
         <th>Notes (last 3)</th>
         <th></th>
       </tr>
@@ -50,6 +51,13 @@
                 <% end %>
               </ul>
             <% end %>
+          </td>
+          <td>
+            <ul>
+              <% patient.reps.map do |r| %>
+                <li><%= link_to r.full_name, r %></li>
+              <% end %>
+            </ul>
           </td>
           <td>
             <% patient.notes.order(id: :desc).limit(3).each do |n| %>
