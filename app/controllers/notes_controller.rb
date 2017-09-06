@@ -15,6 +15,11 @@ class NotesController < ApplicationController
 
   def new
     @note = Note.new
+
+    if params[:id]
+      @note.patient_id = params[:id]
+    end
+
     respond_with(@note)
   end
 

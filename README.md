@@ -12,8 +12,6 @@ upon login let user update their password and credentials like email
 
 test making notes with staff and rep and see if patients page breaks
 
-on patient page, make note for this patient -> goes to patient form and fills in patient to the patient they came from
-
 # finished:
 
 ## 9-5-17
@@ -21,6 +19,8 @@ on patient page, make note for this patient -> goes to patient form and fills in
 make it so you can update doctors on patient form
 
 show notes that patient has on patients page (date and who made it that links to the note)
+
+on patient page, make note for this patient -> goes to patient form and fills in patient to the patient they came from
 
 
 ## 8-16-17
