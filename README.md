@@ -12,11 +12,11 @@ upon login let user update their password and credentials like email
 
 test making notes with staff and rep and see if patients page breaks
 
-who made the note on the note
-
 # finished:
 
 ## 9-5-17
+
+who made the note on the note
 
 show rep(s) that manage patient on patients page
 
