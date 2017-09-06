@@ -14,6 +14,11 @@ show notes that patient has on patients page (date and who made it that links to
 
 # finished:
 
+## 9-5-17
+
+make it so you can update doctors on patient form
+
+
 ## 8-16-17
 
 time zones added into each user

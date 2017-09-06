@@ -11,6 +11,15 @@
     </div>
   <% end %>
 
+  <div class="form-group">
+    <strong><%= f.label :patient_ids, "Assign Doctor to this Patient:", class: 'control-label' %></strong>
+
+    <br><br>
+
+    <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
+    <%= f.select :doctor_ids, @doctors.collect{|t| [ "#{t.id}: #{t.full_name} - #{t.email}", t.id ]}, { :selected => @patient.manegizations.pluck(:doctor_id) }, { :multiple => true, :class => 'select2' } %>
+  </div>
+
   <div class="field">
     <%= f.label :first_name %><br>
     <%= f.text_field :first_name %>
@@ -23,6 +32,7 @@
     <%= f.label :last_name %><br>
     <%= f.text_field :last_name %>
   </div>
+
   <div class="field">
     <%= f.label :email %><br>
     <%= f.text_field :email %>
