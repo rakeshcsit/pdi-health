@@ -17,8 +17,8 @@
       <tr>    
         <% if ["Rep", "Staff"].include? note.noteable.class.name %>
           <td><%= link_to note.noteable.full_name, note.noteable %> (<%= note.noteable.class.name %>)</td>
-        <% else %>
-          <td></td>
+        <% else # assume it's a user (admin) %> 
+          <td><%= note.noteable.email %></td>
         <% end %>
 
         <td><%= note.wdate %></td>
