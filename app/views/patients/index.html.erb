@@ -9,6 +9,7 @@
   <table class="table">
     <thead>
       <tr>
+        <th>Last Request For Add. Strips</th>
         <th>ID + Name + Email</th>
         <th>Last Contacted</th>
         <th>Date of Initial Contact</th>
@@ -30,6 +31,15 @@
     <tbody>
       <% @patients.each do |patient| %>
         <tr>
+          <td>
+            <% tr = patient.test_strip_requests.last %>
+            <% if tr %>
+              <%= tr.created_at.in_time_zone(current_user.time_zone).strftime("%Y-%m-%d") %> - made on 
+              <br><br>
+              <p><strong>was communicated with? </strong> <%= tr.communicated_with ? "yes" : "no" %></p>
+              <p><strong>request dealt with? </strong> <%= tr.dealt_with ? "yes" : "no" %></p>              
+            <% end %>
+          </td>
           <td><%= link_to "#{patient.id} #{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %> | <%= patient.email %></td>
           <td>
             <% patient.notes.order(wdate: :desc).limit(3).each do |n| %>

@@ -35,7 +35,20 @@ plan for requesting test strips
 		instead of doing this (might not get used or might need to be more complicated with commenting from field rep or staff) just encourage staff or field rep to make a note and reach out to the patient
 			field rep or staff member checks off that the test strips have been sent OR that the patient will be contacted for further investigation (each will trigger a certain email)
 
+		DONE
 		rails generate scaffold TestStripRequest patient:references how_many_left:integer patient_notes:text
+
+			DONE
+			add test strip requests so patient can see the past ones
+
+			DONE
+			maybe make it so you can say - this has been dealt with and/or patient has been communicated with (basically what I started off with kind of) - but can't edit patient's stuff, make it so patient cant do the checks
+
+				DONE
+				show last test strip request on patient dashboard and if it was dealt with
+
+				DONE
+				show test strip requests on patient page
 
 ## 9-5-17
 

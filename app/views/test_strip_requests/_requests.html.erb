@@ -1,0 +1,56 @@
+<% 
+if user_signed_in?
+  if current_user.role == "patient"
+    num_test_mes = "How many Left"
+    notes_mes = "Your Notes"
+    edit_mes = "Edit"
+  else
+    num_test_mes = "How many Test Strips Patient Has Left"
+    notes_mes = "Patient Notes"
+    edit_mes = "Update Status"
+  end
+else
+  num_test_mes = "How many Test Strips Patient Has Left"
+  notes_mes = "Patient Notes"
+  edit_mes = "Update Status"
+end 
+%>
+
+<table class="<%= data_tables ? 'table' : '' %>">
+  <thead>
+    <tr>
+      <% if current_user %>
+        <% if current_user.role != "patient" %>
+          <th>Patient</th>
+          <th>Communicated With Patient Regarding This Request</th>
+          <th>This Request has been dealt with</th>
+        <% end %>
+      <% end %>
+      <th><%= num_test_mes %></th>
+      <th><%= notes_mes %></th>
+      <th>Requested on</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% test_strip_requests.each do |test_strip_request| %>
+      <tr>
+        <% if current_user %>
+          <% unless current_user.role == "patient" %>
+            <td>
+              <%= link_to "#{test_strip_request.patient.id} #{test_strip_request.patient.first_name} #{test_strip_request.patient.middle_initial} #{test_strip_request.patient.last_name}", test_strip_request.patient %> | <%= test_strip_request.patient.email %>
+            </td>
+            <td><%= test_strip_request.communicated_with ? "yes" : "no" %></td>
+            <td><%= test_strip_request.dealt_with ? "yes" : "no" %></td>
+          <% end %>
+        <% end %>
+        <td><%= test_strip_request.how_many_left %></td>
+        <td><%= test_strip_request.patient_notes %></td>
+        <td><%= test_strip_request.created_at.in_time_zone(current_user.time_zone).strftime("%Y-%m-%d") %></td>
+        <td><%= link_to edit_mes, edit_test_strip_request_path(test_strip_request) %></td>
+        <td><%= link_to 'Destroy', test_strip_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

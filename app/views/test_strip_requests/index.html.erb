@@ -1,29 +1,3 @@
 <h1>All Test Strip Requests From Patients</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Patient</th>
-      <th>How many Test Strips Patient Has Left</th>
-      <th>Patient notes</th>
-      <th>Requested on</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @test_strip_requests.each do |test_strip_request| %>
-      <tr>
-        <td>
-          <%= link_to "#{test_strip_request.patient.id} #{test_strip_request.patient.first_name} #{test_strip_request.patient.middle_initial} #{test_strip_request.patient.last_name}", test_strip_request.patient %> | <%= test_strip_request.patient.email %>
-        </td>
-        <td><%= test_strip_request.how_many_left %></td>
-        <td><%= test_strip_request.patient_notes %></td>
-        <td><%= test_strip_request.created_at.in_time_zone(current_user.time_zone).strftime("%Y-%m-%d") %></td>
-        <td><%= link_to 'Show', test_strip_request %></td>
-        <td><%= link_to 'Edit', edit_test_strip_request_path(test_strip_request) %></td>
-        <td><%= link_to 'Destroy', test_strip_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'requests', test_strip_requests: @test_strip_requests, data_tables: true %>

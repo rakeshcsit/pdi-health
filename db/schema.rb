@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171016052705) do
+ActiveRecord::Schema.define(version: 20171016080159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -228,6 +228,8 @@ ActiveRecord::Schema.define(version: 20171016052705) do
     t.text     "patient_notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "dealt_with",        default: false
+    t.boolean  "communicated_with", default: false
   end
 
   add_index "test_strip_requests", ["patient_id"], name: "index_test_strip_requests_on_patient_id", using: :btree
