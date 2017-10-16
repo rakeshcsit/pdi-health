@@ -32,10 +32,10 @@ plan for requesting test strips
 
 			did the previous test strips get ruined in anyway
 
-		field rep or staff member checks off that the test strips have been sent OR that the patient will be contacted for further investigation (each will trigger a certain email)
+		instead of doing this (might not get used or might need to be more complicated with commenting from field rep or staff) just encourage staff or field rep to make a note and reach out to the patient
+			field rep or staff member checks off that the test strips have been sent OR that the patient will be contacted for further investigation (each will trigger a certain email)
 
-		rails generate scaffold TestStripRequest patient:references how_many_left:integer notes:text test_strips_sent:boolean patient_will_be_contacted:boolean
-   
+		rails generate scaffold TestStripRequest patient:references how_many_left:integer patient_notes:text
 
 ## 9-5-17
 

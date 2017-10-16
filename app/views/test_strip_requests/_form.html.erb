@@ -1,0 +1,29 @@
+<%= form_for(@test_strip_request) do |f| %>
+  <% if @test_strip_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@test_strip_request.errors.count, "error") %> prohibited this test_strip_request from being saved:</h2>
+
+      <ul>
+      <% @test_strip_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :patient_id %><br>
+    <%= f.text_field :patient_id %>
+  </div>
+  <div class="field">
+    <%= f.label :how_many_left %><br>
+    <%= f.number_field :how_many_left %>
+  </div>
+  <div class="field">
+    <%= f.label :patient_notes %><br>
+    <%= f.text_area :patient_notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
