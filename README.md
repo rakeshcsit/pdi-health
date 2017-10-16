@@ -19,9 +19,23 @@ test making notes with staff and rep and see if patients page breaks
 got veronica's environment set up, she's on 
 	completely forgot that anyone other than admins can't sign up, I need to make it harder to get to the sign up page and put it in a secret code and add a robots.txt file so the sign up page can't be gotten to
 
-fixed a collect error when there are no patients and on no doctors. Veronica found the errors when setting up her environment.
+fixed a collect error when there are no patients and on no doctors. Veronica found the errors when setting up her environment. Needed to do @patients and @patients.empty? to 
 
-made trello board: 
+added in custom body class and id for body like inrtracker
+
+made trello board and populated with all tasks and screenshots of dashboards and made all lists of things left to do based on what the screenshots looked like compared to what was done
+
+plan for requesting test strips
+	patient has many test strip requests
+		patient fills out form 
+			how many test strips do you have left
+
+			did the previous test strips get ruined in anyway
+
+		field rep or staff member checks off that the test strips have been sent OR that the patient will be contacted for further investigation (each will trigger a certain email)
+
+		rails generate scaffold TestStripRequest patient:references how_many_left:integer notes:text test_strips_sent:boolean patient_will_be_contacted:boolean
+   
 
 ## 9-5-17
 
