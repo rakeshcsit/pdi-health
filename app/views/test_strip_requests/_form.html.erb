@@ -12,18 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :patient_id %><br>
-    <%= f.text_field :patient_id %>
-  </div>
-  <div class="field">
-    <%= f.label :how_many_left %><br>
+    <%= f.label :how_many_left, "How many test strips do you have left?" %><br>
     <%= f.number_field :how_many_left %>
   </div>
   <div class="field">
-    <%= f.label :patient_notes %><br>
+    <%= f.label :patient_notes, "Please add what happened to the test strips that were sent to you. Also, add anything else you'd like to here." %><br>
     <%= f.text_area :patient_notes %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Request INR Test Strips" %>
   </div>
 <% end %>

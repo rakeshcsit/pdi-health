@@ -21,9 +21,15 @@ class TestStripRequestsController < ApplicationController
   end
 
   def create
-    @test_strip_request = TestStripRequest.new(test_strip_request_params)
-    @test_strip_request.save
-    respond_with(@test_strip_request)
+    # only 
+    if current_user.role == "patient"
+      @test_strip_request = TestStripRequest.new(test_strip_request_params)
+      @test_strip_request.patient_id = current_user.patient.id
+      @test_strip_request.save
+      respond_with(@test_strip_request)
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -42,6 +48,6 @@ class TestStripRequestsController < ApplicationController
     end
 
     def test_strip_request_params
-      params.require(:test_strip_request).permit(:patient_id, :how_many_left, :patient_notes)
+      params.require(:test_strip_request).permit(:how_many_left, :patient_notes)
     end
 end
