@@ -17,7 +17,8 @@
 
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="<%= params[:controller].parameterize %>_controller" class="<%= @bodyClass %> <% if user_signed_in? %>user_signed_in<%end%>">
+
 <ul id="nav">
   <li id="logo">Self INR</li>
   <% if user_signed_in? %>

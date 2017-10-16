@@ -4,7 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   around_action :set_time_zone, if: :current_user
+  before_filter :do_common_stuff
 
+  def do_common_stuff
+    @bodyClass = nil
+  end
+  
   def check_if_admin
     if user_signed_in?
       redirect_to root_path unless current_user.admin?
