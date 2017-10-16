@@ -20,15 +20,33 @@
 <body id="<%= params[:controller].parameterize %>_controller" class="<%= @bodyClass %> <% if user_signed_in? %>user_signed_in<%end%>">
 
 <ul id="nav">
-  <li id="logo">Self INR</li>
+  <li id="logo">
+    <% if user_signed_in? %>
+      <% if current_user.role == "patient" %>
+        <%= link_to "Self INR", inrs_path %>
+      <% elsif current_user.role == "doctor" %>
+        <%= link_to "Self INR", doctor_dashboard_path %>
+      <% elsif current_user.role == "field_rep" %>
+        <%= link_to "Self INR", patients_path %>
+        <!-- when I make the field reps dashboard this needs to change to that -->
+      <% elsif current_user.role == "staff" %>
+        <%= link_to "Self INR", patients_path %>
+      <% else %>
+        <%= link_to "Self INR", patients_path %>
+      <% end %>
+    <% else %>
+      <%= link_to "Self INR", root_path %>
+    <% end %>
+  </li>
   <% if user_signed_in? %>
     <% if current_user.role == "patient" %>
-      <li><%= link_to "Report Your INR", inrs_path %></li>
+      <li><%= link_to "Report Your INR", new_inr_path %></li>
     <% elsif current_user.role == "doctor" %>   
       <li><%= link_to "Doctor Dashboard", doctor_dashboard_path %></li>
     <% else %>  
       <li><%= link_to "Patients", patients_path %></li>
       <li><%= link_to "Patient Notes", notes_path %></li>
+      <li><%= link_to "Patient Test Strip Requests", test_strip_requests_path %></li>
       <li><%= link_to "Doctors", doctors_path %></li>
       <li><%= link_to "Staff", staffs_path %></li>
       <li><%= link_to "Field Reps", reps_path %></li>
