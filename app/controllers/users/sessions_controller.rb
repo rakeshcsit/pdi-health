@@ -18,6 +18,7 @@ class Users::SessionsController < Devise::SessionsController
     elsif current_user.role == 'doctor'
       location = doctor_dashboard_path
     elsif current_user.role == 'field_rep'
+      # when I make the field reps dashboard this needs to change to that
       location = patients_path
     elsif current_user.role == 'staff'
       location = patients_path
