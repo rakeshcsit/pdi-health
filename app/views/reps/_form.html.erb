@@ -14,7 +14,7 @@
   <div class="field">
     <%= f.label :patient_ids, "Which patients does this Rep manage?" %><br>
 
-    <% if @patients.empty? %>
+    <% if @patients and @patients.empty? %>
       <p>There are no patients in the system.</p>
     <% else %>
       <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => @rep.patients.pluck(:id) }, { :multiple => true, :class => 'select2' } %>

@@ -19,7 +19,9 @@ test making notes with staff and rep and see if patients page breaks
 got veronica's environment set up, she's on 
 	completely forgot that anyone other than admins can't sign up, I need to make it harder to get to the sign up page and put it in a secret code and add a robots.txt file so the sign up page can't be gotten to
 
+fixed a collect error when there are no patients and on no doctors. Veronica found the errors when setting up her environment.
 
+made trello board: 
 
 ## 9-5-17
 
