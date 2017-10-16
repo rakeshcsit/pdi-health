@@ -19,7 +19,12 @@
     <br><br>
 
     <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
-    <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => @doctor.manegizations.pluck(:patient_id) }, { :multiple => true, :class => 'select2' } %>
+
+    <% if @patients.empty? %>
+      <p>There are no patients in the system.</p>
+    <% else %>
+      <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => @doctor.manegizations.pluck(:patient_id) }, { :multiple => true, :class => 'select2' } %>
+    <% end %>
   </div>
   
   <hr>
