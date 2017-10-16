@@ -17,7 +17,12 @@
     <br><br>
 
     <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
-    <%= f.select :doctor_ids, @doctors.collect{|t| [ "#{t.id}: #{t.full_name} - #{t.email}", t.id ]}, { :selected => @patient.manegizations.pluck(:doctor_id) }, { :multiple => true, :class => 'select2' } %>
+    <% if @doctors.empty? %>
+      <p>There are no doctors in the system</p>
+    <% else %>
+      <%= f.select :doctor_ids, @doctors.collect{|t| [ "#{t.id}: #{t.full_name} - #{t.email}", t.id ]}, { :selected => @patient.manegizations.pluck(:doctor_id) }, { :multiple => true, :class => 'select2' } %>
+    <% end %>
+
   </div>
 
   <div class="field">
