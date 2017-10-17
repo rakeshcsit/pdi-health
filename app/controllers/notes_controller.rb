@@ -24,6 +24,7 @@ class NotesController < ApplicationController
   end
 
   def edit
+    @editClass = 'edit_note'
   end
 
   def create

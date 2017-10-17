@@ -16,7 +16,7 @@ else
 end 
 %>
 
-<table class="<%= data_tables ? 'table' : '' %>">
+<table id="test_strip_requests" class="table table-striped table-bordered">
   <thead>
     <tr>
       <% if current_user %>
@@ -29,7 +29,13 @@ end
       <th><%= num_test_mes %></th>
       <th><%= notes_mes %></th>
       <th>Requested on</th>
-      <th colspan="3"></th>
+      <% if current_user %>
+        <% unless current_user.role == "patient" %>
+          <th>Patient details</th>
+          <th>Communicated with</th>
+          <th>Dealt with</th>
+        <% end %>
+      <% end %>
     </tr>
   </thead>
 

@@ -9,22 +9,27 @@
 
 
 // patient page
-#patient-table {
-	// th, td {
-	// 	-webkit-box-sizing: content-box; 
-	// 	-moz-box-sizing: content-box;  
-	// 	-sizing: content-box;
-	// }
+// /patients
+#patient-table,
+#doctors-table,
+#rep-table {
 	th {
 		white-space: nowrap;
 	}
-
 }
+.popover {
+	h3.popover-title {
+		margin-top: 0!important;
+		margin-bottom: 0!important;
+		padding-bottom: 10px!important;
+	}
+}
+
 
 #patient-table_wrapper {
 	#patient-table_filter {
 		margin-bottom: 20px;
-		margin-top: 30px;
+		margin-top: 10px;
 	}
 	.DTFC_LeftHeadWrapper  thead tr,
 	.dataTables_scrollHeadInner thead tr {
@@ -36,3 +41,51 @@
 	float: left;
 }
 
+// http://localhost:3000/patients/new
+
+.form-group,
+.field {
+	margin-top: 10px!important;
+}
+
+.checkbox label {
+	font-weight: 700;
+}
+.actions {
+	margin-top: 20px;
+}
+.form-container {
+	h3:first-of-type {
+		margin-top: 10px;
+	}
+	h3 {
+		padding-bottom: 20px;
+		margin-bottom: 0;
+		margin-top: 40px;
+	}
+	.form-group-container {
+		border-top: 1px solid #eee;
+		border-radius: 4px;
+		padding: 20px 20px 0;
+	}
+}
+
+.patient-show,
+.rep-show,
+.staff-show,
+.doctor-show {
+	h1 {
+		text-transform: capitalize;
+	}
+	.panel {
+		margin-top: 30px
+	}
+	.col-md-6 {
+		.panel {
+			margin-top: 10px;
+		}
+	}
+	h3 {
+		font-weight: 700;
+	}
+}

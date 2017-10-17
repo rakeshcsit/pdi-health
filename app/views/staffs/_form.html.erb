@@ -1,30 +1,32 @@
-<%= form_for(@staff) do |f| %>
-  <% if @staff.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
+<div class="form-container well">
+  <%= form_for(@staff) do |f| %>
+    <% if @staff.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@staff.errors.count, "error") %> prohibited this staff from being saved:</h2>
 
-      <ul>
-      <% @staff.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @staff.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :full_name, class: 'control-label' %><br>
+      <%= f.text_field :full_name, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :email, class: 'control-label' %><br>
+      <%= f.text_field :email, class: 'form-control' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :time_zone, class: 'control-label' %></span><br>
+      <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true, default: @timezone}, {:class => 'select2 time_zone_select'}) %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit 'Save Staff', :class => 'btn btn-primary' %>
     </div>
   <% end %>
-  <div class="field">
-    <%= f.label :full_name %><br>
-    <%= f.text_field :full_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :time_zone %></span><br>
-    <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true, default: @timezone}, {:class => 'select2 time_zone_select'}) %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

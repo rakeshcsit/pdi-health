@@ -2,10 +2,14 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <h1>New Patient</h1>
+        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', patients_path %></span>
+        <h1><i class="fa fa-user"></i> Add New Patient</h1>
       </div>
-      <%= render 'form' %>
-      <%= link_to 'Back', patients_path %>
+      <div class="row">
+      	<div class="col-md-7">
+      		<%= render 'form' %>
+      	</div>
+      </div>
     </div>
   </div>
 </div>

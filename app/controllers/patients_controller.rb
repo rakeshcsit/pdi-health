@@ -25,6 +25,7 @@ class PatientsController < ApplicationController
 
   def edit
     @timezone = @patient.user.time_zone
+    @editClass = 'edit_patient'
   end
 
   def create

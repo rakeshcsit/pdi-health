@@ -1,6 +1,18 @@
-<h1>Editing staff</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @staff %> |
-<%= link_to 'Back', staffs_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', staffs_path %></span>
+        <h1><i class="fa fa-users"></i> Edit Staff</h1>
+      </div>
+      <div class="row">
+      	<div class="col-md-7">
+      		<%= render 'form' %>
+      	</div>
+      	<div class="col-md-5">
+      		<%= link_to 'View staff\'s profile', @staff %>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>

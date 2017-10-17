@@ -1,7 +1,18 @@
-<h1 class="center">Editing note</h1>
-
 <div class="container">
-	<%= link_to 'See Note', @note %> | <%= link_to 'Back To All Patient Notes', notes_path %>
-	<br><br>
-	<%= render 'form' %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', notes_path %></span>
+        <h1><i class="fa fa-sticky-note"></i> Edit Note</h1>
+      </div>
+			<div class="row">
+				<div class="col-md-7">
+					<%= render 'form' %>
+				</div>
+				<div class="col-md-5">
+					<%= link_to 'View note', @note %>
+				</div>
+			</div>
+    </div>
+  </div>
 </div>
