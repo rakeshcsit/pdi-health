@@ -14,7 +14,7 @@ test making notes with staff and rep and see if patients page breaks
 
 # finished:
 
-## 10-15-17
+## 10-15-17 - 10-16-17
 
 got veronica's environment set up, she's on 
 	completely forgot that anyone other than admins can't sign up, I need to make it harder to get to the sign up page and put it in a secret code and add a robots.txt file so the sign up page can't be gotten to
@@ -50,6 +50,8 @@ plan for requesting test strips
 				DONE
 				show test strip requests on patient page
 
+	DONE
+		
 ## 9-5-17
 
 who made the note on the note
