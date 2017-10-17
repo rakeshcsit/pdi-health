@@ -1,7 +1,7 @@
 var ready;
 ready = function() {
 
-    $('#patient_notes, #test_strip_requests, #inrs, #staff-table, #rep-table, #users-table').DataTable({
+    $('#patient_notes, #test_strip_requests, #inrs, #staff-table, #rep-table, #users-table, #doctors-dashboard-table').DataTable({
       "iDisplayLength": 100,
       "aaSorting": [],
       "order": []

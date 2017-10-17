@@ -1,5 +1,15 @@
-<h1>Report a new INR</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', inrs_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', inrs_path %></span>
+        <h1><i class="fa fa-tint"></i> Report INR</h1>
+      </div>
+      <div class="row">
+      	<div class="col-md-7">
+      		<%= render 'form' %>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
