@@ -6,6 +6,8 @@ class Patient < ActiveRecord::Base
 
 	has_many :notes
 
+	has_many :test_strip_requests
+
 	has_and_belongs_to_many :reps # probably will only have 1 - but prepare for worst case
 
 	validates :first_name, :last_name, :email, :communication_preferred, :phone_number, :address, :state, :zipcode, presence: true

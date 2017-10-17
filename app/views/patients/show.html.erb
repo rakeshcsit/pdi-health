@@ -20,6 +20,14 @@
   </div>
 
   <br><br>
+
+  <div class="row">
+    <h2>Listing Patient's Test Strip Requests</h2>
+
+    <%= render :partial => 'test_strip_requests/requests', :locals => {:test_strip_requests => @patient.test_strip_requests, :data_tables => true} %>
+  </div>
+
+  <br><br>
   
   <div class="row">
     <div class="col-4">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170906122913) do
+ActiveRecord::Schema.define(version: 20171016080159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -221,6 +221,18 @@ ActiveRecord::Schema.define(version: 20170906122913) do
   end
 
   add_index "student_success_managers", ["university_id"], name: "index_student_success_managers_on_university_id", using: :btree
+
+  create_table "test_strip_requests", force: true do |t|
+    t.integer  "patient_id"
+    t.integer  "how_many_left"
+    t.text     "patient_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "dealt_with",        default: false
+    t.boolean  "communicated_with", default: false
+  end
+
+  add_index "test_strip_requests", ["patient_id"], name: "index_test_strip_requests_on_patient_id", using: :btree
 
   create_table "tier_updates", force: true do |t|
     t.integer  "instructor_id"

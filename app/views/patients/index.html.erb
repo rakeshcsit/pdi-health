@@ -17,6 +17,8 @@
         <table id="patient-table" class="table table-striped table-bordered">
         <thead>
           <tr>
+            <th>Last Request For Add. Strips</th>
+
             <th>ID</th>
             <th>User Details</th>
             <th>Last Contacted</th>
@@ -41,6 +43,15 @@
         <tbody>
           <% @patients.each do |patient| %>
             <tr>
+              <td>
+                <% tr = patient.test_strip_requests.last %>
+                <% if tr %>
+                  <%= tr.created_at.in_time_zone(current_user.time_zone).strftime("%Y-%m-%d") %> - made on 
+                  <br><br>
+                  <p><strong>was communicated with? </strong> <%= tr.communicated_with ? "yes" : "no" %></p>
+                  <p><strong>request dealt with? </strong> <%= tr.dealt_with ? "yes" : "no" %></p>              
+                <% end %>
+              </td>
               <td><%= patient.id %></td>
               <td><%= link_to "#{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %><br> <%= patient.email %>
 
@@ -118,5 +129,4 @@
     </div>
   </div>
 </div>
-
 

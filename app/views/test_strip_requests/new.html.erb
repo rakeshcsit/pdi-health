@@ -1,0 +1,16 @@
+
+<%= link_to 'Back', inrs_path %>
+
+<div class="row">
+	<div class="col-6">
+		<h2>Make a Request For More INR Test Strips</h2>
+
+		<%= render 'form' %>
+	</div>
+	<div class="col-6">
+		<h2 class="center">Listing Your INR Test Strip Requests</h2>
+
+		<%= render :partial => 'test_strip_requests/requests', :locals => {:test_strip_requests => @test_strip_requests, :data_tables => true} %>
+
+	</div>
+</div>

@@ -14,15 +14,44 @@ test making notes with staff and rep and see if patients page breaks
 
 # finished:
 
-## 10-15-17
+## 10-15-17 - 10-16-17
 
 got veronica's environment set up, she's on 
 	completely forgot that anyone other than admins can't sign up, I need to make it harder to get to the sign up page and put it in a secret code and add a robots.txt file so the sign up page can't be gotten to
 
-fixed a collect error when there are no patients and on no doctors. Veronica found the errors when setting up her environment.
+fixed a collect error when there are no patients and on no doctors. Veronica found the errors when setting up her environment. Needed to do @patients and @patients.empty? to 
 
-made trello board: 
+added in custom body class and id for body like inrtracker
 
+made trello board and populated with all tasks and screenshots of dashboards and made all lists of things left to do based on what the screenshots looked like compared to what was done
+
+plan for requesting test strips
+	patient has many test strip requests
+		patient fills out form 
+			how many test strips do you have left
+
+			did the previous test strips get ruined in anyway
+
+		instead of doing this (might not get used or might need to be more complicated with commenting from field rep or staff) just encourage staff or field rep to make a note and reach out to the patient
+			field rep or staff member checks off that the test strips have been sent OR that the patient will be contacted for further investigation (each will trigger a certain email)
+
+		DONE
+		rails generate scaffold TestStripRequest patient:references how_many_left:integer patient_notes:text
+
+			DONE
+			add test strip requests so patient can see the past ones
+
+			DONE
+			maybe make it so you can say - this has been dealt with and/or patient has been communicated with (basically what I started off with kind of) - but can't edit patient's stuff, make it so patient cant do the checks
+
+				DONE
+				show last test strip request on patient dashboard and if it was dealt with
+
+				DONE
+				show test strip requests on patient page
+
+	DONE
+		
 ## 9-5-17
 
 who made the note on the note

@@ -8,8 +8,8 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Timezone</th>
       <th>Full name</th>
+      <th>Timezone</th>
       <th>Email</th>
       <th>Phone number</th>
       <th>Patients Managing</th>
@@ -21,8 +21,14 @@
     <% @reps.each do |rep| %>
       <tr>
         <td><%= link_to rep.id, rep %></td>
+        <td>
+          <%= link_to rep.full_name, rep %>
+          <%
+            c = rep.notes.where(:noteable_type => "Rep", :noteable_id => rep.id).where('created_at >= ?', 1.week.ago).count 
+          %>
+          has contacted <%= c %> patients in the last 7 days
+        </td>=
         <td><%= rep.user.time_zone %></td>
-        <td><%= link_to rep.full_name, rep %></td>
         <td><%= rep.email %></td>
         <td><%= rep.phone_number %></td>
         <td>

@@ -1,0 +1,86 @@
+<%= form_for(@test_strip_request) do |f| %>
+  <% if @test_strip_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@test_strip_request.errors.count, "error") %> prohibited this test_strip_request from being saved:</h2>
+
+      <ul>
+      <% @test_strip_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    
+  <% if user_signed_in? %>
+    <% if current_user.role == "patient" %>
+      <% 
+      show_fields = "" 
+      submit_text = "Request INR Test Strips"
+      %>
+    <% else %>
+      <% 
+      show_fields = "display: none;" 
+      submit_text = "Update Status of Patient Request"
+      %>
+
+      <div class="row">
+        <div class="col-md-6">
+
+          <div>
+            <%= f.label :dealt_with, "This request has been dealt with." %><br>
+
+            <%= f.check_box :dealt_with, {:class => "", :style => ""} %> <!-- , "checked-value", "unchecked-value" -->
+          </div>
+
+          <br><br>
+
+          <div>
+            <%= f.label :communicated_with, "The patient has been communicated with" %><br>
+
+            <%= f.check_box :communicated_with, {:class => "", :style => ""} %>
+                  
+          </div>
+
+        </div>
+
+        <div class="col-md-6">
+          <p>
+            <strong>Patient:</strong>
+            <%= link_to "#{@test_strip_request.patient.id} #{@test_strip_request.patient.first_name} #{@test_strip_request.patient.middle_initial} #{@test_strip_request.patient.last_name}", @test_strip_request.patient %> | <%= @test_strip_request.patient.email %>
+          </p>
+
+          <p>
+            <strong>Patient requested on:</strong>
+
+            <%= @test_strip_request.created_at.in_time_zone(current_user.time_zone).strftime("%Y-%m-%d") %>
+          </p>
+
+
+          <p>
+            <strong>How many test strips patient has left:</strong>
+            <%= @test_strip_request.how_many_left %>
+          </p>
+
+          <p>
+            <strong>Patient's notes:</strong>
+            <%= @test_strip_request.patient_notes %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+
+  <div class="field" style="<%= show_fields %>">
+    <%= f.label :how_many_left, "How many test strips do you have left?" %><br>
+    <%= f.number_field :how_many_left %>
+  </div>
+  <div class="field" style="<%= show_fields %>">
+    <%= f.label :patient_notes, "Please add what happened to the test strips that were sent to you. Also, add anything else you'd like to here." %><br>
+    <%= f.text_area :patient_notes %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit submit_text %>
+  </div>
+<% end %>

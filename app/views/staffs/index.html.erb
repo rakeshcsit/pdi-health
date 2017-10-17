@@ -8,8 +8,8 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>Timezone</th>
       <th>Full name</th>
+      <th>Timezone</th>
       <th>Email</th>
       <th></th>
     </tr>
@@ -19,8 +19,14 @@
     <% @staffs.each do |staff| %>
       <tr>
         <td><%= link_to staff.id, staff %></td>
+        <td>
+          <%= link_to staff.full_name, staff %>
+          <%
+            c = staff.notes.where(:noteable_type => "Staff", :noteable_id => staff.id).where('created_at >= ?', 1.week.ago).count 
+          %>
+          has contacted <%= c %> patients in the last 7 days
+        </td>
         <td><%= staff.user.time_zone %></td>
-        <td><%= link_to staff.full_name, staff %></td>
         <td><%= staff.email %></td>
         <td><%= link_to 'Edit', edit_staff_path(staff) %> <%= link_to 'Destroy', staff, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
