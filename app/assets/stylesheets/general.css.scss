@@ -1,7 +1,38 @@
-.margin-bottom-50 {
-	margin-bottom: 50px
+.page-header {
+	margin-top: 20px;
 }
 
-.center {
-	text-align: center
+#new-user-password-tip {
+	display: inline-block;
+	margin-left: 20px;
 }
+
+
+// patient page
+#patient-table {
+	// th, td {
+	// 	-webkit-box-sizing: content-box; 
+	// 	-moz-box-sizing: content-box;  
+	// 	-sizing: content-box;
+	// }
+	th {
+		white-space: nowrap;
+	}
+
+}
+
+#patient-table_wrapper {
+	#patient-table_filter {
+		margin-bottom: 20px;
+		margin-top: 30px;
+	}
+	.DTFC_LeftHeadWrapper  thead tr,
+	.dataTables_scrollHeadInner thead tr {
+		height: 40px!important;
+	}
+}
+
+.dt-buttons {
+	float: left;
+}
+
