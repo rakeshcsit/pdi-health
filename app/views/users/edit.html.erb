@@ -1,6 +1,18 @@
-<h1>Editing user</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', users_path %></span>
+        <h1><i class="fa fa-pied-piper-alt"></i> Edit User</h1>
+      </div>
+      <div class="row">
+      	<div class="col-md-7">
+      		<%= render 'form' %>
+      	</div>
+      	<div class="col-md-5">
+      		<%#= link_to 'View staff\'s profile', @user %>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>

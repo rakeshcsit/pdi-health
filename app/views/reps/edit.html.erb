@@ -1,6 +1,18 @@
-<h1>Editing rep</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @rep %> |
-<%= link_to 'Back', reps_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', reps_path %></span>
+        <h1><i class="fa fa-user-secret"></i> Edit Field Rep</h1>
+      </div>
+      <div class="row">
+      	<div class="col-md-7">
+      		<%= render 'form' %>
+      	</div>
+      	<div class="col-md-5">
+      		<%= link_to 'View reps\'s profile', @rep %>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>

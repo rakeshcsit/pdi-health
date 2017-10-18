@@ -11,6 +11,8 @@
  * file per style scope.
  *
  *= require select2
+ *= require bootstrapValidator.min
+ *= require font-awesome
  *= require_tree .
  *= require_self
  */

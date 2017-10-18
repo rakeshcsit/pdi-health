@@ -12,7 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require select2
+//= require bootstrapValidator.min
 //= require chartkick
 //= require time_zones
 //= require_tree .
+
+$(document).ready(function(){
+  $('[data-toggle="new-user-password-popover"]').popover(); 
+
+});

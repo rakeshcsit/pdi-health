@@ -1,109 +1,143 @@
-<h1 class="center">Prospective Patient Dashboard</h1>
-
 <div class="container">
-  <%= link_to 'Add New Patient', new_patient_path %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1><i class="fa fa-user"></i> Prospective Patient Dashboard</h1>
+      </div>
 
-  <%= render 'layouts/pass' %>
-</div>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Last Request For Add. Strips</th>
-        <th>ID + Name + Email</th>
-        <th>Last Contacted</th>
-        <th>Date of Initial Contact</th>
-        <th>First Reported INR</th>
-        <th>Qualified</th>
-        <th>Communication preferred</th>
-        <th>Insurance verification</th>
-        <th>Prescription acquired</th>
-        <th>Phone number</th>
-        <th>State | Timezone</th>
-        <th>Address | Zipcode</th>
-        
-        <th>Field Rep(s) Assigned</th>
-        <th>Doctor(s)</th>
-        <th></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @patients.each do |patient| %>
-        <tr>
-          <td>
-            <% tr = patient.test_strip_requests.last %>
-            <% if tr %>
-              <%= tr.created_at.in_time_zone(current_user.time_zone).strftime("%Y-%m-%d") %> - made on 
-              <br><br>
-              <p><strong>was communicated with? </strong> <%= tr.communicated_with ? "yes" : "no" %></p>
-              <p><strong>request dealt with? </strong> <%= tr.dealt_with ? "yes" : "no" %></p>              
-            <% end %>
-          </td>
-          <td><%= link_to "#{patient.id} #{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %> | <%= patient.email %></td>
-          <td>
-            <% patient.notes.order(wdate: :desc).limit(3).each do |n| %>
-              by <%= who_made_note_give_link n.noteable %> on <%= link_to n.wdate, n %> <br><br>
-            <% end %>
-
-            <% if patient.notes.empty? %>
-              No Contacts Made (notes not logged)
-            <% end %>
-          </td>
-          <td>
-            <% patient.notes.order(wdate: :desc).limit(1).each do |n| %>
-              made by <%= who_made_note_give_link n.noteable %> on <%= link_to n.wdate, n %> <br><br>
-            <% end %>
-
-            <% if patient.notes.empty? %>
-              Initial Contact Never Made (note not logged)
-            <% end %>
-          </td>
-          <td>
-            <% inr = patient.user.inrs.first %>
-            <% if inr %>
-              <%= inr.value %> on <%= inr.wdate %>
-            <% else %>
-              INR Never Reported
-            <% end %> 
-          </td>
-          <td><%= patient.qualified %></td>
-          <td><%= patient.communication_preferred %></td>
-          <td><%= patient.insurance_verification %></td>
-          <td><%= patient.prescription_acquired %></td>
-          <td><%= patient.phone_number %></td>
-          <td><%= patient.state %> | <%= patient.user.time_zone %></td>
-          <td><%= patient.address %> | <%= patient.zipcode %></td>
-
-          <td>
-            <ul>
-              <% patient.reps.map do |r| %>
-                <li><%= link_to r.full_name, r %></li>
-              <% end %>
-
-              <% if patient.reps.empty? %>
-                Field Rep not assigned to this patient
-              <% end %>
-            </ul>
-          </td>
-
-          <td>
-            <% if patient.manegizations.empty? %>
-              No doctor assigned to this patient
-            <% else %>
-              <ul>
-                <% patient.manegizations.map do |maneg| %>
-                  <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %></li>
-                <% end %>
-              </ul>
-            <% end %>
-          </td>
-
-          <td><%= link_to 'Edit', edit_patient_path(patient) %> <%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+      <%= link_to new_patient_path, :class => 'btn btn-primary' do %>
+        <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Patient
       <% end %>
-    </tbody>
-  </table>
+      <%= render 'layouts/pass' %>
 
+      <hr>
 
+      <div class="" style="margin-bottom: 30px; overflow:auto">
+        <table id="patient-table" class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th></th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>TimeZone</th>
+            <th>Address</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>Last Request For Add. Strips</th>
+            <th>Last Contacted</th>
+            <th>Date of Initial Contact</th>
+            <th>First Reported INR</th>
+            <th>Qualified</th>
+            <th>Communication preferred</th>
+            <th>Insurance verification</th>
+            <th>Prescription acquired</th>
+            <th>Field Rep(s) Assigned</th>
+            <th>Doctor(s)</th>
+            <th>Date of initial call to doctor</th>
+            <th>Date of script being approved</th>
+            <th>Date of shipped device</th>
+            <th>Date of field rep being assigned</th>
+            <th>Training date</th>
+            <th>Generate shipping label</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @patients.each do |patient| %>
+            <tr>
+              <td><%= patient.id %></td>
+              <td>
+
+                <%#= link_to 'Edit', edit_patient_path(patient) %> 
+                <%= link_to edit_patient_path(patient) do %>
+                  <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                <% end %>
+                <%#= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to "#{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %></td>
+
+              <td><%= patient.email %></td>
+              <td><%= patient.phone_number %></td>
+              <td><%= patient.user.time_zone %></td>
+              <td><%= patient.address %></td>
+              <td><%= patient.state %></td>
+              <td><%= patient.zipcode %></td>
+              <td>
+                <% tr = patient.test_strip_requests.last %>
+                <% if tr %>
+                  <%= tr.created_at.in_time_zone(current_user.time_zone).strftime("%Y-%m-%d") %> - made on 
+                  <br><br>
+                  <p><strong>was communicated with? </strong> <%= tr.communicated_with ? "yes" : "no" %></p>
+                  <p><strong>request dealt with? </strong> <%= tr.dealt_with ? "yes" : "no" %></p>              
+                <% end %>
+              </td>
+              <td>
+                <% patient.notes.order(wdate: :desc).limit(3).each do |n| %>
+                  by <%= who_made_note_give_link n.noteable %> on <%= link_to n.wdate, n %> <br><br>
+                <% end %>
+
+                <% if patient.notes.empty? %>
+                  No Contacts Made (notes not logged)
+                <% end %>
+              </td>
+              <td>
+                <% patient.notes.order(wdate: :desc).limit(1).each do |n| %>
+                  made by <%= who_made_note_give_link n.noteable %> on <%= link_to n.wdate, n %> <br><br>
+                <% end %>
+
+                <% if patient.notes.empty? %>
+                  Initial Contact Never Made (note not logged)
+                <% end %>
+              </td>
+              <td>
+                <% inr = patient.user.inrs.first %>
+                <% if inr %>
+                  <%= inr.value %> on <%= inr.wdate %>
+                <% else %>
+                  INR Never Reported
+                <% end %> 
+              </td>
+              <td><%= patient.qualified %></td>
+              <td><%= patient.communication_preferred %></td>
+              <td><%= patient.insurance_verification %></td>
+              <td><%= patient.prescription_acquired %></td>
+        
+              <td>
+                <ul>
+                  <% patient.reps.map do |r| %>
+                    <li><%= link_to r.full_name, r %></li>
+                  <% end %>
+
+                  <% if patient.reps.empty? %>
+                    Field Rep not assigned to this patient
+                  <% end %>
+                </ul>
+              </td>
+
+              <td>
+                <% if patient.manegizations.empty? %>
+                  No doctor assigned to this patient
+                <% else %>
+                  <ul>
+                    <% patient.manegizations.map do |maneg| %>
+                      <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %></li>
+                    <% end %>
+                  </ul>
+                <% end %>
+              </td>
+              <td>----</td>
+              <td>----</td>
+              <td>----</td>
+              <td>----</td>
+              <td>----</td>
+              <td>----</td>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
 

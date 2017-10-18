@@ -1,9 +1,16 @@
-<h1 class="center">Listing Patient Notes</h1>
-
 <div class="container">
-  <%= link_to 'Create New Patient Note', new_note_path %>
-  
-  <br><br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1><i class="fa fa-sticky-note"></i> All Patient Notes</h1>
+      </div>
 
-  <%= render 'notes', notes: @notes, data_tables: true, edit: true %>
+      <%= link_to new_note_path, :class => 'btn btn-primary' do %>
+        <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Create New Patient Note
+      <% end %>
+      <hr>
+
+      <%= render 'notes', notes: @notes, data_tables: true, edit: true %>
+    </div>
+  </div>
 </div>

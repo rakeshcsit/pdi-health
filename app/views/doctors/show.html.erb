@@ -1,61 +1,99 @@
-<p id="notice"><%= notice %></p>
+<div class="container doctor-show">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', doctors_path %></span>
+        <h1><i class="fa fa-user-md"></i> <%= @doctor.full_name %> <small>Doctor</small></h1>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to edit_doctor_path(@doctor), :class => 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Doctor
+          <% end %>
+          <%= render 'layouts/pass' %>
 
-<%= render 'layouts/pass' %>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p><strong>Patients Doctor is Managing</strong></p>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Personal Details</h3>
+        </div>
+        <div class="panel-body">
+          <p>
+            <strong>Full name:</strong>
+            <%= @doctor.full_name %>
+          </p>
 
-<% unless @doctor.manegizations.empty? %>
-  <ul>
-    <% @doctor.manegizations.map do |maneg| %>
-      <li><%= link_to "(#{maneg.patient.id}) #{maneg.patient.first_name} #{maneg.patient.last_name}", maneg.patient %></li>
-    <% end %>
-  </ul>
-<% end %>
+          <p>
+            <strong>Timezone:</strong>
+            <%= @doctor.user.time_zone %>
+          </p>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @doctor.full_name %>
-</p>
+          <p>
+            <strong>Email:</strong>
+            <%= @doctor.email %>
+          </p>
 
-<p>
-  <strong>Timezone:</strong>
-  <%= @doctor.user.time_zone %>
-</p>
+          <p>
+            <strong>Phone number:</strong>
+            <%= @doctor.phone_number %>
+          </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @doctor.email %>
-</p>
+          <p>
+            <strong>Fax number:</strong>
+            <%= @doctor.fax_number %>
+          </p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @doctor.phone_number %>
-</p>
+          <p>
+            <strong>Address:</strong>
+            <%= @doctor.address %>
+          </p>
 
-<p>
-  <strong>Fax number:</strong>
-  <%= @doctor.fax_number %>
-</p>
+          <p>
+            <strong>State:</strong>
+            <%= @doctor.state %>
+          </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @doctor.address %>
-</p>
+          <p>
+            <strong>Zipcode:</strong>
+            <%= @doctor.zipcode %>
+          </p>
 
-<p>
-  <strong>State:</strong>
-  <%= @doctor.state %>
-</p>
+          <p>
+            <strong>Hours:</strong>
+            <%= @doctor.hours %>
+          </p>
+        </div>
+      </div> 
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @doctor.zipcode %>
-</p>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Patients</h3>
+        </div>
+        <div class="panel-body">
+          <% unless @doctor.manegizations.empty? %>
+            <ul>
+              <% @doctor.manegizations.map do |maneg| %>
+                <li><%= link_to "(#{maneg.patient.id}) #{maneg.patient.first_name} #{maneg.patient.last_name}", maneg.patient %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div> 
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Hours:</strong>
-  <%= @doctor.hours %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_doctor_path(@doctor) %> |
-<%= link_to 'Back', doctors_path %>
+
+
+
+

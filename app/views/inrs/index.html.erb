@@ -1,23 +1,59 @@
-<h1 class="center">Listing inrs</h1>
-
 <div class="container">
-
-<p><%= link_to 'Report an INR', new_inr_path, {:class => "btn btn-primary"} %>&nbsp;&nbsp;&nbsp;&nbsp;<%= @message %></p>
-
-<p>
-	<%= link_to 'Request INR Test Strips', new_test_strip_request_path, {:class => "btn btn-primary"} %>
-	&nbsp;&nbsp;&nbsp;&nbsp;You will regularly get test strips mailed to you but if you need more immediately, you can use this button.
-</p>
-
   <div class="row">
-    <div class="col-6">
-      <br><br><br><br>
-      <%= render 'inrs', inrs: @inrs, data_tables: true, edit: true %>
-    </div>
+    <div class="col-md-12">
+      <div class="page-header">
+        <h1><i class="fa fa-tint"></i> Dashboard</h1>
+      </div>
+      <%= link_to new_inr_path, :class => 'btn btn-primary' do %>
+        <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Report an INR
+      <% end %>
 
-    <div class="col-6">
-      <%= line_chart @chart_data, discrete: true, width: "800px", height: "500px", xtitle: "Dates", ytitle: "INRs" %>    
+      <%= link_to new_test_strip_request_path, :class => 'btn btn-primary' do %>
+        <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Request INR Test Strips
+      <% end %>
+      <hr>
+
     </div>
   </div>
 
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Messages</h3>
+        </div>
+        <div class="panel-body">
+          <p><%= @message %></p>
+          <p>
+            You will regularly get test strips mailed to you but if you need more immediately, you can use this button.
+          </p>
+        </div> 
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">INR Chart</h3>
+        </div>
+        <div class="panel-body">
+           <%= line_chart @chart_data, discrete: true, width: "100%", xtitle: "Dates", ytitle: "INRs" %> 
+        </div> 
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">INRs</h3>
+        </div>
+        <div class="panel-body">
+           <%= render 'inrs', inrs: @inrs, data_tables: true, edit: true %>
+        </div> 
+      </div>
+     
+    </div>
+  </div>
 </div>
