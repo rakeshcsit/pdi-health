@@ -37,7 +37,7 @@ var inrs = $('#inrs').DataTable({
   ]
 });
 
-var inrs = $('#inrs_editable').DataTable({
+var inrsEditable = $('#inrs_editable').DataTable({
   "stateSave": true,
   "iDisplayLength": 100,
   "aaSorting": [],
@@ -92,8 +92,8 @@ var testStripRequests = $('#test_strip_requests').DataTable({
   "scrollX": true,
   "order": [[ 0, 'desc' ]],
   "columns": [
-    { "sortable": true, "searchable": false },
     { "sortable": false, "searchable": false },
+    { "sortable": true, "searchable": true },
     { "sortable": true, "searchable": true },
     { "sortable": true, "searchable": true },
     { "sortable": true, "searchable": true },
@@ -109,7 +109,39 @@ var patientNotes = $('#patient_notes').DataTable({
   "dom": 'Bfrtip',
   "colReorder": true,
   "colReorder": {
-    fixedColumnsLeft: 2
+    fixedColumnsLeft: 1
+  },
+  "buttons": [{
+    extend: 'colvis',
+    columns: ':gt(1)'
+  },
+    'csv' 
+  ],
+  "fixedColumns": true,
+  "fixedColumns": {
+    leftColumns: 1
+  },
+  fixedHeader: true,
+  "pageLength": 5,
+  "scrollX": true,
+  "order": [[ 0, 'desc' ]],
+  "columns": [
+    { "sortable": true, "searchable": false },
+    { "sortable": false, "searchable": false },
+    { "sortable": true, "searchable": true },
+    { "sortable": true, "searchable": true },
+    { "sortable": true, "searchable": true }
+  ]
+});
+
+var patientNotesEditable = $('#patient_notes_editable').DataTable({
+  "stateSave": true,
+  "iDisplayLength": 100,
+  "aaSorting": [],
+  "dom": 'Bfrtip',
+  "colReorder": true,
+  "colReorder": {
+    fixedColumnsLeft: 3
   },
   "buttons": [{
     extend: 'colvis',
@@ -377,6 +409,9 @@ var doctorsDashbaordTable = $('#doctors-dashboard-table').DataTable({
     { "sortable": true, "searchable": true }
   ]
 });
+
+testStripRequests.state.clear();
+patientNotesEditable.state.clear();
 
 };
 
