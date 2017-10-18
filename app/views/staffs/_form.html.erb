@@ -1,3 +1,9 @@
+<% if edit
+  submit_text = 'Update Staff'
+else
+  submit_text = 'Submit New Staff'
+end %>
+
 <div class="form-container well">
   <%= form_for(@staff) do |f| %>
     <% if @staff.errors.any? %>
@@ -11,22 +17,22 @@
         </ul>
       </div>
     <% end %>
-    <div class="field">
+    <div class="form-group">
       <%= f.label :full_name, class: 'control-label' %><br>
       <%= f.text_field :full_name, class: 'form-control' %>
     </div>
-    <div class="field">
+    <div class="form-group">
       <%= f.label :email, class: 'control-label' %><br>
       <%= f.text_field :email, class: 'form-control' %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :time_zone, class: 'control-label' %></span><br>
       <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true, default: @timezone}, {:class => 'select2 time_zone_select'}) %>
     </div>
     
     <div class="actions">
-      <%= f.submit 'Save Staff', :class => 'btn btn-primary' %>
+      <%= f.submit submit_text, :class => 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

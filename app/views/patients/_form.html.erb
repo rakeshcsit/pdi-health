@@ -1,3 +1,9 @@
+<% if edit
+  submit_text = 'Update Patient'
+else
+  submit_text = 'Submit New Patient'
+end %>
+
 <div class="form-container well">
   <%= form_for(@patient, :html => {:class => "time_zone_used #{@editClass}"}) do |f| %>
     <% if @patient.errors.any? %>
@@ -51,7 +57,7 @@
             <%= f.label :state, class: 'control-label' %><br>
              <%#= f.select(:drug_unit, dosage_measures_hash, {}, { :class => 'select2', id: "#{drug_unit_id}" }) %>
             <%#= f.select :state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @patient.state), {:include_blank => 'Choose a state'}, {:class => 'select2'} %>
-            <%= f.select :state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @patient.state), {:include_blank => 'Choose a state'}, {:class => 'select2'} %>
+            <%= f.select(:state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @patient.state), {:include_blank => true}, { :class => 'select2'}) %>
           </div>
         </div>
         <div class="col-md-3">
@@ -135,7 +141,7 @@
       </div>
     </div>
     <div class="actions">
-      <%= f.submit 'Save New Patient', :class => 'btn btn-primary' %>
+      <%= f.submit submit_text, :class => 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

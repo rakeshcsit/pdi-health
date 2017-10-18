@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', doctors_path %></span>
+        <%= render 'previous_page' %>
         <h1><i class="fa fa-user-md"></i> <%= @doctor.full_name %> <small>Doctor</small></h1>
       </div>
       <div class="row">

@@ -1,3 +1,9 @@
+<% if edit
+  submit_text = 'Update Rep'
+else
+  submit_text = 'Submit New Rep'
+end %>
+
 <div class="form-container well">
   <%= form_for(@rep) do |f| %>
     <% if @rep.errors.any? %>
@@ -12,37 +18,54 @@
       </div>
     <% end %>
 
-    <div class="field">
-      <%= f.label :patient_ids, "Which patients does this Rep manage?", class: 'control-label' %><br>
+    <h3>General Information</h3>
 
-      <% if @patients and @patients.empty? %>
-        <p>There are no patients in the system.</p>
-      <% else %>
-        <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => @rep.patients.pluck(:id) }, { :multiple => true, :class => 'select2' } %>
-      <% end %>
-    </div>
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :full_name, class: 'control-label' %><br>
+              <%= f.text_field :full_name, class: 'form-control' %>
+            </div>
 
-    <div class="field">
-      <%= f.label :full_name, class: 'control-label' %><br>
-      <%= f.text_field :full_name, class: 'form-control' %>
-    </div>
+            <div class="form-group">
+              <%= f.label :email, class: 'control-label' %><br>
+              <%= f.text_field :email, class: 'form-control' %>
+            </div>
 
-    <div class="field">
-      <%= f.label :email, class: 'control-label' %><br>
-      <%= f.text_field :email, class: 'form-control' %>
-    </div>
+            <div class="form-group">
+              <%= f.label :time_zone, class: 'control-label' %></span><br>
+              <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true, default: @timezone}, {:class => 'select2 time_zone_select'}) %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.label :phone_number, class: 'control-label' %><br>
+              <%= f.text_field :phone_number, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="field">
-      <%= f.label :time_zone, class: 'control-label' %></span><br>
-      <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true, default: @timezone}, {:class => 'select2 time_zone_select'}) %>
-    </div>
-    
-    <div class="field">
-      <%= f.label :phone_number, class: 'control-label' %><br>
-      <%= f.text_field :phone_number, class: 'form-control' %>
-    </div>
-    <div class="actions">
-      <%= f.submit 'Save', :class => 'btn btn-primary' %>
-    </div>
+      <h3>Patients</h3>
+
+      <div class="form-group-container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :patient_ids, "Which patients does this Rep manage?", class: 'control-label' %><br>
+
+              <% if @patients and @patients.empty? %>
+                <p>There are no patients in the system.</p>
+              <% else %>
+                <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => @rep.patients.pluck(:id) }, { :multiple => true, :class => 'select2' } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit submit_text, :class => 'btn btn-primary' %>
+      </div>
   <% end %>
 </div>

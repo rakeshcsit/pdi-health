@@ -22,7 +22,7 @@ gem 'active_record_union', '~> 1.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.1.1'
 
 gem 'devise', '~> 4.2'
 
@@ -34,7 +34,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-gem "select2-rails"
+gem "select2-rails", '~> 3.5.7'
 
 gem 'groupdate', '~> 3.2'
 gem 'chartkick', '~> 1.4', '>= 1.4.1'

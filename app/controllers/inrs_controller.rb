@@ -11,9 +11,9 @@ class InrsController < ApplicationController
     inrs_month_len = inrs_this_month.length
 
     if inrs_month_len < 4
-      @message = "You reported #{inrs_month_len} INRs this month. You should aim for 1 INR per week. Try your best to log #{4-inrs_month_len} INRs for the rest of the month."
+      @message = "<p>You reported <strong>#{inrs_month_len} INRs this month</strong>. You should aim for <strong>1 INR per week</strong>. Try your best to log <strong>#{4-inrs_month_len} INRs for the rest of the month</strong>.</p>"
     else
-      @message = "You successfully logged 4 INRS this month! Great job. Keep reporting an INR each week."
+      @message = "<p>You successfully logged 4 INRS this month! Great job. Keep reporting an INR each week.</p>"
     end
 
     # for chart
@@ -61,6 +61,6 @@ class InrsController < ApplicationController
     end
 
     def inr_params
-      params.require(:inr).permit(:references, :value, :note, :wdate)
+      params.require(:inr).permit(:user_id, :references, :value, :note, :wdate)
     end
 end

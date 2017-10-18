@@ -1,6 +1,19 @@
-<h1>Editing INR Report</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @inr %> |
-<%= link_to 'Back', inrs_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <%= render 'previous_page' %>
+        <h1><i class="fa fa-tint"></i> Edit INR</h1>
+      </div>
+      <div class="row">
+      	<div class="col-md-7">
+      		<%= render :partial => 'form', :locals => { :edit => true } %>
+      	</div>
+      	<div class="col-md-5">
+      		<p><%= link_to 'View INR', @inr %></p>
+          <p><%= link_to 'Delete this INR', @inr, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>
