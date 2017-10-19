@@ -266,6 +266,7 @@ var patientTable = $('#patient-table').DataTable({
     { "sortable": true, "searchable": true },
     { "sortable": true, "searchable": true },
     { "sortable": true, "searchable": true },
+    { "sortable": true, "searchable": true },
     { "sortable": false, "searchable": false },
     { "sortable": false, "searchable": false },
     { "sortable": false, "searchable": false },
