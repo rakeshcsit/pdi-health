@@ -1,3 +1,9 @@
+<% if edit
+  submit_text = 'Update Note'
+else
+  submit_text = 'Submit New Note'
+end %>
+
 <div class="form-container well">
   <%= form_for(@note) do |f| %>
     <% if @note.errors.any? %>
@@ -23,10 +29,11 @@
     </div>
 
     <div class="checkbox">
-      <%= f.label :training_meeting do %>
+      <%= f.label :training_meeting, class: 'control-label' do %>
         <%= f.check_box :training_meeting %> Is this note in regards to patient training?
       <% end %>
     </div>
+    
     <div class="form-group">
       <%= f.label :note, class: 'control-label' %><br>
       <%= f.text_area :note, class: 'form-control' %>
@@ -36,7 +43,7 @@
       <%= f.date_select :wdate %>
     </div>
     <div class="actions">
-      <%= f.submit 'Save New Note', :class => 'btn btn-primary' %>
+      <%= f.submit submit_text, :class => 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

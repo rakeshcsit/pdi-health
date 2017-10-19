@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', staffs_path %></span>
+        <%= render 'previous_page' %>
         <h1><i class="fa fa-users"></i> <%= @staff.full_name %> <small>Staff</small></h1>
       </div>
       <div class="row">
@@ -52,7 +52,7 @@
           <h3 class="panel-title">Notes</h3>
         </div>
         <div class="panel-body">
-          <%= render '/notes/notes', notes: @staff.notes, data_tables: true, edit: false %>
+          <%= render '/notes/notes', notes: @staff.notes, data_tables: true, edit: true %>
         </div>
       </div> 
     </div>

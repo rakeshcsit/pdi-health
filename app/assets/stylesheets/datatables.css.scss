@@ -1,0 +1,41 @@
+// #patient-table,
+// #doctors-table,
+// #rep-table {
+// 	th {
+// 		white-space: nowrap;
+// 	}
+// }
+
+.delete-btn {
+	color: #a94442;
+}
+
+#rep-table ul,
+#doctors-table ul {
+	white-space: nowrap;
+}
+.table {
+	min-width: 100%
+}
+
+.dataTables_wrapper {
+	thead th {
+		white-space: nowrap;
+	}
+}
+
+.dataTables_filter {
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+
+#patient-table_wrapper {
+	.DTFC_LeftHeadWrapper  thead tr,
+	.dataTables_scrollHeadInner thead tr {
+		height: 40px!important;
+	}
+}
+
+.dt-buttons {
+	float: left;
+}

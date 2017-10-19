@@ -1,9 +1,14 @@
 .select2 {
 	width: 100%;
 }
+
 .select2-container {
   padding: 0px;
   border-width: 0px;
+}
+#new_patient .form-control-feedback {
+    /* To make the feedback icon visible */
+    z-index: 100;
 }
 .select2-container .select2-choice {
   height: 34px!important;
@@ -52,4 +57,8 @@
 .select2-container .select2-choice {
   height: 37px;
   line-height: 37px;
+}
+.select2-choices {
+  border-radius: 4px;
+  border: 1px solid #cccccc;
 }

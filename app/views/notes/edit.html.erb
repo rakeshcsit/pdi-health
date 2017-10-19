@@ -2,15 +2,16 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', notes_path %></span>
+        <%= render 'previous_page' %>
         <h1><i class="fa fa-sticky-note"></i> Edit Note</h1>
       </div>
 			<div class="row">
 				<div class="col-md-7">
-					<%= render 'form' %>
+					<%= render :partial => 'form', :locals => { :edit => true } %>
 				</div>
 				<div class="col-md-5">
-					<%= link_to 'View note', @note %>
+					<p><%= link_to 'View note', @note %></p>
+					<p><%= link_to 'Delete this note', @note, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 				</div>
 			</div>
     </div>
