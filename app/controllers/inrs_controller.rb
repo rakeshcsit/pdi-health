@@ -41,6 +41,7 @@ class InrsController < ApplicationController
 
   def create
     @inr = Inr.new(inr_params)
+    @inr.user_id = current_user.id
     @inr.save
     respond_with(@inr)
   end
@@ -61,6 +62,6 @@ class InrsController < ApplicationController
     end
 
     def inr_params
-      params.require(:inr).permit(:user_id, :references, :value, :note, :wdate)
+      params.require(:inr).permit(:references, :value, :note, :wdate)
     end
 end
