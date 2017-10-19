@@ -19,6 +19,7 @@
             <th>ID</th>
             <th></th>
             <th>Name</th>
+            <th>Compliance</th>
             <th>Email</th>
             <th>Phone</th>
             <th>TimeZone</th>
@@ -45,7 +46,7 @@
         </thead>
 
         <tbody>
-          <% @patients.each do |patient| %>
+          <% @patients.each_with_index do |patient, index| %>
             <tr>
               <td><%= patient.id %></td>
               <td>
@@ -56,7 +57,13 @@
                 <% end %>
                 <%#= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <td><%= link_to "#{patient.first_name} #{patient.middle_initial} #{patient.last_name}", patient %></td>
+              <td><%= ["<b>Compliant.</b> Last INR submitted on <b>October 14th 2017</b>. Currently <b>2</b> INRs submitted for this period. Period ends on <b>October 30th</b>.", 
 
+                "<b>Uncompliant</b>. Last INR submitted on <b>October 8th 2017</b>. Currently <b>2</b> INRs submitted for this period. Period ends on <b>October 25th 2017</b>.", 
+
+                "<b>Uncompliant</b>. Last INR submitted on <b>October 1st 2017</b>. Currently <b>1</b> INR submitted for this period. Period ends on <b>October 19th 2017</b>.", 
+
+                "<b>Compliant.</b> Last INR submitted on <b>October 12th 2017</b>. Currently <b>3</b> INRs submitted for this period. Period ends on <b>October 20th</b>."][index].html_safe %></td>
               <td><%= patient.email %></td>
               <td><%= patient.phone_number %></td>
               <td><%= patient.user.time_zone %></td>
@@ -66,10 +73,12 @@
               <td>
                 <% tr = patient.test_strip_requests.last %>
                 <% if tr %>
-                  <%= tr.created_at.in_time_zone(current_user.time_zone).strftime("%Y-%m-%d") %> - made on 
+                  Made on <%= tr.created_at.in_time_zone(current_user.time_zone).strftime("%Y-%m-%d") %>
                   <br><br>
                   <p><strong>was communicated with? </strong> <%= tr.communicated_with ? "yes" : "no" %></p>
-                  <p><strong>request dealt with? </strong> <%= tr.dealt_with ? "yes" : "no" %></p>              
+                  <p><strong>request dealt with? </strong> <%= tr.dealt_with ? "yes" : "no" %></p> 
+
+                  <%= link_to "update status of request", edit_test_strip_request_path(tr) %>
                 <% end %>
               </td>
               <td>
