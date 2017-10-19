@@ -41,6 +41,10 @@
                   <%
                     c = rep.notes.where(:noteable_type => "Rep", :noteable_id => rep.id).where('created_at >= ?', 1.week.ago).count 
                   %>
+
+                  <p>is managing <b>2</b> patients</p>
+                  <p><b>1</b> patient is compliant</p>
+                  <p><b>1</b> patient is uncompliant</p>
                 </td>
                 <td><%= c %></td>
                 <td><%= rep.user.time_zone %></td>
