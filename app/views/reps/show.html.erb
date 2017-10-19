@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', reps_path %></span>
+        <%= render 'previous_page' %>
         <h1><i class="fa fa-user-secret"></i> <%= @rep.full_name %> <small>Rep</small></h1>
       </div>
       <div class="row">

@@ -12,15 +12,6 @@
 	margin-left: 20px;
 }
 
-// patient page
-// /patients
-#patient-table,
-#doctors-table,
-#rep-table {
-	th {
-		white-space: nowrap;
-	}
-}
 .popover {
 	h3.popover-title {
 		margin-top: 0!important;
@@ -29,29 +20,12 @@
 	}
 }
 
-
-#patient-table_wrapper {
-	#patient-table_filter {
-		margin-bottom: 20px;
-		margin-top: 10px;
-	}
-	.DTFC_LeftHeadWrapper  thead tr,
-	.dataTables_scrollHeadInner thead tr {
-		height: 40px!important;
-	}
-}
-
-.dt-buttons {
-	float: left;
-}
-
 // http://localhost:3000/patients/new
 
 .form-group,
 .field {
 	margin-top: 10px!important;
 }
-
 .checkbox label {
 	font-weight: 700;
 }
@@ -92,6 +66,12 @@
 	h3 {
 		font-weight: 700;
 	}
+}
+
+.prev-page-link {
+	float: right; 
+	padding-top: 20px; 
+	display: inline-block;
 }
 
 

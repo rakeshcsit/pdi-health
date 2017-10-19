@@ -1,3 +1,9 @@
+<% if edit
+  submit_text = 'Update Doctor'
+else
+  submit_text = 'Submit New Doctor'
+end %>
+
 <div class="form-container well">
   <%= form_for(@doctor) do |f| %>
     <% if @doctor.errors.any? %>
@@ -12,70 +18,108 @@
       </div>
     <% end %>
 
+    <h3>General Information</h3>
 
-    <div class="form-group">
-      <strong><%= f.label :patient_ids, "Assign Patients to this Doctor:", class: 'control-label' %></strong>
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :full_name, class: 'control-label' %><br>
+            <%= f.text_field :full_name, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
 
-      <br><br>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= f.label :address, class: 'control-label' %><br>
+            <%= f.text_field :address, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group select2GlyphFix">
+            <%= f.label :state, class: 'control-label' %><br>
+            <%= f.select :state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @doctor.state), {:include_blank => 'choose a state'}, {:class => "select2"} %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <%= f.label :zipcode, class: 'control-label' %><br>
+            <%= f.text_field :zipcode, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
 
-      <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :time_zone, class: 'control-label' %><br>
+            <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true, default: @timezone}, {:class => 'select2 time_zone_select'}) %>
+          </div>
+        </div>
+      </div>
 
-      <% if @patients and @patients.empty? %>
-        <p>There are no patients in the system.</p>
-      <% else %>
-        <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => @doctor.manegizations.pluck(:patient_id) }, { :multiple => true, :class => 'select2' } %>
-      <% end %>
-    </div>
-    
-    <hr>
-
-    <div class="field">
-      <%= f.label :full_name, class: 'control-label' %><br>
-      <%= f.text_field :full_name, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :email, class: 'control-label' %><br>
-      <%= f.text_field :email, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :time_zone, class: 'control-label' %></span><br>
-      <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true, default: @timezone}, {:class => 'select2 time_zone_select'}) %>
-    </div>
-
-    <div class="field">
-      <%= f.label :phone_number, class: 'control-label' %><br>
-      <%= f.text_field :phone_number, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :fax_number, class: 'control-label' %><br>
-      <%= f.text_field :fax_number, class: 'form-control' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :address, class: 'control-label' %><br>
-      <%= f.text_area :address, class: 'form-control' %>
     </div>
 
-    <div class="field">
-      <%= f.label :state, class: 'control-label' %><br>
-      <%= f.select :state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @doctor.state), {:include_blank => 'choose a state'}, {:class => "select2"} %>
+    <h3>Contact Details</h3>
+
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :email, class: 'control-label' %><br>
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :phone_number, class: 'control-label' %><br>
+            <%= f.text_field :phone_number, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :fax_number, class: 'control-label' %><br>
+            <%= f.text_field :fax_number, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :hours, class: 'control-label' %><br>
+            <%= f.text_area :hours, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :zipcode, class: 'control-label' %><br>
-      <%= f.text_field :zipcode, class: 'form-control' %>
+    <h3>Patients</h3>
+
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :patient_ids, "Assign Patients to this Doctor:", class: 'control-label' %><br>
+
+            <% if @patients and @patients.empty? %>
+              <p>There are no patients in the system.</p>
+            <% else %>
+              <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => @doctor.manegizations.pluck(:patient_id) }, { :multiple => true, :class => 'select2' } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="field">
-      <%= f.label :hours, class: 'control-label' %><br>
-      <%= f.text_area :hours, class: 'form-control' %>
-    </div>
 
     <div class="actions">
-      <%= f.submit 'Save', :class => 'btn btn-primary' %>
+      <%= f.submit submit_text, :class => 'btn btn-primary' %>
     </div>
   <% end %>
 </div>

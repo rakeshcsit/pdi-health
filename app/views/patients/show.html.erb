@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="page-header">
-        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', patients_path %></span>
+        <%= render 'previous_page' %>
         <h1><i class="fa fa-user"></i> <%= @patient_full_name %> <small>Patient</small></h1>
       </div>
       <div class="row">
@@ -30,75 +30,74 @@
         </div>
         <div class="panel-body">
           <p>
-                <strong>Full Name:</strong>
-                <%= @patient.first_name %> <%= @patient.middle_initial %> <%= @patient.last_name %>
-              </p>
+            <strong>Full Name:</strong>
+            <%= @patient.first_name %> <%= @patient.middle_initial %> <%= @patient.last_name %>
+          </p>
 
-              <p>
-                <strong>Address:</strong>
-                <%= @patient.address %>, <%= @patient.state %>, <%= @patient.zipcode %>
-              </p>
+          <p>
+            <strong>Address:</strong>
+            <%= @patient.address %>, <%= @patient.state %>, <%= @patient.zipcode %>
+          </p>
 
-              <p>
-                <strong>Timezone:</strong>
-                <%= @patient.user.time_zone %>
-              </p>
+          <p>
+            <strong>Timezone:</strong>
+            <%= @patient.user.time_zone %>
+          </p>
 
-              <p>
-                <strong>Phone number:</strong>
-                <%= @patient.phone_number %>
-              </p>
+          <p>
+            <strong>Phone number:</strong>
+            <%= @patient.phone_number %>
+          </p>
 
-              <p>
-                <strong>Email:</strong>
-                <%= @patient.email %>
-              </p>
+          <p>
+            <strong>Email:</strong>
+            <%= @patient.email %>
+          </p>
 
-              <p>
-                <strong>Communication preferred:</strong>
-                <%= @patient.communication_preferred %>
-              </p>
+          <p>
+            <strong>Communication preferred:</strong>
+            <%= @patient.communication_preferred %>
+          </p>
 
-              <br><br>
+          <br><br>
 
-              <p>
-                <strong>Patient is managed by following Field Rep(s):</strong>
-              </p>
+          <p>
+            <strong>Patient is managed by following Field Rep(s):</strong>
+          </p>
 
-              <ul>
-                <% @patient.reps.map do |r| %>
-                  <li><%= link_to r.full_name, r %></li>
-                <% end %>
-              </ul>
-              
-              <p><strong>Doctors this patient is seeing</strong></p>
+          <ul>
+            <% @patient.reps.map do |r| %>
+              <li><%= link_to r.full_name, r %></li>
+            <% end %>
+          </ul>
+          
+          <p><strong>Doctors this patient is seeing</strong></p>
 
-              <% unless @patient.manegizations.empty? %>
-                <ul>
-                  <% @patient.manegizations.map do |maneg| %>
-                    <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %></li>
-                  <% end %>
-                </ul>
+          <% unless @patient.manegizations.empty? %>
+            <ul>
+              <% @patient.manegizations.map do |maneg| %>
+                <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %></li>
               <% end %>
+            </ul>
+          <% end %>
 
-              <p>
-                <strong>Qualified:</strong>
-                <%= @patient.qualified %>
-              </p>
+          <p>
+            <strong>Qualified:</strong>
+            <%= @patient.qualified %>
+          </p>
 
-              <p>
-                <strong>Insurance verification:</strong>
-                <%= @patient.insurance_verification %>
-              </p>
+          <p>
+            <strong>Insurance verification:</strong>
+            <%= @patient.insurance_verification %>
+          </p>
 
-              <p>
-                <strong>Prescription acquired:</strong>
-                <%= @patient.prescription_acquired %>
-              </p>
+          <p>
+            <strong>Prescription acquired:</strong>
+            <%= @patient.prescription_acquired %>
+          </p>
 
         </div>
       </div>
-
     
     </div>
     <div class="col-md-6">
@@ -107,7 +106,7 @@
           <h3 class="panel-title">INR Chart</h3>
         </div>
         <div class="panel-body">
-          <%= line_chart @chart_data_hash, discrete: true, width: "600px", height: "375px", xtitle: "Dates", ytitle: "INRs" %>
+          <%= line_chart @chart_data_hash, discrete: true, width: "100%", xtitle: "Dates", ytitle: "INRs" %>
         </div>
       </div> 
     </div>

@@ -12,11 +12,11 @@
       </div>
     <% end %>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :email, class: 'control-label' %><br>
       <%= f.text_field :email, class: 'form-control' %>
     </div>
-    <div class="field">
+    <div class="form-group">
       <%= f.label :role, class: 'control-label' %><br>
       <%= f.select :role, User.roles.keys.to_a, {}, { required: 'true', class: 'select2' } %>
     </div>
