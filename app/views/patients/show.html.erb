@@ -29,6 +29,11 @@
           <h3 class="panel-title">Patient Details</h3>
         </div>
         <div class="panel-body">
+        <p>
+          <strong>Compliance History</strong>
+          <%= @patient.compliance_history() %>
+        </p>
+
           <p>
             <strong>Full Name:</strong>
             <%= @patient.first_name %> <%= @patient.middle_initial %> <%= @patient.last_name %>
@@ -65,11 +70,18 @@
             <strong>Patient is managed by following Field Rep(s):</strong>
           </p>
 
-          <ul>
-            <% @patient.reps.map do |r| %>
-              <li><%= link_to r.full_name, r %></li>
-            <% end %>
-          </ul>
+          <% if @patient.reps.empty? %>
+            <p>Patient does not have a field rep assigned!</p>
+          
+            <p>Assign this patient a field rep <%= link_to "here", edit_patient_path(@patient) %>.</p>
+
+          <% else %>
+            <ul>
+              <% @patient.reps.map do |r| %>
+                <li><%= link_to r.full_name, r %></li>
+              <% end %>
+            </ul>
+          <% end %>
           
           <p><strong>Doctors this patient is seeing</strong></p>
 

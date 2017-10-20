@@ -1,6 +1,8 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :set_doctors, only: [:new, :edit, :update, :destroy]
+  before_action :set_reps, only: [:new, :edit, :update, :destroy]
+
 
   def index
     @patients = Patient.all
@@ -83,6 +85,10 @@ class PatientsController < ApplicationController
   end
 
   private
+    def set_reps
+      @reps = Rep.all
+    end
+
     def set_doctors
       @doctors = Doctor.all
     end
@@ -92,6 +98,6 @@ class PatientsController < ApplicationController
     end
 
     def patient_params
-      params.require(:patient).permit(:user_id, :first_name, :middle_initial, :last_name, :email, :qualified, :communication_preferred, :insurance_verification, :prescription_acquired, :phone_number, :address, :state, :zipcode, :doctor_ids => [])
+      params.require(:patient).permit(:user_id, :first_name, :middle_initial, :last_name, :email, :qualified, :communication_preferred, :insurance_verification, :prescription_acquired, :phone_number, :address, :state, :zipcode, :rep_ids => [], :doctor_ids => [])
     end
 end

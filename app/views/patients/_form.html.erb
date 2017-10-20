@@ -102,6 +102,25 @@ end %>
       </div>
     </div>
 
+    <h3>Patient's Field Rep(s)</h3>
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :rep_ids, "Assign Field Rep to this Patient", class: 'control-label' %><br>
+            
+            <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
+            <% if (@reps == nil) or @reps.empty? %>
+              <p>There are no reps in the system</p>
+            <% else %>
+              <%= f.select :rep_ids, @reps.collect{|t| [ "#{t.id}: #{t.full_name} - #{t.email}", t.id ]}, { :selected => @patient.reps.pluck(:id) }, { :multiple => true, :class => 'select2' } %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
     <h3>Medical</h3>
     <div class="form-group-container">
       <div class="row">
