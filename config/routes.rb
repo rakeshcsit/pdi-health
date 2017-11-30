@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  resources :test_strip_requests
+
+  resources :notes
+  get "/notes/new/:id", to: "notes#new", :as => :notes_new_per_patient
+
+  get "/doctor-dashboard", to: "static#doctor_dashboard", :as => :doctor_dashboard
+
+  resources :inrs
+
+  resources :reps
+
+  resources :staffs
+
   resources :doctors
 
   resources :patients

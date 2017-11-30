@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container note-show">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <%= render 'previous_page' %>
+        <h1><i class="fa fa-tint"></i> INR</h1>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to edit_inr_path(@inr), :class => 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This INR
+          <% end %>
+
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+    	<p>
+    	  <strong>INR:</strong>
+    	  <%= @inr.value %>
+    	</p>
+
+    	<p>
+    	  <strong>Note:</strong>
+    	  <%= @inr.note %>
+    	</p>
+
+    	<p>
+    	  <strong>Date INR Taken:</strong>
+    	  <%= @inr.wdate %>
+    	</p>
+    </div>
+  </div>
+</div>

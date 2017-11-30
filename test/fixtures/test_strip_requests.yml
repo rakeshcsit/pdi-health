@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 
+  how_many_left: 1
+  patient_notes: MyText
+
+two:
+  patient_id: 
+  how_many_left: 1
+  patient_notes: MyText

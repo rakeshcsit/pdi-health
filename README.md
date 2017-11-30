@@ -1,6 +1,120 @@
+# to do
+
+request test strips
+
+use letter opener for email
+
+make sure authenticated before using the site
+
+make sure roles are enforced for everything and the logic is centralized and for views
+
+upon login let user update their password and credentials like email
+
+test making notes with staff and rep and see if patients page breaks
+
 # finished:
 
-## 1-25-17
+## 10-15-17 - 10-16-17
+
+got veronica's environment set up, she's on 
+	completely forgot that anyone other than admins can't sign up, I need to make it harder to get to the sign up page and put it in a secret code and add a robots.txt file so the sign up page can't be gotten to
+
+fixed a collect error when there are no patients and on no doctors. Veronica found the errors when setting up her environment. Needed to do @patients and @patients.empty? to 
+
+added in custom body class and id for body like inrtracker
+
+made trello board and populated with all tasks and screenshots of dashboards and made all lists of things left to do based on what the screenshots looked like compared to what was done
+
+plan for requesting test strips
+	patient has many test strip requests
+		patient fills out form 
+			how many test strips do you have left
+
+			did the previous test strips get ruined in anyway
+
+		instead of doing this (might not get used or might need to be more complicated with commenting from field rep or staff) just encourage staff or field rep to make a note and reach out to the patient
+			field rep or staff member checks off that the test strips have been sent OR that the patient will be contacted for further investigation (each will trigger a certain email)
+
+		DONE
+		rails generate scaffold TestStripRequest patient:references how_many_left:integer patient_notes:text
+
+			DONE
+			add test strip requests so patient can see the past ones
+
+			DONE
+			maybe make it so you can say - this has been dealt with and/or patient has been communicated with (basically what I started off with kind of) - but can't edit patient's stuff, make it so patient cant do the checks
+
+				DONE
+				show last test strip request on patient dashboard and if it was dealt with
+
+				DONE
+				show test strip requests on patient page
+
+	DONE
+		
+## 9-5-17
+
+who made the note on the note
+
+show rep(s) that manage patient on patients page
+
+show patients rep manages on reps page
+
+show rep(s) that manage patient on patient page
+
+see notes made by on these pages
+http://localhost:3000/reps/1
+http://localhost:3000/staffs/1
+
+make it so you can update doctors on patient form
+
+show notes that patient has on patients page (date and who made it that links to the note)
+
+on patient page, make note for this patient -> goes to patient form and fills in patient to the patient they came from
+
+show patients rep manages on rep page 
+
+## 8-16-17
+
+time zones added into each user
+
+plus time zones are editable from everywhere
+
+made it so updating the patient/doctor/staff/rep updates the user (but it doesn't update the password of that user -> I gave a flash message to remind the admin of that)
+
+redirects happen appropriately based on the role of the user
+
+rails generate scaffold Note patient:references interaction_type:string training_meeting:boolean note:text wdate:date --no-stylesheets --no-mailer --no-javascripts --no-helper --no-controller-specs --no-view-specs
+
+patient notes added in a polymorphic way. If the admin makes notes, then this is bad. I'll tell Mark to not do this.
+
+## 8-14-17
+
+added inrs feature in
+
+added custom validation for inr input 
+
+added in data tables
+
+customized navigation based upon patient, doctor, etc
+
+## 8-3-17
+
+rails generate scaffold Staff user:references full_name:string email:string
+
+rails generate scaffold Rep user:references full_name:string email:string phone_number:string
+
+modified controller structure for reps and staffs
+
+put in active record assocations to users
+
+when create a rep, staff member, it creates the users with it
+
+updated navigation
+
+remodeled has many through association to not have the active boolean (too complex)
+
+## 7-25-17
 
 	* fixed form elements in doctor and patient 
 
@@ -84,7 +198,7 @@
 
 		* doctor and patient should be able to login and update their previous credentials
 
-## 1-24-17
+## 7-24-17
 
 	* I think I finished set_patients in doctors_controller
 
@@ -102,7 +216,7 @@
 
 	* auto create user when doctor or patient is created
 
-## 1-19-17
+## 7-19-17
 
 	* scaffolded patient and doctor
 

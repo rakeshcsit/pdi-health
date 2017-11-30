@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -7,6 +7,8 @@ gem 'rails', '4.1.9'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+gem 'bootstrap-sass', '~> 3.2.0.0'
+gem "font-awesome-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -20,7 +22,7 @@ gem 'active_record_union', '~> 1.1'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 3.1.1'
 
 gem 'devise', '~> 4.2'
 
@@ -32,7 +34,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-gem "select2-rails"
+gem "select2-rails", '~> 3.5.7'
+
+gem 'groupdate', '~> 3.2'
+gem 'chartkick', '~> 1.4', '>= 1.4.1'
 
 group :development do
   # better errors

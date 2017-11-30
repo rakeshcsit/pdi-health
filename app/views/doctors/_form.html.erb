@@ -1,123 +1,126 @@
-<%= form_for(@doctor) do |f| %>
-  <% if @doctor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
+<% if edit
+  submit_text = 'Update Doctor'
+else
+  submit_text = 'Submit New Doctor'
+end %>
 
-      <ul>
-      <% @doctor.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="form-container well">
+  <%= form_for(@doctor) do |f| %>
+    <% if @doctor.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@doctor.errors.count, "error") %> prohibited this doctor from being saved:</h2>
 
-  <hr>
-
-  <% if !@doctor.new_record? %>
-    <br>
-    <br>
-    <p><strong>Patients this Doctor is Managing or has Managed:</strong></p>
-    
-    <table>
-      <thead>
-        <th>Patient</th>
-        <th>Currently Managing</th>
-      </thead>
-      <tbody>
-        <% @doctor.manegizations.each do |maneg| %>
-          <% patient = maneg.patient %>
-          <tr>
-            <td>
-              <label for="doctor_patient_ids_<%= patient.id %>"><%= "(#{patient.id}) #{patient.first_name} #{patient.last_name}" %></label> - <%= link_to "go to patient's page", patient %>
-            </td> 
-            
-            <td>
-            <input <%= maneg.active ? "checked" : "" %> id="doctor_patient_ids_<%= patient.id %>" name="doctor[patient_ids][]" type="checkbox" value="<%= patient.id %>">
-            </td>
-          </tr>
+        <ul>
+        <% @doctor.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
         <% end %>
-      </tbody>
-    </table>
+        </ul>
+      </div>
+    <% end %>
 
-    <br>
-    <br>
-    <hr>
+    <h3>General Information</h3>
 
-    <div class="form-group">
-      <strong><%= f.label :patient_ids, "Assign new patients to this doctor:", class: 'control-label' %></strong>
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :full_name, class: 'control-label' %><br>
+            <%= f.text_field :full_name, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
 
-      <p>Note: You can't assign patients that have been already once assigned to this doctor. Please moderate above.</p>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= f.label :address, class: 'control-label' %><br>
+            <%= f.text_field :address, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group select2GlyphFix">
+            <%= f.label :state, class: 'control-label' %><br>
+            <%= f.select :state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @doctor.state), {:include_blank => 'choose a state'}, {:class => "select2"} %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <%= f.label :zipcode, class: 'control-label' %><br>
+            <%= f.text_field :zipcode, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
 
-      <p>Note: You can't assign patients that are already assigned to another doctor, unless you go to that doctor's page and mark those patients inactive.</p>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :time_zone, class: 'control-label' %><br>
+            <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true, default: @timezone}, {:class => 'select2 time_zone_select'}) %>
+          </div>
+        </div>
+      </div>
 
-      <p>Note: If you don't know which doctor a patient is assigned to, you can go to the <% link_to "patient's page", patients_path %> and it will show you there.</p>
-
-      <% new_patients = @doctor.edit_patient_options %>
-
-      <% if new_patients.empty? %>
-        <p>No patients available to assign to this doctor</p>
-      <% else %>
-        <br>
-        <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
-        <%= f.select :patient_ids, new_patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => [] }, { :multiple => true, :class => 'select2' } %>
-      <% end %>
     </div>
-  <% else %>
 
-    <div class="form-group">
-      <strong><%= f.label :patient_ids, "Assign new patients to this doctor:", class: 'control-label' %></strong>
+    <h3>Contact Details</h3>
 
-      <p>Note: You can't assign patients that are already assigned to another doctor, unless you go to that doctor's page and mark those patients inactive.</p>
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :email, class: 'control-label' %><br>
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
 
-      <br>
-      <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
-      <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => [] }, { :multiple => true, :class => 'select2' } %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :phone_number, class: 'control-label' %><br>
+            <%= f.text_field :phone_number, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :fax_number, class: 'control-label' %><br>
+            <%= f.text_field :fax_number, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :hours, class: 'control-label' %><br>
+            <%= f.text_area :hours, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Patients</h3>
+
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :patient_ids, "Assign Patients to this Doctor:", class: 'control-label' %><br>
+
+            <% if @patients and @patients.empty? %>
+              <p>There are no patients in the system.</p>
+            <% else %>
+              <%= f.select :patient_ids, @patients.collect{|t| [ "#{t.id}: #{t.first_name} #{t.middle_initial} #{t.last_name} - #{t.email}", t.id ]}, { :selected => @doctor.manegizations.pluck(:patient_id) }, { :multiple => true, :class => 'select2' } %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit submit_text, :class => 'btn btn-primary' %>
     </div>
   <% end %>
-  
-  <hr>
+</div>
 
-  <div class="field">
-    <%= f.label :full_name %><br>
-    <%= f.text_field :full_name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :fax_number %><br>
-    <%= f.text_field :fax_number %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
-  </div>
-
-  <div class="field">
-    <%= f.label :state %><br>
-    <%= f.select :state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @doctor.state), {:include_blank => 'choose a state'}, {:class => "select2"} %>
-  </div>
-
-  <div class="field">
-    <%= f.label :zipcode %><br>
-    <%= f.text_field :zipcode %>
-  </div>
-
-  <div class="field">
-    <%= f.label :hours %><br>
-    <%= f.text_area :hours %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>

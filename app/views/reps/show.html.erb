@@ -1,0 +1,87 @@
+<div class="container rep-show">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <%= render 'previous_page' %>
+        <h1><i class="fa fa-user-secret"></i> <%= @rep.full_name %> <small>Rep</small></h1>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to edit_rep_path(@rep), :class => 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Rep
+          <% end %>
+          <%= render 'layouts/pass' %>
+
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Personal Details</h3>
+        </div>
+        <div class="panel-body">
+          <p>
+            <strong>Full name:</strong>
+            <%= @rep.full_name %>
+          </p>
+
+          <p>
+            <strong>Email:</strong>
+            <%= @rep.email %>
+          </p>
+
+          <p>
+            <strong>Phone number:</strong>
+            <%= @rep.phone_number %>
+          </p>
+
+          <p>
+            <strong>Timezone:</strong>
+            <%= @rep.user.time_zone %>
+          </p>
+        </div>
+      </div> 
+
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Patients</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% @rep.patients.map do |p| %>
+              <li><%= link_to "(#{p.id}) #{p.first_name} #{p.last_name}", p %></li>
+            <% end %>
+          </ul>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Notes</h3>
+        </div>
+        <div class="panel-body">
+          <%= render '/notes/notes', notes: @rep.notes, data_tables: true, edit: false %>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+

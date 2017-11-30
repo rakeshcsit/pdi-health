@@ -1,67 +1,166 @@
-<%= form_for(@patient) do |f| %>
-  <% if @patient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+<% if edit
+  submit_text = 'Update Patient'
+else
+  submit_text = 'Submit New Patient'
+end %>
 
-      <ul>
-      <% @patient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class="form-container well">
+  <%= form_for(@patient, :html => {:class => "time_zone_used #{@editClass}"}) do |f| %>
+    <% if @patient.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+        <ul>
+        <% @patient.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <h3>General Information</h3>
+
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-9">
+          <div class="form-group">
+            <%= f.label :first_name, class: 'control-label' %><br>
+            <%= f.text_field :first_name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <%= f.label :middle_initial, class: 'control-label' %><br>
+            <%= f.text_field :middle_initial, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :last_name, class: 'control-label' %><br>
+            <%= f.text_field :last_name, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-5">
+          <div class="form-group">
+            <%= f.label :address, class: 'control-label' %><br>
+            <%= f.text_field :address, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group select2GlyphFix">
+            <%= f.label :state, class: 'control-label' %><br>
+             <%#= f.select(:drug_unit, dosage_measures_hash, {}, { :class => 'select2', id: "#{drug_unit_id}" }) %>
+            <%#= f.select :state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @patient.state), {:include_blank => 'Choose a state'}, {:class => 'select2'} %>
+            <%= f.select(:state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @patient.state), {:include_blank => true}, { :class => 'select2'}) %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <%= f.label :zipcode, class: 'control-label' %><br>
+            <%= f.text_field :zipcode, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :time_zone, class: 'control-label' %><br>
+            <%= time_zone_select("user", "time_zone", ActiveSupport::TimeZone.us_zones, { include_blank: true, default: @timezone}, {:class => 'select2 time_zone_select'}) %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Patient Contact</h3>
+
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :email, class: 'control-label' %><br>
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :phone_number, class: 'control-label' %><br>
+            <%= f.text_field :phone_number, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :communication_preferred, class: 'control-label' %><br>
+        <%= f.select :communication_preferred, options_for_select(contact_options, @patient.communication_preferred), {:include_blank => 'Choose an option'}, {:class => "select2"} %>
+      </div>
+    </div>
+
+    <h3>Patient's Field Rep(s)</h3>
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :rep_ids, "Assign Field Rep to this Patient", class: 'control-label' %><br>
+            
+            <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
+            <% if (@reps == nil) or @reps.empty? %>
+              <p>There are no reps in the system</p>
+            <% else %>
+              <%= f.select :rep_ids, @reps.collect{|t| [ "#{t.id}: #{t.full_name} - #{t.email}", t.id ]}, { :selected => @patient.reps.pluck(:id) }, { :multiple => true, :class => 'select2' } %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Medical</h3>
+    <div class="form-group-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :patient_ids, "Assign Doctor to this Patient", class: 'control-label' %><br>
+
+            <!-- removed this from :selected => @doctor.patients.pluck(:id) -->
+            <% if (@doctors == nil) or @doctors.empty? %>
+              <p>There are no doctors in the system</p>
+            <% else %>
+              <%= f.select :doctor_ids, @doctors.collect{|t| [ "#{t.id}: #{t.full_name} - #{t.email}", t.id ]}, { :selected => @patient.manegizations.pluck(:doctor_id) }, { :multiple => true, :class => 'select2' } %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="checkbox">
+            <%= f.label :qualified do %>
+              <%= f.check_box :qualified %> Qualified
+            <% end %>
+          </div>
+          <div class="checkbox">
+            <%= f.label :insurance_verification do %>
+              <%= f.check_box :insurance_verification %> Insurance verification
+            <% end %>
+          </div>
+          <div class="checkbox">
+            <%= f.label :prescription_acquired do %>
+              <%= f.check_box :prescription_acquired %> Prescription acquired
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="actions">
+      <%= f.submit submit_text, :class => 'btn btn-primary' %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :middle_initial %><br>
-    <%= f.text_field :middle_initial %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :communication_preferred %><br>
-    <%= f.select :communication_preferred, options_for_select(contact_options, @patient.communication_preferred), {:include_blank => 'choose an option'}, {:class => "select2"} %>
-  </div>
-
-  <div class="field">
-    <%= f.label :qualified %><br>
-    <%= f.check_box :qualified %>
-  </div>
-  <div class="field">
-    <%= f.label :insurance_verification %><br>
-    <%= f.check_box :insurance_verification %>
-  </div>
-  <div class="field">
-    <%= f.label :prescription_acquired %><br>
-    <%= f.check_box :prescription_acquired %>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br>
-    <%= f.text_field :phone_number %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_area :address %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br>
-    <%= f.select :state, options_for_select(us_states.map{|k,v| ["#{v} (#{k})", k]}, @patient.state), {:include_blank => 'choose a state'}, {:class => "select2"} %>
-  </div>
-  <div class="field">
-    <%= f.label :zipcode %><br>
-    <%= f.text_field :zipcode %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

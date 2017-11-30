@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  references: 
+  value: 9.99
+  note: MyText
+  wdate: 2017-08-14
+
+two:
+  references: 
+  value: 9.99
+  note: MyText
+  wdate: 2017-08-14

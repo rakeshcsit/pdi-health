@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container note-show">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <%= render 'previous_page' %>
+        <h1><i class="fa fa-sticky-note"></i> Note by <%= @note.noteable.email %></h1>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to edit_note_path(@note), :class => 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Note
+          <% end %>
+
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <p>
+        <strong>Author of Note:</strong>
+        <% if ["Rep", "Staff"].include? @note.noteable.class.name %>
+          <td><%= link_to @note.noteable.full_name, @note.noteable %> (<%= @note.noteable.class.name %>)</td>
+        <% else # assume it's a user (admin) %> 
+          <td><%= @note.noteable.email %></td>
+        <% end %>
+      </p>
+      
+      <p>
+        <strong>Patient ID:</strong>
+
+        <%= link_to @note.patient.id, @note.patient %>
+      </p>
+
+      <p>
+        <strong>Patient:</strong>
+        <%= link_to "#{@note.patient.first_name} #{@note.patient.middle_initial} #{@note.patient.last_name}", @note.patient %>
+      </p>
+
+      <p>
+        <strong>Interaction type:</strong>
+        <%= @note.interaction_type %>
+      </p>
+
+      <p>
+        <strong>Is this note in regards to patient training?</strong>
+        <%= @note.training_meeting ? "Yes" : "No" %>
+      </p>
+
+      <p>
+        <strong>Note:</strong>
+        <%= @note.note %>
+      </p>
+
+      <p>
+        <strong>Date in regards to the note:</strong>
+        <%= @note.wdate %>
+      </p>
+    </div>
+  </div>
+</div>

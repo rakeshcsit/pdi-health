@@ -1,0 +1,92 @@
+.page-header {
+	margin-top: 20px;
+}
+.navbar-brand {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 20px;
+}
+
+#new-user-password-tip {
+	display: inline-block;
+	margin-left: 20px;
+}
+
+.popover {
+	h3.popover-title {
+		margin-top: 0!important;
+		margin-bottom: 0!important;
+		padding-bottom: 10px!important;
+	}
+}
+
+// http://localhost:3000/patients/new
+
+.form-group,
+.field {
+	margin-top: 10px!important;
+}
+.checkbox label {
+	font-weight: 700;
+}
+.actions {
+	margin-top: 20px;
+}
+.form-container {
+	h3:first-of-type {
+		margin-top: 10px;
+	}
+	h3 {
+		padding-bottom: 20px;
+		margin-bottom: 0;
+		margin-top: 40px;
+	}
+	.form-group-container {
+		border-top: 1px solid #eee;
+		border-radius: 4px;
+		padding: 20px 20px 0;
+	}
+}
+
+.patient-show,
+.rep-show,
+.staff-show,
+.doctor-show {
+	h1 {
+		text-transform: capitalize;
+	}
+	.panel {
+		margin-top: 30px
+	}
+	.col-md-6 {
+		.panel {
+			margin-top: 10px;
+		}
+	}
+	h3 {
+		font-weight: 700;
+	}
+}
+
+.prev-page-link {
+	float: right; 
+	padding-top: 20px; 
+	display: inline-block;
+}
+
+
+// public
+#devise-sessions_controller,
+#users-sessions_controller,
+#users-registrations_controller,
+#devise-passwords_controller {
+	h1 {
+		margin-bottom: 30px;
+		border-bottom: 1px solid #ddd;
+		padding-bottom: 30px;
+	}
+	.outside-form {
+		max-width: 450px; 
+		margin: 0 auto;
+	}
+}

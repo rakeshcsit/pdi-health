@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <%= render 'previous_page' %>
+        <h1><i class="fa fa-users"></i> Edit Staff</h1>
+      </div>
+      <div class="row">
+      	<div class="col-md-7">
+      		<%= render :partial => 'form', :locals => { :edit => true } %>
+      	</div>
+      	<div class="col-md-5">
+      		<p><%= link_to 'View staff\'s profile', @staff %></p>
+          <p><%= link_to 'Delete staff', @staff, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+      	</div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,28 +2,28 @@
 <html>
 <head>
   <title>Self INR</title>
+
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.4.2/b-colvis-1.4.2/b-flash-1.4.2/b-html5-1.4.2/b-print-1.4.2/cr-1.4.1/fc-3.2.3/datatables.min.css"/>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-  <link rel="stylesheet" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" media="screen" title="no title" charset="utf-8">
+  
+  <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script> 
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs/jszip-2.5.0/dt-1.10.16/af-2.2.2/b-1.4.2/b-colvis-1.4.2/b-flash-1.4.2/b-html5-1.4.2/b-print-1.4.2/cr-1.4.1/fc-3.2.3/datatables.min.js"></script>
+
   <%= csrf_meta_tags %>
 </head>
-<body>
-<ul id="nav">
-  <li id="logo">Self INR</li>
-  <% if user_signed_in? %>
-    <li><%= link_to "Patients", patients_path %></li>
-    <li><%= link_to "Doctors", doctors_path %></li>
-    <li><%= link_to "Users", users_path %></li>
-    <li><%= link_to "Sign Out", destroy_user_session_path, :method=>'delete' %></li>
-  <% else %>
-    <li><%= link_to "Sign In", new_user_session_path %></li>
-    <li><%= link_to "Get Started", new_user_registration_path %></li>
-  <% end %>
-</ul>
+<body id="<%= params[:controller].parameterize %>_controller" class="<%= @bodyClass %> <% if user_signed_in? %>user_signed_in<%end%>">
 
-<%= content_tag(:p, notice, class: 'notice-show') if notice %>
-<%= content_tag(:p, alert,  class: 'alert-show' ) if alert  %>
+
+<%= render 'layouts/navbar' %>
+
+<%= render 'layouts/flash_notices' %>
+
+<%#= content_tag(:p, notice, class: 'notice-show') if notice %>
+<%#= content_tag(:p, alert,  class: 'alert-show' ) if alert  %>
 
 <%= yield %>
 

@@ -7,9 +7,27 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    self.resource = warden.authenticate!(auth_options)
+    set_flash_message!(:notice, :signed_in)
+    sign_in(resource_name, resource)
+    yield resource if block_given?
+    
+    if current_user.role == 'patient'
+      location = inrs_path
+    elsif current_user.role == 'doctor'
+      location = doctor_dashboard_path
+    elsif current_user.role == 'field_rep'
+      # when I make the field reps dashboard this needs to change to that
+      location = patients_path
+    elsif current_user.role == 'staff'
+      location = patients_path
+    elsif current_user.role == 'admin'
+      location = patients_path
+    end
+
+    respond_with resource, location: location
+  end
 
   # DELETE /resource/sign_out
   # def destroy

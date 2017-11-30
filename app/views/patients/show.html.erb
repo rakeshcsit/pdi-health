@@ -1,76 +1,166 @@
-<p id="notice"><%= notice %></p>
+<div class="container patient-show">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <%= render 'previous_page' %>
+        <h1><i class="fa fa-user"></i> <%= @patient_full_name %> <small>Patient</small></h1>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to edit_patient_path(@patient), :class => 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit This Patient
+          <% end %>
 
-<%= render 'layouts/pass' %>
+          <%= link_to notes_new_per_patient_path(@patient), :class => 'btn btn-primary' do %>
+            <span class="glyphicon glyphicon glyphicon-file" aria-hidden="true"></span> Add Note For This Patient
+          <% end %>
+          <%= render 'layouts/pass' %>
 
-<p><strong>Doctors this patient is seeing</strong></p>
+          <hr>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<% unless @patient.manegizations.empty? %>
-  <ul>
-    <% @patient.manegizations.map do |maneg| %>
-      <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %> - actively with this doctor? <%= maneg.active ? "yes" : "no" %></li>
-    <% end %>
-  </ul>
-<% end %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Patient Details</h3>
+        </div>
+        <div class="panel-body">
+        <p>
+          <strong>Compliance History</strong>
+          <%= @patient.compliance_history() %>
+        </p>
 
-<p>
-  <strong>First name:</strong>
-  <%= @patient.first_name %>
-</p>
+          <p>
+            <strong>Full Name:</strong>
+            <%= @patient.first_name %> <%= @patient.middle_initial %> <%= @patient.last_name %>
+          </p>
 
-<p>
-  <strong>Middle initial:</strong>
-  <%= @patient.middle_initial %>
-</p>
+          <p>
+            <strong>Address:</strong>
+            <%= @patient.address %>, <%= @patient.state %>, <%= @patient.zipcode %>
+          </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @patient.last_name %>
-</p>
+          <p>
+            <strong>Timezone:</strong>
+            <%= @patient.user.time_zone %>
+          </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @patient.email %>
-</p>
+          <p>
+            <strong>Phone number:</strong>
+            <%= @patient.phone_number %>
+          </p>
 
-<p>
-  <strong>Qualified:</strong>
-  <%= @patient.qualified %>
-</p>
+          <p>
+            <strong>Email:</strong>
+            <%= @patient.email %>
+          </p>
 
-<p>
-  <strong>Communication preferred:</strong>
-  <%= @patient.communication_preferred %>
-</p>
+          <p>
+            <strong>Communication preferred:</strong>
+            <%= @patient.communication_preferred %>
+          </p>
 
-<p>
-  <strong>Insurance verification:</strong>
-  <%= @patient.insurance_verification %>
-</p>
+          <br><br>
 
-<p>
-  <strong>Prescription acquired:</strong>
-  <%= @patient.prescription_acquired %>
-</p>
+          <p>
+            <strong>Patient is managed by following Field Rep(s):</strong>
+          </p>
 
-<p>
-  <strong>Phone number:</strong>
-  <%= @patient.phone_number %>
-</p>
+          <% if @patient.reps.empty? %>
+            <p>Patient does not have a field rep assigned!</p>
+          
+            <p>Assign this patient a field rep <%= link_to "here", edit_patient_path(@patient) %>.</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @patient.address %>
-</p>
+          <% else %>
+            <ul>
+              <% @patient.reps.map do |r| %>
+                <li><%= link_to r.full_name, r %></li>
+              <% end %>
+            </ul>
+          <% end %>
+          
+          <p><strong>Doctors this patient is seeing</strong></p>
 
-<p>
-  <strong>State:</strong>
-  <%= @patient.state %>
-</p>
+          <% unless @patient.manegizations.empty? %>
+            <ul>
+              <% @patient.manegizations.map do |maneg| %>
+                <li><%= link_to "(#{maneg.doctor.id}) #{maneg.doctor.full_name}", maneg.doctor %></li>
+              <% end %>
+            </ul>
+          <% end %>
 
-<p>
-  <strong>Zipcode:</strong>
-  <%= @patient.zipcode %>
-</p>
+          <p>
+            <strong>Qualified:</strong>
+            <%= @patient.qualified %>
+          </p>
 
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %>
+          <p>
+            <strong>Insurance verification:</strong>
+            <%= @patient.insurance_verification %>
+          </p>
+
+          <p>
+            <strong>Prescription acquired:</strong>
+            <%= @patient.prescription_acquired %>
+          </p>
+
+        </div>
+      </div>
+    
+    </div>
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">INR Chart</h3>
+        </div>
+        <div class="panel-body">
+          <%= line_chart @chart_data_hash, discrete: true, width: "100%", xtitle: "Dates", ytitle: "INRs" %>
+        </div>
+      </div> 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">INRs</h3>
+        </div>
+        <div class="panel-body">
+          <%= render '/inrs/inrs', inrs: @inrs, data_tables: false, edit: false %>
+        </div>
+      </div>    
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Notes</h3>
+        </div>
+        <div class="panel-body">
+          <%= render '/notes/notes', notes: @patient.notes, data_tables: true, edit: false %>
+        </div>
+      </div> 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title">Test Strip Requests</h3>
+        </div>
+        <div class="panel-body">
+          <%= render :partial => 'test_strip_requests/requests', :locals => {:test_strip_requests => @patient.test_strip_requests, :data_tables => true} %>
+        </div>
+      </div> 
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="page-header">
+        <span style="float: right; padding-top: 20px; display: inline-block;"> <%= link_to '<< Return to previous page', test_strip_requests_path %></span>
+        <h1><i class="fa fa-ticket"></i> Request More INR Test Strips</h1>
+      </div>
+      <div class="row">
+      	<div class="col-md-7">
+      		<%= render 'form' %>
+      	</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+  	<div class="col-md-12">
+  		<div class="panel panel-info">
+  		  <div class="panel-heading">
+  		    <h3 class="panel-title">INR Test Strip Requests</h3>
+  		  </div>
+  		  <div class="panel-body">
+  		    <%= render :partial => 'test_strip_requests/requests', :locals => {:test_strip_requests => @test_strip_requests, :data_tables => true} %>
+  		  </div> 
+  		</div>
+  	</div>
+  </div>
+</div>

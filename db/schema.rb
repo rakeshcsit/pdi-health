@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170725110554) do
+ActiveRecord::Schema.define(version: 20171016080159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,6 +77,17 @@ ActiveRecord::Schema.define(version: 20170725110554) do
 
   add_index "doctors", ["user_id"], name: "index_doctors_on_user_id", using: :btree
 
+  create_table "inrs", force: true do |t|
+    t.integer  "user_id"
+    t.decimal  "value"
+    t.text     "note"
+    t.date     "wdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "inrs", ["user_id"], name: "index_inrs_on_user_id", using: :btree
+
   create_table "instructors", force: true do |t|
     t.integer  "university_id"
     t.string   "instructor"
@@ -104,10 +115,24 @@ ActiveRecord::Schema.define(version: 20170725110554) do
   create_table "manegizations", force: true do |t|
     t.integer  "patient_id"
     t.integer  "doctor_id"
-    t.boolean  "active",     default: true, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "notes", force: true do |t|
+    t.integer  "patient_id"
+    t.string   "interaction_type"
+    t.boolean  "training_meeting"
+    t.text     "note"
+    t.date     "wdate"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "noteable_id"
+    t.string   "noteable_type"
+  end
+
+  add_index "notes", ["noteable_id", "noteable_type"], name: "index_notes_on_noteable_id_and_noteable_type", using: :btree
+  add_index "notes", ["patient_id"], name: "index_notes_on_patient_id", using: :btree
 
   create_table "patients", force: true do |t|
     t.integer  "user_id"
@@ -129,12 +154,41 @@ ActiveRecord::Schema.define(version: 20170725110554) do
 
   add_index "patients", ["user_id"], name: "index_patients_on_user_id", using: :btree
 
+  create_table "patients_reps", id: false, force: true do |t|
+    t.integer "rep_id",     null: false
+    t.integer "patient_id", null: false
+  end
+
+  add_index "patients_reps", ["patient_id", "rep_id"], name: "index_patients_reps_on_patient_id_and_rep_id", using: :btree
+  add_index "patients_reps", ["rep_id", "patient_id"], name: "index_patients_reps_on_rep_id_and_patient_id", using: :btree
+
   create_table "rds", force: true do |t|
     t.string   "rd"
     t.string   "rd_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "reps", force: true do |t|
+    t.integer  "user_id"
+    t.string   "full_name"
+    t.string   "email"
+    t.string   "phone_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reps", ["user_id"], name: "index_reps_on_user_id", using: :btree
+
+  create_table "staffs", force: true do |t|
+    t.integer  "user_id"
+    t.string   "full_name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "staffs", ["user_id"], name: "index_staffs_on_user_id", using: :btree
 
   create_table "student_feedbacks", force: true do |t|
     t.string   "class_code"
@@ -167,6 +221,18 @@ ActiveRecord::Schema.define(version: 20170725110554) do
   end
 
   add_index "student_success_managers", ["university_id"], name: "index_student_success_managers_on_university_id", using: :btree
+
+  create_table "test_strip_requests", force: true do |t|
+    t.integer  "patient_id"
+    t.integer  "how_many_left"
+    t.text     "patient_notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "dealt_with",        default: false
+    t.boolean  "communicated_with", default: false
+  end
+
+  add_index "test_strip_requests", ["patient_id"], name: "index_test_strip_requests_on_patient_id", using: :btree
 
   create_table "tier_updates", force: true do |t|
     t.integer  "instructor_id"
@@ -207,6 +273,7 @@ ActiveRecord::Schema.define(version: 20170725110554) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "time_zone"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
