@@ -1,0 +1,59 @@
+launch first week of december
+
+list of patients and states and how long they've been on warfarin for
+
+weekly tester
+
+biweekly tester
+
+weekly, biweekly (option for patient form)
+	every 7 days OR 14 days patient submits 1 inr 
+
+example for every 7 days
+oct 15 first training
+oct 22 on this date any time they need to submit inr by
+
+
+every 6.99 days we need their inr 
+
+patient can be active or inactive or discontinued 
+	if inactive it takes them out of the compliance equation <- dates
+
+inr goal range (2 to 3 default - let doctor update for each patient)
+
+alerts for non compliant patients, critical patients, out of range
+
+for the doctor
+	% of time in the goal range (out of range) and critical results (5 or over, or 1.5 and under by default -> let doctor set the critical ranges for each patient)
+
+	monthly summary of their patients for those above results
+
+		for criticals we want a notification 
+
+		out of range yellow
+
+		criticals should be red
+
+
+add messages to patients -> which get emailed to the patient
+and added to the patient's page, select which patients get the message
+
+verified contacts per patient
+	the hippa contact for each patient
+
+
+smart phone app -> 40% adoption rate
+
+
+do an autoshipment
+	they've taken 8 tests for us, we want to automatically send them.
+
+doctor
+	Office Contact, Notes
+		have multiple addresses in for a doctor
+
+			need to specify which offices patient goes to
+
+				put in the rank of the office
+
+
