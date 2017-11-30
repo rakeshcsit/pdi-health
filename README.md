@@ -1,3 +1,19 @@
+heroku create
+
+# rename the url to something else
+heroku apps:rename newname
+
+git push heroku master
+
+heroku run rake db:migrate
+
+heroku open
+
+heroku pg:psql postgresql-pointy-69050 --app selfinr
+
+
+
+
 # to do
 
 request test strips
