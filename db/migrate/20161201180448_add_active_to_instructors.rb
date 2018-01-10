@@ -1,4 +1,4 @@
-class AddActiveToInstructors < ActiveRecord::Migration
+class AddActiveToInstructors < ActiveRecord::Migration[5.0]
   def change
     add_column :instructors, :active, :boolean, :default => true
 

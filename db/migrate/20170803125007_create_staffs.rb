@@ -1,4 +1,4 @@
-class CreateStaffs < ActiveRecord::Migration
+class CreateStaffs < ActiveRecord::Migration[5.0]
   def change
     create_table :staffs do |t|
       t.references :user, index: true

@@ -1,4 +1,4 @@
-class CreateReps < ActiveRecord::Migration
+class CreateReps < ActiveRecord::Migration[5.0]
   def change
     create_table :reps do |t|
       t.references :user, index: true

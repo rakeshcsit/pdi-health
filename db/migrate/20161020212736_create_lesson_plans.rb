@@ -1,4 +1,4 @@
-class CreateLessonPlans < ActiveRecord::Migration
+class CreateLessonPlans < ActiveRecord::Migration[5.0]
   def change
     create_table :lesson_plans do |t|
       t.decimal :lp

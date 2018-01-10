@@ -1,4 +1,4 @@
-class CreateAudits < ActiveRecord::Migration
+class CreateAudits < ActiveRecord::Migration[5.0]
   def change
     create_table :audits do |t|
       t.references :instructor, index: true

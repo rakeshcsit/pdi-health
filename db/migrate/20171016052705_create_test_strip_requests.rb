@@ -1,4 +1,4 @@
-class CreateTestStripRequests < ActiveRecord::Migration
+class CreateTestStripRequests < ActiveRecord::Migration[5.0]
   def change
     create_table :test_strip_requests do |t|
       t.references :patient, index: true

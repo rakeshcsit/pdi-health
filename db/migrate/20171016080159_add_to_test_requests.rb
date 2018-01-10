@@ -1,4 +1,4 @@
-class AddToTestRequests < ActiveRecord::Migration
+class AddToTestRequests < ActiveRecord::Migration[5.0]
   def change
   	add_column :test_strip_requests, :dealt_with, :boolean, :default => false
   	add_column :test_strip_requests, :communicated_with, :boolean, :default => false

@@ -1,4 +1,4 @@
-class CreateManegizations < ActiveRecord::Migration
+class CreateManegizations < ActiveRecord::Migration[5.0]
   def change
     create_table :manegizations do |t|
       t.integer :patient_id

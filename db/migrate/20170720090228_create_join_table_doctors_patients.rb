@@ -1,4 +1,4 @@
-class CreateJoinTableDoctorsPatients < ActiveRecord::Migration
+class CreateJoinTableDoctorsPatients < ActiveRecord::Migration[5.0]
   def change
     create_join_table :doctors, :patients do |t|
       t.index [:doctor_id, :patient_id]

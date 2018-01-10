@@ -1,4 +1,4 @@
-class CreateInrs < ActiveRecord::Migration
+class CreateInrs < ActiveRecord::Migration[5.0]
   def change
     create_table :inrs do |t|
       t.references :user, index: true

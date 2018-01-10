@@ -1,4 +1,4 @@
-class CreateStudentFeedbacks < ActiveRecord::Migration
+class CreateStudentFeedbacks < ActiveRecord::Migration[5.0]
   def change
     create_table :student_feedbacks do |t|
       t.string :class_code
