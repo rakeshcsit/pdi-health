@@ -5,9 +5,16 @@ ruby '2.3.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.9'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite'
+# gem 'sqlite'
 # gem 'pg' 
-gem 'pg', '>= 0.19.0.beta'
+group :production do
+	gem 'pg', '>= 0.19.0.beta'
+end
+
+group :development, :test do
+  gem 'sqlite3'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.2.0.0'
